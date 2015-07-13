@@ -1,6 +1,6 @@
 //
-//  dingshanTests.swift
-//  dingshanTests
+//  DingshanSwiftTests.swift
+//  DingshanSwiftTests
 //
 //  Created by song jufeng on 15/7/13.
 //  Copyright (c) 2015年 song jufeng. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class dingshanTests: XCTestCase {
+class DingshanSwiftTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

@@ -7,46 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F0C5F6251B53D0A200B2C20D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C5F6241B53D0A200B2C20D /* AppDelegate.swift */; };
-		F0C5F6271B53D0A200B2C20D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C5F6261B53D0A200B2C20D /* ViewController.swift */; };
-		F0C5F62A1B53D0A200B2C20D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0C5F6281B53D0A200B2C20D /* Main.storyboard */; };
-		F0C5F62C1B53D0A200B2C20D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0C5F62B1B53D0A200B2C20D /* Images.xcassets */; };
-		F0C5F62F1B53D0A200B2C20D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0C5F62D1B53D0A200B2C20D /* LaunchScreen.xib */; };
-		F0C5F63B1B53D0A200B2C20D /* dingshanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C5F63A1B53D0A200B2C20D /* dingshanTests.swift */; };
+		F0C5F6B71B53D1E000B2C20D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C5F6B61B53D1E000B2C20D /* AppDelegate.swift */; };
+		F0C5F6B91B53D1E000B2C20D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C5F6B81B53D1E000B2C20D /* ViewController.swift */; };
+		F0C5F6BC1B53D1E000B2C20D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0C5F6BA1B53D1E000B2C20D /* Main.storyboard */; };
+		F0C5F6BE1B53D1E000B2C20D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0C5F6BD1B53D1E000B2C20D /* Images.xcassets */; };
+		F0C5F6C11B53D1E000B2C20D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0C5F6BF1B53D1E000B2C20D /* LaunchScreen.xib */; };
+		F0C5F6CD1B53D1E000B2C20D /* DingshanSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C5F6CC1B53D1E000B2C20D /* DingshanSwiftTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F0C5F6351B53D0A200B2C20D /* PBXContainerItemProxy */ = {
+		F0C5F6C71B53D1E000B2C20D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F0C5F6171B53D0A200B2C20D /* Project object */;
+			containerPortal = F0C5F6A91B53D1E000B2C20D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F0C5F61E1B53D0A200B2C20D;
-			remoteInfo = dingshan;
+			remoteGlobalIDString = F0C5F6B01B53D1E000B2C20D;
+			remoteInfo = DingshanSwift;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F0C5F61F1B53D0A200B2C20D /* dingshan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dingshan.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F0C5F6231B53D0A200B2C20D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F0C5F6241B53D0A200B2C20D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F0C5F6261B53D0A200B2C20D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F0C5F6291B53D0A200B2C20D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F0C5F62B1B53D0A200B2C20D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F0C5F62E1B53D0A200B2C20D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		F0C5F6341B53D0A200B2C20D /* dingshanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dingshanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F0C5F6391B53D0A200B2C20D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F0C5F63A1B53D0A200B2C20D /* dingshanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dingshanTests.swift; sourceTree = "<group>"; };
+		F0C5F6B11B53D1E000B2C20D /* DingshanSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DingshanSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0C5F6B51B53D1E000B2C20D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0C5F6B61B53D1E000B2C20D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F0C5F6B81B53D1E000B2C20D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F0C5F6BB1B53D1E000B2C20D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F0C5F6BD1B53D1E000B2C20D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F0C5F6C01B53D1E000B2C20D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F0C5F6C61B53D1E000B2C20D /* DingshanSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DingshanSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0C5F6CB1B53D1E000B2C20D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0C5F6CC1B53D1E000B2C20D /* DingshanSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DingshanSwiftTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F0C5F61C1B53D0A200B2C20D /* Frameworks */ = {
+		F0C5F6AE1B53D1E000B2C20D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F0C5F6311B53D0A200B2C20D /* Frameworks */ = {
+		F0C5F6C31B53D1E000B2C20D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -56,58 +56,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F0C5F6161B53D0A200B2C20D = {
+		F0C5F6A81B53D1E000B2C20D = {
 			isa = PBXGroup;
 			children = (
-				F0C5F6211B53D0A200B2C20D /* dingshan */,
-				F0C5F6371B53D0A200B2C20D /* dingshanTests */,
-				F0C5F6201B53D0A200B2C20D /* Products */,
+				F0C5F6B31B53D1E000B2C20D /* DingshanSwift */,
+				F0C5F6C91B53D1E000B2C20D /* DingshanSwiftTests */,
+				F0C5F6B21B53D1E000B2C20D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		F0C5F6201B53D0A200B2C20D /* Products */ = {
+		F0C5F6B21B53D1E000B2C20D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F0C5F61F1B53D0A200B2C20D /* dingshan.app */,
-				F0C5F6341B53D0A200B2C20D /* dingshanTests.xctest */,
+				F0C5F6B11B53D1E000B2C20D /* DingshanSwift.app */,
+				F0C5F6C61B53D1E000B2C20D /* DingshanSwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F0C5F6211B53D0A200B2C20D /* dingshan */ = {
+		F0C5F6B31B53D1E000B2C20D /* DingshanSwift */ = {
 			isa = PBXGroup;
 			children = (
-				F0C5F6241B53D0A200B2C20D /* AppDelegate.swift */,
-				F0C5F6261B53D0A200B2C20D /* ViewController.swift */,
-				F0C5F6281B53D0A200B2C20D /* Main.storyboard */,
-				F0C5F62B1B53D0A200B2C20D /* Images.xcassets */,
-				F0C5F62D1B53D0A200B2C20D /* LaunchScreen.xib */,
-				F0C5F6221B53D0A200B2C20D /* Supporting Files */,
+				F0C5F6B61B53D1E000B2C20D /* AppDelegate.swift */,
+				F0C5F6B81B53D1E000B2C20D /* ViewController.swift */,
+				F0C5F6BA1B53D1E000B2C20D /* Main.storyboard */,
+				F0C5F6BD1B53D1E000B2C20D /* Images.xcassets */,
+				F0C5F6BF1B53D1E000B2C20D /* LaunchScreen.xib */,
+				F0C5F6B41B53D1E000B2C20D /* Supporting Files */,
 			);
-			path = dingshan;
+			path = DingshanSwift;
 			sourceTree = "<group>";
 		};
-		F0C5F6221B53D0A200B2C20D /* Supporting Files */ = {
+		F0C5F6B41B53D1E000B2C20D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F0C5F6231B53D0A200B2C20D /* Info.plist */,
+				F0C5F6B51B53D1E000B2C20D /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F0C5F6371B53D0A200B2C20D /* dingshanTests */ = {
+		F0C5F6C91B53D1E000B2C20D /* DingshanSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				F0C5F63A1B53D0A200B2C20D /* dingshanTests.swift */,
-				F0C5F6381B53D0A200B2C20D /* Supporting Files */,
+				F0C5F6CC1B53D1E000B2C20D /* DingshanSwiftTests.swift */,
+				F0C5F6CA1B53D1E000B2C20D /* Supporting Files */,
 			);
-			path = dingshanTests;
+			path = DingshanSwiftTests;
 			sourceTree = "<group>";
 		};
-		F0C5F6381B53D0A200B2C20D /* Supporting Files */ = {
+		F0C5F6CA1B53D1E000B2C20D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F0C5F6391B53D0A200B2C20D /* Info.plist */,
+				F0C5F6CB1B53D1E000B2C20D /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -115,60 +115,60 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F0C5F61E1B53D0A200B2C20D /* dingshan */ = {
+		F0C5F6B01B53D1E000B2C20D /* DingshanSwift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F0C5F63E1B53D0A200B2C20D /* Build configuration list for PBXNativeTarget "dingshan" */;
+			buildConfigurationList = F0C5F6D01B53D1E000B2C20D /* Build configuration list for PBXNativeTarget "DingshanSwift" */;
 			buildPhases = (
-				F0C5F61B1B53D0A200B2C20D /* Sources */,
-				F0C5F61C1B53D0A200B2C20D /* Frameworks */,
-				F0C5F61D1B53D0A200B2C20D /* Resources */,
+				F0C5F6AD1B53D1E000B2C20D /* Sources */,
+				F0C5F6AE1B53D1E000B2C20D /* Frameworks */,
+				F0C5F6AF1B53D1E000B2C20D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = dingshan;
-			productName = dingshan;
-			productReference = F0C5F61F1B53D0A200B2C20D /* dingshan.app */;
+			name = DingshanSwift;
+			productName = DingshanSwift;
+			productReference = F0C5F6B11B53D1E000B2C20D /* DingshanSwift.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F0C5F6331B53D0A200B2C20D /* dingshanTests */ = {
+		F0C5F6C51B53D1E000B2C20D /* DingshanSwiftTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F0C5F6411B53D0A200B2C20D /* Build configuration list for PBXNativeTarget "dingshanTests" */;
+			buildConfigurationList = F0C5F6D31B53D1E000B2C20D /* Build configuration list for PBXNativeTarget "DingshanSwiftTests" */;
 			buildPhases = (
-				F0C5F6301B53D0A200B2C20D /* Sources */,
-				F0C5F6311B53D0A200B2C20D /* Frameworks */,
-				F0C5F6321B53D0A200B2C20D /* Resources */,
+				F0C5F6C21B53D1E000B2C20D /* Sources */,
+				F0C5F6C31B53D1E000B2C20D /* Frameworks */,
+				F0C5F6C41B53D1E000B2C20D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F0C5F6361B53D0A200B2C20D /* PBXTargetDependency */,
+				F0C5F6C81B53D1E000B2C20D /* PBXTargetDependency */,
 			);
-			name = dingshanTests;
-			productName = dingshanTests;
-			productReference = F0C5F6341B53D0A200B2C20D /* dingshanTests.xctest */;
+			name = DingshanSwiftTests;
+			productName = DingshanSwiftTests;
+			productReference = F0C5F6C61B53D1E000B2C20D /* DingshanSwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F0C5F6171B53D0A200B2C20D /* Project object */ = {
+		F0C5F6A91B53D1E000B2C20D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "song jufeng";
 				TargetAttributes = {
-					F0C5F61E1B53D0A200B2C20D = {
+					F0C5F6B01B53D1E000B2C20D = {
 						CreatedOnToolsVersion = 6.4;
 					};
-					F0C5F6331B53D0A200B2C20D = {
+					F0C5F6C51B53D1E000B2C20D = {
 						CreatedOnToolsVersion = 6.4;
-						TestTargetID = F0C5F61E1B53D0A200B2C20D;
+						TestTargetID = F0C5F6B01B53D1E000B2C20D;
 					};
 				};
 			};
-			buildConfigurationList = F0C5F61A1B53D0A200B2C20D /* Build configuration list for PBXProject "dingshan" */;
+			buildConfigurationList = F0C5F6AC1B53D1E000B2C20D /* Build configuration list for PBXProject "DingshanSwift" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -176,29 +176,29 @@
 				en,
 				Base,
 			);
-			mainGroup = F0C5F6161B53D0A200B2C20D;
-			productRefGroup = F0C5F6201B53D0A200B2C20D /* Products */;
+			mainGroup = F0C5F6A81B53D1E000B2C20D;
+			productRefGroup = F0C5F6B21B53D1E000B2C20D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F0C5F61E1B53D0A200B2C20D /* dingshan */,
-				F0C5F6331B53D0A200B2C20D /* dingshanTests */,
+				F0C5F6B01B53D1E000B2C20D /* DingshanSwift */,
+				F0C5F6C51B53D1E000B2C20D /* DingshanSwiftTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F0C5F61D1B53D0A200B2C20D /* Resources */ = {
+		F0C5F6AF1B53D1E000B2C20D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0C5F62A1B53D0A200B2C20D /* Main.storyboard in Resources */,
-				F0C5F62F1B53D0A200B2C20D /* LaunchScreen.xib in Resources */,
-				F0C5F62C1B53D0A200B2C20D /* Images.xcassets in Resources */,
+				F0C5F6BC1B53D1E000B2C20D /* Main.storyboard in Resources */,
+				F0C5F6C11B53D1E000B2C20D /* LaunchScreen.xib in Resources */,
+				F0C5F6BE1B53D1E000B2C20D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F0C5F6321B53D0A200B2C20D /* Resources */ = {
+		F0C5F6C41B53D1E000B2C20D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -208,46 +208,46 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F0C5F61B1B53D0A200B2C20D /* Sources */ = {
+		F0C5F6AD1B53D1E000B2C20D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0C5F6271B53D0A200B2C20D /* ViewController.swift in Sources */,
-				F0C5F6251B53D0A200B2C20D /* AppDelegate.swift in Sources */,
+				F0C5F6B91B53D1E000B2C20D /* ViewController.swift in Sources */,
+				F0C5F6B71B53D1E000B2C20D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F0C5F6301B53D0A200B2C20D /* Sources */ = {
+		F0C5F6C21B53D1E000B2C20D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0C5F63B1B53D0A200B2C20D /* dingshanTests.swift in Sources */,
+				F0C5F6CD1B53D1E000B2C20D /* DingshanSwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F0C5F6361B53D0A200B2C20D /* PBXTargetDependency */ = {
+		F0C5F6C81B53D1E000B2C20D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F0C5F61E1B53D0A200B2C20D /* dingshan */;
-			targetProxy = F0C5F6351B53D0A200B2C20D /* PBXContainerItemProxy */;
+			target = F0C5F6B01B53D1E000B2C20D /* DingshanSwift */;
+			targetProxy = F0C5F6C71B53D1E000B2C20D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F0C5F6281B53D0A200B2C20D /* Main.storyboard */ = {
+		F0C5F6BA1B53D1E000B2C20D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F0C5F6291B53D0A200B2C20D /* Base */,
+				F0C5F6BB1B53D1E000B2C20D /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		F0C5F62D1B53D0A200B2C20D /* LaunchScreen.xib */ = {
+		F0C5F6BF1B53D1E000B2C20D /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F0C5F62E1B53D0A200B2C20D /* Base */,
+				F0C5F6C01B53D1E000B2C20D /* Base */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -255,7 +255,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		F0C5F63C1B53D0A200B2C20D /* Debug */ = {
+		F0C5F6CE1B53D1E000B2C20D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -299,7 +299,7 @@
 			};
 			name = Debug;
 		};
-		F0C5F63D1B53D0A200B2C20D /* Release */ = {
+		F0C5F6CF1B53D1E000B2C20D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -336,27 +336,27 @@
 			};
 			name = Release;
 		};
-		F0C5F63F1B53D0A200B2C20D /* Debug */ = {
+		F0C5F6D11B53D1E000B2C20D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = dingshan/Info.plist;
+				INFOPLIST_FILE = DingshanSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		F0C5F6401B53D0A200B2C20D /* Release */ = {
+		F0C5F6D21B53D1E000B2C20D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = dingshan/Info.plist;
+				INFOPLIST_FILE = DingshanSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
-		F0C5F6421B53D0A200B2C20D /* Debug */ = {
+		F0C5F6D41B53D1E000B2C20D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -368,14 +368,14 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = dingshanTests/Info.plist;
+				INFOPLIST_FILE = DingshanSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dingshan.app/dingshan";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DingshanSwift.app/DingshanSwift";
 			};
 			name = Debug;
 		};
-		F0C5F6431B53D0A200B2C20D /* Release */ = {
+		F0C5F6D51B53D1E000B2C20D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -383,42 +383,42 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = dingshanTests/Info.plist;
+				INFOPLIST_FILE = DingshanSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dingshan.app/dingshan";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DingshanSwift.app/DingshanSwift";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F0C5F61A1B53D0A200B2C20D /* Build configuration list for PBXProject "dingshan" */ = {
+		F0C5F6AC1B53D1E000B2C20D /* Build configuration list for PBXProject "DingshanSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F0C5F63C1B53D0A200B2C20D /* Debug */,
-				F0C5F63D1B53D0A200B2C20D /* Release */,
+				F0C5F6CE1B53D1E000B2C20D /* Debug */,
+				F0C5F6CF1B53D1E000B2C20D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F0C5F63E1B53D0A200B2C20D /* Build configuration list for PBXNativeTarget "dingshan" */ = {
+		F0C5F6D01B53D1E000B2C20D /* Build configuration list for PBXNativeTarget "DingshanSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F0C5F63F1B53D0A200B2C20D /* Debug */,
-				F0C5F6401B53D0A200B2C20D /* Release */,
+				F0C5F6D11B53D1E000B2C20D /* Debug */,
+				F0C5F6D21B53D1E000B2C20D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		F0C5F6411B53D0A200B2C20D /* Build configuration list for PBXNativeTarget "dingshanTests" */ = {
+		F0C5F6D31B53D1E000B2C20D /* Build configuration list for PBXNativeTarget "DingshanSwiftTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F0C5F6421B53D0A200B2C20D /* Debug */,
-				F0C5F6431B53D0A200B2C20D /* Release */,
+				F0C5F6D41B53D1E000B2C20D /* Debug */,
+				F0C5F6D51B53D1E000B2C20D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = F0C5F6171B53D0A200B2C20D /* Project object */;
+	rootObject = F0C5F6A91B53D1E000B2C20D /* Project object */;
 }
