@@ -10,4 +10,9 @@ import UIKit
 
 class GalleryViewController:UIViewController
 {
+    override func loadView()
+    {
+        super.loadView()
+        self.view.backgroundColor = UIColor.grayColor()
+    }
 }

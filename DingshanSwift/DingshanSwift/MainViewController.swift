@@ -12,12 +12,13 @@ import UIKit
 class MainViewController:UIViewController
 {
     var tabbar:MainTabBar?
+    var homeController:HomeViewController?
+    var galleryController:GalleryViewController?
+    var profileController:ProfileViewController?
     override func loadView()
     {
         super.loadView()
-        self.view.backgroundColor = UIColor.cyanColor().colorWithAlphaComponent(0.8)
-        
-        
+        self.view.backgroundColor = UIColor.cyanColor()
     }
     
     override func viewDidLoad() {
@@ -32,5 +33,32 @@ extension MainViewController : MainTabBarDelegate
     func didSelectTabButton(tag:Int)
     {
         print("..."+String(tag))
+        
+        switch tag {
+        case 0:
+            if homeController == nil{
+                homeController = HomeViewController()
+                self.view.addSubview(homeController!.view)
+            }
+            self.view.bringSubviewToFront(homeController!.view)
+            break
+        case 1:
+            if galleryController == nil{
+                galleryController = GalleryViewController()
+                self.view.addSubview(galleryController!.view)
+            }
+            self.view.bringSubviewToFront(galleryController!.view)
+            break
+        case 2:
+            if profileController == nil{
+                profileController = ProfileViewController()
+                self.view.addSubview(profileController!.view)
+            }
+            self.view.bringSubviewToFront(profileController!.view)
+            break
+        default:
+            break
+        }
+        self.view.bringSubviewToFront(tabbar!)
     }
 }
