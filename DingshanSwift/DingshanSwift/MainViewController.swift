@@ -22,6 +22,15 @@ class MainViewController:UIViewController
     
     override func viewDidLoad() {
         tabbar = MainTabBar(frame: CGRect(x: 0, y: self.view.bounds.height - 44, width: self.view.bounds.width, height: 44))
+        tabbar?.delegate = self;
         self.view.addSubview(tabbar!)
+    }
+}
+
+extension MainViewController : MainTabBarDelegate
+{
+    func didSelectTabButton(tag:Int)
+    {
+        print("..."+String(tag))
     }
 }
