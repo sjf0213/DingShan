@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749B31B54B905006E1FD3 /* MainViewController.swift */; };
+		F08749B61B54BFB3006E1FD3 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749B51B54BFB3006E1FD3 /* MainTabBar.swift */; };
 		F0C5F6B71B53D1E000B2C20D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C5F6B61B53D1E000B2C20D /* AppDelegate.swift */; };
 		F0C5F6B91B53D1E000B2C20D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C5F6B81B53D1E000B2C20D /* ViewController.swift */; };
 		F0C5F6BC1B53D1E000B2C20D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0C5F6BA1B53D1E000B2C20D /* Main.storyboard */; };
@@ -26,6 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F08749B21B54B590006E1FD3 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		F08749B31B54B905006E1FD3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F08749B51B54BFB3006E1FD3 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		F0C5F6B11B53D1E000B2C20D /* DingshanSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DingshanSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0C5F6B51B53D1E000B2C20D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0C5F6B61B53D1E000B2C20D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,12 +82,15 @@
 		F0C5F6B31B53D1E000B2C20D /* DingshanSwift */ = {
 			isa = PBXGroup;
 			children = (
+				F08749B21B54B590006E1FD3 /* Bridging-Header.h */,
 				F0C5F6B61B53D1E000B2C20D /* AppDelegate.swift */,
 				F0C5F6B81B53D1E000B2C20D /* ViewController.swift */,
 				F0C5F6BA1B53D1E000B2C20D /* Main.storyboard */,
 				F0C5F6BD1B53D1E000B2C20D /* Images.xcassets */,
 				F0C5F6BF1B53D1E000B2C20D /* LaunchScreen.xib */,
 				F0C5F6B41B53D1E000B2C20D /* Supporting Files */,
+				F08749B31B54B905006E1FD3 /* MainViewController.swift */,
+				F08749B51B54BFB3006E1FD3 /* MainTabBar.swift */,
 			);
 			path = DingshanSwift;
 			sourceTree = "<group>";
@@ -212,6 +220,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F08749B61B54BFB3006E1FD3 /* MainTabBar.swift in Sources */,
+				F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */,
 				F0C5F6B91B53D1E000B2C20D /* ViewController.swift in Sources */,
 				F0C5F6B71B53D1E000B2C20D /* AppDelegate.swift in Sources */,
 			);
@@ -291,11 +301,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "DingshanSwift/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -329,9 +341,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "DingshanSwift/Bridging-Header.h";
+				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -343,6 +357,7 @@
 				INFOPLIST_FILE = DingshanSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DingshanSwift/Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -353,6 +368,7 @@
 				INFOPLIST_FILE = DingshanSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DingshanSwift/Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -409,6 +425,7 @@
 				F0C5F6D21B53D1E000B2C20D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F0C5F6D31B53D1E000B2C20D /* Build configuration list for PBXNativeTarget "DingshanSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +434,7 @@
 				F0C5F6D51B53D1E000B2C20D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
