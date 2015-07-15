@@ -13,11 +13,11 @@ class ProfileViewController:UIViewController
     override func loadView()
     {
         super.loadView()
-        self.view.backgroundColor = UIColor.greenColor()
+        self.view.backgroundColor = UIColor.blueColor()
         
         var btn1 = UIButton(frame: CGRect(x:100,y:100,width:100,height:100));
-        btn1.backgroundColor = UIColor.orangeColor()
-        btn1.setTitle("tab1", forState: UIControlState.Normal)
+        btn1.backgroundColor = UIColor.purpleColor()
+        btn1.setTitle("go detail", forState: UIControlState.Normal)
         btn1.addTarget(self, action:Selector("onTapBtn:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(btn1)
     }
