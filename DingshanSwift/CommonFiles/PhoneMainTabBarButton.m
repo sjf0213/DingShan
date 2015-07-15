@@ -7,9 +7,15 @@
 //
 
 #import "PhoneMainTabBarButton.h"
+@interface PhoneMainTabBarButton()
+{
+    UILabel * lableTitle;
+    UIImageView * imageview;
+    UIImageView * imageview2;
+}
+@end
 
 @implementation PhoneMainTabBarButton
-@synthesize isSelect,backImage,normalImage,highlightImage,highlightImage2,normalTitleColor,highlightTitleColor;
 
 - (id)initWithFrame:(CGRect)frame title:(NSString*)title
 {
@@ -48,10 +54,10 @@
     }
     else
     {
-        isSelect = value;
-        if (isSelect)
+        _isSelect = value;
+        if (_isSelect)
         {
-            imageview.image = [UIImage imageNamed:highlightImage];
+            imageview.image = [UIImage imageNamed:_highlightImage];
             [self BecomeHighLight];
             imageview.frame = CGRectMake((CGRectGetWidth(self.bounds) - 64) / 2, 0, 64, 49);
             lableTitle.center = CGPointMake(lableTitle.center.x, self.frame.size.height + 10);
@@ -70,10 +76,10 @@
 
 -(void)setIsSelect:(BOOL)value
 {
-    isSelect = value;
-    if (isSelect)
+    _isSelect = value;
+    if (_isSelect)
     {
-        imageview.image = [UIImage imageNamed:highlightImage];
+        imageview.image = [UIImage imageNamed:_highlightImage];
         
         //这里只做了简单的重置，复杂情况以后再考虑
         for (PhoneMainTabBarButton * item in [self superview].subviews)
@@ -129,11 +135,11 @@
 
 -(void)BecomeNormal
 {
-    if (normalImage) {
-        imageview.image = [UIImage imageNamed:normalImage];
+    if (_normalImage) {
+        imageview.image = [UIImage imageNamed:_normalImage];
         [self setBackgroundImage:nil forState:UIControlStateNormal];
-        if (normalTitleColor) {
-            lableTitle.textColor = normalTitleColor;
+        if (_normalTitleColor) {
+            lableTitle.textColor = _normalTitleColor;
         }
     }
 }
@@ -141,14 +147,14 @@
 -(void)BecomeHighLight
 {
     //在不存在高亮图片时就显示普通图片
-    if (highlightImage)
+    if (_highlightImage)
     {
-        imageview.image = [UIImage imageNamed:highlightImage];
-        imageview2.image = [UIImage imageNamed:highlightImage2];
-        [self setBackgroundImage:[UIImage imageNamed:backImage] forState:UIControlStateNormal];
-        if (highlightTitleColor)
+        imageview.image = [UIImage imageNamed:_highlightImage];
+        imageview2.image = [UIImage imageNamed:_highlightImage2];
+        [self setBackgroundImage:[UIImage imageNamed:_backImage] forState:UIControlStateNormal];
+        if (_highlightTitleColor)
         {
-            lableTitle.textColor = highlightTitleColor;
+            lableTitle.textColor = _highlightTitleColor;
         }
     }
     else

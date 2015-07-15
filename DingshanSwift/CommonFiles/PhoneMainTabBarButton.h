@@ -9,17 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface PhoneMainTabBarButton : UIButton
-{
-    UILabel * lableTitle;
-    UIImageView * imageview;
-    UIImageView * imageview2;
-    BOOL isSelect;
-    NSString * backImage;
-    NSString * normalImage;
-    NSString * highlightImage;
-    UIColor * normalTitleColor;
-    UIColor * highlightTitleColor;
-}
+
 @property(nonatomic,assign) BOOL isSelect;
 @property(nonatomic,strong) NSString * backImage;
 @property(nonatomic,strong) NSString * normalImage;
