@@ -9,5 +9,5 @@
 #ifndef DingshanSwift_Bridging_Header_h
 #define DingshanSwift_Bridging_Header_h
 
-
+#import "../Commonfiles/PhoneMainTabBarButton.h"
 #endif

@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 protocol MainTabBarDelegate
 {
     func didSelectTabButton(tag:Int)
@@ -27,34 +29,69 @@ class MainTabBar:UIView
         
         var btnArr = [UIButton]()
         
-        var btn1 = UIButton();
+        let btnWidth:CGFloat = CGRectGetWidth(self.frame) / 3.0;
+        let btnHeight:CGFloat = CGRectGetHeight(self.frame);
+        
+        
+        var btn1 = PhoneMainTabBarButton(frame: CGRectMake(0, 0, btnWidth, btnHeight), title: "Home")
         btn1.backgroundColor = UIColor.orangeColor()
-        btn1.setTitle("tab1", forState: UIControlState.Normal)
+        btn1.normalImage = "tabbar_home1_kuai";
+        btn1.highlightImage = "tabbar_home2_kuai";
+        btn1.highlightImage2 = "tabbar_home3_kuai";
+        btn1.normalTitleColor = TABBAR_GRAY;
+        btn1.highlightTitleColor = TABBAR_RED;
         btnArr.append(btn1)
         
-        var btn2 = UIButton();
+        var btn2 = PhoneMainTabBarButton(frame: CGRectMake(btnWidth, 0, btnWidth, btnHeight), title: "Gallery");
         btn2.backgroundColor = UIColor.orangeColor().colorWithAlphaComponent(0.8)
-        btn2.setTitle("tab2", forState: UIControlState.Normal)
+        btn2.normalImage = "tabbar_hot1_kuai";
+        btn2.highlightImage = "tabbar_hot2_kuai";
+        btn2.highlightImage2 = "tabbar_hot3_kuai";
+        btn2.normalTitleColor = TABBAR_GRAY;
+        btn2.highlightTitleColor = TABBAR_RED;
         btnArr.append(btn2)
         
-        var btn3 = UIButton();
+        var btn3 = PhoneMainTabBarButton(frame: CGRectMake(2*btnWidth, 0, btnWidth, btnHeight), title: "Profile");
         btn3.backgroundColor = UIColor.orangeColor().colorWithAlphaComponent(0.6)
-        btn3.setTitle("tab3", forState: UIControlState.Normal)
+        btn3.normalImage = "tabbar_gift1_kuai";
+        btn3.highlightImage = "tabbar_gift2_kuai";
+        btn3.highlightImage2 = "tabbar_gift3_kuai";
+        btn3.normalTitleColor = TABBAR_GRAY;
+        btn3.highlightTitleColor = TABBAR_RED;
         btnArr.append(btn3)
         
-        for(var i:Int = 0; i < btnArr.count; i++)
-        {
+        for(var i:Int = 0; i < btnArr.count; i++) {
             var item = btnArr[i]
-            item.tag = i;
+            item.tag = i + 1000;
             item.addTarget(self, action:Selector("onTapBtn:"), forControlEvents: UIControlEvents.TouchUpInside)
             var w = self.bounds.width / CGFloat(btnArr.count)
-            item.frame = CGRect(x: w * CGFloat(i), y: 0, width: w, height: self.bounds.height)
             self.addSubview(item)
         }
     }
     
     func onTapBtn(sender:UIButton) {
         print(String(sender.tag))
-        delegate?.didSelectTabButton(sender.tag)
+        let item = sender as? PhoneMainTabBarButton
+        item?.setIsSelect(true, withAnimation: true)
+        delegate?.didSelectTabButton(sender.tag - 1000)
+    }
+    
+    func setHomeIndex(index:Int) {
+        var btn = self.viewWithTag(index + 1000);
+        print(" subviews.count = " + String(self.subviews.count))
+        for item in self.subviews
+        {
+            if (item is PhoneMainTabBarButton)
+            {
+                if (item.isEqual(btn)){
+                    item.setIsSelect(true, withAnimation: false)
+                    delegate?.didSelectTabButton(item.tag - 1000)
+                }else{
+                    item.setIsSelect(false, withAnimation: false)
+                }
+                
+            }
+        }
+        
     }
 }

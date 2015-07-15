@@ -9,6 +9,8 @@
 //import Foundation
 import UIKit
 
+let MAIN_TAB_H:CGFloat = 50
+
 class MainViewController:UIViewController
 {
     var tabbar:MainTabBar?
@@ -25,9 +27,11 @@ class MainViewController:UIViewController
     }
     
     override func viewDidLoad() {
-        tabbar = MainTabBar(frame: CGRect(x: 0, y: self.view.bounds.height - 44, width: self.view.bounds.width, height: 44))
+        tabbar = MainTabBar(frame: CGRect(x: 0, y: self.view.bounds.height - MAIN_TAB_H, width: self.view.bounds.width, height: MAIN_TAB_H))
         tabbar?.delegate = self;
         self.view.addSubview(tabbar!)
+        
+        tabbar?.setHomeIndex(0);
     }
 }
 
