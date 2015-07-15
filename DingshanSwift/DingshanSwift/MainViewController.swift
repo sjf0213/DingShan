@@ -13,8 +13,11 @@ class MainViewController:UIViewController
 {
     var tabbar:MainTabBar?
     var homeController:HomeViewController?
+    var homeNavi:UINavigationController?
     var galleryController:GalleryViewController?
+    var galleryNavi:UINavigationController?
     var profileController:ProfileViewController?
+    var profileNavi:UINavigationController?
     override func loadView()
     {
         super.loadView()
@@ -38,23 +41,32 @@ extension MainViewController : MainTabBarDelegate
         case 0:
             if homeController == nil{
                 homeController = HomeViewController()
-                self.view.addSubview(homeController!.view)
+                homeNavi = UINavigationController(rootViewController: homeController!)
+                self.view.addSubview(homeNavi!.view)
             }
-            self.view.bringSubviewToFront(homeController!.view)
+            tabbar?.removeFromSuperview()
+            homeController?.view.addSubview(tabbar!)
+            self.view.bringSubviewToFront(homeNavi!.view)
             break
         case 1:
             if galleryController == nil{
                 galleryController = GalleryViewController()
-                self.view.addSubview(galleryController!.view)
+                galleryNavi = UINavigationController(rootViewController: galleryController!)
+                self.view.addSubview(galleryNavi!.view)
             }
-            self.view.bringSubviewToFront(galleryController!.view)
+            tabbar?.removeFromSuperview()
+            galleryController?.view.addSubview(tabbar!)
+            self.view.bringSubviewToFront(galleryNavi!.view)
             break
         case 2:
             if profileController == nil{
                 profileController = ProfileViewController()
-                self.view.addSubview(profileController!.view)
+                profileNavi = UINavigationController(rootViewController: profileController!)
+                self.view.addSubview(profileNavi!.view)
             }
-            self.view.bringSubviewToFront(profileController!.view)
+            tabbar?.removeFromSuperview()
+            profileController?.view.addSubview(tabbar!)
+            self.view.bringSubviewToFront(profileNavi!.view)
             break
         default:
             break

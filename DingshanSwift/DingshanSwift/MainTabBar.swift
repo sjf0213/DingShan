@@ -26,8 +26,8 @@ class MainTabBar:UIView
         self.backgroundColor = UIColor.yellowColor()
         
         var btnArr = [UIButton]()
-        var btn1 = UIButton();
         
+        var btn1 = UIButton();
         btn1.backgroundColor = UIColor.orangeColor()
         btn1.setTitle("tab1", forState: UIControlState.Normal)
         btnArr.append(btn1)
