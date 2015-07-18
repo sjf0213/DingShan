@@ -10,4 +10,6 @@
 #define DingshanSwift_Bridging_Header_h
 
 #import "../Commonfiles/PhoneMainTabBarButton.h"
+#import "../Commonfiles/ArrayDataSource.h"
+#import "../Commonfiles/FileHelp.h"
 #endif

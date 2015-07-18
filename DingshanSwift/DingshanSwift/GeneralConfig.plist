@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>HomeMenu</key>
+	<array>
+		<string>准备阶段</string>
+		<string>拆改阶段</string>
+		<string>水电阶段</string>
+		<string>泥木阶段</string>
+		<string>油漆阶段</string>
+		<string>竣工验收</string>
+		<string>软装阶段</string>
+		<string>心得专区</string>
+	</array>
+</dict>
+</plist>

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		417BEF921B5A4E0F00F896A5 /* GeneralConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 417BEF911B5A4E0F00F896A5 /* GeneralConfig.plist */; };
+		417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 417BEF991B5A4F9300F896A5 /* ArrayDataSource.m */; };
+		417BEF9D1B5A535300F896A5 /* FileHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 417BEF9C1B5A535300F896A5 /* FileHelp.m */; };
 		F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749B31B54B905006E1FD3 /* MainViewController.swift */; };
 		F08749B61B54BFB3006E1FD3 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749B51B54BFB3006E1FD3 /* MainTabBar.swift */; };
 		F08749BA1B54E837006E1FD3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749B91B54E837006E1FD3 /* HomeViewController.swift */; };
@@ -52,6 +55,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		417BEF911B5A4E0F00F896A5 /* GeneralConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GeneralConfig.plist; sourceTree = "<group>"; };
+		417BEF981B5A4F9300F896A5 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
+		417BEF991B5A4F9300F896A5 /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
+		417BEF9B1B5A535300F896A5 /* FileHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelp.h; sourceTree = "<group>"; };
+		417BEF9C1B5A535300F896A5 /* FileHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelp.m; sourceTree = "<group>"; };
 		F08749B21B54B590006E1FD3 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F08749B31B54B905006E1FD3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F08749B51B54BFB3006E1FD3 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
@@ -113,6 +121,10 @@
 		F09ADD761B563452009B3A6D /* CommonFiles */ = {
 			isa = PBXGroup;
 			children = (
+				417BEF9B1B5A535300F896A5 /* FileHelp.h */,
+				417BEF9C1B5A535300F896A5 /* FileHelp.m */,
+				417BEF981B5A4F9300F896A5 /* ArrayDataSource.h */,
+				417BEF991B5A4F9300F896A5 /* ArrayDataSource.m */,
 				F09ADD771B563452009B3A6D /* PhoneMainTabBarButton.h */,
 				F09ADD781B563452009B3A6D /* PhoneMainTabBarButton.m */,
 			);
@@ -197,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				F0C5F6B51B53D1E000B2C20D /* Info.plist */,
+				417BEF911B5A4E0F00F896A5 /* GeneralConfig.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -304,6 +317,7 @@
 				F09ADDB61B565C03009B3A6D /* tabbar_gift1_kuai@3x.png in Resources */,
 				F0C5F6C11B53D1E000B2C20D /* LaunchScreen.xib in Resources */,
 				F09ADDC11B565C03009B3A6D /* tabbar_hot1_kuai@2x.png in Resources */,
+				417BEF921B5A4E0F00F896A5 /* GeneralConfig.plist in Resources */,
 				F09ADDBD1B565C03009B3A6D /* tabbar_home2_kuai@2x.png in Resources */,
 				F09ADDBA1B565C03009B3A6D /* tabbar_gift3_kuai@3x.png in Resources */,
 				F09ADDC41B565C03009B3A6D /* tabbar_hot2_kuai@3x.png in Resources */,
@@ -344,8 +358,10 @@
 				F08749B61B54BFB3006E1FD3 /* MainTabBar.swift in Sources */,
 				F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */,
 				F08749BC1B54E872006E1FD3 /* GalleryViewController.swift in Sources */,
+				417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */,
 				F08749BE1B54E89E006E1FD3 /* ProfileViewController.swift in Sources */,
 				F0C5F6B91B53D1E000B2C20D /* ViewController.swift in Sources */,
+				417BEF9D1B5A535300F896A5 /* FileHelp.m in Sources */,
 				F0C5F6B71B53D1E000B2C20D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
