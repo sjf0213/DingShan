@@ -10,18 +10,31 @@ import UIKit
 
 class HomeViewController:UIViewController,UITableViewDelegate
 {
+    
     var mainTable = UITableView();
-    var tableSource:ArrayDataSource = ArrayDataSource()
+    var tableSource:ArrayDataSource?
     override func loadView()
     {
         super.loadView()
         self.view.backgroundColor = UIColor.whiteColor();
         
+//        self.arrayDataSource = [[ArrayDataSource alloc] initWithcellIdentifier:TopicCellIdentifier configureCellBlock:configureCell];
+//        self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock: { (cell:UITableViewCell, data:NSDictionary) in
+//
+//        })
+        self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, item) in
+            if cell is HomeTableCell
+            {
+                print(cell)
+            }
+            
+        })
         mainTable.frame = self.view.bounds;
         mainTable.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.2)
         mainTable.delegate = self
         mainTable.dataSource = self.tableSource
-        
+        mainTable.registerClass(HomeTableCell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
+        self.view.addSubview(mainTable)
         
         var btn1 = UIButton(frame: CGRect(x:100,y:100,width:100,height:100));
         btn1.backgroundColor = UIColor.orangeColor()
@@ -32,15 +45,16 @@ class HomeViewController:UIViewController,UITableViewDelegate
     }
     
     override func viewDidLoad() {
-        
-        var configDic:NSDictionary? = NSDictionary(contentsOfFile: "GeneralConfig.plist")
-        println(configDic)
-        
-//        stringByAppendingPathComponent:@"KuaiGameDB.data"];
-        var path:NSString = "GeneralConfig.plist"
-//        FileHelp.shareInstance().isFileExist(<#filePath: String!#>)
-//        let arr:NSArray = NSArray(
-//        self.tableSource.
+
+        var arr: AnyObject? = MainConfig.sharedInstance.rootDic?.objectForKey("HomeMenu")
+        print("\n arr = \(arr)")
+        if arr is NSArray
+        {
+            self.tableSource!.appendWithItems(arr as! [AnyObject])
+        }
+        print("\n items = \(self.tableSource!.items)")
+        mainTable.reloadData()
+
     }
     
     func onTapBtn(sender:UIButton) {

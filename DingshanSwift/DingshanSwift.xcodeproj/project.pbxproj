@@ -35,6 +35,8 @@
 		F09ADDC41B565C03009B3A6D /* tabbar_hot2_kuai@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F09ADDB21B565C03009B3A6D /* tabbar_hot2_kuai@3x.png */; };
 		F09ADDC51B565C03009B3A6D /* tabbar_hot3_kuai@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F09ADDB31B565C03009B3A6D /* tabbar_hot3_kuai@2x.png */; };
 		F09ADDC61B565C03009B3A6D /* tabbar_hot3_kuai@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F09ADDB41B565C03009B3A6D /* tabbar_hot3_kuai@3x.png */; };
+		F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */; };
+		F0A1C3AB1B5CE296001597CF /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */; };
 		F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADE21B1B55FEC8005E84FA /* DetailController.swift */; };
 		F0C5F6B71B53D1E000B2C20D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C5F6B61B53D1E000B2C20D /* AppDelegate.swift */; };
 		F0C5F6B91B53D1E000B2C20D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C5F6B81B53D1E000B2C20D /* ViewController.swift */; };
@@ -87,6 +89,8 @@
 		F09ADDB21B565C03009B3A6D /* tabbar_hot2_kuai@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_hot2_kuai@3x.png"; sourceTree = "<group>"; };
 		F09ADDB31B565C03009B3A6D /* tabbar_hot3_kuai@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_hot3_kuai@2x.png"; sourceTree = "<group>"; };
 		F09ADDB41B565C03009B3A6D /* tabbar_hot3_kuai@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_hot3_kuai@3x.png"; sourceTree = "<group>"; };
+		F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainConfig.swift; sourceTree = "<group>"; };
+		F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
 		F0ADE21B1B55FEC8005E84FA /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		F0C5F6B11B53D1E000B2C20D /* DingshanSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DingshanSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0C5F6B51B53D1E000B2C20D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -195,9 +199,11 @@
 				F0C5F6BF1B53D1E000B2C20D /* LaunchScreen.xib */,
 				F0C5F6B41B53D1E000B2C20D /* Supporting Files */,
 				F09ADDA01B5640DD009B3A6D /* CommonDefine.swift */,
+				F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */,
 				F08749B31B54B905006E1FD3 /* MainViewController.swift */,
 				F08749B51B54BFB3006E1FD3 /* MainTabBar.swift */,
 				F08749B91B54E837006E1FD3 /* HomeViewController.swift */,
+				F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */,
 				F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */,
 				F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */,
 				F0ADE21B1B55FEC8005E84FA /* DetailController.swift */,
@@ -354,11 +360,13 @@
 				F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */,
 				F08749BA1B54E837006E1FD3 /* HomeViewController.swift in Sources */,
 				F09ADD791B563452009B3A6D /* PhoneMainTabBarButton.m in Sources */,
+				F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */,
 				F09ADDA11B5640DD009B3A6D /* CommonDefine.swift in Sources */,
 				F08749B61B54BFB3006E1FD3 /* MainTabBar.swift in Sources */,
 				F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */,
 				F08749BC1B54E872006E1FD3 /* GalleryViewController.swift in Sources */,
 				417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */,
+				F0A1C3AB1B5CE296001597CF /* HomeTableCell.swift in Sources */,
 				F08749BE1B54E89E006E1FD3 /* ProfileViewController.swift in Sources */,
 				F0C5F6B91B53D1E000B2C20D /* ViewController.swift in Sources */,
 				417BEF9D1B5A535300F896A5 /* FileHelp.m in Sources */,

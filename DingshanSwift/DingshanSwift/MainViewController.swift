@@ -32,6 +32,8 @@ class MainViewController:UIViewController
         self.view.addSubview(tabbar!)
         
         tabbar?.setHomeIndex(0);
+        
+        let config = MainConfig.sharedInstance
     }
 }
 
