@@ -17,7 +17,7 @@ class HomeViewController:UIViewController,UITableViewDelegate
     {
         super.loadView()
         self.view.backgroundColor = UIColor.whiteColor();
-        
+        self.navigationItem.title = "首页"
         self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, data) in
             var itemCell:HomeTableCell? = cell as? HomeTableCell
             var itemDic:String? = data as? String
@@ -30,13 +30,6 @@ class HomeViewController:UIViewController,UITableViewDelegate
         mainTable.dataSource = self.tableSource
         mainTable.registerClass(HomeTableCell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
         self.view.addSubview(mainTable)
-        
-        var btn1 = UIButton(frame: CGRect(x:100,y:100,width:100,height:100));
-        btn1.backgroundColor = UIColor.orangeColor()
-        btn1.setTitle("go detail", forState: UIControlState.Normal)
-        btn1.addTarget(self, action:Selector("onTapBtn:"), forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(btn1)
-        
     }
     
     override func viewDidLoad() {
@@ -49,13 +42,15 @@ class HomeViewController:UIViewController,UITableViewDelegate
         }
         print("\n items = \(self.tableSource!.items)")
         mainTable.reloadData()
-
     }
     
-    func onTapBtn(sender:UIButton) {
-        print(sender)
-        var detail = DetailController()
+//MARK: - UITableViewDelegate
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        print("\n didSelectRowAtIndexPath = \(indexPath)")
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as? HomeTableCell
+        var detail = HomeLevel2Controller()
+        detail.navigationItem.title = cell?.title?.text
         self.navigationController?.pushViewController(detail, animated: true)
-        
     }
 }
