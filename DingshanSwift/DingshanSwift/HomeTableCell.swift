@@ -12,9 +12,9 @@ class HomeTableCell:UITableViewCell
     var title:UILabel?
     override init(style astyle:UITableViewCellStyle, reuseIdentifier str:String?) {
         super.init(style:astyle, reuseIdentifier:str)
-        var title:UILabel = UILabel(frame: self.bounds)
-        title.text = ".."
-        self.addSubview(title)
+        self.title = UILabel(frame: self.bounds)
+        self.title!.text = ".."
+        self.addSubview(title!)
     }
 
     required init(coder aDecoder: NSCoder) {

@@ -18,16 +18,11 @@ class HomeViewController:UIViewController,UITableViewDelegate
         super.loadView()
         self.view.backgroundColor = UIColor.whiteColor();
         
-//        self.arrayDataSource = [[ArrayDataSource alloc] initWithcellIdentifier:TopicCellIdentifier configureCellBlock:configureCell];
-//        self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock: { (cell:UITableViewCell, data:NSDictionary) in
-//
-//        })
-        self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, item) in
-            if cell is HomeTableCell
-            {
-                print(cell)
-            }
-            
+        self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, data) in
+            var itemCell:HomeTableCell? = cell as? HomeTableCell
+            var itemDic:String? = data as? String
+                itemCell?.clearData()
+                itemCell?.loadCellData(itemDic!)
         })
         mainTable.frame = self.view.bounds;
         mainTable.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.2)
