@@ -17,11 +17,11 @@ class MainConfig {
     static let sharedInstance: MainConfig = MainConfig()
     
     init() {
-        println("MainConfig INIT...");
+        //println("MainConfig INIT...");
         var configPath = NSBundle.mainBundle().pathForResource("GeneralConfig", ofType: "plist")
-        print("\n-----configPath = \(configPath)")
+        //print("\n-----configPath = \(configPath)")
         let exist = FileHelp.shareInstance().isFileExist(configPath)
-        print("\n-----isFileExist:\(exist)")
+        // print("\n-----isFileExist:\(exist)")
         if exist
         {
             self.rootDic = NSDictionary(contentsOfFile: configPath!);

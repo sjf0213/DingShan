@@ -35,9 +35,7 @@ class HomeViewController:UIViewController,UITableViewDelegate
     override func viewDidLoad() {
 
         var arr: AnyObject? = MainConfig.sharedInstance.rootDic?.objectForKey("HomeMenu")
-        print("\n arr = \(arr)")
-        if arr is NSArray
-        {
+        if arr is NSArray{
             self.tableSource!.appendWithItems(arr as! [AnyObject])
         }
         print("\n items = \(self.tableSource!.items)")
