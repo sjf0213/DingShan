@@ -12,5 +12,6 @@
 #import "../Commonfiles/PhoneMainTabBarButton.h"
 #import "../Commonfiles/ArrayDataSource.h"
 #import "../Commonfiles/FileHelp.h"
+#import "../Commonfiles/ApiBuilder.h"
 #import "../Commonfiles/MsgPack/MessagePack.h"
 #endif

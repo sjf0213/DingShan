@@ -12,6 +12,7 @@ class HomeLevel2Controller:UIViewController,UITableViewDelegate
 {
     var mainTable = UITableView();
     var tableSource:ArrayDataSource?
+//    var dataArray:NSMutableArray = NSMutableArray()
     
     // alamo part 
     var headers: [String: String] = [:]
@@ -34,8 +35,8 @@ class HomeLevel2Controller:UIViewController,UITableViewDelegate
         self.view.backgroundColor = UIColor.lightGrayColor()
         
         self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, data) in
-            var itemCell:HomeTableCell? = cell as? HomeTableCell
-            var itemDic:String? = data as? String
+            let itemCell:HomeLevel2Cell? = cell as? HomeLevel2Cell
+            let itemDic:NSDictionary? = data as? NSDictionary
             itemCell?.clearData()
             itemCell?.loadCellData(itemDic!)
         })
@@ -43,7 +44,7 @@ class HomeLevel2Controller:UIViewController,UITableViewDelegate
         mainTable.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.2)
         mainTable.delegate = self
         mainTable.dataSource = self.tableSource
-        mainTable.registerClass(HomeTableCell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
+        mainTable.registerClass(HomeLevel2Cell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
         self.view.addSubview(mainTable)
     }
     
@@ -57,8 +58,13 @@ class HomeLevel2Controller:UIViewController,UITableViewDelegate
     {
 
 //        var urlStr:String = "http://v3.kuaigame.cn/app/getcategoryarticle?uid=220151&clientid=21&did=0BBE169C-1528-403E-A418-860FED9AE816&aid=IS4qqOHFBCOKL4jLgGaIWaEGxyI%3D&appver=3.2.1&e=1437633823&iosver=8.4&key=zXxf%2BJwlgISl8rOXfFqsXxuw39s%3D&device=iPhone5%2C2&categoryid=3&pindex=0&psize=20&json=1"
-        var urlStr:String = "http://v3.kuaigame.com/app/getcategoryarticle?uid=220154&device=iPhone5%2C2&pindex=0&psize=20&appver=3.2.1&key=cNCS0ipHRcFXsuW%2FTyO%2FN%2BmoHsk%3D&did=CD1FBB97-426F-4A83-90AB-A897D580BED2&e=1437637766&categoryid=3&clientid=21&aid=W%2Fsuzn3p2Tb3fQRp1ZaRxZlueKo%3D&iosver=8.4"
-        self.request = Alamofire.request(.GET, urlStr)
+//        var urlStr:String = "http://v3.kuaigame.com/app/getcategoryarticle?uid=220154&device=iPhone5%2C2&pindex=0&psize=20&appver=3.2.1&key=cNCS0ipHRcFXsuW%2FTyO%2FN%2BmoHsk%3D&did=CD1FBB97-426F-4A83-90AB-A897D580BED2&e=1437637766&categoryid=3&clientid=21&aid=W%2Fsuzn3p2Tb3fQRp1ZaRxZlueKo%3D&iosver=8.4";
+        var parameter = ["categoryid" : "3",
+                            "pindex" : "0",
+                            "psize" : "20"]
+        var url = ApiBuilder.article_get_list(parameter)
+        print("url = \(url)")
+        self.request = Alamofire.request(.GET, url)
         
         // JSON
         /*self.request?.responseJSON(options: .AllowFragments, completionHandler: { (requst1:NSURLRequest, response1:NSHTTPURLResponse?, data:AnyObject?,err: NSError?) -> Void in
@@ -86,6 +92,16 @@ class HomeLevel2Controller:UIViewController,UITableViewDelegate
     
     func processRequestResult(result:NSDictionary)
     {
-        
+        if (200 == result["c"]?.integerValue)
+        {
+            if let list = result["v"] as? NSDictionary{
+                if let arr = list["list"] as? NSArray{
+//                    self.dataArray.addObjectsFromArray(arr as [AnyObject])
+                    print("\n dataArray- - -\(arr)")
+                    self.tableSource?.appendWithItems(arr as [AnyObject])
+                    self.mainTable.reloadData()
+                }
+            }
+        }
     }
 }

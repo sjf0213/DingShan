@@ -37,6 +37,9 @@
 		F09ADDC61B565C03009B3A6D /* tabbar_hot3_kuai@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F09ADDB41B565C03009B3A6D /* tabbar_hot3_kuai@3x.png */; };
 		F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */; };
 		F0A1C3AB1B5CE296001597CF /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */; };
+		F0A20AC71B6246EA00F1F311 /* ApiBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AC61B6246EA00F1F311 /* ApiBuilder.m */; };
+		F0A20AD31B62499E00F1F311 /* CommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AD21B62499E00F1F311 /* CommonUtility.m */; };
+		F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AD51B624A9500F1F311 /* CocoaSecurity.m */; };
 		F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADE21B1B55FEC8005E84FA /* DetailController.swift */; };
 		F0C3C2511B5FA59500AB6E35 /* HomeLevel2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C2501B5FA59500AB6E35 /* HomeLevel2Controller.swift */; };
 		F0C3C26D1B60923F00AB6E35 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F0C3C25C1B5FAA0C00AB6E35 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -51,6 +54,7 @@
 		F0C3C29C1B60D73800AB6E35 /* NSArray+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C28F1B60D73800AB6E35 /* NSArray+MessagePack.m */; };
 		F0C3C29D1B60D73800AB6E35 /* NSData+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C2911B60D73800AB6E35 /* NSData+MessagePack.m */; };
 		F0C3C29E1B60D73800AB6E35 /* NSDictionary+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C2931B60D73800AB6E35 /* NSDictionary+MessagePack.m */; };
+		F0C3C2A01B60EA9C00AB6E35 /* HomeLevel2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C29F1B60EA9C00AB6E35 /* HomeLevel2Cell.swift */; };
 		F0C5F6B71B53D1E000B2C20D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C5F6B61B53D1E000B2C20D /* AppDelegate.swift */; };
 		F0C5F6B91B53D1E000B2C20D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C5F6B81B53D1E000B2C20D /* ViewController.swift */; };
 		F0C5F6BC1B53D1E000B2C20D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0C5F6BA1B53D1E000B2C20D /* Main.storyboard */; };
@@ -146,6 +150,12 @@
 		F09ADDB41B565C03009B3A6D /* tabbar_hot3_kuai@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_hot3_kuai@3x.png"; sourceTree = "<group>"; };
 		F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainConfig.swift; sourceTree = "<group>"; };
 		F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
+		F0A20AC51B6246EA00F1F311 /* ApiBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiBuilder.h; sourceTree = "<group>"; };
+		F0A20AC61B6246EA00F1F311 /* ApiBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiBuilder.m; sourceTree = "<group>"; };
+		F0A20AD11B62499E00F1F311 /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
+		F0A20AD21B62499E00F1F311 /* CommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtility.m; sourceTree = "<group>"; };
+		F0A20AD41B624A9500F1F311 /* CocoaSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaSecurity.h; sourceTree = "<group>"; };
+		F0A20AD51B624A9500F1F311 /* CocoaSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaSecurity.m; sourceTree = "<group>"; };
 		F0ADE21B1B55FEC8005E84FA /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		F0C3C2501B5FA59500AB6E35 /* HomeLevel2Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeLevel2Controller.swift; sourceTree = "<group>"; };
 		F0C3C2541B5FAA0C00AB6E35 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
@@ -181,6 +191,7 @@
 		F0C3C2911B60D73800AB6E35 /* NSData+MessagePack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MessagePack.m"; sourceTree = "<group>"; };
 		F0C3C2921B60D73800AB6E35 /* NSDictionary+MessagePack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+MessagePack.h"; sourceTree = "<group>"; };
 		F0C3C2931B60D73800AB6E35 /* NSDictionary+MessagePack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MessagePack.m"; sourceTree = "<group>"; };
+		F0C3C29F1B60EA9C00AB6E35 /* HomeLevel2Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeLevel2Cell.swift; sourceTree = "<group>"; };
 		F0C5F6B11B53D1E000B2C20D /* DingshanSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DingshanSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0C5F6B51B53D1E000B2C20D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0C5F6B61B53D1E000B2C20D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +225,12 @@
 		F09ADD761B563452009B3A6D /* CommonFiles */ = {
 			isa = PBXGroup;
 			children = (
+				F0A20AD41B624A9500F1F311 /* CocoaSecurity.h */,
+				F0A20AD51B624A9500F1F311 /* CocoaSecurity.m */,
+				F0A20AD11B62499E00F1F311 /* CommonUtility.h */,
+				F0A20AD21B62499E00F1F311 /* CommonUtility.m */,
+				F0A20AC51B6246EA00F1F311 /* ApiBuilder.h */,
+				F0A20AC61B6246EA00F1F311 /* ApiBuilder.m */,
 				F0C3C2711B60D73800AB6E35 /* MsgPack */,
 				417BEF9B1B5A535300F896A5 /* FileHelp.h */,
 				417BEF9C1B5A535300F896A5 /* FileHelp.m */,
@@ -360,8 +377,9 @@
 				F08749B31B54B905006E1FD3 /* MainViewController.swift */,
 				F08749B51B54BFB3006E1FD3 /* MainTabBar.swift */,
 				F08749B91B54E837006E1FD3 /* HomeViewController.swift */,
-				F0C3C2501B5FA59500AB6E35 /* HomeLevel2Controller.swift */,
 				F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */,
+				F0C3C2501B5FA59500AB6E35 /* HomeLevel2Controller.swift */,
+				F0C3C29F1B60EA9C00AB6E35 /* HomeLevel2Cell.swift */,
 				F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */,
 				F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */,
 				F0ADE21B1B55FEC8005E84FA /* DetailController.swift */,
@@ -562,6 +580,7 @@
 				F0C3C2991B60D73800AB6E35 /* version.c in Sources */,
 				F09ADDA11B5640DD009B3A6D /* CommonDefine.swift in Sources */,
 				F0C3C2511B5FA59500AB6E35 /* HomeLevel2Controller.swift in Sources */,
+				F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */,
 				F0C3C2951B60D73800AB6E35 /* MessagePackParser+Streaming.m in Sources */,
 				F08749B61B54BFB3006E1FD3 /* MainTabBar.swift in Sources */,
 				F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */,
@@ -569,6 +588,8 @@
 				F0C3C2941B60D73800AB6E35 /* MessagePackPacker.m in Sources */,
 				F08749BC1B54E872006E1FD3 /* GalleryViewController.swift in Sources */,
 				417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */,
+				F0A20AC71B6246EA00F1F311 /* ApiBuilder.m in Sources */,
+				F0C3C2A01B60EA9C00AB6E35 /* HomeLevel2Cell.swift in Sources */,
 				F0C3C29C1B60D73800AB6E35 /* NSArray+MessagePack.m in Sources */,
 				F0A1C3AB1B5CE296001597CF /* HomeTableCell.swift in Sources */,
 				F08749BE1B54E89E006E1FD3 /* ProfileViewController.swift in Sources */,
@@ -578,6 +599,7 @@
 				F0C3C2961B60D73800AB6E35 /* MessagePackParser.m in Sources */,
 				F0C3C2971B60D73800AB6E35 /* objectc.c in Sources */,
 				417BEF9D1B5A535300F896A5 /* FileHelp.m in Sources */,
+				F0A20AD31B62499E00F1F311 /* CommonUtility.m in Sources */,
 				F0C5F6B71B53D1E000B2C20D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
