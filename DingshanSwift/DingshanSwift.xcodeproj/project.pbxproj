@@ -40,6 +40,7 @@
 		F0A20AC71B6246EA00F1F311 /* ApiBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AC61B6246EA00F1F311 /* ApiBuilder.m */; };
 		F0A20AD31B62499E00F1F311 /* CommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AD21B62499E00F1F311 /* CommonUtility.m */; };
 		F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AD51B624A9500F1F311 /* CocoaSecurity.m */; };
+		F0A20AD81B62548800F1F311 /* KnowledgeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */; };
 		F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADE21B1B55FEC8005E84FA /* DetailController.swift */; };
 		F0C3C2511B5FA59500AB6E35 /* HomeLevel2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C2501B5FA59500AB6E35 /* HomeLevel2Controller.swift */; };
 		F0C3C26D1B60923F00AB6E35 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F0C3C25C1B5FAA0C00AB6E35 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -156,6 +157,7 @@
 		F0A20AD21B62499E00F1F311 /* CommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtility.m; sourceTree = "<group>"; };
 		F0A20AD41B624A9500F1F311 /* CocoaSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaSecurity.h; sourceTree = "<group>"; };
 		F0A20AD51B624A9500F1F311 /* CocoaSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaSecurity.m; sourceTree = "<group>"; };
+		F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeListController.swift; sourceTree = "<group>"; };
 		F0ADE21B1B55FEC8005E84FA /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		F0C3C2501B5FA59500AB6E35 /* HomeLevel2Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeLevel2Controller.swift; sourceTree = "<group>"; };
 		F0C3C2541B5FAA0C00AB6E35 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 				F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */,
 				F0C3C2501B5FA59500AB6E35 /* HomeLevel2Controller.swift */,
 				F0C3C29F1B60EA9C00AB6E35 /* HomeLevel2Cell.swift */,
+				F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */,
 				F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */,
 				F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */,
 				F0ADE21B1B55FEC8005E84FA /* DetailController.swift */,
@@ -600,6 +603,7 @@
 				F0C3C2971B60D73800AB6E35 /* objectc.c in Sources */,
 				417BEF9D1B5A535300F896A5 /* FileHelp.m in Sources */,
 				F0A20AD31B62499E00F1F311 /* CommonUtility.m in Sources */,
+				F0A20AD81B62548800F1F311 /* KnowledgeListController.swift in Sources */,
 				F0C5F6B71B53D1E000B2C20D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
