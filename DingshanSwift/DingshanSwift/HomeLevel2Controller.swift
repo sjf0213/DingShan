@@ -66,31 +66,17 @@ class HomeLevel2Controller:UIViewController,UITableViewDelegate
         var url = ApiBuilder.article_get_list(parameter)
         print("url = \(url)")
         self.request = Alamofire.request(.GET, url)
-        
-        if useJson == true {
-            // JSON
-            self.request?.responseJSON(options: .AllowFragments, completionHandler: { (requst1:NSURLRequest, response1:NSHTTPURLResponse?, data:AnyObject?,err: NSError?) -> Void in
+        // JSON
+        self.request?.responseJSON(options: .AllowFragments, completionHandler: { (requst1:NSURLRequest, response1:NSHTTPURLResponse?, data:AnyObject?,err: NSError?) -> Void in
 
-                print("\n responseJSON- - - - -data = \(data)")
-                print("\n responseJSON- - - - -err = \(err)")
-                if data is NSDictionary
-                {
-                    print("\n responseJSON- - - - -data is NSDictionary")
-                    self.processRequestResult(data as! NSDictionary)
-                }
-            })
-        }else{
-            // Message Pack
-            self.request?.response({ (requst1:NSURLRequest, response1:NSHTTPURLResponse?, responseObject:AnyObject?, err:NSError?) -> Void in
-                if responseObject is NSData{
-                    var result: AnyObject? = responseObject?.messagePackParse()
-                    print("\n result- - -\(result)")
-                    if result is NSDictionary{
-                        self.processRequestResult(result as! NSDictionary)
-                    }
-                }
-            })
-        }
+            print("\n responseJSON- - - - -data = \(data)")
+            print("\n responseJSON- - - - -err = \(err)")
+            if data is NSDictionary
+            {
+                print("\n responseJSON- - - - -data is NSDictionary")
+                self.processRequestResult(data as! NSDictionary)
+            }
+        })
     }
     
     func processRequestResult(result:NSDictionary)

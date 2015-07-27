@@ -44,17 +44,6 @@
 		F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADE21B1B55FEC8005E84FA /* DetailController.swift */; };
 		F0C3C2511B5FA59500AB6E35 /* HomeLevel2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C2501B5FA59500AB6E35 /* HomeLevel2Controller.swift */; };
 		F0C3C26D1B60923F00AB6E35 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F0C3C25C1B5FAA0C00AB6E35 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F0C3C2941B60D73800AB6E35 /* MessagePackPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C2741B60D73800AB6E35 /* MessagePackPacker.m */; };
-		F0C3C2951B60D73800AB6E35 /* MessagePackParser+Streaming.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C2761B60D73800AB6E35 /* MessagePackParser+Streaming.m */; };
-		F0C3C2961B60D73800AB6E35 /* MessagePackParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C2781B60D73800AB6E35 /* MessagePackParser.m */; };
-		F0C3C2971B60D73800AB6E35 /* objectc.c in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C2891B60D73800AB6E35 /* objectc.c */; };
-		F0C3C2981B60D73800AB6E35 /* unpack.c in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C28A1B60D73800AB6E35 /* unpack.c */; };
-		F0C3C2991B60D73800AB6E35 /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C28B1B60D73800AB6E35 /* version.c */; };
-		F0C3C29A1B60D73800AB6E35 /* vrefbuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C28C1B60D73800AB6E35 /* vrefbuffer.c */; };
-		F0C3C29B1B60D73800AB6E35 /* zone.c in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C28D1B60D73800AB6E35 /* zone.c */; };
-		F0C3C29C1B60D73800AB6E35 /* NSArray+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C28F1B60D73800AB6E35 /* NSArray+MessagePack.m */; };
-		F0C3C29D1B60D73800AB6E35 /* NSData+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C2911B60D73800AB6E35 /* NSData+MessagePack.m */; };
-		F0C3C29E1B60D73800AB6E35 /* NSDictionary+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C2931B60D73800AB6E35 /* NSDictionary+MessagePack.m */; };
 		F0C3C2A01B60EA9C00AB6E35 /* HomeLevel2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C29F1B60EA9C00AB6E35 /* HomeLevel2Cell.swift */; };
 		F0C5F6B71B53D1E000B2C20D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C5F6B61B53D1E000B2C20D /* AppDelegate.swift */; };
 		F0C5F6B91B53D1E000B2C20D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C5F6B81B53D1E000B2C20D /* ViewController.swift */; };
@@ -161,38 +150,6 @@
 		F0ADE21B1B55FEC8005E84FA /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		F0C3C2501B5FA59500AB6E35 /* HomeLevel2Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeLevel2Controller.swift; sourceTree = "<group>"; };
 		F0C3C2541B5FAA0C00AB6E35 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
-		F0C3C2721B60D73800AB6E35 /* MessagePack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagePack.h; sourceTree = "<group>"; };
-		F0C3C2731B60D73800AB6E35 /* MessagePackPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagePackPacker.h; sourceTree = "<group>"; };
-		F0C3C2741B60D73800AB6E35 /* MessagePackPacker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagePackPacker.m; sourceTree = "<group>"; };
-		F0C3C2751B60D73800AB6E35 /* MessagePackParser+Streaming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MessagePackParser+Streaming.h"; sourceTree = "<group>"; };
-		F0C3C2761B60D73800AB6E35 /* MessagePackParser+Streaming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MessagePackParser+Streaming.m"; sourceTree = "<group>"; };
-		F0C3C2771B60D73800AB6E35 /* MessagePackParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagePackParser.h; sourceTree = "<group>"; };
-		F0C3C2781B60D73800AB6E35 /* MessagePackParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagePackParser.m; sourceTree = "<group>"; };
-		F0C3C27B1B60D73800AB6E35 /* object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = object.h; sourceTree = "<group>"; };
-		F0C3C27C1B60D73800AB6E35 /* pack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pack.h; sourceTree = "<group>"; };
-		F0C3C27D1B60D73800AB6E35 /* pack_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pack_define.h; sourceTree = "<group>"; };
-		F0C3C27E1B60D73800AB6E35 /* pack_template.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pack_template.h; sourceTree = "<group>"; };
-		F0C3C27F1B60D73800AB6E35 /* sbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sbuffer.h; sourceTree = "<group>"; };
-		F0C3C2801B60D73800AB6E35 /* sysdep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sysdep.h; sourceTree = "<group>"; };
-		F0C3C2811B60D73800AB6E35 /* unpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unpack.h; sourceTree = "<group>"; };
-		F0C3C2821B60D73800AB6E35 /* unpack_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unpack_define.h; sourceTree = "<group>"; };
-		F0C3C2831B60D73800AB6E35 /* unpack_template.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unpack_template.h; sourceTree = "<group>"; };
-		F0C3C2841B60D73800AB6E35 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
-		F0C3C2851B60D73800AB6E35 /* vrefbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vrefbuffer.h; sourceTree = "<group>"; };
-		F0C3C2861B60D73800AB6E35 /* zbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zbuffer.h; sourceTree = "<group>"; };
-		F0C3C2871B60D73800AB6E35 /* zone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zone.h; sourceTree = "<group>"; };
-		F0C3C2881B60D73800AB6E35 /* msgpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = msgpack.h; sourceTree = "<group>"; };
-		F0C3C2891B60D73800AB6E35 /* objectc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = objectc.c; sourceTree = "<group>"; };
-		F0C3C28A1B60D73800AB6E35 /* unpack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unpack.c; sourceTree = "<group>"; };
-		F0C3C28B1B60D73800AB6E35 /* version.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = version.c; sourceTree = "<group>"; };
-		F0C3C28C1B60D73800AB6E35 /* vrefbuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vrefbuffer.c; sourceTree = "<group>"; };
-		F0C3C28D1B60D73800AB6E35 /* zone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zone.c; sourceTree = "<group>"; };
-		F0C3C28E1B60D73800AB6E35 /* NSArray+MessagePack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MessagePack.h"; sourceTree = "<group>"; };
-		F0C3C28F1B60D73800AB6E35 /* NSArray+MessagePack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MessagePack.m"; sourceTree = "<group>"; };
-		F0C3C2901B60D73800AB6E35 /* NSData+MessagePack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MessagePack.h"; sourceTree = "<group>"; };
-		F0C3C2911B60D73800AB6E35 /* NSData+MessagePack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MessagePack.m"; sourceTree = "<group>"; };
-		F0C3C2921B60D73800AB6E35 /* NSDictionary+MessagePack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+MessagePack.h"; sourceTree = "<group>"; };
-		F0C3C2931B60D73800AB6E35 /* NSDictionary+MessagePack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MessagePack.m"; sourceTree = "<group>"; };
 		F0C3C29F1B60EA9C00AB6E35 /* HomeLevel2Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeLevel2Cell.swift; sourceTree = "<group>"; };
 		F0C5F6B11B53D1E000B2C20D /* DingshanSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DingshanSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0C5F6B51B53D1E000B2C20D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -233,7 +190,6 @@
 				F0A20AD21B62499E00F1F311 /* CommonUtility.m */,
 				F0A20AC51B6246EA00F1F311 /* ApiBuilder.h */,
 				F0A20AC61B6246EA00F1F311 /* ApiBuilder.m */,
-				F0C3C2711B60D73800AB6E35 /* MsgPack */,
 				417BEF9B1B5A535300F896A5 /* FileHelp.h */,
 				417BEF9C1B5A535300F896A5 /* FileHelp.m */,
 				417BEF981B5A4F9300F896A5 /* ArrayDataSource.h */,
@@ -286,61 +242,6 @@
 				F0C3C2621B5FAA0C00AB6E35 /* Alamofire OSX Tests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		F0C3C2711B60D73800AB6E35 /* MsgPack */ = {
-			isa = PBXGroup;
-			children = (
-				F0C3C2721B60D73800AB6E35 /* MessagePack.h */,
-				F0C3C2731B60D73800AB6E35 /* MessagePackPacker.h */,
-				F0C3C2741B60D73800AB6E35 /* MessagePackPacker.m */,
-				F0C3C2751B60D73800AB6E35 /* MessagePackParser+Streaming.h */,
-				F0C3C2761B60D73800AB6E35 /* MessagePackParser+Streaming.m */,
-				F0C3C2771B60D73800AB6E35 /* MessagePackParser.h */,
-				F0C3C2781B60D73800AB6E35 /* MessagePackParser.m */,
-				F0C3C2791B60D73800AB6E35 /* msgpack_src */,
-				F0C3C28E1B60D73800AB6E35 /* NSArray+MessagePack.h */,
-				F0C3C28F1B60D73800AB6E35 /* NSArray+MessagePack.m */,
-				F0C3C2901B60D73800AB6E35 /* NSData+MessagePack.h */,
-				F0C3C2911B60D73800AB6E35 /* NSData+MessagePack.m */,
-				F0C3C2921B60D73800AB6E35 /* NSDictionary+MessagePack.h */,
-				F0C3C2931B60D73800AB6E35 /* NSDictionary+MessagePack.m */,
-			);
-			path = MsgPack;
-			sourceTree = "<group>";
-		};
-		F0C3C2791B60D73800AB6E35 /* msgpack_src */ = {
-			isa = PBXGroup;
-			children = (
-				F0C3C27A1B60D73800AB6E35 /* msgpack */,
-				F0C3C2881B60D73800AB6E35 /* msgpack.h */,
-				F0C3C2891B60D73800AB6E35 /* objectc.c */,
-				F0C3C28A1B60D73800AB6E35 /* unpack.c */,
-				F0C3C28B1B60D73800AB6E35 /* version.c */,
-				F0C3C28C1B60D73800AB6E35 /* vrefbuffer.c */,
-				F0C3C28D1B60D73800AB6E35 /* zone.c */,
-			);
-			path = msgpack_src;
-			sourceTree = "<group>";
-		};
-		F0C3C27A1B60D73800AB6E35 /* msgpack */ = {
-			isa = PBXGroup;
-			children = (
-				F0C3C27B1B60D73800AB6E35 /* object.h */,
-				F0C3C27C1B60D73800AB6E35 /* pack.h */,
-				F0C3C27D1B60D73800AB6E35 /* pack_define.h */,
-				F0C3C27E1B60D73800AB6E35 /* pack_template.h */,
-				F0C3C27F1B60D73800AB6E35 /* sbuffer.h */,
-				F0C3C2801B60D73800AB6E35 /* sysdep.h */,
-				F0C3C2811B60D73800AB6E35 /* unpack.h */,
-				F0C3C2821B60D73800AB6E35 /* unpack_define.h */,
-				F0C3C2831B60D73800AB6E35 /* unpack_template.h */,
-				F0C3C2841B60D73800AB6E35 /* version.h */,
-				F0C3C2851B60D73800AB6E35 /* vrefbuffer.h */,
-				F0C3C2861B60D73800AB6E35 /* zbuffer.h */,
-				F0C3C2871B60D73800AB6E35 /* zone.h */,
-			);
-			path = msgpack;
 			sourceTree = "<group>";
 		};
 		F0C5F6A81B53D1E000B2C20D = {
@@ -575,32 +476,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */,
-				F0C3C29D1B60D73800AB6E35 /* NSData+MessagePack.m in Sources */,
 				F08749BA1B54E837006E1FD3 /* HomeViewController.swift in Sources */,
 				F09ADD791B563452009B3A6D /* PhoneMainTabBarButton.m in Sources */,
-				F0C3C29B1B60D73800AB6E35 /* zone.c in Sources */,
 				F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */,
-				F0C3C2991B60D73800AB6E35 /* version.c in Sources */,
 				F09ADDA11B5640DD009B3A6D /* CommonDefine.swift in Sources */,
 				F0C3C2511B5FA59500AB6E35 /* HomeLevel2Controller.swift in Sources */,
 				F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */,
-				F0C3C2951B60D73800AB6E35 /* MessagePackParser+Streaming.m in Sources */,
 				F08749B61B54BFB3006E1FD3 /* MainTabBar.swift in Sources */,
 				F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */,
-				F0C3C29A1B60D73800AB6E35 /* vrefbuffer.c in Sources */,
-				F0C3C2941B60D73800AB6E35 /* MessagePackPacker.m in Sources */,
 				F08749BC1B54E872006E1FD3 /* GalleryViewController.swift in Sources */,
 				417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */,
 				F0A20AC71B6246EA00F1F311 /* ApiBuilder.m in Sources */,
 				F0C3C2A01B60EA9C00AB6E35 /* HomeLevel2Cell.swift in Sources */,
-				F0C3C29C1B60D73800AB6E35 /* NSArray+MessagePack.m in Sources */,
 				F0A1C3AB1B5CE296001597CF /* HomeTableCell.swift in Sources */,
 				F08749BE1B54E89E006E1FD3 /* ProfileViewController.swift in Sources */,
-				F0C3C29E1B60D73800AB6E35 /* NSDictionary+MessagePack.m in Sources */,
 				F0C5F6B91B53D1E000B2C20D /* ViewController.swift in Sources */,
-				F0C3C2981B60D73800AB6E35 /* unpack.c in Sources */,
-				F0C3C2961B60D73800AB6E35 /* MessagePackParser.m in Sources */,
-				F0C3C2971B60D73800AB6E35 /* objectc.c in Sources */,
 				417BEF9D1B5A535300F896A5 /* FileHelp.m in Sources */,
 				F0A20AD31B62499E00F1F311 /* CommonUtility.m in Sources */,
 				F0A20AD81B62548800F1F311 /* KnowledgeListController.swift in Sources */,
