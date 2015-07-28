@@ -13,4 +13,5 @@
 #import "../Commonfiles/ArrayDataSource.h"
 #import "../Commonfiles/FileHelp.h"
 #import "../Commonfiles/ApiBuilder.h"
+#import "../Commonfiles/Loading/LoadSuit.h"
 #endif

@@ -55,6 +55,9 @@
 		F0C5F6BE1B53D1E000B2C20D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0C5F6BD1B53D1E000B2C20D /* Images.xcassets */; };
 		F0C5F6C11B53D1E000B2C20D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0C5F6BF1B53D1E000B2C20D /* LaunchScreen.xib */; };
 		F0C5F6CD1B53D1E000B2C20D /* DingshanSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C5F6CC1B53D1E000B2C20D /* DingshanSwiftTests.swift */; };
+		F0E574F81B6784BE000053B8 /* LoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E574F21B6784BE000053B8 /* LoadView.m */; };
+		F0E574F91B6784BE000053B8 /* RefreshIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E574F51B6784BE000053B8 /* RefreshIconView.m */; };
+		F0E574FA1B6784BE000053B8 /* RefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E574F71B6784BE000053B8 /* RefreshView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +172,14 @@
 		F0C5F6C61B53D1E000B2C20D /* DingshanSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DingshanSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0C5F6CB1B53D1E000B2C20D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0C5F6CC1B53D1E000B2C20D /* DingshanSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DingshanSwiftTests.swift; sourceTree = "<group>"; };
+		F0E574F11B6784BE000053B8 /* LoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadView.h; sourceTree = "<group>"; };
+		F0E574F21B6784BE000053B8 /* LoadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadView.m; sourceTree = "<group>"; };
+		F0E574F31B6784BE000053B8 /* LoadViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewProtocol.h; sourceTree = "<group>"; };
+		F0E574F41B6784BE000053B8 /* RefreshIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshIconView.h; sourceTree = "<group>"; };
+		F0E574F51B6784BE000053B8 /* RefreshIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshIconView.m; sourceTree = "<group>"; };
+		F0E574F61B6784BE000053B8 /* RefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshView.h; sourceTree = "<group>"; };
+		F0E574F71B6784BE000053B8 /* RefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshView.m; sourceTree = "<group>"; };
+		F0E574FF1B678E02000053B8 /* LoadSuit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadSuit.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +203,7 @@
 		F09ADD761B563452009B3A6D /* CommonFiles */ = {
 			isa = PBXGroup;
 			children = (
+				F0E574F01B6784BE000053B8 /* Loading */,
 				F0A20AD41B624A9500F1F311 /* CocoaSecurity.h */,
 				F0A20AD51B624A9500F1F311 /* CocoaSecurity.m */,
 				F0A20AD11B62499E00F1F311 /* CommonUtility.h */,
@@ -327,6 +339,21 @@
 				F0C5F6CB1B53D1E000B2C20D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F0E574F01B6784BE000053B8 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				F0E574FF1B678E02000053B8 /* LoadSuit.h */,
+				F0E574F31B6784BE000053B8 /* LoadViewProtocol.h */,
+				F0E574F61B6784BE000053B8 /* RefreshView.h */,
+				F0E574F71B6784BE000053B8 /* RefreshView.m */,
+				F0E574F11B6784BE000053B8 /* LoadView.h */,
+				F0E574F21B6784BE000053B8 /* LoadView.m */,
+				F0E574F41B6784BE000053B8 /* RefreshIconView.h */,
+				F0E574F51B6784BE000053B8 /* RefreshIconView.m */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -493,12 +520,15 @@
 				F09ADD791B563452009B3A6D /* PhoneMainTabBarButton.m in Sources */,
 				F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */,
 				F09ADDA11B5640DD009B3A6D /* CommonDefine.swift in Sources */,
+				F0E574FA1B6784BE000053B8 /* RefreshView.m in Sources */,
 				F0C3C2511B5FA59500AB6E35 /* HomeLevel2Controller.swift in Sources */,
 				F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */,
 				F08749B61B54BFB3006E1FD3 /* MainTabBar.swift in Sources */,
 				F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */,
 				F08749BC1B54E872006E1FD3 /* GalleryViewController.swift in Sources */,
+				F0E574F81B6784BE000053B8 /* LoadView.m in Sources */,
 				417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */,
+				F0E574F91B6784BE000053B8 /* RefreshIconView.m in Sources */,
 				F0A20AC71B6246EA00F1F311 /* ApiBuilder.m in Sources */,
 				F0C3C2A01B60EA9C00AB6E35 /* HomeLevel2Cell.swift in Sources */,
 				F0507E691B6756D3007E9024 /* KnowledgeListCell.swift in Sources */,
