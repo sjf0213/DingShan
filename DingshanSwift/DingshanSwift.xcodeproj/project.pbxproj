@@ -10,6 +10,10 @@
 		417BEF921B5A4E0F00F896A5 /* GeneralConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 417BEF911B5A4E0F00F896A5 /* GeneralConfig.plist */; };
 		417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 417BEF991B5A4F9300F896A5 /* ArrayDataSource.m */; };
 		417BEF9D1B5A535300F896A5 /* FileHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 417BEF9C1B5A535300F896A5 /* FileHelp.m */; };
+		F0507E5D1B67561A007E9024 /* KnowledgeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */; };
+		F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E641B675666007E9024 /* ForumFloorListController.swift */; };
+		F0507E671B675698007E9024 /* ForumFloorDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E661B675698007E9024 /* ForumFloorDetailController.swift */; };
+		F0507E691B6756D3007E9024 /* KnowledgeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */; };
 		F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749B31B54B905006E1FD3 /* MainViewController.swift */; };
 		F08749B61B54BFB3006E1FD3 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749B51B54BFB3006E1FD3 /* MainTabBar.swift */; };
 		F08749BA1B54E837006E1FD3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749B91B54E837006E1FD3 /* HomeViewController.swift */; };
@@ -111,6 +115,10 @@
 		417BEF991B5A4F9300F896A5 /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
 		417BEF9B1B5A535300F896A5 /* FileHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelp.h; sourceTree = "<group>"; };
 		417BEF9C1B5A535300F896A5 /* FileHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelp.m; sourceTree = "<group>"; };
+		F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailController.swift; sourceTree = "<group>"; };
+		F0507E641B675666007E9024 /* ForumFloorListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorListController.swift; sourceTree = "<group>"; };
+		F0507E661B675698007E9024 /* ForumFloorDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorDetailController.swift; sourceTree = "<group>"; };
+		F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeListCell.swift; sourceTree = "<group>"; };
 		F08749B21B54B590006E1FD3 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F08749B31B54B905006E1FD3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F08749B51B54BFB3006E1FD3 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
@@ -284,6 +292,10 @@
 				F0C3C2501B5FA59500AB6E35 /* HomeLevel2Controller.swift */,
 				F0C3C29F1B60EA9C00AB6E35 /* HomeLevel2Cell.swift */,
 				F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */,
+				F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */,
+				F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */,
+				F0507E641B675666007E9024 /* ForumFloorListController.swift */,
+				F0507E661B675698007E9024 /* ForumFloorDetailController.swift */,
 				F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */,
 				F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */,
 				F0ADE21B1B55FEC8005E84FA /* DetailController.swift */,
@@ -477,6 +489,7 @@
 			files = (
 				F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */,
 				F08749BA1B54E837006E1FD3 /* HomeViewController.swift in Sources */,
+				F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */,
 				F09ADD791B563452009B3A6D /* PhoneMainTabBarButton.m in Sources */,
 				F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */,
 				F09ADDA11B5640DD009B3A6D /* CommonDefine.swift in Sources */,
@@ -488,10 +501,13 @@
 				417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */,
 				F0A20AC71B6246EA00F1F311 /* ApiBuilder.m in Sources */,
 				F0C3C2A01B60EA9C00AB6E35 /* HomeLevel2Cell.swift in Sources */,
+				F0507E691B6756D3007E9024 /* KnowledgeListCell.swift in Sources */,
 				F0A1C3AB1B5CE296001597CF /* HomeTableCell.swift in Sources */,
 				F08749BE1B54E89E006E1FD3 /* ProfileViewController.swift in Sources */,
 				F0C5F6B91B53D1E000B2C20D /* ViewController.swift in Sources */,
+				F0507E671B675698007E9024 /* ForumFloorDetailController.swift in Sources */,
 				417BEF9D1B5A535300F896A5 /* FileHelp.m in Sources */,
+				F0507E5D1B67561A007E9024 /* KnowledgeDetailController.swift in Sources */,
 				F0A20AD31B62499E00F1F311 /* CommonUtility.m in Sources */,
 				F0A20AD81B62548800F1F311 /* KnowledgeListController.swift in Sources */,
 				F0C5F6B71B53D1E000B2C20D /* AppDelegate.swift in Sources */,

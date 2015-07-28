@@ -40,11 +40,12 @@ class HomeLevel2Controller:UIViewController,UITableViewDelegate
             itemCell?.clearData()
             itemCell?.loadCellData(itemDic!)
         })
-        mainTable.frame = self.view.bounds;
+        mainTable.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height);
+        mainTable.contentInset = UIEdgeInsets(top: 200, left: 0, bottom: 0, right: 0)
         mainTable.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.2)
         mainTable.delegate = self
         mainTable.dataSource = self.tableSource
-        mainTable.rowHeight = 90.0
+        mainTable.rowHeight = 70.0
         mainTable.registerClass(HomeLevel2Cell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
         self.view.addSubview(mainTable)
     }
