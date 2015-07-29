@@ -12,3 +12,4 @@ let TABBAR_RED = UIColor(red:0xDF/255.0,  green:0x1C/255.0,  blue:0x08/255.0, al
 let HomeCellIdentifier = "HomeTableCell"
 
 let TOPNAVI_H:CGFloat = 64.0
+let Default_Request_Count    =    20
