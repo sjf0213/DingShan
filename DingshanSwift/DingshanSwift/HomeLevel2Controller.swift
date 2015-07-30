@@ -135,7 +135,17 @@ class HomeLevel2Controller:UIViewController,UITableViewDelegate,LoadViewProtocol
         }
     }
     
-   //MARK: - UIScrollViewDelegate
+//MARK: - UITableViewDelegate
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)")
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as? HomeLevel2Cell
+        var detail = ForumFloorListController()
+        detail.navigationItem.title = cell?.title?.text
+        self.navigationController?.pushViewController(detail, animated: true)
+    }
+    
+//MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(scrollView: UIScrollView){
         if (scrollView.contentOffset.y <= 0){
             self.refreshView?.RefreshScrollViewDidScroll(scrollView)
@@ -155,7 +165,7 @@ class HomeLevel2Controller:UIViewController,UITableViewDelegate,LoadViewProtocol
         self.refreshView?.RefreshScrollViewDidEndDecelerating(scrollView)
     }
     
-    //MARK: - LoadViewProtocol Methods
+//MARK: - LoadViewProtocol Methods
     
     //开始加载数据
     func BeginLoadingData(view:UIView){
