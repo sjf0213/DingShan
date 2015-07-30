@@ -19,6 +19,9 @@
 		F08749BA1B54E837006E1FD3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749B91B54E837006E1FD3 /* HomeViewController.swift */; };
 		F08749BC1B54E872006E1FD3 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */; };
 		F08749BE1B54E89E006E1FD3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */; };
+		F092E2941B6A357B003D2D30 /* ForumFloorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F092E2931B6A357B003D2D30 /* ForumFloorCell.swift */; };
+		F092E29A1B6A35A7003D2D30 /* ForumLordFloorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F092E2991B6A35A7003D2D30 /* ForumLordFloorCell.swift */; };
+		F092E29C1B6A35BE003D2D30 /* ForumReplyFloorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F092E29B1B6A35BE003D2D30 /* ForumReplyFloorCell.swift */; };
 		F09ADD791B563452009B3A6D /* PhoneMainTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F09ADD781B563452009B3A6D /* PhoneMainTabBarButton.m */; };
 		F09ADDA11B5640DD009B3A6D /* CommonDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09ADDA01B5640DD009B3A6D /* CommonDefine.swift */; };
 		F09ADDB51B565C03009B3A6D /* tabbar_gift1_kuai@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F09ADDA31B565C03009B3A6D /* tabbar_gift1_kuai@2x.png */; };
@@ -128,6 +131,9 @@
 		F08749B91B54E837006E1FD3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F092E2931B6A357B003D2D30 /* ForumFloorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorCell.swift; sourceTree = "<group>"; };
+		F092E2991B6A35A7003D2D30 /* ForumLordFloorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumLordFloorCell.swift; sourceTree = "<group>"; };
+		F092E29B1B6A35BE003D2D30 /* ForumReplyFloorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumReplyFloorCell.swift; sourceTree = "<group>"; };
 		F09ADD771B563452009B3A6D /* PhoneMainTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneMainTabBarButton.h; sourceTree = "<group>"; };
 		F09ADD781B563452009B3A6D /* PhoneMainTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneMainTabBarButton.m; sourceTree = "<group>"; };
 		F09ADDA01B5640DD009B3A6D /* CommonDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonDefine.swift; sourceTree = "<group>"; };
@@ -307,6 +313,9 @@
 				F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */,
 				F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */,
 				F0507E641B675666007E9024 /* ForumFloorListController.swift */,
+				F092E2931B6A357B003D2D30 /* ForumFloorCell.swift */,
+				F092E2991B6A35A7003D2D30 /* ForumLordFloorCell.swift */,
+				F092E29B1B6A35BE003D2D30 /* ForumReplyFloorCell.swift */,
 				F0507E661B675698007E9024 /* ForumFloorDetailController.swift */,
 				F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */,
 				F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */,
@@ -524,18 +533,21 @@
 				F0C3C2511B5FA59500AB6E35 /* HomeLevel2Controller.swift in Sources */,
 				F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */,
 				F08749B61B54BFB3006E1FD3 /* MainTabBar.swift in Sources */,
+				F092E2941B6A357B003D2D30 /* ForumFloorCell.swift in Sources */,
 				F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */,
 				F08749BC1B54E872006E1FD3 /* GalleryViewController.swift in Sources */,
 				F0E574F81B6784BE000053B8 /* LoadView.m in Sources */,
 				417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */,
 				F0E574F91B6784BE000053B8 /* RefreshIconView.m in Sources */,
 				F0A20AC71B6246EA00F1F311 /* ApiBuilder.m in Sources */,
+				F092E29C1B6A35BE003D2D30 /* ForumReplyFloorCell.swift in Sources */,
 				F0C3C2A01B60EA9C00AB6E35 /* HomeLevel2Cell.swift in Sources */,
 				F0507E691B6756D3007E9024 /* KnowledgeListCell.swift in Sources */,
 				F0A1C3AB1B5CE296001597CF /* HomeTableCell.swift in Sources */,
 				F08749BE1B54E89E006E1FD3 /* ProfileViewController.swift in Sources */,
 				F0C5F6B91B53D1E000B2C20D /* ViewController.swift in Sources */,
 				F0507E671B675698007E9024 /* ForumFloorDetailController.swift in Sources */,
+				F092E29A1B6A35A7003D2D30 /* ForumLordFloorCell.swift in Sources */,
 				417BEF9D1B5A535300F896A5 /* FileHelp.m in Sources */,
 				F0507E5D1B67561A007E9024 /* KnowledgeDetailController.swift in Sources */,
 				F0A20AD31B62499E00F1F311 /* CommonUtility.m in Sources */,
