@@ -12,24 +12,23 @@ class HomeLevel2Controller:UIViewController,UITableViewDelegate,LoadViewProtocol
 {
     var mainTable = UITableView();
     var tableSource:ArrayDataSource?
-//    var dataArray:NSMutableArray = NSMutableArray()
     var refreshView:RefreshView?
     var loadMoreView:LoadView?
     var currentPage:NSInteger = 0
     
     // alamo part 
-    var headers: [String: String] = [:]
-    var body: String?
-    var elapsedTime: NSTimeInterval?
+//    var headers: [String: String] = [:]
+//    var body: String?
+//    var elapsedTime: NSTimeInterval?
     var request: Alamofire.Request? {
         didSet {
             oldValue?.cancel()
             
 //            self.title = self.request?.description
 //            self.refreshControl?.endRefreshing()
-            self.headers.removeAll()
-            self.body = nil
-            self.elapsedTime = nil
+//            self.headers.removeAll()
+//            self.body = nil
+//            self.elapsedTime = nil
         }
     }
     override func loadView(){
@@ -83,6 +82,7 @@ class HomeLevel2Controller:UIViewController,UITableViewDelegate,LoadViewProtocol
     }
     
     func startRequest(){
+        /*
 //        var urlStr:String = "http://v3.kuaigame.com/app/getcategoryarticle?uid=220154&device=iPhone5%2C2&pindex=0&psize=20&appver=3.2.1&key=cNCS0ipHRcFXsuW%2FTyO%2FN%2BmoHsk%3D&did=CD1FBB97-426F-4A83-90AB-A897D580BED2&e=1437637766&categoryid=3&clientid=21&aid=W%2Fsuzn3p2Tb3fQRp1ZaRxZlueKo%3D&iosver=8.4";
         var parameter = ["categoryid" : "3",
                             "pindex" : "0",
@@ -90,6 +90,16 @@ class HomeLevel2Controller:UIViewController,UITableViewDelegate,LoadViewProtocol
                             "json" : "1"]
         var useJson = true
         var url = ApiBuilder.article_get_list(parameter)
+        */
+        
+        //"http://v3.kuaigame.com/topics/topiclist?iosver=8.4&uid=221188&device=iPhone5%2C2&pindex=0&psize=50&appver=3.3.0&key=xv0JOoDtfa2GqBwM3lAb0FpyeLc%3D&topicid=0&did=053F4F67-4445-4774-9060-B3CC0795EC7E&e=1438254601&clientid=21&aid=hypB2OIKaQ1jFyNWvljyE7HPV3E%3D&sorttype=1";
+        var parameter = ["pindex" : "0",
+                        "psize" : "50",
+                        "sorttype" : "1",
+                        "topicid":"0",
+                        "json" : "1"]
+        var useJson = true
+        var url = ApiBuilder.forum_get_topic_list(parameter)
         print("url = \(url)")
         self.request = Alamofire.request(.GET, url)
         // JSON
@@ -116,7 +126,7 @@ class HomeLevel2Controller:UIViewController,UITableViewDelegate,LoadViewProtocol
     func processRequestResult(result:NSDictionary){
         if (200 == result["c"]?.integerValue){
             if let list = result["v"] as? NSDictionary{
-                if let arr = list["list"] as? NSArray{
+                if let arr = list["topic_list"] as? NSArray{
                     print("\n dataArray- - -\(arr)")
                     self.tableSource?.appendWithItems(arr as [AnyObject])
                     self.mainTable.reloadData()

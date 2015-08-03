@@ -26,7 +26,7 @@ class HomeLevel2Cell:UITableViewCell
     }
     func loadCellData(dic:NSDictionary)
     {
-        let str = dic.objectForKey("title") as? String
+        let str = dic.objectForKey("topic_title") as? String
         title!.text = str
     }
 }

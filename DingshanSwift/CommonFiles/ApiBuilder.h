@@ -18,5 +18,7 @@
 +(NSString *)signatureURL:(NSString*)url args:(NSDictionary *)args Key:(NSString *)keystring;
 //美图,新闻,攻略,测评,列表
 +(NSString *)article_get_list:(NSDictionary*)dic;
+//讨论区话题列表
++(NSString *)forum_get_topic_list:(NSDictionary*)dic;
 
 @end
