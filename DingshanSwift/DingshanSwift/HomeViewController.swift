@@ -16,6 +16,7 @@ class HomeViewController:UIViewController,UITableViewDelegate
     override func loadView()
     {
         super.loadView()
+        self.navigationController?.navigationBar.backgroundColor = NAVI_COLOR
         self.view.backgroundColor = UIColor.whiteColor();
         self.navigationItem.title = "首页"
         self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, data) in
@@ -25,7 +26,7 @@ class HomeViewController:UIViewController,UITableViewDelegate
                 itemCell?.loadCellData(itemDic!)
         })
         mainTable.frame = self.view.bounds;
-        mainTable.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.2)
+        mainTable.backgroundColor = UIColor.whiteColor()
         mainTable.delegate = self
         mainTable.dataSource = self.tableSource
         mainTable.registerClass(HomeTableCell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
