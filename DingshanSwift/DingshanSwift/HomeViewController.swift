@@ -16,6 +16,7 @@ class HomeViewController:UIViewController,UITableViewDelegate
     override func loadView()
     {
         super.loadView()
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         self.navigationController?.navigationBar.backgroundColor = NAVI_COLOR
         self.view.backgroundColor = UIColor.whiteColor();
         self.navigationItem.title = "首页"

@@ -14,7 +14,8 @@ let MAIN_TAB_H:CGFloat = 50
 class MainViewController:UIViewController
 {
     var tabbar:MainTabBar?
-    var homeController:HomeViewController?
+//    var homeController:HomeViewController?
+    var homeController:HomeGridViewController?
     var homeNavi:UINavigationController?
     var galleryController:GalleryViewController?
     var galleryNavi:UINavigationController?
@@ -46,7 +47,7 @@ extension MainViewController : MainTabBarDelegate
         switch tag {
         case 0:
             if homeController == nil{
-                homeController = HomeViewController()
+                homeController = HomeGridViewController()
                 homeNavi = UINavigationController(rootViewController: homeController!)
                 self.view.addSubview(homeNavi!.view)
             }
