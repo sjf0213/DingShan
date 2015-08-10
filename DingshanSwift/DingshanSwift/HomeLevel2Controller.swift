@@ -56,7 +56,7 @@ class HomeLevel2Controller:UIViewController,UITableViewDelegate,LoadViewProtocol
         mainTable.backgroundColor = UIColor.clearColor()
         mainTable.delegate = self
         mainTable.dataSource = self.tableSource
-        mainTable.rowHeight = 70.0
+        mainTable.rowHeight = 80.0
         mainTable.registerClass(HomeLevel2Cell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
         self.view.addSubview(mainTable)
         

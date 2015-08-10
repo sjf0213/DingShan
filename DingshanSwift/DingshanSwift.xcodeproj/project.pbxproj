@@ -244,6 +244,15 @@
 			path = homegrid;
 			sourceTree = "<group>";
 		};
+		F09AB5251B74B6C400050A5C /* unused */ = {
+			isa = PBXGroup;
+			children = (
+				F08749B91B54E837006E1FD3 /* HomeViewController.swift */,
+				F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */,
+			);
+			name = unused;
+			sourceTree = "<group>";
+		};
 		F09ADD761B563452009B3A6D /* CommonFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,12 +349,11 @@
 				F0C5F6BD1B53D1E000B2C20D /* Images.xcassets */,
 				F0C5F6BF1B53D1E000B2C20D /* LaunchScreen.xib */,
 				F0C5F6B41B53D1E000B2C20D /* Supporting Files */,
+				F09AB5251B74B6C400050A5C /* unused */,
 				F09ADDA01B5640DD009B3A6D /* CommonDefine.swift */,
 				F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */,
 				F08749B31B54B905006E1FD3 /* MainViewController.swift */,
 				F08749B51B54BFB3006E1FD3 /* MainTabBar.swift */,
-				F08749B91B54E837006E1FD3 /* HomeViewController.swift */,
-				F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */,
 				F09AB50A1B74A0BF00050A5C /* HomeGridViewController.swift */,
 				F09AB5101B74A0E400050A5C /* HomeGridCell.swift */,
 				F0C3C2501B5FA59500AB6E35 /* HomeLevel2Controller.swift */,
