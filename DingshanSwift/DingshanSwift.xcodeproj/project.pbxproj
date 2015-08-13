@@ -53,6 +53,7 @@
 		F09ADDC41B565C03009B3A6D /* tabbar_hot2_kuai@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F09ADDB21B565C03009B3A6D /* tabbar_hot2_kuai@3x.png */; };
 		F09ADDC51B565C03009B3A6D /* tabbar_hot3_kuai@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F09ADDB31B565C03009B3A6D /* tabbar_hot3_kuai@2x.png */; };
 		F09ADDC61B565C03009B3A6D /* tabbar_hot3_kuai@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F09ADDB41B565C03009B3A6D /* tabbar_hot3_kuai@3x.png */; };
+		F09C7AA71B7CA60900648615 /* DSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C7AA61B7CA60900648615 /* DSViewController.swift */; };
 		F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */; };
 		F0A1C3AB1B5CE296001597CF /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */; };
 		F0A20AC71B6246EA00F1F311 /* ApiBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AC61B6246EA00F1F311 /* ApiBuilder.m */; };
@@ -177,6 +178,7 @@
 		F09ADDB21B565C03009B3A6D /* tabbar_hot2_kuai@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_hot2_kuai@3x.png"; sourceTree = "<group>"; };
 		F09ADDB31B565C03009B3A6D /* tabbar_hot3_kuai@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_hot3_kuai@2x.png"; sourceTree = "<group>"; };
 		F09ADDB41B565C03009B3A6D /* tabbar_hot3_kuai@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_hot3_kuai@3x.png"; sourceTree = "<group>"; };
+		F09C7AA61B7CA60900648615 /* DSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSViewController.swift; sourceTree = "<group>"; };
 		F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainConfig.swift; sourceTree = "<group>"; };
 		F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
 		F0A20AC51B6246EA00F1F311 /* ApiBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiBuilder.h; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				F0C5F6B41B53D1E000B2C20D /* Supporting Files */,
 				F09AB5251B74B6C400050A5C /* unused */,
 				F09ADDA01B5640DD009B3A6D /* CommonDefine.swift */,
+				F09C7AA61B7CA60900648615 /* DSViewController.swift */,
 				F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */,
 				F08749B31B54B905006E1FD3 /* MainViewController.swift */,
 				F08749B51B54BFB3006E1FD3 /* MainTabBar.swift */,
@@ -587,6 +590,7 @@
 				F09ADD791B563452009B3A6D /* PhoneMainTabBarButton.m in Sources */,
 				F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */,
 				F09ADDA11B5640DD009B3A6D /* CommonDefine.swift in Sources */,
+				F09C7AA71B7CA60900648615 /* DSViewController.swift in Sources */,
 				F0E574FA1B6784BE000053B8 /* RefreshView.m in Sources */,
 				F0C3C2511B5FA59500AB6E35 /* HomeLevel2Controller.swift in Sources */,
 				F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */,

@@ -25,16 +25,19 @@ class MainTabBar:UIView
 
     override init(frame aRect: CGRect) {
         super.init(frame: aRect);
-        self.backgroundColor = UIColor.yellowColor()
+        self.backgroundColor = TABBAR_COLOR
         
         var btnArr = [UIButton]()
         
         let btnWidth:CGFloat = CGRectGetWidth(self.frame) / 3.0;
         let btnHeight:CGFloat = CGRectGetHeight(self.frame);
         
+        let topline = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: 0.5))
+        topline.backgroundColor = UIColor.grayColor()
+        self.addSubview(topline)
         
         var btn1 = PhoneMainTabBarButton(frame: CGRectMake(0, 0, btnWidth, btnHeight), title: "Home")
-        btn1.backgroundColor = UIColor.orangeColor()
+//        btn1.backgroundColor = UIColor.orangeColor()
         btn1.normalImage = "tabbar_home1_kuai";
         btn1.highlightImage = "tabbar_home2_kuai";
         btn1.highlightImage2 = "tabbar_home3_kuai";
@@ -43,7 +46,7 @@ class MainTabBar:UIView
         btnArr.append(btn1)
         
         var btn2 = PhoneMainTabBarButton(frame: CGRectMake(btnWidth, 0, btnWidth, btnHeight), title: "Gallery");
-        btn2.backgroundColor = UIColor.orangeColor().colorWithAlphaComponent(0.8)
+//        btn2.backgroundColor = UIColor.orangeColor().colorWithAlphaComponent(0.8)
         btn2.normalImage = "tabbar_hot1_kuai";
         btn2.highlightImage = "tabbar_hot2_kuai";
         btn2.highlightImage2 = "tabbar_hot3_kuai";
@@ -52,7 +55,7 @@ class MainTabBar:UIView
         btnArr.append(btn2)
         
         var btn3 = PhoneMainTabBarButton(frame: CGRectMake(2*btnWidth, 0, btnWidth, btnHeight), title: "Profile");
-        btn3.backgroundColor = UIColor.orangeColor().colorWithAlphaComponent(0.6)
+//        btn3.backgroundColor = UIColor.orangeColor().colorWithAlphaComponent(0.6)
         btn3.normalImage = "tabbar_gift1_kuai";
         btn3.highlightImage = "tabbar_gift2_kuai";
         btn3.highlightImage2 = "tabbar_gift3_kuai";
