@@ -14,4 +14,5 @@
 #import "../Commonfiles/FileHelp.h"
 #import "../Commonfiles/ApiBuilder.h"
 #import "../Commonfiles/Loading/LoadSuit.h"
+#import "../Commonfiles/KASegmentControl.h"
 #endif

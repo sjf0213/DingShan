@@ -54,6 +54,8 @@
 		F09ADDC51B565C03009B3A6D /* tabbar_hot3_kuai@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F09ADDB31B565C03009B3A6D /* tabbar_hot3_kuai@2x.png */; };
 		F09ADDC61B565C03009B3A6D /* tabbar_hot3_kuai@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F09ADDB41B565C03009B3A6D /* tabbar_hot3_kuai@3x.png */; };
 		F09C7AA71B7CA60900648615 /* DSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C7AA61B7CA60900648615 /* DSViewController.swift */; };
+		F09C7AB01B7CAEDC00648615 /* KASegmentButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F09C7AAD1B7CAEDC00648615 /* KASegmentButton.m */; };
+		F09C7AB11B7CAEDC00648615 /* KASegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F09C7AAF1B7CAEDC00648615 /* KASegmentControl.m */; };
 		F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */; };
 		F0A1C3AB1B5CE296001597CF /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */; };
 		F0A20AC71B6246EA00F1F311 /* ApiBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AC61B6246EA00F1F311 /* ApiBuilder.m */; };
@@ -179,6 +181,10 @@
 		F09ADDB31B565C03009B3A6D /* tabbar_hot3_kuai@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_hot3_kuai@2x.png"; sourceTree = "<group>"; };
 		F09ADDB41B565C03009B3A6D /* tabbar_hot3_kuai@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_hot3_kuai@3x.png"; sourceTree = "<group>"; };
 		F09C7AA61B7CA60900648615 /* DSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSViewController.swift; sourceTree = "<group>"; };
+		F09C7AAC1B7CAEDC00648615 /* KASegmentButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KASegmentButton.h; sourceTree = "<group>"; };
+		F09C7AAD1B7CAEDC00648615 /* KASegmentButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASegmentButton.m; sourceTree = "<group>"; };
+		F09C7AAE1B7CAEDC00648615 /* KASegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KASegmentControl.h; sourceTree = "<group>"; };
+		F09C7AAF1B7CAEDC00648615 /* KASegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASegmentControl.m; sourceTree = "<group>"; };
 		F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainConfig.swift; sourceTree = "<group>"; };
 		F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
 		F0A20AC51B6246EA00F1F311 /* ApiBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiBuilder.h; sourceTree = "<group>"; };
@@ -258,6 +264,10 @@
 		F09ADD761B563452009B3A6D /* CommonFiles */ = {
 			isa = PBXGroup;
 			children = (
+				F09C7AAC1B7CAEDC00648615 /* KASegmentButton.h */,
+				F09C7AAD1B7CAEDC00648615 /* KASegmentButton.m */,
+				F09C7AAE1B7CAEDC00648615 /* KASegmentControl.h */,
+				F09C7AAF1B7CAEDC00648615 /* KASegmentControl.m */,
 				F0E574F01B6784BE000053B8 /* Loading */,
 				F0A20AD41B624A9500F1F311 /* CocoaSecurity.h */,
 				F0A20AD51B624A9500F1F311 /* CocoaSecurity.m */,
@@ -584,6 +594,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F09C7AB11B7CAEDC00648615 /* KASegmentControl.m in Sources */,
 				F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */,
 				F08749BA1B54E837006E1FD3 /* HomeViewController.swift in Sources */,
 				F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */,
@@ -595,6 +606,7 @@
 				F0C3C2511B5FA59500AB6E35 /* HomeLevel2Controller.swift in Sources */,
 				F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */,
 				F08749B61B54BFB3006E1FD3 /* MainTabBar.swift in Sources */,
+				F09C7AB01B7CAEDC00648615 /* KASegmentButton.m in Sources */,
 				F092E2941B6A357B003D2D30 /* ForumFloorCell.swift in Sources */,
 				F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */,
 				F08749BC1B54E872006E1FD3 /* GalleryViewController.swift in Sources */,

@@ -13,14 +13,24 @@ class ProfileViewController:DSViewController
     override func loadView()
     {
         super.loadView()
-        self.view.backgroundColor = UIColor.blueColor()
+        self.view.backgroundColor = UIColor.whiteColor()
         
         var btn1 = UIButton(frame: CGRect(x:100,y:100,width:100,height:100));
         btn1.backgroundColor = UIColor.purpleColor()
         btn1.setTitle("go detail", forState: UIControlState.Normal)
         btn1.addTarget(self, action:Selector("onTapBtn:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(btn1)
+        
+        
+//        var segmentControl = KASegmentControl(frame: CGRectMake(412, CGRectGetHeight(top.frame)-28-8, 200, 28)), withItems:NSArray(arrayLiteral:"", "") as? AnyObject, withLightedColor: UIColor.redColor());
+//        [self.segmentControl addObserver:self forKeyPath:@"selectedSegmentIndex" options:NSKeyValueObservingOptionNew context:@"PadCategoryViewController"];
+//        [topView addSubview:self.segmentControl];
+//        self.segmentControl.selectedSegmentIndex = 0;
+        
+        
     }
+    
+    
     
     func onTapBtn(sender:UIButton) {
         print(sender)
