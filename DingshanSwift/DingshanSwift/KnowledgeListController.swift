@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class KnowledgeListController:UIViewController
+class KnowledgeListController:DSViewController
 {
     
 }

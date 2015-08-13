@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class ForumFloorDetailController:UIViewController
+class ForumFloorDetailController:DSViewController
 {
     
 }

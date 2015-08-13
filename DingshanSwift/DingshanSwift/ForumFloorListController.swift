@@ -8,7 +8,7 @@
 
 import Foundation
 import Alamofire
-class ForumFloorListController:UIViewController,UITableViewDelegate,LoadViewProtocol,UIScrollViewDelegate
+class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScrollViewDelegate
 {
     var mainTable = UITableView();
     var tableSource:ArrayDataSource?

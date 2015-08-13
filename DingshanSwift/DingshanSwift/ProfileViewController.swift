@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController:UIViewController
+class ProfileViewController:DSViewController
 {
     override func loadView()
     {

@@ -8,7 +8,7 @@
 
 import Foundation
 import Alamofire
-class HomeLevel2Controller:UIViewController,UITableViewDelegate,LoadViewProtocol,UIScrollViewDelegate
+class HomeLevel2Controller:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScrollViewDelegate
 {
     var mainTable = UITableView();
     var tableSource:ArrayDataSource?

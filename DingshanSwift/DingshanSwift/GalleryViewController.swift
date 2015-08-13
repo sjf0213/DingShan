@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GalleryViewController:UIViewController
+class GalleryViewController:DSViewController
 {
     override func loadView()
     {

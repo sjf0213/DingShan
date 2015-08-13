@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class KnowledgeDetailController:UIViewController
+class KnowledgeDetailController:DSViewController
 {
     
 }

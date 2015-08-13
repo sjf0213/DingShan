@@ -9,9 +9,9 @@
 import Foundation
 let TABBAR_GRAY = UIColor(white: 0x72/255.0, alpha: 1.0)
 let TABBAR_RED = UIColor(red:0xDF/255.0,  green:0x1C/255.0,  blue:0x08/255.0, alpha:1.0)
-let TABBAR_COLOR = UIColor.whiteColor()
+let TABBAR_COLOR = UIColor(white: 236/255.0, alpha: 1.0)
 //let NAVI_COLOR = UIColor(red:167/255.0,  green:66/255.0,  blue:181/255.0, alpha:1.0)
-let NAVI_COLOR = UIColor.whiteColor()
+let NAVI_COLOR = UIColor(white: 236/255.0, alpha: 1.0)
 //let NAVI_COLOR = UIColor.blackColor()
 let HomeCellIdentifier = "HomeTableCell"
 let HomeGridCellIdentifier = "HomeGridCell"
