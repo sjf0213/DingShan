@@ -10,13 +10,20 @@ import UIKit
 
 class GalleryViewController:DSViewController
 {
+    var seg:KASegmentControl?
     override func loadView()
     {
         super.loadView()
-        self.view.backgroundColor = UIColor.greenColor()
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        seg = KASegmentControl(frame: CGRectMake((self.topView.frame.size.width - 140)*0.5, 27, 140, 30),
+                            withItems: ["套图", "单图"],
+                            withLightedColor: THEME_COLOR)
+        self.topView.addSubview(seg!)
+        seg?.selectedSegmentIndex = 0;
         
         var btn1 = UIButton(frame: CGRect(x:100,y:100,width:100,height:100));
-        btn1.backgroundColor = UIColor.cyanColor()
+        btn1.backgroundColor = UIColor.lightGrayColor()
         btn1.setTitle("go detail", forState: UIControlState.Normal)
         btn1.addTarget(self, action:Selector("onTapBtn:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(btn1)

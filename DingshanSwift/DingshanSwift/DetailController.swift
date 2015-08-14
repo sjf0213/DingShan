@@ -13,11 +13,11 @@ class DetailController:UIViewController
     override func loadView()
     {
         super.loadView()
-        self.view.backgroundColor = UIColor.lightGrayColor()
+        self.view.backgroundColor = UIColor.whiteColor()
         
         
         var btn1 = UIButton(frame: CGRect(x:100,y:100,width:100,height:100));
-        btn1.backgroundColor = UIColor.blueColor()
+        btn1.backgroundColor = UIColor.grayColor()
         let ccount = self.navigationController?.childViewControllers.count
         var labelText:String = String(format:"layer No.%d", ccount!)
         

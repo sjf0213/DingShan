@@ -10,17 +10,16 @@ import UIKit
 
 class DSViewController:UIViewController
 {
-    var topView : UIView?
+    var topView : UIView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, TOPNAVI_H))
     override func loadView()
     {
         super.loadView()
         self.navigationController?.navigationBar.hidden = true;
-        topView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, TOPNAVI_H))
-        topView?.backgroundColor = NAVI_COLOR
-        self.view.addSubview(topView!);
+        topView.backgroundColor = NAVI_COLOR
+        self.view.addSubview(topView);
         
-        let topline = UIView(frame: CGRect(x: 0, y: topView!.bounds.height - 0.5, width: topView!.bounds.width, height: 0.5))
+        let topline = UIView(frame: CGRect(x: 0, y: topView.bounds.height - 0.5, width: topView.bounds.width, height: 0.5))
         topline.backgroundColor = UIColor.grayColor()
-        topView?.addSubview(topline)
+        topView.addSubview(topline)
     }
 }

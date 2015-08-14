@@ -20,7 +20,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = color;
-        self.layer.cornerRadius = 3;
+        self.layer.cornerRadius = 15;
         self.clipsToBounds = YES;
         
         self.buttons = [NSMutableArray array];
@@ -29,7 +29,7 @@
         UIView* innerView = [[UIView alloc] initWithFrame:CGRectMake(1, 1,
                                                                      self.frame.size.width-2, self.frame.size.height-2)];
         innerView.clipsToBounds = YES;
-        innerView.layer.cornerRadius = 3;
+        innerView.layer.cornerRadius = 14;
         innerView.backgroundColor = [UIColor whiteColor];
         [self addSubview:innerView];
         
@@ -47,7 +47,7 @@
                                                                                                    innerView.frame.size.height)];
                     btn.selectedColor = color;
                     [btn setTitle:itemText forState:UIControlStateNormal];
-                    btn.titleLabel.font = [UIFont systemFontOfSize:12];
+                    btn.titleLabel.font = [UIFont systemFontOfSize:14];
                     btn.tag = i;
                     [btn addTarget:self action:@selector(onButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
                     [self.buttons addObject:btn];
