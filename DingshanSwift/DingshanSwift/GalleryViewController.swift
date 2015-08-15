@@ -11,6 +11,7 @@ import UIKit
 class GalleryViewController:DSViewController
 {
     var seg:KASegmentControl?
+    var foldMenu:UIView?
     override func loadView()
     {
         super.loadView()
@@ -22,11 +23,10 @@ class GalleryViewController:DSViewController
         self.topView.addSubview(seg!)
         seg?.selectedSegmentIndex = 0;
         
-        var btn1 = UIButton(frame: CGRect(x:100,y:100,width:100,height:100));
-        btn1.backgroundColor = UIColor.lightGrayColor()
-        btn1.setTitle("go detail", forState: UIControlState.Normal)
-        btn1.addTarget(self, action:Selector("onTapBtn:"), forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(btn1)
+        foldMenu = UIView(frame: CGRectMake(0, self.topView.frame.size.height, self.view.bounds.size.width, 40))
+        foldMenu?.backgroundColor = UIColor(white: 0.9, alpha: 0.5)
+        self.view.addSubview(foldMenu!)
+        
     }
     
     func onTapBtn(sender:UIButton) {
