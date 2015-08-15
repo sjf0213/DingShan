@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 song jufeng. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class GalleryViewController:DSViewController
+class GalleryViewController:DSViewController,UICollectionViewDataSource, UICollectionViewDelegate/*CHTCollectionViewDelegateWaterfallLayout*/
 {
     var seg:KASegmentControl?
     var foldMenu:UIView?
@@ -40,7 +40,8 @@ class GalleryViewController:DSViewController
             height: self.view.bounds.size.height - self.topView.bounds.size.height), collectionViewLayout: layout)
         mainCollection?.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
         mainCollection?.backgroundColor = UIColor.orangeColor()
-        
+        mainCollection?.dataSource = self;
+        mainCollection?.delegate = self;
         
     }
     
@@ -49,5 +50,21 @@ class GalleryViewController:DSViewController
         var detail = DetailController()
         self.navigationController?.pushViewController(detail, animated: true)
         
+    }
+    
+    
+//    func collectionView(collectionView: UICollectionView, layout:UICollectionViewLayout, indexPath: NSIndexPath) ->CGSize
+//    {
+//        
+//    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+    {
+        return UICollectionViewCell()
     }
 }
