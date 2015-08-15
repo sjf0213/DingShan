@@ -15,4 +15,5 @@
 #import "../Commonfiles/ApiBuilder.h"
 #import "../Commonfiles/Loading/LoadSuit.h"
 #import "../Commonfiles/KASegmentControl.h"
+#import "../CommonFiles/CHTCollectionViewWaterfallLayout.h"
 #endif

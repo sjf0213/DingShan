@@ -14,6 +14,7 @@
 		F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E641B675666007E9024 /* ForumFloorListController.swift */; };
 		F0507E671B675698007E9024 /* ForumFloorDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E661B675698007E9024 /* ForumFloorDetailController.swift */; };
 		F0507E691B6756D3007E9024 /* KnowledgeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */; };
+		F05455561B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F05455551B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m */; };
 		F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749B31B54B905006E1FD3 /* MainViewController.swift */; };
 		F08749B61B54BFB3006E1FD3 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749B51B54BFB3006E1FD3 /* MainTabBar.swift */; };
 		F08749BA1B54E837006E1FD3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749B91B54E837006E1FD3 /* HomeViewController.swift */; };
@@ -139,6 +140,8 @@
 		F0507E641B675666007E9024 /* ForumFloorListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorListController.swift; sourceTree = "<group>"; };
 		F0507E661B675698007E9024 /* ForumFloorDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorDetailController.swift; sourceTree = "<group>"; };
 		F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeListCell.swift; sourceTree = "<group>"; };
+		F05455541B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
+		F05455551B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
 		F08749B21B54B590006E1FD3 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F08749B31B54B905006E1FD3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F08749B51B54BFB3006E1FD3 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
@@ -264,6 +267,8 @@
 		F09ADD761B563452009B3A6D /* CommonFiles */ = {
 			isa = PBXGroup;
 			children = (
+				F05455541B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.h */,
+				F05455551B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m */,
 				F09C7AAC1B7CAEDC00648615 /* KASegmentButton.h */,
 				F09C7AAD1B7CAEDC00648615 /* KASegmentButton.m */,
 				F09C7AAE1B7CAEDC00648615 /* KASegmentControl.h */,
@@ -613,6 +618,7 @@
 				F0E574F81B6784BE000053B8 /* LoadView.m in Sources */,
 				417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */,
 				F0E574F91B6784BE000053B8 /* RefreshIconView.m in Sources */,
+				F05455561B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				F0A20AC71B6246EA00F1F311 /* ApiBuilder.m in Sources */,
 				F092E29C1B6A35BE003D2D30 /* ForumReplyFloorCell.swift in Sources */,
 				F0C3C2A01B60EA9C00AB6E35 /* HomeLevel2Cell.swift in Sources */,

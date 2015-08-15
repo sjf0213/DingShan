@@ -12,6 +12,7 @@ class GalleryViewController:DSViewController
 {
     var seg:KASegmentControl?
     var foldMenu:UIView?
+    var mainCollection:UICollectionView?
     override func loadView()
     {
         super.loadView()
@@ -26,6 +27,20 @@ class GalleryViewController:DSViewController
         foldMenu = UIView(frame: CGRectMake(0, self.topView.frame.size.height, self.view.bounds.size.width, 40))
         foldMenu?.backgroundColor = UIColor(white: 0.9, alpha: 0.5)
         self.view.addSubview(foldMenu!)
+        
+        var layout = CHTCollectionViewWaterfallLayout()
+        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        layout.columnCount = 2;
+        layout.minimumColumnSpacing = 10;
+        layout.minimumInteritemSpacing = 10;
+        
+        mainCollection = UICollectionView(frame: CGRect(x: 0,
+            y: self.topView.bounds.size.height,
+            width: self.view.bounds.size.width,
+            height: self.view.bounds.size.height - self.topView.bounds.size.height), collectionViewLayout: layout)
+        mainCollection?.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
+        mainCollection?.backgroundColor = UIColor.orangeColor()
+        
         
     }
     
