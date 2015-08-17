@@ -64,6 +64,7 @@
 		F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AD51B624A9500F1F311 /* CocoaSecurity.m */; };
 		F0A20AD81B62548800F1F311 /* KnowledgeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */; };
 		F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADE21B1B55FEC8005E84FA /* DetailController.swift */; };
+		F0B6FABC1B81F3D000EE2439 /* GalleryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */; };
 		F0C3C2511B5FA59500AB6E35 /* HomeLevel2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C2501B5FA59500AB6E35 /* HomeLevel2Controller.swift */; };
 		F0C3C26D1B60923F00AB6E35 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F0C3C25C1B5FAA0C00AB6E35 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F0C3C2A01B60EA9C00AB6E35 /* HomeLevel2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C29F1B60EA9C00AB6E35 /* HomeLevel2Cell.swift */; };
@@ -198,6 +199,7 @@
 		F0A20AD51B624A9500F1F311 /* CocoaSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaSecurity.m; sourceTree = "<group>"; };
 		F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeListController.swift; sourceTree = "<group>"; };
 		F0ADE21B1B55FEC8005E84FA /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
+		F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewCell.swift; sourceTree = "<group>"; };
 		F0C3C2501B5FA59500AB6E35 /* HomeLevel2Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeLevel2Controller.swift; sourceTree = "<group>"; };
 		F0C3C2541B5FAA0C00AB6E35 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		F0C3C29F1B60EA9C00AB6E35 /* HomeLevel2Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeLevel2Cell.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 				F092E29B1B6A35BE003D2D30 /* ForumReplyFloorCell.swift */,
 				F0507E661B675698007E9024 /* ForumFloorDetailController.swift */,
 				F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */,
+				F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */,
 				F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */,
 				F0ADE21B1B55FEC8005E84FA /* DetailController.swift */,
 			);
@@ -605,6 +608,7 @@
 				F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */,
 				F09ADD791B563452009B3A6D /* PhoneMainTabBarButton.m in Sources */,
 				F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */,
+				F0B6FABC1B81F3D000EE2439 /* GalleryViewCell.swift in Sources */,
 				F09ADDA11B5640DD009B3A6D /* CommonDefine.swift in Sources */,
 				F09C7AA71B7CA60900648615 /* DSViewController.swift in Sources */,
 				F0E574FA1B6784BE000053B8 /* RefreshView.m in Sources */,
