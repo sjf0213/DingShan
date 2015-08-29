@@ -74,6 +74,7 @@
 		F0C5F6BE1B53D1E000B2C20D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0C5F6BD1B53D1E000B2C20D /* Images.xcassets */; };
 		F0C5F6C11B53D1E000B2C20D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0C5F6BF1B53D1E000B2C20D /* LaunchScreen.xib */; };
 		F0C5F6CD1B53D1E000B2C20D /* DingshanSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C5F6CC1B53D1E000B2C20D /* DingshanSwiftTests.swift */; };
+		F0D00E751B917AAB0056BE3E /* TabBarToggleBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D00E741B917AAB0056BE3E /* TabBarToggleBtn.swift */; };
 		F0E574F81B6784BE000053B8 /* LoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E574F21B6784BE000053B8 /* LoadView.m */; };
 		F0E574F91B6784BE000053B8 /* RefreshIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E574F51B6784BE000053B8 /* RefreshIconView.m */; };
 		F0E574FA1B6784BE000053B8 /* RefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E574F71B6784BE000053B8 /* RefreshView.m */; };
@@ -213,6 +214,7 @@
 		F0C5F6C61B53D1E000B2C20D /* DingshanSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DingshanSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0C5F6CB1B53D1E000B2C20D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0C5F6CC1B53D1E000B2C20D /* DingshanSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DingshanSwiftTests.swift; sourceTree = "<group>"; };
+		F0D00E741B917AAB0056BE3E /* TabBarToggleBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarToggleBtn.swift; sourceTree = "<group>"; };
 		F0E574F11B6784BE000053B8 /* LoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadView.h; sourceTree = "<group>"; };
 		F0E574F21B6784BE000053B8 /* LoadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadView.m; sourceTree = "<group>"; };
 		F0E574F31B6784BE000053B8 /* LoadViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewProtocol.h; sourceTree = "<group>"; };
@@ -367,29 +369,13 @@
 				F0C5F6BA1B53D1E000B2C20D /* Main.storyboard */,
 				F0C5F6BD1B53D1E000B2C20D /* Images.xcassets */,
 				F0C5F6BF1B53D1E000B2C20D /* LaunchScreen.xib */,
+				F09ADDA01B5640DD009B3A6D /* CommonDefine.swift */,
 				F0C5F6B41B53D1E000B2C20D /* Supporting Files */,
 				F09AB5251B74B6C400050A5C /* unused */,
-				F09ADDA01B5640DD009B3A6D /* CommonDefine.swift */,
-				F09C7AA61B7CA60900648615 /* DSViewController.swift */,
-				F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */,
-				F08749B31B54B905006E1FD3 /* MainViewController.swift */,
-				F08749B51B54BFB3006E1FD3 /* MainTabBar.swift */,
-				F09AB50A1B74A0BF00050A5C /* HomeGridViewController.swift */,
-				F09AB5101B74A0E400050A5C /* HomeGridCell.swift */,
-				F0C3C2501B5FA59500AB6E35 /* HomeLevel2Controller.swift */,
-				F0C3C29F1B60EA9C00AB6E35 /* HomeLevel2Cell.swift */,
-				F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */,
-				F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */,
-				F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */,
-				F0507E641B675666007E9024 /* ForumFloorListController.swift */,
-				F092E2931B6A357B003D2D30 /* ForumFloorCell.swift */,
-				F092E2991B6A35A7003D2D30 /* ForumLordFloorCell.swift */,
-				F092E29B1B6A35BE003D2D30 /* ForumReplyFloorCell.swift */,
-				F0507E661B675698007E9024 /* ForumFloorDetailController.swift */,
-				F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */,
-				F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */,
-				F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */,
-				F0ADE21B1B55FEC8005E84FA /* DetailController.swift */,
+				F0D00E7A1B917AC00056BE3E /* General */,
+				F0D00E7B1B917B010056BE3E /* Home */,
+				F0D00E7C1B917B180056BE3E /* Gallery */,
+				F0D00E7D1B917B540056BE3E /* Profile */,
 			);
 			path = DingshanSwift;
 			sourceTree = "<group>";
@@ -418,6 +404,55 @@
 				F0C5F6CB1B53D1E000B2C20D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F0D00E7A1B917AC00056BE3E /* General */ = {
+			isa = PBXGroup;
+			children = (
+				F09C7AA61B7CA60900648615 /* DSViewController.swift */,
+				F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */,
+				F08749B31B54B905006E1FD3 /* MainViewController.swift */,
+				F08749B51B54BFB3006E1FD3 /* MainTabBar.swift */,
+				F0D00E741B917AAB0056BE3E /* TabBarToggleBtn.swift */,
+				F0ADE21B1B55FEC8005E84FA /* DetailController.swift */,
+			);
+			name = General;
+			sourceTree = "<group>";
+		};
+		F0D00E7B1B917B010056BE3E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F09AB50A1B74A0BF00050A5C /* HomeGridViewController.swift */,
+				F09AB5101B74A0E400050A5C /* HomeGridCell.swift */,
+				F0C3C2501B5FA59500AB6E35 /* HomeLevel2Controller.swift */,
+				F0C3C29F1B60EA9C00AB6E35 /* HomeLevel2Cell.swift */,
+				F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */,
+				F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */,
+				F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */,
+				F0507E641B675666007E9024 /* ForumFloorListController.swift */,
+				F092E2931B6A357B003D2D30 /* ForumFloorCell.swift */,
+				F092E2991B6A35A7003D2D30 /* ForumLordFloorCell.swift */,
+				F092E29B1B6A35BE003D2D30 /* ForumReplyFloorCell.swift */,
+				F0507E661B675698007E9024 /* ForumFloorDetailController.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		F0D00E7C1B917B180056BE3E /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */,
+				F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */,
+			);
+			name = Gallery;
+			sourceTree = "<group>";
+		};
+		F0D00E7D1B917B540056BE3E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		F0E574F01B6784BE000053B8 /* Loading */ = {
@@ -608,6 +643,7 @@
 				F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */,
 				F09ADD791B563452009B3A6D /* PhoneMainTabBarButton.m in Sources */,
 				F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */,
+				F0D00E751B917AAB0056BE3E /* TabBarToggleBtn.swift in Sources */,
 				F0B6FABC1B81F3D000EE2439 /* GalleryViewCell.swift in Sources */,
 				F09ADDA11B5640DD009B3A6D /* CommonDefine.swift in Sources */,
 				F09C7AA71B7CA60900648615 /* DSViewController.swift in Sources */,
