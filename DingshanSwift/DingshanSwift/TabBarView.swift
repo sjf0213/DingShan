@@ -28,7 +28,7 @@ class TabBarView:UIView
         let btnHeight:CGFloat = CGRectGetHeight(self.frame);
         
         let topline = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: 0.5))
-        topline.backgroundColor = UIColor.grayColor()
+        topline.backgroundColor = UIColor(white: 151/255.0, alpha: 1.0)
         self.addSubview(topline)
         
         var btnArr = [UIControl]()
@@ -36,14 +36,17 @@ class TabBarView:UIView
         var btn1 = TabBarToggleBtn(frame: CGRectMake(0, 0, btnWidth, btnHeight));
         btn1.img0 = UIImage(named: "tabbar_forum0")!;
         btn1.img1 = UIImage(named: "tabbar_forum1")!;
+        btn1.title = "装吧"
         btnArr.append(btn1)
         var btn2 = TabBarToggleBtn(frame: CGRectMake(btnWidth, 0, btnWidth, btnHeight));
         btn2.img0 = UIImage(named: "tabbar_gallery0")!;
         btn2.img1 = UIImage(named: "tabbar_gallery1")!;
+        btn2.title = "怦然心动"
         btnArr.append(btn2)
         var btn3 = TabBarToggleBtn(frame: CGRectMake(btnWidth*2, 0, btnWidth, btnHeight));
         btn3.img0 = UIImage(named: "tabbar_profile0")!;
         btn3.img1 = UIImage(named: "tabbar_profile1")!;
+        btn3.title = "我的"
         btnArr.append(btn3)
         
         for(var i:Int = 0; i < btnArr.count; i++) {
