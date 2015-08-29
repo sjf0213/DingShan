@@ -60,6 +60,11 @@ class HomeLevel2Controller:DSViewController,UITableViewDelegate,LoadViewProtocol
         mainTable.registerClass(HomeLevel2Cell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
         self.view.addSubview(mainTable)
         
+        var adPic = UIImageView(image: UIImage(named: "home_ad.jpg"))
+        adPic.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.1)
+        adPic.frame = CGRect(x: 0, y: 0 - HomeAd_H, width: self.view.bounds.size.width, height: HomeAd_H)
+        mainTable.addSubview(adPic)
+        
         self.refreshView?.loadinsets = self.mainTable.contentInset
         
         loadMoreView = LoadView(frame:CGRect(x:0, y:-1000, width:self.view.bounds.width, height:50))
