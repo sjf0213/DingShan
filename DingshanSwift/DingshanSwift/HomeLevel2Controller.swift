@@ -46,12 +46,12 @@ class HomeLevel2Controller:DSViewController,UITableViewDelegate,LoadViewProtocol
                                                 y:TopBar_H,
                                                 width:self.view.bounds.width,
                                                 height:60))
-        refreshView?.backgroundColor = UIColor.cyanColor()
+        refreshView?.backgroundColor = UIColor.lightGrayColor()
         refreshView?.delegate = self
         self.view.addSubview(self.refreshView!)
         
-        mainTable.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height);
-        mainTable.contentInset = UIEdgeInsets(top: TopBar_H, left: 0, bottom: 0, right: 0)
+        mainTable.frame = CGRect(x: 0, y: TopBar_H, width: self.view.bounds.size.width, height: self.view.bounds.size.height);
+        mainTable.contentInset = UIEdgeInsets(top: HomeAd_H, left: 0, bottom: 0, right: 0)
         mainTable.backgroundColor = UIColor.whiteColor()
         mainTable.separatorStyle = UITableViewCellSeparatorStyle.None
         mainTable.delegate = self
@@ -63,8 +63,8 @@ class HomeLevel2Controller:DSViewController,UITableViewDelegate,LoadViewProtocol
         self.refreshView?.loadinsets = self.mainTable.contentInset
         
         loadMoreView = LoadView(frame:CGRect(x:0, y:-1000, width:self.view.bounds.width, height:50))
+        loadMoreView?.backgroundColor = UIColor.lightGrayColor()
         loadMoreView?.delegate = self
-//        refreshView?.backgroundColor = UIColor.cyanColor()
         loadMoreView?.loadinsets = self.mainTable.contentInset
         self.mainTable.addSubview(self.loadMoreView!)
     }

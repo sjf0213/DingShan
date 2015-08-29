@@ -18,7 +18,9 @@ class DSViewController:UIViewController
         topView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, TopBar_H)
         topView.backgroundColor = NAVI_COLOR
         self.view.addSubview(topView);
-        
-        
+    }
+    
+    override func viewDidLoad() {
+        self.view.bringSubviewToFront(topView)
     }
 }

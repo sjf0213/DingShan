@@ -17,5 +17,6 @@ let HomeGridCellIdentifier = "HomeGridCell"
 let GalleryViewCellIdentifier = "GalleryViewCell"
 let HomeGridFooterIdentifier = "HomeGridFooter"
 let TopBar_H:CGFloat = 64.0
+let HomeAd_H:CGFloat = 154
 let Default_Request_Count    =    20
 let HomeRow_H:CGFloat = 82.5

@@ -10,20 +10,21 @@ import Foundation
 
 class HomeLevel2Cell:UITableViewCell
 {
-    var icon:UIImageView?
-    var title:UILabel = UILabel()
+    var icon = UIImageView()
+    var title = UILabel()
     override init(style astyle:UITableViewCellStyle, reuseIdentifier str:String?) {
         super.init(style:astyle, reuseIdentifier:str)
+        self.backgroundColor = UIColor.whiteColor()
         
         icon = UIImageView(frame: CGRect(x: 15, y: 9, width: 64, height: 64))
-        icon?.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.5)
-        icon?.clipsToBounds = true;
-        self.contentView.addSubview(icon!)
+        icon.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.5)
+        icon.clipsToBounds = true;
+        self.contentView.addSubview(icon)
         
-        self.title = UILabel(frame: CGRect(x: 89.0, y: 12, width: self.bounds.size.width - 89 - 15, height: 38))
-        self.title.font = UIFont.systemFontOfSize(15.0)
-        self.title.numberOfLines = 2;
-        self.title.text = "..."
+        title = UILabel(frame: CGRect(x: 89.0, y: 12, width: self.bounds.size.width - 89 - 15, height: 38))
+        title.font = UIFont.systemFontOfSize(15.0)
+        title.numberOfLines = 2;
+        title.text = "..."
         self.contentView.addSubview(title)
         
         let topline = UIView(frame: CGRect(x: 15.0, y: HomeRow_H-0.5, width: self.bounds.width - 30.0, height: 0.5))
