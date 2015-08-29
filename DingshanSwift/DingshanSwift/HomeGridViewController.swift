@@ -31,7 +31,7 @@ class HomeGridViewController:DSViewController, UICollectionViewDataSource, UICol
         layout?.minimumInteritemSpacing = 14.0;
         layout?.footerReferenceSize = CGSize(width: w*2+14, height: h)
         layout?.sectionInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
-        mainCollectionView = UICollectionView(frame: CGRect(x: 15, y: TOPNAVI_H, width: self.view.bounds.size.width-30, height: self.view.bounds.size.height), collectionViewLayout: layout!)
+        mainCollectionView = UICollectionView(frame: CGRect(x: 15, y: TopBar_H, width: self.view.bounds.size.width-30, height: self.view.bounds.size.height), collectionViewLayout: layout!)
         mainCollectionView?.backgroundColor = UIColor.clearColor();
         mainCollectionView?.dataSource = self
         mainCollectionView?.delegate = self

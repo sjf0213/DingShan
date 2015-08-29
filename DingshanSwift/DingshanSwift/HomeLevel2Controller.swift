@@ -43,7 +43,7 @@ class HomeLevel2Controller:DSViewController,UITableViewDelegate,LoadViewProtocol
         })
         
         refreshView = RefreshView(frame:CGRect(x:0,
-                                                y:TOPNAVI_H,
+                                                y:TopBar_H,
                                                 width:self.view.bounds.width,
                                                 height:60))
         refreshView?.backgroundColor = UIColor.cyanColor()
@@ -51,7 +51,7 @@ class HomeLevel2Controller:DSViewController,UITableViewDelegate,LoadViewProtocol
         self.view.addSubview(self.refreshView!)
         
         mainTable.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height);
-        mainTable.contentInset = UIEdgeInsets(top: TOPNAVI_H, left: 0, bottom: 0, right: 0)
+        mainTable.contentInset = UIEdgeInsets(top: TopBar_H, left: 0, bottom: 0, right: 0)
         mainTable.backgroundColor = UIColor.whiteColor()
         mainTable.separatorStyle = UITableViewCellSeparatorStyle.None
         mainTable.delegate = self
