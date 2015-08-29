@@ -6,6 +6,7 @@
 //
 
 #import "CHTCollectionViewWaterfallLayout.h"
+#import "tgmath.h"
 
 NSString *const CHTCollectionElementKindSectionHeader = @"CHTCollectionElementKindSectionHeader";
 NSString *const CHTCollectionElementKindSectionFooter = @"CHTCollectionElementKindSectionFooter";
@@ -22,17 +23,20 @@ NSString *const CHTCollectionElementKindSectionFooter = @"CHTCollectionElementKi
 /// Dictionary to store section headers' attribute
 @property (nonatomic, strong) NSMutableDictionary *headersAttribute;
 /// Dictionary to store section footers' attribute
-@property (nonatomic, strong) NSMutableDictionary *footersAttrubite;
+@property (nonatomic, strong) NSMutableDictionary *footersAttribute;
 /// Array to store union rectangles
 @property (nonatomic, strong) NSMutableArray *unionRects;
-/// Width for each item
-@property (nonatomic, assign) CGFloat itemWidth;
 @end
 
 @implementation CHTCollectionViewWaterfallLayout
 
 /// How many items to be union into a single rectangle
-const NSInteger unionSize = 20;
+static const NSInteger unionSize = 20;
+
+static CGFloat CHTFloorCGFloat(CGFloat value) {
+  CGFloat scale = [UIScreen mainScreen].scale;
+  return floor(value * scale) / scale;
+}
 
 #pragma mark - Public Accessors
 - (void)setColumnCount:(NSInteger)columnCount {
@@ -70,11 +74,58 @@ const NSInteger unionSize = 20;
   }
 }
 
+- (void)setHeaderInset:(UIEdgeInsets)headerInset {
+  if (!UIEdgeInsetsEqualToEdgeInsets(_headerInset, headerInset)) {
+    _headerInset = headerInset;
+    [self invalidateLayout];
+  }
+}
+
+- (void)setFooterInset:(UIEdgeInsets)footerInset {
+  if (!UIEdgeInsetsEqualToEdgeInsets(_footerInset, footerInset)) {
+    _footerInset = footerInset;
+    [self invalidateLayout];
+  }
+}
+
 - (void)setSectionInset:(UIEdgeInsets)sectionInset {
   if (!UIEdgeInsetsEqualToEdgeInsets(_sectionInset, sectionInset)) {
     _sectionInset = sectionInset;
     [self invalidateLayout];
   }
+}
+
+- (void)setItemRenderDirection:(CHTCollectionViewWaterfallLayoutItemRenderDirection)itemRenderDirection {
+  if (_itemRenderDirection != itemRenderDirection) {
+    _itemRenderDirection = itemRenderDirection;
+    [self invalidateLayout];
+  }
+}
+
+- (NSInteger)columnCountForSection:(NSInteger)section {
+  if ([self.delegate respondsToSelector:@selector(collectionView:layout:columnCountForSection:)]) {
+    return [self.delegate collectionView:self.collectionView layout:self columnCountForSection:section];
+  } else {
+    return self.columnCount;
+  }
+}
+
+- (CGFloat)itemWidthInSectionAtIndex:(NSInteger)section {
+  UIEdgeInsets sectionInset;
+  if ([self.delegate respondsToSelector:@selector(collectionView:layout:insetForSectionAtIndex:)]) {
+    sectionInset = [self.delegate collectionView:self.collectionView layout:self insetForSectionAtIndex:section];
+  } else {
+    sectionInset = self.sectionInset;
+  }
+  CGFloat width = self.collectionView.bounds.size.width - sectionInset.left - sectionInset.right;
+  NSInteger columnCount = [self columnCountForSection:section];
+
+  CGFloat columnSpacing = self.minimumColumnSpacing;
+  if ([self.delegate respondsToSelector:@selector(collectionView:layout:minimumColumnSpacingForSectionAtIndex:)]) {
+    columnSpacing = [self.delegate collectionView:self.collectionView layout:self minimumColumnSpacingForSectionAtIndex:section];
+  }
+
+  return CHTFloorCGFloat((width - (columnCount - 1) * columnSpacing) / columnCount);
 }
 
 #pragma mark - Private Accessors
@@ -85,11 +136,11 @@ const NSInteger unionSize = 20;
   return _headersAttribute;
 }
 
-- (NSMutableDictionary *)footersAttrubite {
-  if (!_footersAttrubite) {
-    _footersAttrubite = [NSMutableDictionary dictionary];
+- (NSMutableDictionary *)footersAttribute {
+  if (!_footersAttribute) {
+    _footersAttribute = [NSMutableDictionary dictionary];
   }
-  return _footersAttrubite;
+  return _footersAttribute;
 }
 
 - (NSMutableArray *)unionRects {
@@ -120,6 +171,10 @@ const NSInteger unionSize = 20;
   return _sectionItemAttributes;
 }
 
+- (id <CHTCollectionViewDelegateWaterfallLayout> )delegate {
+  return (id <CHTCollectionViewDelegateWaterfallLayout> )self.collectionView.delegate;
+}
+
 #pragma mark - Init
 - (void)commonInit {
   _columnCount = 2;
@@ -128,6 +183,9 @@ const NSInteger unionSize = 20;
   _headerHeight = 0;
   _footerHeight = 0;
   _sectionInset = UIEdgeInsetsZero;
+  _headerInset  = UIEdgeInsetsZero;
+  _footerInset  = UIEdgeInsetsZero;
+  _itemRenderDirection = CHTCollectionViewWaterfallLayoutItemRenderDirectionShortestFirst;
 }
 
 - (id)init {
@@ -148,39 +206,65 @@ const NSInteger unionSize = 20;
 - (void)prepareLayout {
   [super prepareLayout];
 
-  NSInteger numberOfSections = [self.collectionView numberOfSections];
-  if (numberOfSections == 0) {
-    return;
-  }
-
-  self.delegate = (id <CHTCollectionViewDelegateWaterfallLayout> )self.collectionView.delegate;
-  NSAssert([self.delegate conformsToProtocol:@protocol(CHTCollectionViewDelegateWaterfallLayout)], @"UICollectionView's delegate should conform to CHTCollectionViewDelegateWaterfallLayout protocol");
-  NSAssert(self.columnCount > 0, @"UICollectionViewWaterfallLayout's columnCount should be greater than 0");
-
-  // Initialize variables
-  NSInteger idx = 0;
-  CGFloat width = self.collectionView.frame.size.width - self.sectionInset.left - self.sectionInset.right;
-
-  self.itemWidth = floorf((width - (self.columnCount - 1) * self.minimumColumnSpacing) / self.columnCount);
-
   [self.headersAttribute removeAllObjects];
-  [self.footersAttrubite removeAllObjects];
+  [self.footersAttribute removeAllObjects];
   [self.unionRects removeAllObjects];
   [self.columnHeights removeAllObjects];
   [self.allItemAttributes removeAllObjects];
   [self.sectionItemAttributes removeAllObjects];
 
-  for (idx = 0; idx < self.columnCount; idx++) {
-    [self.columnHeights addObject:@(0)];
+  NSInteger numberOfSections = [self.collectionView numberOfSections];
+  if (numberOfSections == 0) {
+    return;
   }
 
+  NSAssert([self.delegate conformsToProtocol:@protocol(CHTCollectionViewDelegateWaterfallLayout)], @"UICollectionView's delegate should conform to CHTCollectionViewDelegateWaterfallLayout protocol");
+  NSAssert(self.columnCount > 0 || [self.delegate respondsToSelector:@selector(collectionView:layout:columnCountForSection:)], @"UICollectionViewWaterfallLayout's columnCount should be greater than 0, or delegate must implement columnCountForSection:");
+
+  // Initialize variables
+  NSInteger idx = 0;
+
+  for (NSInteger section = 0; section < numberOfSections; section++) {
+    NSInteger columnCount = [self columnCountForSection:section];
+    NSMutableArray *sectionColumnHeights = [NSMutableArray arrayWithCapacity:columnCount];
+    for (idx = 0; idx < columnCount; idx++) {
+      [sectionColumnHeights addObject:@(0)];
+    }
+    [self.columnHeights addObject:sectionColumnHeights];
+  }
   // Create attributes
   CGFloat top = 0;
   UICollectionViewLayoutAttributes *attributes;
 
   for (NSInteger section = 0; section < numberOfSections; ++section) {
     /*
-     * 1. Section header
+     * 1. Get section-specific metrics (minimumInteritemSpacing, sectionInset)
+     */
+    CGFloat minimumInteritemSpacing;
+    if ([self.delegate respondsToSelector:@selector(collectionView:layout:minimumInteritemSpacingForSectionAtIndex:)]) {
+      minimumInteritemSpacing = [self.delegate collectionView:self.collectionView layout:self minimumInteritemSpacingForSectionAtIndex:section];
+    } else {
+      minimumInteritemSpacing = self.minimumInteritemSpacing;
+    }
+
+    CGFloat columnSpacing = self.minimumColumnSpacing;
+    if ([self.delegate respondsToSelector:@selector(collectionView:layout:minimumColumnSpacingForSectionAtIndex:)]) {
+      columnSpacing = [self.delegate collectionView:self.collectionView layout:self minimumColumnSpacingForSectionAtIndex:section];
+    }
+
+    UIEdgeInsets sectionInset;
+    if ([self.delegate respondsToSelector:@selector(collectionView:layout:insetForSectionAtIndex:)]) {
+      sectionInset = [self.delegate collectionView:self.collectionView layout:self insetForSectionAtIndex:section];
+    } else {
+      sectionInset = self.sectionInset;
+    }
+
+    CGFloat width = self.collectionView.bounds.size.width - sectionInset.left - sectionInset.right;
+    NSInteger columnCount = [self columnCountForSection:section];
+    CGFloat itemWidth = CHTFloorCGFloat((width - (columnCount - 1) * columnSpacing) / columnCount);
+
+    /*
+     * 2. Section header
      */
     CGFloat headerHeight;
     if ([self.delegate respondsToSelector:@selector(collectionView:layout:heightForHeaderInSection:)]) {
@@ -189,23 +273,35 @@ const NSInteger unionSize = 20;
       headerHeight = self.headerHeight;
     }
 
+    UIEdgeInsets headerInset;
+    if ([self.delegate respondsToSelector:@selector(collectionView:layout:insetForHeaderInSection:)]) {
+      headerInset = [self.delegate collectionView:self.collectionView layout:self insetForHeaderInSection:section];
+    } else {
+      headerInset = self.headerInset;
+    }
+
+    top += headerInset.top;
+
     if (headerHeight > 0) {
       attributes = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withIndexPath:[NSIndexPath indexPathForItem:0 inSection:section]];
-      attributes.frame = CGRectMake(0, top, self.collectionView.frame.size.width, headerHeight);
+      attributes.frame = CGRectMake(headerInset.left,
+                                    top,
+                                    self.collectionView.bounds.size.width - (headerInset.left + headerInset.right),
+                                    headerHeight);
 
       self.headersAttribute[@(section)] = attributes;
       [self.allItemAttributes addObject:attributes];
 
-      top = CGRectGetMaxY(attributes.frame);
+      top = CGRectGetMaxY(attributes.frame) + headerInset.bottom;
     }
 
-    top += self.sectionInset.top;
-    for (idx = 0; idx < self.columnCount; idx++) {
-      self.columnHeights[idx] = @(top);
+    top += sectionInset.top;
+    for (idx = 0; idx < columnCount; idx++) {
+      self.columnHeights[section][idx] = @(top);
     }
 
     /*
-     * 2. Section items
+     * 3. Section items
      */
     NSInteger itemCount = [self.collectionView numberOfItemsInSection:section];
     NSMutableArray *itemAttributes = [NSMutableArray arrayWithCapacity:itemCount];
@@ -213,27 +309,30 @@ const NSInteger unionSize = 20;
     // Item will be put into shortest column.
     for (idx = 0; idx < itemCount; idx++) {
       NSIndexPath *indexPath = [NSIndexPath indexPathForItem:idx inSection:section];
+      NSUInteger columnIndex = [self nextColumnIndexForItem:idx inSection:section];
+      CGFloat xOffset = sectionInset.left + (itemWidth + columnSpacing) * columnIndex;
+      CGFloat yOffset = [self.columnHeights[section][columnIndex] floatValue];
       CGSize itemSize = [self.delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:indexPath];
-      CGFloat itemHeight = floorf(itemSize.height * self.itemWidth / itemSize.width);
-      NSUInteger columnIndex = [self shortestColumnIndex];
-      CGFloat xOffset = self.sectionInset.left + (self.itemWidth + self.minimumColumnSpacing) * columnIndex;
-      CGFloat yOffset = [self.columnHeights[columnIndex] floatValue];
+      CGFloat itemHeight = 0;
+      if (itemSize.height > 0 && itemSize.width > 0) {
+        itemHeight = CHTFloorCGFloat(itemSize.height * itemWidth / itemSize.width);
+      }
 
       attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-      attributes.frame = CGRectMake(xOffset, yOffset, self.itemWidth, itemHeight);
+      attributes.frame = CGRectMake(xOffset, yOffset, itemWidth, itemHeight);
       [itemAttributes addObject:attributes];
       [self.allItemAttributes addObject:attributes];
-      self.columnHeights[columnIndex] = @(CGRectGetMaxY(attributes.frame) + self.minimumInteritemSpacing);
+      self.columnHeights[section][columnIndex] = @(CGRectGetMaxY(attributes.frame) + minimumInteritemSpacing);
     }
 
     [self.sectionItemAttributes addObject:itemAttributes];
 
     /*
-     * Section footer
+     * 4. Section footer
      */
     CGFloat footerHeight;
-    NSUInteger columnIndex = [self longestColumnIndex];
-    top = [self.columnHeights[columnIndex] floatValue] - self.minimumInteritemSpacing + self.sectionInset.bottom;
+    NSUInteger columnIndex = [self longestColumnIndexInSection:section];
+    top = [self.columnHeights[section][columnIndex] floatValue] - minimumInteritemSpacing + sectionInset.bottom;
 
     if ([self.delegate respondsToSelector:@selector(collectionView:layout:heightForFooterInSection:)]) {
       footerHeight = [self.delegate collectionView:self.collectionView layout:self heightForFooterInSection:section];
@@ -241,18 +340,30 @@ const NSInteger unionSize = 20;
       footerHeight = self.footerHeight;
     }
 
-    if (footerHeight > 0) {
-      attributes = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:CHTCollectionElementKindSectionFooter withIndexPath:[NSIndexPath indexPathForItem:0 inSection:section]];
-      attributes.frame = CGRectMake(0, top, self.collectionView.frame.size.width, footerHeight);
-
-      self.footersAttrubite[@(section)] = attributes;
-      [self.allItemAttributes addObject:attributes];
-
-      top = CGRectGetMaxY(attributes.frame);
+    UIEdgeInsets footerInset;
+    if ([self.delegate respondsToSelector:@selector(collectionView:layout:insetForFooterInSection:)]) {
+      footerInset = [self.delegate collectionView:self.collectionView layout:self insetForFooterInSection:section];
+    } else {
+      footerInset = self.footerInset;
     }
 
-    for (idx = 0; idx < self.columnCount; idx++) {
-      self.columnHeights[idx] = @(top);
+    top += footerInset.top;
+
+    if (footerHeight > 0) {
+      attributes = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:CHTCollectionElementKindSectionFooter withIndexPath:[NSIndexPath indexPathForItem:0 inSection:section]];
+      attributes.frame = CGRectMake(footerInset.left,
+                                    top,
+                                    self.collectionView.bounds.size.width - (footerInset.left + footerInset.right),
+                                    footerHeight);
+
+      self.footersAttribute[@(section)] = attributes;
+      [self.allItemAttributes addObject:attributes];
+
+      top = CGRectGetMaxY(attributes.frame) + footerInset.bottom;
+    }
+
+    for (idx = 0; idx < columnCount; idx++) {
+      self.columnHeights[section][idx] = @(top);
     }
   } // end of for (NSInteger section = 0; section < numberOfSections; ++section)
 
@@ -260,33 +371,31 @@ const NSInteger unionSize = 20;
   idx = 0;
   NSInteger itemCounts = [self.allItemAttributes count];
   while (idx < itemCounts) {
-    CGRect rect1 = ((UICollectionViewLayoutAttributes *)self.allItemAttributes[idx]).frame;
-    idx = MIN(idx + unionSize, itemCounts) - 1;
-    CGRect rect2 = ((UICollectionViewLayoutAttributes *)self.allItemAttributes[idx]).frame;
-    [self.unionRects addObject:[NSValue valueWithCGRect:CGRectUnion(rect1, rect2)]];
-    idx++;
+    CGRect unionRect = ((UICollectionViewLayoutAttributes *)self.allItemAttributes[idx]).frame;
+    NSInteger rectEndIndex = MIN(idx + unionSize, itemCounts);
+
+    for (NSInteger i = idx + 1; i < rectEndIndex; i++) {
+      unionRect = CGRectUnion(unionRect, ((UICollectionViewLayoutAttributes *)self.allItemAttributes[i]).frame);
+    }
+
+    idx = rectEndIndex;
+
+    [self.unionRects addObject:[NSValue valueWithCGRect:unionRect]];
   }
 }
 
-- (CGSize)collectionViewContentSize
-{
+- (CGSize)collectionViewContentSize {
   NSInteger numberOfSections = [self.collectionView numberOfSections];
   if (numberOfSections == 0) {
-    // 为了下拉刷新而添加
-      CGSize size = [super collectionViewContentSize];
-      if (size.height <= self.collectionView.bounds.size.height) {
-          size.height = self.collectionView.bounds.size.height+1;
-      }
-      return size;
+    return CGSizeZero;
   }
 
   CGSize contentSize = self.collectionView.bounds.size;
-  contentSize.height = [self.columnHeights[0] floatValue];
+  contentSize.height = [[[self.columnHeights lastObject] firstObject] floatValue];
 
-    // 为了下拉刷新而添加
-    if (contentSize.height <= self.collectionView.bounds.size.height) {
-        contentSize.height = self.collectionView.bounds.size.height+1;
-    }
+  if (contentSize.height < self.minimumContentHeight) {
+    contentSize.height = self.minimumContentHeight;
+  }
 
   return contentSize;
 }
@@ -306,7 +415,7 @@ const NSInteger unionSize = 20;
   if ([kind isEqualToString:CHTCollectionElementKindSectionHeader]) {
     attribute = self.headersAttribute[@(indexPath.section)];
   } else if ([kind isEqualToString:CHTCollectionElementKindSectionFooter]) {
-    attribute = self.footersAttrubite[@(indexPath.section)];
+    attribute = self.footersAttribute[@(indexPath.section)];
   }
   return attribute;
 }
@@ -340,8 +449,7 @@ const NSInteger unionSize = 20;
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
   CGRect oldBounds = self.collectionView.bounds;
-  if (CGRectGetWidth(newBounds) != CGRectGetWidth(oldBounds) ||
-      CGRectGetHeight(newBounds) != CGRectGetHeight(oldBounds)) {
+  if (CGRectGetWidth(newBounds) != CGRectGetWidth(oldBounds)) {
     return YES;
   }
   return NO;
@@ -354,11 +462,11 @@ const NSInteger unionSize = 20;
  *
  *  @return index for the shortest column
  */
-- (NSUInteger)shortestColumnIndex {
+- (NSUInteger)shortestColumnIndexInSection:(NSInteger)section {
   __block NSUInteger index = 0;
   __block CGFloat shortestHeight = MAXFLOAT;
 
-  [self.columnHeights enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+  [self.columnHeights[section] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     CGFloat height = [obj floatValue];
     if (height < shortestHeight) {
       shortestHeight = height;
@@ -374,11 +482,11 @@ const NSInteger unionSize = 20;
  *
  *  @return index for the longest column
  */
-- (NSUInteger)longestColumnIndex {
+- (NSUInteger)longestColumnIndexInSection:(NSInteger)section {
   __block NSUInteger index = 0;
   __block CGFloat longestHeight = 0;
 
-  [self.columnHeights enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+  [self.columnHeights[section] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     CGFloat height = [obj floatValue];
     if (height > longestHeight) {
       longestHeight = height;
@@ -386,6 +494,34 @@ const NSInteger unionSize = 20;
     }
   }];
 
+  return index;
+}
+
+/**
+ *  Find the index for the next column.
+ *
+ *  @return index for the next column
+ */
+- (NSUInteger)nextColumnIndexForItem:(NSInteger)item inSection:(NSInteger)section {
+  NSUInteger index = 0;
+  NSInteger columnCount = [self columnCountForSection:section];
+  switch (self.itemRenderDirection) {
+    case CHTCollectionViewWaterfallLayoutItemRenderDirectionShortestFirst:
+      index = [self shortestColumnIndexInSection:section];
+      break;
+
+    case CHTCollectionViewWaterfallLayoutItemRenderDirectionLeftToRight:
+      index = (item % columnCount);
+      break;
+
+    case CHTCollectionViewWaterfallLayoutItemRenderDirectionRightToLeft:
+      index = (columnCount - 1) - (item % columnCount);
+      break;
+
+    default:
+      index = [self shortestColumnIndexInSection:section];
+      break;
+  }
   return index;
 }
 
