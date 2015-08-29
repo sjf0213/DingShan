@@ -252,6 +252,8 @@
 		F09AB5251B74B6C400050A5C /* unused */ = {
 			isa = PBXGroup;
 			children = (
+				F09AB50A1B74A0BF00050A5C /* HomeGridViewController.swift */,
+				F09AB5101B74A0E400050A5C /* HomeGridCell.swift */,
 				F0D00E981B9191B60056BE3E /* MainTabBar.swift */,
 				F08749B91B54E837006E1FD3 /* HomeViewController.swift */,
 				F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */,
@@ -407,8 +409,6 @@
 		F0D00E7B1B917B010056BE3E /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				F09AB50A1B74A0BF00050A5C /* HomeGridViewController.swift */,
-				F09AB5101B74A0E400050A5C /* HomeGridCell.swift */,
 				F0C3C2501B5FA59500AB6E35 /* HomeLevel2Controller.swift */,
 				F0C3C29F1B60EA9C00AB6E35 /* HomeLevel2Cell.swift */,
 				F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */,

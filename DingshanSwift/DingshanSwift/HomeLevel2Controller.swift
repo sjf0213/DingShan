@@ -52,11 +52,11 @@ class HomeLevel2Controller:DSViewController,UITableViewDelegate,LoadViewProtocol
         
         mainTable.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height);
         mainTable.contentInset = UIEdgeInsets(top: TOPNAVI_H, left: 0, bottom: 0, right: 0)
-//        mainTable.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.2)
-        mainTable.backgroundColor = UIColor.clearColor()
+        mainTable.backgroundColor = UIColor.whiteColor()
+        mainTable.separatorStyle = UITableViewCellSeparatorStyle.None
         mainTable.delegate = self
         mainTable.dataSource = self.tableSource
-        mainTable.rowHeight = 80.0
+        mainTable.rowHeight = HomeRow_H
         mainTable.registerClass(HomeLevel2Cell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
         self.view.addSubview(mainTable)
         
@@ -64,7 +64,7 @@ class HomeLevel2Controller:DSViewController,UITableViewDelegate,LoadViewProtocol
         
         loadMoreView = LoadView(frame:CGRect(x:0, y:-1000, width:self.view.bounds.width, height:50))
         loadMoreView?.delegate = self
-        refreshView?.backgroundColor = UIColor.cyanColor()
+//        refreshView?.backgroundColor = UIColor.cyanColor()
         loadMoreView?.loadinsets = self.mainTable.contentInset
         self.mainTable.addSubview(self.loadMoreView!)
     }
@@ -151,7 +151,7 @@ class HomeLevel2Controller:DSViewController,UITableViewDelegate,LoadViewProtocol
         print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)")
         var cell = tableView.cellForRowAtIndexPath(indexPath) as? HomeLevel2Cell
         var detail = ForumFloorListController()
-        detail.navigationItem.title = cell?.title?.text
+        detail.navigationItem.title = cell?.title.text
         self.navigationController?.pushViewController(detail, animated: true)
     }
     

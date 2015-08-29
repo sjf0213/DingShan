@@ -15,7 +15,7 @@ class MainViewController:UIViewController
 {
     var tabbar:TabBarView?
 //    var homeController:HomeViewController?
-    var homeController:HomeGridViewController?
+    var homeController:HomeLevel2Controller?
     var homeNavi:UINavigationController?
     var galleryController:GalleryViewController?
     var galleryNavi:UINavigationController?
@@ -24,7 +24,7 @@ class MainViewController:UIViewController
     override func loadView()
     {
         super.loadView()
-        self.view.backgroundColor = UIColor.cyanColor()
+        self.view.backgroundColor = UIColor.whiteColor()
     }
     
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ extension MainViewController : TabBarViewDelegate
         switch tag {
         case 0:
             if homeController == nil{
-                homeController = HomeGridViewController()
+                homeController = HomeLevel2Controller()
                 homeNavi = UINavigationController(rootViewController: homeController!)
                 self.view.addSubview(homeNavi!.view)
             }

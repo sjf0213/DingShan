@@ -7,21 +7,28 @@
 //
 
 import Foundation
+
 class HomeLevel2Cell:UITableViewCell
 {
     var icon:UIImageView?
-    var title:UILabel?
+    var title:UILabel = UILabel()
     override init(style astyle:UITableViewCellStyle, reuseIdentifier str:String?) {
         super.init(style:astyle, reuseIdentifier:str)
         
-        icon = UIImageView(frame: CGRect(x: 15, y: 8, width: 128, height: 128))
-        icon?.backgroundColor = UIColor.magentaColor().colorWithAlphaComponent(0.2)
+        icon = UIImageView(frame: CGRect(x: 15, y: 9, width: 64, height: 64))
+        icon?.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.5)
         icon?.clipsToBounds = true;
-        self.addSubview(icon!)
+        self.contentView.addSubview(icon!)
         
-        self.title = UILabel(frame: self.bounds)
-        self.title!.text = ".."
-        self.addSubview(title!)
+        self.title = UILabel(frame: CGRect(x: 89.0, y: 12, width: self.bounds.size.width - 89 - 15, height: 38))
+        self.title.font = UIFont.systemFontOfSize(15.0)
+        self.title.numberOfLines = 2;
+        self.title.text = "..."
+        self.contentView.addSubview(title)
+        
+        let topline = UIView(frame: CGRect(x: 15.0, y: HomeRow_H-0.5, width: self.bounds.width - 30.0, height: 0.5))
+        topline.backgroundColor = UIColor(white: 216/255.0, alpha: 1.0)
+        self.contentView.addSubview(topline)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -29,11 +36,11 @@ class HomeLevel2Cell:UITableViewCell
     }
     func clearData()
     {
-        title!.text = ""
+        title.text = ""
     }
     func loadCellData(dic:NSDictionary)
     {
         let str = dic.objectForKey("topic_title") as? String
-        title!.text = str
+        title.text = str
     }
 }

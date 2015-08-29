@@ -36,7 +36,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
             y:TOPNAVI_H,
             width:self.view.bounds.width,
             height:60))
-        refreshView?.backgroundColor = UIColor.cyanColor()
+//        refreshView?.backgroundColor = UIColor.cyanColor()
         refreshView?.delegate = self
         self.view.addSubview(self.refreshView!)
         
@@ -54,7 +54,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         
         loadMoreView = LoadView(frame:CGRect(x:0, y:-1000, width:self.view.bounds.width, height:50))
         loadMoreView?.delegate = self
-        refreshView?.backgroundColor = UIColor.cyanColor()
+//        refreshView?.backgroundColor = UIColor.cyanColor()
         loadMoreView?.loadinsets = self.mainTable.contentInset
         self.mainTable.addSubview(self.loadMoreView!)
     }
