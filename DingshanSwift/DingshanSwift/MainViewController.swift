@@ -13,7 +13,7 @@ let MAIN_TAB_H:CGFloat = 50
 
 class MainViewController:UIViewController
 {
-    var tabbar:MainTabBar?
+    var tabbar:TabBarView?
 //    var homeController:HomeViewController?
     var homeController:HomeGridViewController?
     var homeNavi:UINavigationController?
@@ -28,17 +28,17 @@ class MainViewController:UIViewController
     }
     
     override func viewDidLoad() {
-        tabbar = MainTabBar(frame: CGRect(x: 0, y: self.view.bounds.height - MAIN_TAB_H, width: self.view.bounds.width, height: MAIN_TAB_H))
+//        tabbar = MainTabBar(frame: CGRect(x: 0, y: self.view.bounds.height - MAIN_TAB_H, width: self.view.bounds.width, height: MAIN_TAB_H))
+        tabbar = TabBarView(frame: CGRect(x: 0, y: self.view.bounds.height - MAIN_TAB_H, width: self.view.bounds.width, height: MAIN_TAB_H))
         tabbar?.delegate = self;
-        self.view.addSubview(tabbar!)
-        
         tabbar?.setHomeIndex(0);
+        self.view.addSubview(tabbar!)
         
         let config = MainConfig.sharedInstance
     }
 }
 
-extension MainViewController : MainTabBarDelegate
+extension MainViewController : TabBarViewDelegate
 {
     func didSelectTabButton(tag:Int)
     {
