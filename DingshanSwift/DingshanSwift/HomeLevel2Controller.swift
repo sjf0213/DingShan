@@ -51,7 +51,7 @@ class HomeLevel2Controller:DSViewController,UITableViewDelegate,LoadViewProtocol
         self.view.addSubview(self.refreshView!)
         
         mainTable.frame = CGRect(x: 0, y: TopBar_H, width: self.view.bounds.size.width, height: self.view.bounds.size.height);
-        mainTable.contentInset = UIEdgeInsets(top: HomeAd_H, left: 0, bottom: 0, right: 0)
+        mainTable.contentInset = UIEdgeInsets(top: HomeAd_H, left: 0, bottom: MAIN_TAB_H, right: 0)
         mainTable.backgroundColor = UIColor.whiteColor()
         mainTable.separatorStyle = UITableViewCellSeparatorStyle.None
         mainTable.delegate = self
