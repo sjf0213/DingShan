@@ -38,7 +38,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         
         menuView.frame = CGRectMake(0, self.topView.frame.size.height, self.view.bounds.size.width, 40)
         self.view.addSubview(menuView)
-        menuView.menuTitleArr = ["1", "2", "3"]
+        menuView.menuTitleArr = [["title":"1"], ["title":"2"], ["title":"3"]]
         
         var layout = CHTCollectionViewWaterfallLayout()
         layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
