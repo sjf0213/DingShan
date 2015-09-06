@@ -147,4 +147,12 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         cell?.loadCellData(item)
         return cell!;
     }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
+//        print("+++++++++++++++didSelectItemAtIndexPath-------\(indexPath)")
+        var detail = GalleryDetailController()
+        detail.navigationItem.title =  dataList[indexPath.item].string;
+        self.navigationController?.pushViewController(detail, animated: true)
+    }
+    
 }
