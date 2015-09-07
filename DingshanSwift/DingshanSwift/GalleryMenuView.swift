@@ -44,12 +44,24 @@ class GalleryMenuView: UIView {
         self.addSubview(buttomline)
     }
     
-    func onTapBtn(sender:UIButton) {
+    func onTapBtn(sender:GalleryMenuButtton) {
         print(sender)
-        let index = sender.tag
-        if let dic = self.menuTitleArr[index] as? NSDictionary
-        {
-            print("tap menu btn:\(index) - - - - \(dic)")
+        let btn = sender
+        let index = btn.tag
+        if(btn.curSelected){
+            sender.curSelected = false;
+            if let dic = self.menuTitleArr[index] as? NSDictionary{
+                print("tap menu btn:\(index) - - - - \(dic)")
+                self.frame = CGRectMake(0, TopBar_H, self.bounds.size.width, UIScreen.mainScreen().bounds.height - TopBar_H)
+            }
+        }else{
+            sender.curSelected = true;
+            self.frame = CGRectMake(0, TopBar_H, self.bounds.size.width, 40)
         }
+        
+        
+        
+        
+        
     }
 }

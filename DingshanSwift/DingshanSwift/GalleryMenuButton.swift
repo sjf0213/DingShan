@@ -8,6 +8,15 @@
 
 import Foundation
 class GalleryMenuButtton:UIButton {
+    var curSelected:Bool = false{
+        willSet(newCurSelected){
+            if (newCurSelected){
+                
+            }else{
+                
+            }
+        }
+    }
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
