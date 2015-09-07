@@ -118,9 +118,9 @@ class HomeLevel2Controller:DSViewController,UITableViewDelegate,LoadViewProtocol
                 self.tableSource?.removeAllItems()
             }
             // 如果请求数据有效
-            if data is NSDictionary{
+            if let dic = data as? NSDictionary{
                 print("\n responseJSON- - - - -data is NSDictionary")
-                self.processRequestResult(data as! NSDictionary)
+                self.processRequestResult(dic)
             }
             // 控件复位
             self.refreshView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)

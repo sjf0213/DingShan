@@ -10,7 +10,6 @@ import UIKit
 
 class HomeViewController:UIViewController,UITableViewDelegate
 {
-    
     var mainTable = UITableView();
     var tableSource:ArrayDataSource?
     override func loadView()
@@ -37,10 +36,10 @@ class HomeViewController:UIViewController,UITableViewDelegate
     override func viewDidLoad() {
 
         var arr: AnyObject? = MainConfig.sharedInstance.rootDic?.objectForKey("HomeMenu")
-        if arr is NSArray{
-            self.tableSource!.appendWithItems(arr as! [AnyObject])
+        if let one = arr as? [AnyObject]{
+            self.tableSource?.appendWithItems(one)
         }
-        print("\n items = \(self.tableSource!.items)")
+        print("\n items = \(self.tableSource?.items)")
         mainTable.reloadData()
     }
     

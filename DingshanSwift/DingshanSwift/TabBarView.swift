@@ -60,12 +60,11 @@ class TabBarView:UIView
     func setHomeIndex(index:Int) {
         print(" subviews.count = " + String(self.subviews.count))
         for obj in self.subviews{
-            if (obj is TabBarToggleBtn){
-                let item = obj as? TabBarToggleBtn
-                if (item?.tag == index + 1000){
-                    item?.curSelected = true;
+            if let item = obj as? TabBarToggleBtn{
+                if (item.tag == index + 1000){
+                    item.curSelected = true;
                 }else{
-                    item?.curSelected = false;
+                    item.curSelected = false;
                 }
             }
         }
@@ -74,15 +73,15 @@ class TabBarView:UIView
     
     func onTapBtn(sender:UIControl) {
         print(String(sender.tag))
-        let item = sender as? TabBarToggleBtn
-        item?.curSelected = true;
-        for obj in self.subviews{
-            if (obj is TabBarToggleBtn){
-                let obj = obj as? TabBarToggleBtn
-                if (obj?.tag == item?.tag){
-                    obj?.curSelected = true;
-                }else{
-                    obj?.curSelected = false;
+        if let item = sender as? TabBarToggleBtn{
+            item.curSelected = true;
+            for obj in self.subviews{
+                if let sub = obj as? TabBarToggleBtn{
+                    if (sub.tag == item.tag){
+                        sub.curSelected = true;
+                    }else{
+                        sub.curSelected = false;
+                    }
                 }
             }
         }
