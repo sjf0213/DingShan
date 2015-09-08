@@ -195,8 +195,13 @@ http://v3.kuaigame.com/topics/topiclist?iosver=8.4&uid=221188&device=iPhone5%2C2
     return [ApiBuilder signatureURL:@"http://www.kokoguo.com/dingshan/Topic/topiclist" args:dic];
 }
 
-+(NSString *)forum_get_galary_list:(NSDictionary*)dic
++(NSString *)forum_get_floor_list:(NSDictionary*)dic
 {
-    return [ApiBuilder signatureURL:@"http://v3.kuaigame.cn/app/getcategoryarticle" args:dic];
+    return [ApiBuilder signatureURL:@"http://www.kokoguo.com/dingshan/Topic/floorlist" args:dic];
+}
+
++(NSString *)forum_get_reply_list:(NSDictionary*)dic
+{
+    return [ApiBuilder signatureURL:@"http://www.kokoguo.com/dingshan/Topic/replylist" args:dic];
 }
 @end

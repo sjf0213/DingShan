@@ -36,10 +36,12 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         self.view.backgroundColor = UIColor.lightGrayColor()
 //        self.title = "首页二级"
         self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, data) in
-            let itemCell:HomeCell? = cell as? HomeCell
-            let itemDic:NSDictionary? = data as? NSDictionary
-            itemCell?.clearData()
-            itemCell?.loadCellData(itemDic!)
+            if let itemCell = cell as? HomeCell{
+                itemCell.clearData()
+                if let d = data as? ForumTopicData{
+                    itemCell.loadCellData(d)
+                }
+            }
         })
         
         refreshView = RefreshView(frame:CGRect(x:0,
@@ -133,7 +135,12 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
             if let list = result["v"] as? NSDictionary{
                 if let arr = list["topic_list"] as? NSArray{
                     print("\n dataArray- - -\(arr)")
-                    self.tableSource?.appendWithItems(arr as [AnyObject])
+                    for var i = 0; i < arr.count; ++i {
+                        if let item = arr[i] as? [String:AnyObject] {
+                            var data = ForumTopicData.init(dic: item)
+                            self.tableSource?.items.addObject(data)
+                        }
+                    }
                     self.mainTable.reloadData()
                     if (arr.count < Default_Request_Count) {
                         self.loadMoreView?.isCanUse = false
@@ -154,10 +161,12 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)")
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as? HomeCell
-        var detail = ForumFloorListController()
-        detail.navigationItem.title = cell?.title.text
-        self.navigationController?.pushViewController(detail, animated: true)
+        if let  cell = tableView.cellForRowAtIndexPath(indexPath) as? HomeCell{
+            var detail = ForumFloorListController()
+            detail.navigationItem.title = cell.title.text
+            self.navigationController?.pushViewController(detail, animated: true)
+            detail.loadFloorListByTopicData(cell.topicData)
+        }
     }
     
 //MARK: - UIScrollViewDelegate

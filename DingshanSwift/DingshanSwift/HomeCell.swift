@@ -12,6 +12,7 @@ class HomeCell:UITableViewCell
 {
     var icon = UIImageView()
     var title = UILabel()
+    var topicData = ForumTopicData()
     override init(style astyle:UITableViewCellStyle, reuseIdentifier str:String?) {
         super.init(style:astyle, reuseIdentifier:str)
         self.backgroundColor = UIColor.whiteColor()
@@ -39,9 +40,10 @@ class HomeCell:UITableViewCell
     {
         title.text = ""
     }
-    func loadCellData(dic:NSDictionary)
+    func loadCellData(data:ForumTopicData)
     {
-        let str = dic.objectForKey("topic_title") as? String
-        title.text = str
+//        let str = dic.objectForKey("topic_title") as? String
+        self.topicData = data
+        title.text = data.topicTitle
     }
 }

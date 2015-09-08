@@ -56,6 +56,7 @@
 		F0AA4FAC1B93ED37007EDEA9 /* home_ad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F0AA4FA91B93ED37007EDEA9 /* home_ad.jpg */; };
 		F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADE21B1B55FEC8005E84FA /* DetailController.swift */; };
 		F0B6FABC1B81F3D000EE2439 /* GalleryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */; };
+		F0BDA8E51B9EFE6700176531 /* ForumTopicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BDA8E41B9EFE6700176531 /* ForumTopicData.swift */; };
 		F0C3C2511B5FA59500AB6E35 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C2501B5FA59500AB6E35 /* HomeController.swift */; };
 		F0C3C26D1B60923F00AB6E35 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F0C3C25C1B5FAA0C00AB6E35 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F0C3C2A01B60EA9C00AB6E35 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C29F1B60EA9C00AB6E35 /* HomeCell.swift */; };
@@ -186,6 +187,7 @@
 		F0AA4FA91B93ED37007EDEA9 /* home_ad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = home_ad.jpg; path = common/home_ad.jpg; sourceTree = "<group>"; };
 		F0ADE21B1B55FEC8005E84FA /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewCell.swift; sourceTree = "<group>"; };
+		F0BDA8E41B9EFE6700176531 /* ForumTopicData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumTopicData.swift; sourceTree = "<group>"; };
 		F0C3C2501B5FA59500AB6E35 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		F0C3C2541B5FAA0C00AB6E35 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		F0C3C29F1B60EA9C00AB6E35 /* HomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
@@ -306,6 +308,14 @@
 			name = common;
 			sourceTree = "<group>";
 		};
+		F0BDA8E31B9EFE4700176531 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F0BDA8E41B9EFE6700176531 /* ForumTopicData.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		F0C3C2551B5FAA0C00AB6E35 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,6 +364,7 @@
 				F0D00E7B1B917B010056BE3E /* Home */,
 				F0D00E7C1B917B180056BE3E /* Gallery */,
 				F0D00E7D1B917B540056BE3E /* Profile */,
+				F0BDA8E31B9EFE4700176531 /* Model */,
 			);
 			path = DingshanSwift;
 			sourceTree = "<group>";
@@ -403,11 +414,11 @@
 			children = (
 				F0C3C2501B5FA59500AB6E35 /* HomeController.swift */,
 				F0C3C29F1B60EA9C00AB6E35 /* HomeCell.swift */,
+				F0507E641B675666007E9024 /* ForumFloorListController.swift */,
+				F092E2931B6A357B003D2D30 /* ForumFloorCell.swift */,
 				F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */,
 				F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */,
 				F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */,
-				F0507E641B675666007E9024 /* ForumFloorListController.swift */,
-				F092E2931B6A357B003D2D30 /* ForumFloorCell.swift */,
 				F092E2991B6A35A7003D2D30 /* ForumLordFloorCell.swift */,
 				F092E29B1B6A35BE003D2D30 /* ForumReplyFloorCell.swift */,
 				F0507E661B675698007E9024 /* ForumFloorDetailController.swift */,
@@ -648,6 +659,7 @@
 				F0A20AD31B62499E00F1F311 /* CommonUtility.m in Sources */,
 				F09AB5111B74A0E400050A5C /* HomeGridCell.swift in Sources */,
 				F028C17A1B9C479300B8CECA /* GalleryMenuItem.swift in Sources */,
+				F0BDA8E51B9EFE6700176531 /* ForumTopicData.swift in Sources */,
 				F0A20AD81B62548800F1F311 /* KnowledgeListController.swift in Sources */,
 				F09AB50B1B74A0BF00050A5C /* HomeGridViewController.swift in Sources */,
 				F0C5F6B71B53D1E000B2C20D /* AppDelegate.swift in Sources */,

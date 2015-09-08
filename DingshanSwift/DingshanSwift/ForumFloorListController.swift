@@ -15,6 +15,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
     var refreshView:RefreshView?
     var loadMoreView:LoadView?
     var currentPage:NSInteger = 0
+    var topicId:NSInteger = 0
     var request: Alamofire.Request? {
         didSet {
             oldValue?.cancel()
@@ -26,10 +27,12 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         self.view.backgroundColor = UIColor.lightGrayColor()
         //        self.title = "首页二级"
         self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, data) in
-            let itemCell:HomeCell? = cell as? HomeCell
-            let itemDic:NSDictionary? = data as? NSDictionary
-            itemCell?.clearData()
-            itemCell?.loadCellData(itemDic!)
+            if let itemCell = cell as? HomeCell{
+                itemCell.clearData()
+                if let d = data as? ForumTopicData{
+                    itemCell.loadCellData(d)
+                }
+            }
         })
         
         refreshView = RefreshView(frame:CGRect(x:0,
@@ -61,17 +64,26 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
     
     override func viewDidLoad() {
         
-        self.startRequest()
+//        self.startRequest()
+    }
+    
+    func loadFloorListByTopicData(data:ForumTopicData)
+    {
+        self.topicId = data.topicId;
+        self.startRequest();
     }
     
     func startRequest(){
         //        var urlStr:String = "http://v3.kuaigame.com/app/getcategoryarticle?uid=220154&device=iPhone5%2C2&pindex=0&psize=20&appver=3.2.1&key=cNCS0ipHRcFXsuW%2FTyO%2FN%2BmoHsk%3D&did=CD1FBB97-426F-4A83-90AB-A897D580BED2&e=1437637766&categoryid=3&clientid=21&aid=W%2Fsuzn3p2Tb3fQRp1ZaRxZlueKo%3D&iosver=8.4";
-        var parameter = ["categoryid" : "3",
+        var parameter = ["topicid" : NSNumber(integer: topicId),
+            "floorid" : NSNumber(integer: 0),
+            "replyid" : NSNumber(integer: 0),
+            "sorttype" : "0",
             "pindex" : "0",
             "psize" : "20",
             "json" : "1"]
         var useJson = true
-        var url = ApiBuilder.article_get_list(parameter)
+        var url = ApiBuilder.forum_get_floor_list(parameter)
         print("url = \(url)")
         self.request = Alamofire.request(.GET, url)
         // JSON

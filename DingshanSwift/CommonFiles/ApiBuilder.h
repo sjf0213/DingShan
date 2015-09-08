@@ -20,6 +20,9 @@
 +(NSString *)article_get_list:(NSDictionary*)dic;
 //讨论区话题列表
 +(NSString *)forum_get_topic_list:(NSDictionary*)dic;
++(NSString *)forum_get_floor_list:(NSDictionary*)dic;
++(NSString *)forum_get_reply_list:(NSDictionary*)dic;
+
 +(NSString *)forum_get_galary_list:(NSDictionary*)dic;
 
 @end
