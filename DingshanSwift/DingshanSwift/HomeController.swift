@@ -1,5 +1,5 @@
 //
-//  HomeLevel2Controller.swift
+//  HomeController.swift
 //  DingshanSwift
 //
 //  Created by song jufeng on 15/7/22.
@@ -8,7 +8,7 @@
 
 import Foundation
 import Alamofire
-class HomeLevel2Controller:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScrollViewDelegate
+class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScrollViewDelegate
 {
     var mainTable = UITableView();
     var tableSource:ArrayDataSource?
@@ -36,7 +36,7 @@ class HomeLevel2Controller:DSViewController,UITableViewDelegate,LoadViewProtocol
         self.view.backgroundColor = UIColor.lightGrayColor()
 //        self.title = "首页二级"
         self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, data) in
-            let itemCell:HomeLevel2Cell? = cell as? HomeLevel2Cell
+            let itemCell:HomeCell? = cell as? HomeCell
             let itemDic:NSDictionary? = data as? NSDictionary
             itemCell?.clearData()
             itemCell?.loadCellData(itemDic!)
@@ -57,7 +57,7 @@ class HomeLevel2Controller:DSViewController,UITableViewDelegate,LoadViewProtocol
         mainTable.delegate = self
         mainTable.dataSource = self.tableSource
         mainTable.rowHeight = HomeRow_H
-        mainTable.registerClass(HomeLevel2Cell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
+        mainTable.registerClass(HomeCell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
         self.view.addSubview(mainTable)
         
         var adPic = UIImageView(image: UIImage(named: "home_ad.jpg"))
@@ -154,7 +154,7 @@ class HomeLevel2Controller:DSViewController,UITableViewDelegate,LoadViewProtocol
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)")
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as? HomeLevel2Cell
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as? HomeCell
         var detail = ForumFloorListController()
         detail.navigationItem.title = cell?.title.text
         self.navigationController?.pushViewController(detail, animated: true)

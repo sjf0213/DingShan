@@ -15,7 +15,7 @@ class MainViewController:UIViewController
 {
     var tabbar:TabBarView?
 //    var homeController:HomeViewController?
-    var homeController:HomeLevel2Controller?
+    var homeController:HomeController?
     var homeNavi:UINavigationController?
     var galleryController:GalleryViewController?
     var galleryNavi:UINavigationController?
@@ -47,7 +47,7 @@ extension MainViewController : TabBarViewDelegate
         switch tag {
         case 0:
             if homeController == nil{
-                homeController = HomeLevel2Controller()
+                homeController = HomeController()
                 homeNavi = UINavigationController(rootViewController: homeController!)
                 self.view.addSubview(homeNavi!.view)
             }

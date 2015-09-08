@@ -26,7 +26,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         self.view.backgroundColor = UIColor.lightGrayColor()
         //        self.title = "首页二级"
         self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, data) in
-            let itemCell:HomeLevel2Cell? = cell as? HomeLevel2Cell
+            let itemCell:HomeCell? = cell as? HomeCell
             let itemDic:NSDictionary? = data as? NSDictionary
             itemCell?.clearData()
             itemCell?.loadCellData(itemDic!)
@@ -47,7 +47,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         mainTable.delegate = self
         mainTable.dataSource = self.tableSource
         mainTable.rowHeight = 70.0
-        mainTable.registerClass(HomeLevel2Cell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
+        mainTable.registerClass(HomeCell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
         self.view.addSubview(mainTable)
         
         self.refreshView?.loadinsets = self.mainTable.contentInset

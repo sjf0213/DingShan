@@ -1,5 +1,5 @@
 //
-//  HomeLevel2Cell.swift
+//  HomeCell.swift
 //  DingshanSwift
 //
 //  Created by song jufeng on 15/7/23.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HomeLevel2Cell:UITableViewCell
+class HomeCell:UITableViewCell
 {
     var icon = UIImageView()
     var title = UILabel()

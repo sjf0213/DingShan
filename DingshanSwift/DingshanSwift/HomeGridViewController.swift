@@ -68,7 +68,7 @@ class HomeGridViewController:DSViewController, UICollectionViewDataSource, UICol
     {
         print("\n didSelectRowAtIndexPath = \(indexPath)")
         var cell = mainCollectionView?.cellForItemAtIndexPath(indexPath) as? HomeGridCell
-        var detail = HomeLevel2Controller()
+        var detail = HomeController()
         detail.navigationItem.title = cell?.title?.text
         self.navigationController?.pushViewController(detail, animated: true)
     }
