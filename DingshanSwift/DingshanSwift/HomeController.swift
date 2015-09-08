@@ -137,7 +137,7 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
                     print("\n dataArray- - -\(arr)")
                     for var i = 0; i < arr.count; ++i {
                         if let item = arr[i] as? [String:AnyObject] {
-                            var data = ForumTopicData.init(dic: item)
+                            var data = ForumTopicData(dic: item)
                             self.tableSource?.items.addObject(data)
                         }
                     }
@@ -165,7 +165,9 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
             var detail = ForumFloorListController()
             detail.navigationItem.title = cell.title.text
             self.navigationController?.pushViewController(detail, animated: true)
-            detail.loadFloorListByTopicData(cell.topicData)
+            if let data = self.tableSource?.items[indexPath.row] as? ForumTopicData{
+                detail.loadFloorListByTopicData(data)
+            }
         }
     }
     
