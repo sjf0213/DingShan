@@ -72,15 +72,25 @@ static ApiBuilder * m_Instance;
 //    }
 http://v3.kuaigame.com/topics/topiclist?iosver=8.4&uid=221188&device=iPhone5%2C2&pindex=0&psize=50&appver=3.3.0&key=xv0JOoDtfa2GqBwM3lAb0FpyeLc%3D&topicid=0&did=053F4F67-4445-4774-9060-B3CC0795EC7E&e=1438254601&clientid=21&aid=hypB2OIKaQ1jFyNWvljyE7HPV3E%3D&sorttype=1";
     
+//    self.apiData = @{
+//        @"aid" : @"hypB2OIKaQ1jFyNWvljyE7HPV3E%3D",
+//        @"appver" : @"3.2.1",
+//        @"clientid" : @21,
+//        @"device" : @"iPhone5,2",
+//        @"did": @"053F4F67-4445-4774-9060-B3CC0795EC7E",
+//        @"iosver" : @"8.4",
+//        @"uid": @221188,
+//        };
+    
     self.apiData = @{
-        @"aid" : @"hypB2OIKaQ1jFyNWvljyE7HPV3E%3D",
-        @"appver" : @"3.2.1",
-        @"clientid" : @21,
-        @"device" : @"iPhone5,2",
-        @"did": @"053F4F67-4445-4774-9060-B3CC0795EC7E",
-        @"iosver" : @"8.4",
-        @"uid": @221188,
-        };
+                     @"aid" : @"asdf",
+                     @"appver" : @"3.2.1",
+                     @"clientid" : @21,
+                     @"device" : @"iPhone5,2",
+                     @"did": @"053F4F67-4445-4774-9060-B3CC0795EC7E",
+                     @"iosver" : @"8.4",
+                     @"uid": @1,
+                     };
     startDate = [[NSDate date]timeIntervalSince1970];
 }
 
@@ -181,7 +191,8 @@ http://v3.kuaigame.com/topics/topiclist?iosver=8.4&uid=221188&device=iPhone5%2C2
 // 讨论区话题列表
 +(NSString *)forum_get_topic_list:(NSDictionary*)dic
 {
-    return [ApiBuilder signatureURL:@"http://v3.kuaigame.cn/topics/topiclist" args:dic];
+//    return [ApiBuilder signatureURL:@"http://v3.kuaigame.cn/topics/topiclist" args:dic];
+    return [ApiBuilder signatureURL:@"http://www.kokoguo.com/dingshan/Topic/topiclist" args:dic];
 }
 
 +(NSString *)forum_get_galary_list:(NSDictionary*)dic
