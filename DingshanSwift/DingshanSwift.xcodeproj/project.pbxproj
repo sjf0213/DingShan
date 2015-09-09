@@ -39,6 +39,7 @@
 		F0A20AD31B62499E00F1F311 /* CommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AD21B62499E00F1F311 /* CommonUtility.m */; };
 		F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AD51B624A9500F1F311 /* CocoaSecurity.m */; };
 		F0A20AD81B62548800F1F311 /* KnowledgeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */; };
+		F0A5E13A1BA045FA00BDA6BA /* ForumNewThreadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A5E1391BA045FA00BDA6BA /* ForumNewThreadController.swift */; };
 		F0AA4F951B93ECE7007EDEA9 /* tabbar_forum0@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0AA4F891B93ECE7007EDEA9 /* tabbar_forum0@2x~iphone.png */; };
 		F0AA4F961B93ECE7007EDEA9 /* tabbar_forum0@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0AA4F8A1B93ECE7007EDEA9 /* tabbar_forum0@3x~iphone.png */; };
 		F0AA4F971B93ECE7007EDEA9 /* tabbar_forum1@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0AA4F8B1B93ECE7007EDEA9 /* tabbar_forum1@2x~iphone.png */; };
@@ -170,6 +171,7 @@
 		F0A20AD41B624A9500F1F311 /* CocoaSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaSecurity.h; sourceTree = "<group>"; };
 		F0A20AD51B624A9500F1F311 /* CocoaSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaSecurity.m; sourceTree = "<group>"; };
 		F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeListController.swift; sourceTree = "<group>"; };
+		F0A5E1391BA045FA00BDA6BA /* ForumNewThreadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumNewThreadController.swift; sourceTree = "<group>"; };
 		F0AA4F891B93ECE7007EDEA9 /* tabbar_forum0@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabbar_forum0@2x~iphone.png"; path = "tabbar/tabbar_forum0@2x~iphone.png"; sourceTree = "<group>"; };
 		F0AA4F8A1B93ECE7007EDEA9 /* tabbar_forum0@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabbar_forum0@3x~iphone.png"; path = "tabbar/tabbar_forum0@3x~iphone.png"; sourceTree = "<group>"; };
 		F0AA4F8B1B93ECE7007EDEA9 /* tabbar_forum1@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabbar_forum1@2x~iphone.png"; path = "tabbar/tabbar_forum1@2x~iphone.png"; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				F092E2991B6A35A7003D2D30 /* ForumLordFloorCell.swift */,
 				F092E29B1B6A35BE003D2D30 /* ForumReplyFloorCell.swift */,
 				F0507E661B675698007E9024 /* ForumFloorDetailController.swift */,
+				F0A5E1391BA045FA00BDA6BA /* ForumNewThreadController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 				F05455561B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				F0A20AC71B6246EA00F1F311 /* ApiBuilder.m in Sources */,
 				F092E29C1B6A35BE003D2D30 /* ForumReplyFloorCell.swift in Sources */,
+				F0A5E13A1BA045FA00BDA6BA /* ForumNewThreadController.swift in Sources */,
 				F0C3C2A01B60EA9C00AB6E35 /* HomeCell.swift in Sources */,
 				F0507E691B6756D3007E9024 /* KnowledgeListCell.swift in Sources */,
 				F0A1C3AB1B5CE296001597CF /* HomeTableCell.swift in Sources */,

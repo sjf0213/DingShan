@@ -11,6 +11,12 @@ import UIKit
 class DSViewController:UIViewController
 {
     var topView = TopBarView()
+    var topTitle = ""{
+        didSet{
+            self.titleLabel.text = topTitle
+        }
+    }
+    private var titleLabel = UILabel()
     override func loadView()
     {
         super.loadView()
@@ -18,6 +24,10 @@ class DSViewController:UIViewController
         topView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, TopBar_H)
         topView.backgroundColor = NAVI_COLOR
         self.view.addSubview(topView);
+        
+        titleLabel.frame = CGRect(x:44, y:20, width:topView.bounds.size.width - 88, height:topView.bounds.size.height - 20)
+        titleLabel.textAlignment = NSTextAlignment.Center
+        topView.addSubview(titleLabel)
     }
     
     override func viewDidLoad() {

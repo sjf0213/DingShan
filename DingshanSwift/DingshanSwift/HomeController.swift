@@ -34,7 +34,7 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
     override func loadView(){
         super.loadView()
         self.view.backgroundColor = UIColor.lightGrayColor()
-//        self.title = "首页二级"
+        self.topTitle = "首页"
         self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, data) in
             if let itemCell = cell as? HomeCell{
                 itemCell.clearData()
@@ -43,6 +43,11 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
                 }
             }
         })
+        
+        let newThreadBtn = UIButton(frame: CGRect(x: self.view.bounds.size.width - 44, y: 20, width: 44, height: 44))
+        newThreadBtn.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.5)
+        self.topView.addSubview(newThreadBtn)
+        newThreadBtn.addTarget(self, action: Selector("onTapNewThread"), forControlEvents: UIControlEvents.TouchUpInside)
         
         refreshView = RefreshView(frame:CGRect(x:0,
                                                 y:TopBar_H,
@@ -155,6 +160,12 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
             // 失败时候清空数据后也要重新加载
             self.mainTable.reloadData()
         }
+    }
+    
+    func onTapNewThread(){
+        print("add new")
+        var newThreadController = ForumNewThreadController()
+        self.navigationController?.pushViewController(newThreadController, animated: true)
     }
     
 //MARK: - UITableViewDelegate
