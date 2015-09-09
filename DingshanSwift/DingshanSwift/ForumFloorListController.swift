@@ -64,7 +64,6 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
     
     override func viewDidLoad() {
         
-//        self.startRequest()
     }
     
     func loadFloorListByTopicData(data:ForumTopicData)
@@ -130,6 +129,19 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         }else{
             // 失败时候清空数据后也要重新加载
             self.mainTable.reloadData()
+        }
+    }
+//MARK: - UITableViewDelegate
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)")
+        if let  cell = tableView.cellForRowAtIndexPath(indexPath) as? ForumFloorCell{
+            var detail = ForumReplyListController()
+            detail.navigationItem.title = self.topicData.topicTitle
+            self.navigationController?.pushViewController(detail, animated: true)
+            if let data = self.tableSource?.items[indexPath.row] as? ForumFloorData{
+                detail.loadReplyListByTopicData(self.topicData,floor:data)
+            }
         }
     }
 }

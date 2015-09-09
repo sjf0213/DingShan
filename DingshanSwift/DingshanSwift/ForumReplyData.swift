@@ -9,7 +9,7 @@
 import Foundation
 class ForumReplyData : NSObject {
     var replyId:NSInteger = 0
-    var replyContent:String = ""
+    var contentText:String = ""
     
     required override init() {
         super.init()
@@ -18,11 +18,11 @@ class ForumReplyData : NSObject {
     init( dic : [String: AnyObject]){
         if let num = dic["reply_id"] as? String {
             replyId = num.toInt()!
-            print("-+- topicId = \(replyId)")
+            print("-+- replyId = \(replyId)")
         }
         if let tmp = dic["reply_content"] as? String{
-            replyContent = tmp
-            print("-+- topicTitle = \(replyContent)")
+            contentText = tmp
+            print("-+- contentText = \(contentText)")
         }
     }
 }
