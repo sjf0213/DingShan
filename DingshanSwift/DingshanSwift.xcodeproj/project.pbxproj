@@ -17,7 +17,6 @@
 		F028C17A1B9C479300B8CECA /* GalleryMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F028C1791B9C479300B8CECA /* GalleryMenuItem.swift */; };
 		F0507E5D1B67561A007E9024 /* KnowledgeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */; };
 		F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E641B675666007E9024 /* ForumFloorListController.swift */; };
-		F0507E671B675698007E9024 /* ForumFloorDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E661B675698007E9024 /* ForumFloorDetailController.swift */; };
 		F0507E691B6756D3007E9024 /* KnowledgeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */; };
 		F05455561B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F05455551B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m */; };
 		F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749B31B54B905006E1FD3 /* MainViewController.swift */; };
@@ -43,6 +42,8 @@
 		F0A5E1401BA04B3800BDA6BA /* ForumFloorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A5E13F1BA04B3800BDA6BA /* ForumFloorData.swift */; };
 		F0A5E1421BA04B4800BDA6BA /* ForumReplyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A5E1411BA04B4800BDA6BA /* ForumReplyData.swift */; };
 		F0A5E1441BA04C5000BDA6BA /* UserInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A5E1431BA04C5000BDA6BA /* UserInfoData.swift */; };
+		F0A5E1461BA0534400BDA6BA /* ForumReplyListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A5E1451BA0534400BDA6BA /* ForumReplyListController.swift */; };
+		F0A5E1481BA0536000BDA6BA /* ForumReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A5E1471BA0536000BDA6BA /* ForumReplyCell.swift */; };
 		F0AA4F951B93ECE7007EDEA9 /* tabbar_forum0@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0AA4F891B93ECE7007EDEA9 /* tabbar_forum0@2x~iphone.png */; };
 		F0AA4F961B93ECE7007EDEA9 /* tabbar_forum0@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0AA4F8A1B93ECE7007EDEA9 /* tabbar_forum0@3x~iphone.png */; };
 		F0AA4F971B93ECE7007EDEA9 /* tabbar_forum1@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0AA4F8B1B93ECE7007EDEA9 /* tabbar_forum1@2x~iphone.png */; };
@@ -144,7 +145,6 @@
 		F028C1791B9C479300B8CECA /* GalleryMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryMenuItem.swift; sourceTree = "<group>"; };
 		F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailController.swift; sourceTree = "<group>"; };
 		F0507E641B675666007E9024 /* ForumFloorListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorListController.swift; sourceTree = "<group>"; };
-		F0507E661B675698007E9024 /* ForumFloorDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorDetailController.swift; sourceTree = "<group>"; };
 		F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeListCell.swift; sourceTree = "<group>"; };
 		F05455541B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
 		F05455551B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
@@ -178,6 +178,8 @@
 		F0A5E13F1BA04B3800BDA6BA /* ForumFloorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorData.swift; sourceTree = "<group>"; };
 		F0A5E1411BA04B4800BDA6BA /* ForumReplyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumReplyData.swift; sourceTree = "<group>"; };
 		F0A5E1431BA04C5000BDA6BA /* UserInfoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoData.swift; sourceTree = "<group>"; };
+		F0A5E1451BA0534400BDA6BA /* ForumReplyListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumReplyListController.swift; sourceTree = "<group>"; };
+		F0A5E1471BA0536000BDA6BA /* ForumReplyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumReplyCell.swift; sourceTree = "<group>"; };
 		F0AA4F891B93ECE7007EDEA9 /* tabbar_forum0@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabbar_forum0@2x~iphone.png"; path = "tabbar/tabbar_forum0@2x~iphone.png"; sourceTree = "<group>"; };
 		F0AA4F8A1B93ECE7007EDEA9 /* tabbar_forum0@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabbar_forum0@3x~iphone.png"; path = "tabbar/tabbar_forum0@3x~iphone.png"; sourceTree = "<group>"; };
 		F0AA4F8B1B93ECE7007EDEA9 /* tabbar_forum1@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabbar_forum1@2x~iphone.png"; path = "tabbar/tabbar_forum1@2x~iphone.png"; sourceTree = "<group>"; };
@@ -427,13 +429,14 @@
 				F0C3C29F1B60EA9C00AB6E35 /* HomeCell.swift */,
 				F0507E641B675666007E9024 /* ForumFloorListController.swift */,
 				F092E2931B6A357B003D2D30 /* ForumFloorCell.swift */,
+				F092E2991B6A35A7003D2D30 /* ForumLordFloorCell.swift */,
+				F092E29B1B6A35BE003D2D30 /* ForumReplyFloorCell.swift */,
+				F0A5E1451BA0534400BDA6BA /* ForumReplyListController.swift */,
+				F0A5E1471BA0536000BDA6BA /* ForumReplyCell.swift */,
+				F0A5E1391BA045FA00BDA6BA /* ForumNewThreadController.swift */,
 				F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */,
 				F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */,
 				F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */,
-				F092E2991B6A35A7003D2D30 /* ForumLordFloorCell.swift */,
-				F092E29B1B6A35BE003D2D30 /* ForumReplyFloorCell.swift */,
-				F0507E661B675698007E9024 /* ForumFloorDetailController.swift */,
-				F0A5E1391BA045FA00BDA6BA /* ForumNewThreadController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				F0D00E751B917AAB0056BE3E /* TabBarToggleBtn.swift in Sources */,
 				F0B6FABC1B81F3D000EE2439 /* GalleryViewCell.swift in Sources */,
 				F09ADDA11B5640DD009B3A6D /* CommonDefine.swift in Sources */,
+				F0A5E1461BA0534400BDA6BA /* ForumReplyListController.swift in Sources */,
 				F09C7AA71B7CA60900648615 /* DSViewController.swift in Sources */,
 				F0E574FA1B6784BE000053B8 /* RefreshView.m in Sources */,
 				F0C3C2511B5FA59500AB6E35 /* HomeController.swift in Sources */,
@@ -648,6 +652,7 @@
 				F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */,
 				F09C7AB01B7CAEDC00648615 /* KASegmentButton.m in Sources */,
 				F092E2941B6A357B003D2D30 /* ForumFloorCell.swift in Sources */,
+				F0A5E1481BA0536000BDA6BA /* ForumReplyCell.swift in Sources */,
 				F0A5E1401BA04B3800BDA6BA /* ForumFloorData.swift in Sources */,
 				F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */,
 				F08749BC1B54E872006E1FD3 /* GalleryViewController.swift in Sources */,
@@ -666,7 +671,6 @@
 				F0D00E7F1B9182570056BE3E /* TabBarView.swift in Sources */,
 				F0C5F6B91B53D1E000B2C20D /* ViewController.swift in Sources */,
 				F0D00EA51B91AF160056BE3E /* TopBarView.swift in Sources */,
-				F0507E671B675698007E9024 /* ForumFloorDetailController.swift in Sources */,
 				F028C1701B9C417A00B8CECA /* GalleryDetailController.swift in Sources */,
 				F092E29A1B6A35A7003D2D30 /* ForumLordFloorCell.swift in Sources */,
 				417BEF9D1B5A535300F896A5 /* FileHelp.m in Sources */,
