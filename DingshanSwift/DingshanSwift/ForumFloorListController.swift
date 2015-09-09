@@ -11,11 +11,11 @@ import Alamofire
 class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScrollViewDelegate
 {
     var mainTable = UITableView();
+    var topicData = ForumTopicData()
     var tableSource:ArrayDataSource?
     var refreshView:RefreshView?
     var loadMoreView:LoadView?
     var currentPage:NSInteger = 0
-    var topicId:NSInteger = 0
     var request: Alamofire.Request? {
         didSet {
             oldValue?.cancel()
@@ -25,11 +25,11 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
     {
         super.loadView()
         self.view.backgroundColor = UIColor.lightGrayColor()
-        //        self.title = "首页二级"
-        self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, data) in
-            if let itemCell = cell as? HomeCell{
+        self.topTitle = "楼层列表"
+        self.tableSource = ArrayDataSource(withcellIdentifier: FloorCellIdentifier, configureCellBlock:{(cell, data) in
+            if let itemCell = cell as? ForumFloorCell{
                 itemCell.clearData()
-                if let d = data as? ForumTopicData{
+                if let d = data as? ForumFloorData{
                     itemCell.loadCellData(d)
                 }
             }
@@ -43,14 +43,14 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         refreshView?.delegate = self
         self.view.addSubview(self.refreshView!)
         
-        mainTable.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height);
-        mainTable.contentInset = UIEdgeInsets(top: TopBar_H, left: 0, bottom: 0, right: 0)
-        //        mainTable.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.2)
-        mainTable.backgroundColor = UIColor.clearColor()
+        mainTable.frame = CGRect(x: 0, y: TopBar_H, width: self.view.bounds.size.width, height: self.view.bounds.size.height);
+        mainTable.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        mainTable.backgroundColor = UIColor.whiteColor()
+        mainTable.separatorStyle = UITableViewCellSeparatorStyle.None
         mainTable.delegate = self
         mainTable.dataSource = self.tableSource
-        mainTable.rowHeight = 70.0
-        mainTable.registerClass(HomeCell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
+        mainTable.rowHeight = HomeRow_H
+        mainTable.registerClass(ForumFloorCell.classForCoder(), forCellReuseIdentifier: FloorCellIdentifier)
         self.view.addSubview(mainTable)
         
         self.refreshView?.loadinsets = self.mainTable.contentInset
@@ -69,13 +69,13 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
     
     func loadFloorListByTopicData(data:ForumTopicData)
     {
-        self.topicId = data.topicId;
+        self.topicData = data;
         self.startRequest();
     }
     
     func startRequest(){
         //        var urlStr:String = "http://v3.kuaigame.com/app/getcategoryarticle?uid=220154&device=iPhone5%2C2&pindex=0&psize=20&appver=3.2.1&key=cNCS0ipHRcFXsuW%2FTyO%2FN%2BmoHsk%3D&did=CD1FBB97-426F-4A83-90AB-A897D580BED2&e=1437637766&categoryid=3&clientid=21&aid=W%2Fsuzn3p2Tb3fQRp1ZaRxZlueKo%3D&iosver=8.4";
-        var parameter = ["topicid" : NSNumber(integer: topicId),
+        var parameter = ["topicid" : NSNumber(integer: self.topicData.topicId),
             "floorid" : NSNumber(integer: 0),
             "replyid" : NSNumber(integer: 0),
             "sorttype" : "0",
@@ -107,5 +107,29 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         })
     }
     func processRequestResult(result:NSDictionary){
+        if (200 == result["c"]?.integerValue){
+            if let list = result["v"] as? NSDictionary{
+                if let arr = list["floor_list"] as? NSArray{
+                    print("\n dataArray- - -\(arr)")
+                    for var i = 0; i < arr.count; ++i {
+                        if let item = arr[i] as? [String:AnyObject] {
+                            var data = ForumFloorData(dic: item)
+                            self.tableSource?.items.addObject(data)
+                        }
+                    }
+                    self.mainTable.reloadData()
+                    if (arr.count < Default_Request_Count) {
+                        self.loadMoreView?.isCanUse = false
+                        self.loadMoreView?.hidden = true
+                    }else{
+                        self.loadMoreView?.isCanUse = true
+                        self.loadMoreView?.hidden = false
+                    }
+                }
+            }
+        }else{
+            // 失败时候清空数据后也要重新加载
+            self.mainTable.reloadData()
+        }
     }
 }
