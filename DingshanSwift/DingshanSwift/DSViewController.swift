@@ -16,7 +16,13 @@ class DSViewController:UIViewController
             self.titleLabel.text = topTitle
         }
     }
+    var backBtnHidden = false{
+        didSet{
+            self.backBtn.hidden = backBtnHidden
+        }
+    }
     private var titleLabel = UILabel()
+    private var backBtn = UIButton()
     override func loadView()
     {
         super.loadView()
@@ -28,9 +34,18 @@ class DSViewController:UIViewController
         titleLabel.frame = CGRect(x:44, y:20, width:topView.bounds.size.width - 88, height:topView.bounds.size.height - 20)
         titleLabel.textAlignment = NSTextAlignment.Center
         topView.addSubview(titleLabel)
+        
+        backBtn.frame = CGRect(x: 0, y: 20, width: 44, height: 44)
+        backBtn.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.5)
+        self.topView.addSubview(backBtn)
+        backBtn.addTarget(self, action: Selector("onTapBack"), forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     override func viewDidLoad() {
         self.view.bringSubviewToFront(topView)
+    }
+    
+    func onTapBack() {
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }

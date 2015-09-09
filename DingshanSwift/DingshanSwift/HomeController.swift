@@ -35,6 +35,7 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         super.loadView()
         self.view.backgroundColor = UIColor.lightGrayColor()
         self.topTitle = "首页"
+        self.backBtnHidden = true
         self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, data) in
             if let itemCell = cell as? HomeCell{
                 itemCell.clearData()
