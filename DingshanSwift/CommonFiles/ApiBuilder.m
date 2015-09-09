@@ -204,4 +204,9 @@ http://v3.kuaigame.com/topics/topiclist?iosver=8.4&uid=221188&device=iPhone5%2C2
 {
     return [ApiBuilder signatureURL:@"http://www.kokoguo.com/dingshan/Topic/replylist" args:dic];
 }
+// 图库
++(NSString *)forum_get_galary_list:(NSDictionary*)dic
+{
+    return [ApiBuilder signatureURL:@"http://v3.kuaigame.cn/app/getcategoryarticle" args:dic];
+}
 @end
