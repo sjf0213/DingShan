@@ -82,7 +82,7 @@ class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProt
             "psize" : "20",
             "json" : "1"]
         var useJson = true
-        var url = ApiBuilder.forum_get_floor_list(parameter)
+        var url = ApiBuilder.forum_get_reply_list(parameter)
         print("url = \(url)")
         self.request = Alamofire.request(.GET, url)
         // JSON
@@ -108,25 +108,21 @@ class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProt
     func processRequestResult(result:NSDictionary){
         if (200 == result["c"]?.integerValue){
             if let list = result["v"] as? NSDictionary{
-                if let floorArr = list["floor_list"] as? NSArray{
-                    if floorArr.count > 0 {
-//                        let replyArr = floorArr.objectAtIndex(0) as? NSArray{
-//                            print("\n dataArray- - -\(replyArr)")
-//                            for var i = 0; i < replyArr.count; ++i {
-//                                if let item = replyArr[i] as? [String:AnyObject] {
-//                                    var data = ForumReplyData(dic: item)
-//                                    self.tableSource?.items.addObject(data)
-//                                }
-//                            }
-//                            self.mainTable.reloadData()
-//                            if (replyArr.count < Default_Request_Count) {
-//                                self.loadMoreView?.isCanUse = false
-//                                self.loadMoreView?.hidden = true
-//                            }else{
-//                                self.loadMoreView?.isCanUse = true
-//                                self.loadMoreView?.hidden = false
-//                            }
-//                        }
+                if let replyArr = list["reply_list"] as? NSArray{
+                    print("\n dataArray- - -\(replyArr)")
+                    for var i = 0; i < replyArr.count; ++i {
+                        if let item = replyArr[i] as? [String:AnyObject] {
+                            var data = ForumReplyData(dic: item)
+                            self.tableSource?.items.addObject(data)
+                        }
+                    }
+                    self.mainTable.reloadData()
+                    if (replyArr.count < Default_Request_Count) {
+                        self.loadMoreView?.isCanUse = false
+                        self.loadMoreView?.hidden = true
+                    }else{
+                        self.loadMoreView?.isCanUse = true
+                        self.loadMoreView?.hidden = false
                     }
                 }
             }
