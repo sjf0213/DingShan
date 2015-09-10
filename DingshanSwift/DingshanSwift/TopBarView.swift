@@ -20,6 +20,8 @@ class TopBarView:UIView
         }
     }
     
+    var backBlock: (() -> Void)? // 最简单的闭包，用来navi返回按钮
+    
     private var titleLabel = UILabel()
     private var backBtn = UIButton()
     
@@ -43,4 +45,7 @@ class TopBarView:UIView
 
     }
     
+    func onTapBack() {
+        self.backBlock?()
+    }
 }

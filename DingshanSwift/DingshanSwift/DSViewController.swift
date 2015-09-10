@@ -31,13 +31,12 @@ class DSViewController:UIViewController
         topView.backgroundColor = NAVI_COLOR
         self.view.addSubview(topView);
         
+        topView.backBlock = {self.navigationController?.popViewControllerAnimated(true)}
     }
     
     override func viewDidLoad() {
         self.view.bringSubviewToFront(topView)
     }
     
-    func onTapBack() {
-        self.navigationController?.popViewControllerAnimated(true)
-    }
+    
 }
