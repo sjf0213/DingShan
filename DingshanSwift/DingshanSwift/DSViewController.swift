@@ -13,16 +13,16 @@ class DSViewController:UIViewController
     var topView = TopBarView()
     var topTitle = ""{
         didSet{
-            self.titleLabel.text = topTitle
+            self.topView.title = topTitle
         }
     }
     var backBtnHidden = false{
         didSet{
-            self.backBtn.hidden = backBtnHidden
+            self.topView.backBtnHidden = backBtnHidden
         }
     }
-    private var titleLabel = UILabel()
-    private var backBtn = UIButton()
+    
+    //////////////////////////
     override func loadView()
     {
         super.loadView()
@@ -31,14 +31,6 @@ class DSViewController:UIViewController
         topView.backgroundColor = NAVI_COLOR
         self.view.addSubview(topView);
         
-        titleLabel.frame = CGRect(x:44, y:20, width:topView.bounds.size.width - 88, height:topView.bounds.size.height - 20)
-        titleLabel.textAlignment = NSTextAlignment.Center
-        topView.addSubview(titleLabel)
-        
-        backBtn.frame = CGRect(x: 0, y: 20, width: 44, height: 44)
-        backBtn.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.5)
-        self.topView.addSubview(backBtn)
-        backBtn.addTarget(self, action: Selector("onTapBack"), forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     override func viewDidLoad() {

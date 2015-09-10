@@ -34,7 +34,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                             withItems: ["套图", "单图"],
                             withLightedColor: THEME_COLOR)
         self.topView.addSubview(seg!)
-        seg?.selectedSegmentIndex = 0;
+        seg?.selectedSegmentIndex = 1;
         
         menuView.frame = CGRectMake(0, self.topView.frame.size.height, self.view.bounds.size.width, 40)
         self.view.addSubview(menuView)
@@ -78,18 +78,18 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
 //        "http://v3.kuaigame.com/app/getcategoryarticle?uid=223378&device=iPhone5%2C2&pindex=0&psize=20&appver=3.3.0&key=TDqKUTCWopMCLFvlJzOkR3NYGkI%3D&did=038D6DED-EC45-49D6-A616-CF887E1BEE07&e=1439807501&categoryid=1&clientid=21&aid=lIsGbvnD6lq5cl%2BUfayEum60dbE%3D&iosver=8.4.1";\
 //        
         var parameter = ["pindex" : "0",
-            "psize" : "50",
-            "categoryid" : "1",
-            "json" : "1"]
+                          "psize" : "10",
+                     "categoryid" : "1",
+                           "json" : "1"]
         var useJson = true
-        var url = ApiBuilder.forum_get_galary_list(parameter)
+        var url = ApiBuilder.forum_get_galary_single_list(parameter)
         print("url = \(url)")
         self.request = Alamofire.request(.GET, url)
         // JSON
         self.request?.responseJSON(options: .AllowFragments, completionHandler: { (requst1:NSURLRequest, response1:NSHTTPURLResponse?, data:AnyObject?,err: NSError?) -> Void in
             
-//            print("\n responseJSON- - - - -data = \(data)")
-//            print("\n responseJSON- - - - -err = \(err)")
+            print("\n responseJSON- - - - -data = \(data)")
+            print("\n responseJSON- - - - -err = \(err)")
             // 下拉刷新时候清空旧数据（请求失败也清空）
             if (self.currentPage == 0 && self.dataList.count > 0){
                 self.dataList.removeAllObjects()
@@ -108,9 +108,13 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     func processRequestResult(result:NSDictionary){
         if (200 == result["c"]?.integerValue){
             if let list = result["v"] as? NSDictionary{
-                if let arr = list["list"] as? NSArray{
-//                    print("\n dataArray- - -\(arr)")
-                    self.dataList.addObjectsFromArray(arr as [AnyObject])
+                if let arr = list["image_list"] as? NSArray{
+                    for var i = 0; i < arr.count; ++i {
+                        if let item = arr[i] as? [String:AnyObject] {
+                            var data = ImageInfoData(dic: item)
+                            self.dataList.addObject(data)
+                        }
+                    }
                     self.mainCollection?.reloadData()
                     if (arr.count < Default_Request_Count) {
                         self.loadMoreView?.isCanUse = false
@@ -142,18 +146,23 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
     {
 //        print("+++++++++++++++cellForItemAtIndexPath-------\(indexPath)")
-        var cell:GalleryViewCell? = collectionView.dequeueReusableCellWithReuseIdentifier(GalleryViewCellIdentifier, forIndexPath: indexPath) as? GalleryViewCell
-        cell?.clearData()
-        var item:NSDictionary = self.dataList.objectAtIndex(indexPath.item) as! NSDictionary
-        cell?.loadCellData(item)
-        return cell!;
+        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(GalleryViewCellIdentifier, forIndexPath: indexPath) as? GalleryViewCell{
+            cell.clearData()
+            if let item = self.dataList.objectAtIndex(indexPath.item) as? ImageInfoData{
+                cell.loadCellData(item)
+            }
+            return cell
+        }else{
+            return UICollectionViewCell()
+        }
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
 //        print("+++++++++++++++didSelectItemAtIndexPath-------\(indexPath)")
-        var detail = GalleryDetailController()
-        detail.navigationItem.title =  dataList[indexPath.item].string;
-        self.navigationController?.pushViewController(detail, animated: true)
+        if let imgData = dataList[indexPath.item] as? ImageInfoData{
+            var detail = GalleryDetailController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            detail.navigationItem.title =  imgData.desc;
+        }
     }
-    
 }

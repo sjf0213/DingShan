@@ -33,9 +33,9 @@ class  GalleryViewCell : UICollectionViewCell
         title?.text = nil;
     }
     
-    func loadCellData(info:NSDictionary)
+    func loadCellData(info:ImageInfoData)
     {
-        title?.text = "123"
+        title?.text = info.desc
 //        bgImg?.image = UIImage(named: (info.objectForKey("bg") as? String)!)
 //        title?.text = info.objectForKey("title") as? String
     }

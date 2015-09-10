@@ -13,9 +13,9 @@
 #define NSHELPDICEMPTY  [NSMutableDictionary dictionaryWithObjectsAndKeys:nil]
 #define TracID @"B58A780D00044FC189AD79B8961FC269"
 #define TracServer @"http://adtrack.app-sage.com/v2/trackkuai?tid=%@&e=%@&key=%@"
-
+#define HostName @"http://www.kokoguo.com/"
 #define APICheckTimeInterval     60*5
-#define APISECRECTKEY   @"kuaigame123"    //普通 api的加密key
+#define APISECRECTKEY   @"idingshan"    //普通 api的加密key
 
 @interface ApiBuilder ()
 @property(strong,nonatomic)NSDictionary * apiData;
@@ -70,7 +70,7 @@ static ApiBuilder * m_Instance;
 //        [finalBizData setObject:[KGConfigManager shareInstance].AuthID forKey:@"aid"];
 //        [finalBizData setObject:[KGConfigManager shareInstance].UserID forKey:@"uid"];
 //    }
-http://v3.kuaigame.com/topics/topiclist?iosver=8.4&uid=221188&device=iPhone5%2C2&pindex=0&psize=50&appver=3.3.0&key=xv0JOoDtfa2GqBwM3lAb0FpyeLc%3D&topicid=0&did=053F4F67-4445-4774-9060-B3CC0795EC7E&e=1438254601&clientid=21&aid=hypB2OIKaQ1jFyNWvljyE7HPV3E%3D&sorttype=1";
+//http:v3.kuaigame.com/topics/topiclist?iosver=8.4&uid=221188&device=iPhone5%2C2&pindex=0&psize=50&appver=3.3.0&key=xv0JOoDtfa2GqBwM3lAb0FpyeLc%3D&topicid=0&did=053F4F67-4445-4774-9060-B3CC0795EC7E&e=1438254601&clientid=21&aid=hypB2OIKaQ1jFyNWvljyE7HPV3E%3D&sorttype=1";
     
 //    self.apiData = @{
 //        @"aid" : @"hypB2OIKaQ1jFyNWvljyE7HPV3E%3D",
@@ -182,31 +182,32 @@ http://v3.kuaigame.com/topics/topiclist?iosver=8.4&uid=221188&device=iPhone5%2C2
     }
     return result;
 }
-
-//新闻，评测，攻略，美图列表
-+(NSString *)article_get_list:(NSDictionary*)dic
-{
-    return [ApiBuilder signatureURL:@"http://v3.kuaigame.cn/app/getcategoryarticle" args:dic];
-}
+// 讨论区 ////////////////////////////////////////////////
 // 讨论区话题列表
 +(NSString *)forum_get_topic_list:(NSDictionary*)dic
 {
-//    return [ApiBuilder signatureURL:@"http://v3.kuaigame.cn/topics/topiclist" args:dic];
-    return [ApiBuilder signatureURL:@"http://www.kokoguo.com/dingshan/Topic/topiclist" args:dic];
+    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/Topic/topiclist", HostName] args:dic];
 }
-
+// 讨论区楼层列表
 +(NSString *)forum_get_floor_list:(NSDictionary*)dic
 {
-    return [ApiBuilder signatureURL:@"http://www.kokoguo.com/dingshan/Topic/floorlist" args:dic];
+    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/Topic/floorlist", HostName] args:dic];
 }
-
+// 讨论区回复列表
 +(NSString *)forum_get_reply_list:(NSDictionary*)dic
 {
-    return [ApiBuilder signatureURL:@"http://www.kokoguo.com/dingshan/Topic/replylist" args:dic];
+    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/Topic/replylist", HostName] args:dic];
 }
-// 图库
-+(NSString *)forum_get_galary_list:(NSDictionary*)dic
+
+// 图库 ////////////////////////////////////////////////
+// 图库-单图
++(NSString *)forum_get_galary_single_list:(NSDictionary*)dic
 {
-    return [ApiBuilder signatureURL:@"http://v3.kuaigame.cn/app/getcategoryarticle" args:dic];
+    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/Images/singleimageslist", HostName] args:dic];
+}
+// 图库-多图
++(NSString *)forum_get_galary_multi_list:(NSDictionary*)dic
+{
+    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/Images/multiimageslist", HostName] args:dic];
 }
 @end
