@@ -1,22 +1,22 @@
 //
-//  Bridging-Header.h
-//  DingshanSwift
+//  WebImage.h
+//  WebImage
 //
-//  Created by song jufeng on 15/7/14.
-//  Copyright (c) 2015年 song jufeng. All rights reserved.
+//  Created by Florent Vilmart on 2015-03-14.
+//  Copyright (c) 2015 Dailymotion. All rights reserved.
 //
 
-#ifndef DingshanSwift_Bridging_Header_h
-#define DingshanSwift_Bridging_Header_h
+#import <UIKit/UIKit.h>
 
-#import "../Commonfiles/PhoneMainTabBarButton.h"
-#import "../Commonfiles/ArrayDataSource.h"
-#import "../Commonfiles/FileHelp.h"
-#import "../Commonfiles/ApiBuilder.h"
-#import "../Commonfiles/Loading/LoadSuit.h"
-#import "../Commonfiles/KASegmentControl.h"
-#import "../CommonFiles/CHTCollectionViewWaterfallLayout.h"
-#import <WebImage/SDWebImageManager.h"
+//! Project version number for WebImage.
+FOUNDATION_EXPORT double WebImageVersionNumber;
+
+//! Project version string for WebImage.
+FOUNDATION_EXPORT const unsigned char WebImageVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <WebImage/PublicHeader.h>
+
+#import <WebImage/SDWebImageManager.h>
 #import <WebImage/SDImageCache.h>
 #import <WebImage/UIImageView+WebCache.h>
 #import <WebImage/SDWebImageCompat.h>
@@ -33,4 +33,3 @@
 #import <WebImage/UIImage+WebP.h>
 #import <WebImage/UIImage+GIF.h>
 #import <WebImage/NSData+ImageContentType.h>
-#endif

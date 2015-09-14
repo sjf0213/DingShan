@@ -36,7 +36,6 @@ class  GalleryViewCell : UICollectionViewCell
     func loadCellData(info:ImageInfoData)
     {
         title?.text = info.desc
-//        bgImg?.image = UIImage(named: (info.objectForKey("bg") as? String)!)
-//        title?.text = info.objectForKey("title") as? String
+        bgImg?.sd_setImageWithURL(NSURL(string: info.url))
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebImage
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
