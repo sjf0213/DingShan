@@ -73,6 +73,7 @@
 		F0AB96431BA6DD9700C72260 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AB96311BA6DD9700C72260 /* UIImageView+HighlightedWebCache.m */; };
 		F0AB96441BA6DD9700C72260 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AB96331BA6DD9700C72260 /* UIImageView+WebCache.m */; };
 		F0AB96451BA6DD9700C72260 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AB96351BA6DD9700C72260 /* UIView+WebCacheOperation.m */; };
+		F0AB965F1BA8260200C72260 /* ProfileLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB965E1BA8260200C72260 /* ProfileLoginController.swift */; };
 		F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADE21B1B55FEC8005E84FA /* DetailController.swift */; };
 		F0B6FABC1B81F3D000EE2439 /* GalleryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */; };
 		F0BDA8E51B9EFE6700176531 /* ForumTopicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BDA8E41B9EFE6700176531 /* ForumTopicData.swift */; };
@@ -241,6 +242,7 @@
 		F0AB96331BA6DD9700C72260 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		F0AB96341BA6DD9700C72260 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		F0AB96351BA6DD9700C72260 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		F0AB965E1BA8260200C72260 /* ProfileLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileLoginController.swift; sourceTree = "<group>"; };
 		F0ADE21B1B55FEC8005E84FA /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewCell.swift; sourceTree = "<group>"; };
 		F0BDA8E41B9EFE6700176531 /* ForumTopicData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumTopicData.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 			isa = PBXGroup;
 			children = (
 				F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */,
+				F0AB965E1BA8260200C72260 /* ProfileLoginController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 				F092E2941B6A357B003D2D30 /* ForumFloorCell.swift in Sources */,
 				F0A5E1481BA0536000BDA6BA /* ForumReplyCell.swift in Sources */,
 				F0A5E1401BA04B3800BDA6BA /* ForumFloorData.swift in Sources */,
+				F0AB965F1BA8260200C72260 /* ProfileLoginController.swift in Sources */,
 				F0AB96451BA6DD9700C72260 /* UIView+WebCacheOperation.m in Sources */,
 				F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */,
 				F08749BC1B54E872006E1FD3 /* GalleryViewController.swift in Sources */,
