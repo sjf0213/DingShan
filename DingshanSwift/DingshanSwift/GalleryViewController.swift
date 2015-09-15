@@ -9,6 +9,8 @@
 import Foundation
 import Alamofire
 
+let gallery_gap:CGFloat = 10.0
+
 class GalleryViewController:DSViewController,UICollectionViewDataSource, UICollectionViewDelegate,CHTCollectionViewDelegateWaterfallLayout
 {
     var seg:KASegmentControl?
@@ -41,10 +43,10 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         menuView.menuTitleArr = [["title":"1"], ["title":"2"], ["title":"3"]]
         
         var layout = CHTCollectionViewWaterfallLayout()
-        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        layout.sectionInset = UIEdgeInsetsMake(gallery_gap, gallery_gap, gallery_gap, gallery_gap);
         layout.columnCount = 2;
-        layout.minimumColumnSpacing = 10;
-        layout.minimumInteritemSpacing = 10;
+        layout.minimumColumnSpacing = gallery_gap;
+        layout.minimumInteritemSpacing = gallery_gap;
         
         mainCollection = UICollectionView(frame: CGRect(x: 0,
             y: self.topView.bounds.size.height + self.menuView.bounds.size.height,
@@ -134,7 +136,17 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     func collectionView (collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
-        return CGSize(width: 200, height: 200)
+        let w:CGFloat = (self.view.bounds.size.width - (3 * gallery_gap)) * 0.5
+        var h = w;
+        if let data = self.dataList.objectAtIndex(indexPath.item) as? ImageInfoData{
+            print("\n -------- w = \(data.width), h = \(data.height)")
+            if (data.width != 0 && data.height != 0){// 如果没有宽高数据，则显示方形图片
+                h = w * CGFloat(data.height) / CGFloat(data.width)
+            }
+        }
+        var rt = CGSize(width: w, height: h)
+        print("\n -------- rt = \(rt)")
+        return rt
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int

@@ -16,7 +16,7 @@
 #import "../Commonfiles/Loading/LoadSuit.h"
 #import "../Commonfiles/KASegmentControl.h"
 #import "../CommonFiles/CHTCollectionViewWaterfallLayout.h"
-#import <WebImage/SDWebImageManager.h"
+#import <WebImage/SDWebImageManager.h>
 #import <WebImage/SDImageCache.h>
 #import <WebImage/UIImageView+WebCache.h>
 #import <WebImage/SDWebImageCompat.h>
