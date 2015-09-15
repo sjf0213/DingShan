@@ -74,6 +74,14 @@
 		F0AB96441BA6DD9700C72260 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AB96331BA6DD9700C72260 /* UIImageView+WebCache.m */; };
 		F0AB96451BA6DD9700C72260 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AB96351BA6DD9700C72260 /* UIView+WebCacheOperation.m */; };
 		F0AB965F1BA8260200C72260 /* ProfileLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB965E1BA8260200C72260 /* ProfileLoginController.swift */; };
+		F0AB966E1BA82E0800C72260 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AB966A1BA82E0800C72260 /* libWeChatSDK.a */; };
+		F0AB966F1BA82E0800C72260 /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0AB966B1BA82E0800C72260 /* read_me.txt */; };
+		F0AB96711BA834EE00C72260 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AB96701BA834EE00C72260 /* libsqlite3.0.dylib */; };
+		F0AB96741BA8352200C72260 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AB96731BA8352200C72260 /* libz.dylib */; };
+		F0AB96761BA8352A00C72260 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AB96751BA8352A00C72260 /* SystemConfiguration.framework */; };
+		F0AB96781BA835C200C72260 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AB96771BA835C200C72260 /* UIKit.framework */; };
+		F0AB967A1BA835D900C72260 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AB96791BA835D900C72260 /* Foundation.framework */; };
+		F0AB967C1BA8362800C72260 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AB967B1BA8362800C72260 /* libc++.dylib */; };
 		F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADE21B1B55FEC8005E84FA /* DetailController.swift */; };
 		F0B6FABC1B81F3D000EE2439 /* GalleryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */; };
 		F0BDA8E51B9EFE6700176531 /* ForumTopicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BDA8E41B9EFE6700176531 /* ForumTopicData.swift */; };
@@ -243,6 +251,16 @@
 		F0AB96341BA6DD9700C72260 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		F0AB96351BA6DD9700C72260 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		F0AB965E1BA8260200C72260 /* ProfileLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileLoginController.swift; sourceTree = "<group>"; };
+		F0AB966A1BA82E0800C72260 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = WeixinSDK/libWeChatSDK.a; sourceTree = "<group>"; };
+		F0AB966B1BA82E0800C72260 /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = read_me.txt; path = WeixinSDK/read_me.txt; sourceTree = "<group>"; };
+		F0AB966C1BA82E0800C72260 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = WeixinSDK/WXApi.h; sourceTree = "<group>"; };
+		F0AB966D1BA82E0800C72260 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = WeixinSDK/WXApiObject.h; sourceTree = "<group>"; };
+		F0AB96701BA834EE00C72260 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		F0AB96731BA8352200C72260 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		F0AB96751BA8352A00C72260 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F0AB96771BA835C200C72260 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F0AB96791BA835D900C72260 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F0AB967B1BA8362800C72260 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		F0ADE21B1B55FEC8005E84FA /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewCell.swift; sourceTree = "<group>"; };
 		F0BDA8E41B9EFE6700176531 /* ForumTopicData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumTopicData.swift; sourceTree = "<group>"; };
@@ -279,6 +297,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0AB967C1BA8362800C72260 /* libc++.dylib in Frameworks */,
+				F0AB967A1BA835D900C72260 /* Foundation.framework in Frameworks */,
+				F0AB96781BA835C200C72260 /* UIKit.framework in Frameworks */,
+				F0AB96761BA8352A00C72260 /* SystemConfiguration.framework in Frameworks */,
+				F0AB96741BA8352200C72260 /* libz.dylib in Frameworks */,
+				F0AB96711BA834EE00C72260 /* libsqlite3.0.dylib in Frameworks */,
+				F0AB966E1BA82E0800C72260 /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +331,6 @@
 		F09ADD761B563452009B3A6D /* CommonFiles */ = {
 			isa = PBXGroup;
 			children = (
-				F0AB96141BA6DD9700C72260 /* SDWebImage */,
 				F0E574F01B6784BE000053B8 /* Loading */,
 				F05455541B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.h */,
 				F05455551B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m */,
@@ -409,6 +433,33 @@
 			path = SDWebImage/SDWebImage;
 			sourceTree = SOURCE_ROOT;
 		};
+		F0AB96691BA82DF000C72260 /* WeixinSDK */ = {
+			isa = PBXGroup;
+			children = (
+				F0AB966A1BA82E0800C72260 /* libWeChatSDK.a */,
+				F0AB966B1BA82E0800C72260 /* read_me.txt */,
+				F0AB966C1BA82E0800C72260 /* WXApi.h */,
+				F0AB966D1BA82E0800C72260 /* WXApiObject.h */,
+			);
+			name = WeixinSDK;
+			sourceTree = "<group>";
+		};
+		F0AB96721BA834F600C72260 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				F0C3C2541B5FAA0C00AB6E35 /* Alamofire.xcodeproj */,
+				F0AB96691BA82DF000C72260 /* WeixinSDK */,
+				F0AB96141BA6DD9700C72260 /* SDWebImage */,
+				F0AB96731BA8352200C72260 /* libz.dylib */,
+				F0AB967B1BA8362800C72260 /* libc++.dylib */,
+				F0AB96701BA834EE00C72260 /* libsqlite3.0.dylib */,
+				F0AB96771BA835C200C72260 /* UIKit.framework */,
+				F0AB96791BA835D900C72260 /* Foundation.framework */,
+				F0AB96751BA8352A00C72260 /* SystemConfiguration.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
 		F0BDA8E31B9EFE4700176531 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,9 +486,9 @@
 		F0C5F6A81B53D1E000B2C20D = {
 			isa = PBXGroup;
 			children = (
-				F0C3C2541B5FAA0C00AB6E35 /* Alamofire.xcodeproj */,
 				F0C5F6B31B53D1E000B2C20D /* DingshanSwift */,
 				F09ADD761B563452009B3A6D /* CommonFiles */,
+				F0AB96721BA834F600C72260 /* Framework */,
 				F09ADD7B1B563974009B3A6D /* Resources */,
 				F0C5F6C91B53D1E000B2C20D /* DingshanSwiftTests */,
 				F0C5F6B21B53D1E000B2C20D /* Products */,
@@ -702,6 +753,7 @@
 				417BEF921B5A4E0F00F896A5 /* GeneralConfig.plist in Resources */,
 				F0AA4F981B93ECE7007EDEA9 /* tabbar_forum1@3x~iphone.png in Resources */,
 				F0AA4FAC1B93ED37007EDEA9 /* home_ad.jpg in Resources */,
+				F0AB966F1BA82E0800C72260 /* read_me.txt in Resources */,
 				F0AA4F961B93ECE7007EDEA9 /* tabbar_forum0@3x~iphone.png in Resources */,
 				F0AA4F9D1B93ECE7007EDEA9 /* tabbar_profile0@2x~iphone.png in Resources */,
 				F0AA4FA01B93ECE7007EDEA9 /* tabbar_profile1@3x~iphone.png in Resources */,
@@ -927,6 +979,10 @@
 				INFOPLIST_FILE = DingshanSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WeixinSDK",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -943,6 +999,10 @@
 				INFOPLIST_FILE = DingshanSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WeixinSDK",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

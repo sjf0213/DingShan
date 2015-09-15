@@ -33,4 +33,6 @@
 #import <WebImage/UIImage+WebP.h>
 #import <WebImage/UIImage+GIF.h>
 #import <WebImage/NSData+ImageContentType.h>
+#import "../WeixinSDK/WXApi.h"
+#import "../WeixinSDK/WXApiObject.h"
 #endif

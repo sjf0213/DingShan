@@ -10,6 +10,7 @@ import UIKit
 
 class ProfileViewController:DSViewController
 {
+    var loginDele:loginDelegate?
     var mainTable = UITableView()
     var infoView = UIView()
     override func loadView()
@@ -33,5 +34,8 @@ class ProfileViewController:DSViewController
     
     func onTapLogin(sender:UIButton) {
         print("onTapLogin")
+        var controller = ProfileLoginController()
+        controller.loginDele = self.loginDele
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
