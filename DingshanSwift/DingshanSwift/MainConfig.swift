@@ -18,14 +18,14 @@ class MainConfig {
     
     init() {
         //println("MainConfig INIT...");
-        var configPath = NSBundle.mainBundle().pathForResource("GeneralConfig", ofType: "plist")
+        let configPath = NSBundle.mainBundle().pathForResource("GeneralConfig", ofType: "plist")
         //print("\n-----configPath = \(configPath)")
         let exist = FileHelp.shareInstance().isFileExist(configPath)
         // print("\n-----isFileExist:\(exist)")
         if exist
         {
             self.rootDic = NSDictionary(contentsOfFile: configPath!);
-            print("root dic = \(rootDic)")
+            print("root dic = \(rootDic)", terminator: "")
         }
     }
     

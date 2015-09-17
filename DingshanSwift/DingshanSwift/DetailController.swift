@@ -16,10 +16,10 @@ class DetailController:UIViewController
         self.view.backgroundColor = UIColor.whiteColor()
         
         
-        var btn1 = UIButton(frame: CGRect(x:100,y:100,width:100,height:100));
+        let btn1 = UIButton(frame: CGRect(x:100,y:100,width:100,height:100));
         btn1.backgroundColor = UIColor.grayColor()
         let ccount = self.navigationController?.childViewControllers.count
-        var labelText:String = String(format:"layer No.%d", ccount!)
+        let labelText:String = String(format:"layer No.%d", ccount!)
         
         btn1.setTitle(labelText, forState: UIControlState.Normal)
         btn1.addTarget(self, action:Selector("onTapBtn:"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -27,8 +27,8 @@ class DetailController:UIViewController
     }
     
     func onTapBtn(sender:UIButton) {
-        print(sender)
-        var detail = DetailController()
+        print(sender, terminator: "")
+        let detail = DetailController()
         self.navigationController?.pushViewController(detail, animated: true)
         
     }

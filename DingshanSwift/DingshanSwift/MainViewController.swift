@@ -34,7 +34,7 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
         tabbar?.delegate = self;
         tabbar?.setHomeIndex(0);
         self.view.addSubview(tabbar!)
-        let config = MainConfig.sharedInstance
+//        let config = MainConfig.sharedInstance
     }
 }
 
@@ -46,7 +46,7 @@ extension MainViewController : loginDelegate
     
     // 微信登录
     func sendAuthRequest(){
-        var req = SendAuthReq()
+        let req = SendAuthReq()
         req.scope = "snsapi_message,snsapi_userinfo,snsapi_friend,snsapi_contact"
         req.state = "xxx"
         req.openID = "0c806938e2413ce73eef92cc3";
@@ -57,7 +57,7 @@ extension MainViewController : loginDelegate
         if let temp = resp as? SendAuthResp {
             let strTitle = "Auth结果"
             let strMsg = String(format: "code:%@,state:%@,errcode:%zd", temp.code, temp.state, temp.errCode)
-            var alert = UIAlertView(title: strTitle, message: strMsg, delegate: self, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: strTitle, message: strMsg, delegate: self, cancelButtonTitle: "OK")
             alert.show()
         }
     }
@@ -68,7 +68,7 @@ extension MainViewController : TabBarViewDelegate
 {
     func didSelectTabButton(tag:Int)
     {
-        print("..."+String(tag))
+        print("..."+String(tag), terminator: "")
         
         switch tag {
         case 0:

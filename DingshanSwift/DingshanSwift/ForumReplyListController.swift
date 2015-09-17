@@ -74,31 +74,31 @@ class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProt
     }
     
     func startRequest(){
-        var parameter = ["topicid" : NSNumber(integer: self.topicData.topicId),
+        let parameter = ["topicid" : NSNumber(integer: self.topicData.topicId),
             "floorid" : self.floorData.floorId,
             "replyid" : NSNumber(integer: 0),
             "sorttype" : "0",
             "pindex" : "0",
             "psize" : "20",
             "json" : "1"]
-        var useJson = true
-        var url = ApiBuilder.forum_get_reply_list(parameter)
-        print("url = \(url)")
+//        var useJson = true
+        let url = ApiBuilder.forum_get_reply_list(parameter)
+        print("url = \(url)", terminator: "")
         self.request = Alamofire.request(.GET, url)
         // JSON
-        self.request?.responseJSON(options: .AllowFragments, completionHandler: { (requst1:NSURLRequest, response1:NSHTTPURLResponse?, data:AnyObject?,err: NSError?) -> Void in
+//        self.request?.responseJSON(options: .AllowFragments, completionHandler: { (requst1:NSURLRequest, response1:NSHTTPURLResponse?, data:AnyObject?,err: NSError?) -> Void in
+        self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
             
-            print("\n responseJSON- - - - -data = \(data)")
-            print("\n responseJSON- - - - -err = \(err)")
+            print("\n responseJSON- - - - -data = \(result)")
             
             // 下拉刷新时候清空旧数据（请求失败也清空）
             if (self.currentPage == 0 && self.tableSource?.items.count > 0){
                 self.tableSource?.removeAllItems()
             }
             // 如果请求数据有效
-            if data is NSDictionary{
+            if let dic = result.value as? NSDictionary{
                 print("\n responseJSON- - - - -data is NSDictionary")
-                self.processRequestResult(data as! NSDictionary)
+                self.processRequestResult(dic)
             }
             // 控件复位
             self.refreshView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
@@ -109,10 +109,10 @@ class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProt
         if (200 == result["c"]?.integerValue){
             if let list = result["v"] as? NSDictionary{
                 if let replyArr = list["reply_list"] as? NSArray{
-                    print("\n dataArray- - -\(replyArr)")
+                    print("\n dataArray- - -\(replyArr)", terminator: "")
                     for var i = 0; i < replyArr.count; ++i {
                         if let item = replyArr[i] as? [String:AnyObject] {
-                            var data = ForumReplyData(dic: item)
+                            let data = ForumReplyData(dic: item)
                             self.tableSource?.items.addObject(data)
                         }
                     }

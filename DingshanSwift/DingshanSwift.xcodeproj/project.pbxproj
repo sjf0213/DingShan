@@ -105,6 +105,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F0963A0C1BAABB3500AFCFD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0C3C2541B5FAA0C00AB6E35 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4202FE01B667AA100C997FB;
+			remoteInfo = "Alamofire watchOS";
+		};
 		F0C3C25B1B5FAA0C00AB6E35 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F0C3C2541B5FAA0C00AB6E35 /* Alamofire.xcodeproj */;
@@ -317,6 +324,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F0963A0E1BAABC4600AFCFD8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F08749B21B54B590006E1FD3 /* Bridging-Header.h */,
+				F0C5F6B61B53D1E000B2C20D /* AppDelegate.swift */,
+				F0C5F6B81B53D1E000B2C20D /* ViewController.swift */,
+				F0C5F6BA1B53D1E000B2C20D /* Main.storyboard */,
+				F0C5F6BD1B53D1E000B2C20D /* Images.xcassets */,
+				F0C5F6BF1B53D1E000B2C20D /* LaunchScreen.xib */,
+				F09ADDA01B5640DD009B3A6D /* CommonDefine.swift */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
 		F09AB5251B74B6C400050A5C /* unused */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +498,7 @@
 			children = (
 				F0C3C25C1B5FAA0C00AB6E35 /* Alamofire.framework */,
 				F0C3C25E1B5FAA0C00AB6E35 /* Alamofire.framework */,
+				F0963A0D1BAABB3500AFCFD8 /* Alamofire.framework */,
 				F0C3C2601B5FAA0C00AB6E35 /* Alamofire iOS Tests.xctest */,
 				F0C3C2621B5FAA0C00AB6E35 /* Alamofire OSX Tests.xctest */,
 			);
@@ -507,13 +529,7 @@
 		F0C5F6B31B53D1E000B2C20D /* DingshanSwift */ = {
 			isa = PBXGroup;
 			children = (
-				F08749B21B54B590006E1FD3 /* Bridging-Header.h */,
-				F0C5F6B61B53D1E000B2C20D /* AppDelegate.swift */,
-				F0C5F6B81B53D1E000B2C20D /* ViewController.swift */,
-				F0C5F6BA1B53D1E000B2C20D /* Main.storyboard */,
-				F0C5F6BD1B53D1E000B2C20D /* Images.xcassets */,
-				F0C5F6BF1B53D1E000B2C20D /* LaunchScreen.xib */,
-				F09ADDA01B5640DD009B3A6D /* CommonDefine.swift */,
+				F0963A0E1BAABC4600AFCFD8 /* App */,
 				F0C5F6B41B53D1E000B2C20D /* Supporting Files */,
 				F09AB5251B74B6C400050A5C /* unused */,
 				F0D00E7A1B917AC00056BE3E /* General */,
@@ -665,7 +681,9 @@
 		F0C5F6A91B53D1E000B2C20D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "song jufeng";
 				TargetAttributes = {
 					F0C5F6B01B53D1E000B2C20D = {
@@ -704,6 +722,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		F0963A0D1BAABB3500AFCFD8 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = F0963A0C1BAABB3500AFCFD8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		F0C3C25C1B5FAA0C00AB6E35 /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -904,7 +929,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -951,6 +978,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -984,6 +1012,7 @@
 					"$(PROJECT_DIR)/WeixinSDK",
 				);
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.songjufeng.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DingshanSwift/Bridging-Header.h";
@@ -1004,6 +1033,7 @@
 					"$(PROJECT_DIR)/WeixinSDK",
 				);
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.songjufeng.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DingshanSwift/Bridging-Header.h";
@@ -1024,6 +1054,7 @@
 				);
 				INFOPLIST_FILE = DingshanSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.songjufeng.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DingshanSwift.app/DingshanSwift";
 			};
@@ -1039,6 +1070,7 @@
 				);
 				INFOPLIST_FILE = DingshanSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.songjufeng.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DingshanSwift.app/DingshanSwift";
 			};

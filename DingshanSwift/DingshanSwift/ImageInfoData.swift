@@ -20,23 +20,23 @@ class ImageInfoData: NSObject {
     init( dic : [String: AnyObject]){
         if let num = dic["image_id"] as? NSNumber {
             imageId = num.integerValue
-            print("-+- imageId = \(imageId)")
+            print("-+- imageId = \(imageId)", terminator: "")
         }
         if let tmp = dic["image_url"] as? String{
             url = tmp
-            print("-+- url = \(url)")
+            print("-+- url = \(url)", terminator: "")
         }
         if let tmp = dic["image_name"] as? String{
             desc = tmp
-            print("-+- desc = \(desc)")
+            print("-+- desc = \(desc)", terminator: "")
         }
         if let num = dic["image_width"] as? NSNumber {
             width = num.integerValue
-            print("-+- width = \(width)")
+            print("-+- width = \(width)", terminator: "")
         }
         if let num = dic["image_height"] as? NSNumber {
             height = num.integerValue
-            print("-+- height = \(height)")
+            print("-+- height = \(height)", terminator: "")
         }
     }
 }

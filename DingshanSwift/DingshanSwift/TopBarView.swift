@@ -25,7 +25,7 @@ class TopBarView:UIView
     private var titleLabel = UILabel()
     private var backBtn = UIButton()
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     override init(frame aRect: CGRect) {

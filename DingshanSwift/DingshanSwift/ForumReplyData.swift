@@ -17,12 +17,12 @@ class ForumReplyData : NSObject {
     
     init( dic : [String: AnyObject]){
         if let num = dic["reply_id"] as? String {
-            replyId = num.toInt()!
-            print("-+- replyId = \(replyId)")
+            replyId = Int(num)!
+            print("-+- replyId = \(replyId)", terminator: "")
         }
         if let tmp = dic["reply_content"] as? String{
             contentText = tmp
-            print("-+- contentText = \(contentText)")
+            print("-+- contentText = \(contentText)", terminator: "")
         }
     }
 }

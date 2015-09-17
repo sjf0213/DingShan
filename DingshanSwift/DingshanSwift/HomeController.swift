@@ -68,7 +68,7 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         mainTable.registerClass(HomeCell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
         self.view.addSubview(mainTable)
         
-        var adPic = UIImageView(image: UIImage(named: "home_ad.jpg"))
+        let adPic = UIImageView(image: UIImage(named: "home_ad.jpg"))
         adPic.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.1)
         adPic.frame = CGRect(x: 0, y: 0 - HomeAd_H, width: self.view.bounds.size.width, height: HomeAd_H)
         mainTable.addSubview(adPic)
@@ -106,27 +106,30 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         */
         
         //"http://v3.kuaigame.com/topics/topiclist?iosver=8.4&uid=221188&device=iPhone5%2C2&pindex=0&psize=50&appver=3.3.0&key=xv0JOoDtfa2GqBwM3lAb0FpyeLc%3D&topicid=0&did=053F4F67-4445-4774-9060-B3CC0795EC7E&e=1438254601&clientid=21&aid=hypB2OIKaQ1jFyNWvljyE7HPV3E%3D&sorttype=1";
-        var parameter = ["pindex" : "0",
+        let parameter = ["pindex" : "0",
                         "psize" : "50",
                         "sorttype" : "1",
                         "topicid":"0",
                         "json" : "1"]
-        var useJson = true
-        var url = ApiBuilder.forum_get_topic_list(parameter)
-        print("url = \(url)")
+//        let useJson = true
+        let url = ApiBuilder.forum_get_topic_list(parameter)
+        print("url = \(url)", terminator: "")
         self.request = Alamofire.request(.GET, url)
         // JSON
-        self.request?.responseJSON(options: .AllowFragments, completionHandler: { (requst1:NSURLRequest, response1:NSHTTPURLResponse?, data:AnyObject?,err: NSError?) -> Void in
-
-            print("\n responseJSON- - - - -data = \(data)")
-            print("\n responseJSON- - - - -err = \(err)")
+//        self.request?.responseJSON(options: .AllowFragments, completionHandler: { (requst1:NSURLRequest, response1:NSHTTPURLResponse?, data:AnyObject?,err: NSError?) -> Void in
+        self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
+            print("\n responseJSON- - - - -result = \(result)")
+//            print("\n responseJSON- - - - -err = \(err)")
+//            if let tmp = result is Alamofire.Result{
+//                tmp.Success
+//            }
             
             // 下拉刷新时候清空旧数据（请求失败也清空）
             if (self.currentPage == 0 && self.tableSource?.items.count > 0){
                 self.tableSource?.removeAllItems()
             }
             // 如果请求数据有效
-            if let dic = data as? NSDictionary{
+            if let dic = result.value as? NSDictionary{
                 print("\n responseJSON- - - - -data is NSDictionary")
                 self.processRequestResult(dic)
             }
@@ -140,10 +143,10 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         if (200 == result["c"]?.integerValue){
             if let list = result["v"] as? NSDictionary{
                 if let arr = list["topic_list"] as? NSArray{
-                    print("\n dataArray- - -\(arr)")
+                    print("\n dataArray- - -\(arr)", terminator: "")
                     for var i = 0; i < arr.count; ++i {
                         if let item = arr[i] as? [String:AnyObject] {
-                            var data = ForumTopicData(dic: item)
+                            let data = ForumTopicData(dic: item)
                             self.tableSource?.items.addObject(data)
                         }
                     }
@@ -164,17 +167,17 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
     }
     
     func onTapNewThread(){
-        print("add new")
-        var newThreadController = ForumNewThreadController()
+        print("add new", terminator: "")
+        let newThreadController = ForumNewThreadController()
         self.navigationController?.pushViewController(newThreadController, animated: true)
     }
     
 //MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)")
+        print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)", terminator: "")
         if let  cell = tableView.cellForRowAtIndexPath(indexPath) as? HomeCell{
-            var detail = ForumFloorListController()
+            let detail = ForumFloorListController()
             detail.navigationItem.title = cell.title.text
             self.navigationController?.pushViewController(detail, animated: true)
             if let data = self.tableSource?.items[indexPath.row] as? ForumTopicData{

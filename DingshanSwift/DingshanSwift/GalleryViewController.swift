@@ -42,7 +42,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         self.view.addSubview(menuView)
         menuView.menuTitleArr = [["title":"1"], ["title":"2"], ["title":"3"]]
         
-        var layout = CHTCollectionViewWaterfallLayout()
+        let layout = CHTCollectionViewWaterfallLayout()
         layout.sectionInset = UIEdgeInsetsMake(gallery_gap, gallery_gap, gallery_gap, gallery_gap);
         layout.columnCount = 2;
         layout.minimumColumnSpacing = gallery_gap;
@@ -68,8 +68,8 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     }
     
     func onTapBtn(sender:UIButton) {
-        print(sender)
-        var detail = DetailController()
+        print(sender, terminator: "")
+        let detail = DetailController()
         self.navigationController?.pushViewController(detail, animated: true)
         
     }
@@ -79,25 +79,25 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         
 //        "http://v3.kuaigame.com/app/getcategoryarticle?uid=223378&device=iPhone5%2C2&pindex=0&psize=20&appver=3.3.0&key=TDqKUTCWopMCLFvlJzOkR3NYGkI%3D&did=038D6DED-EC45-49D6-A616-CF887E1BEE07&e=1439807501&categoryid=1&clientid=21&aid=lIsGbvnD6lq5cl%2BUfayEum60dbE%3D&iosver=8.4.1";\
 //        
-        var parameter = ["pindex" : "0",
+        let parameter = ["pindex" : "0",
                           "psize" : "10",
                      "categoryid" : "1",
                            "json" : "1"]
-        var useJson = true
-        var url = ApiBuilder.forum_get_galary_single_list(parameter)
-        print("url = \(url)")
+        let url = ApiBuilder.forum_get_galary_single_list(parameter)
+        print("url = \(url)", terminator: "")
         self.request = Alamofire.request(.GET, url)
         // JSON
-        self.request?.responseJSON(options: .AllowFragments, completionHandler: { (requst1:NSURLRequest, response1:NSHTTPURLResponse?, data:AnyObject?,err: NSError?) -> Void in
-            
-            print("\n responseJSON- - - - -data = \(data)")
-            print("\n responseJSON- - - - -err = \(err)")
+//        self.request?.responseJSON(options: .AllowFragments, completionHandler: { (requst1:NSURLRequest, response1:NSHTTPURLResponse?, data:AnyObject?,err: NSError?) -> Void in
+        self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
+        
+            print("\n responseJSON- - - - -data = \(result)")
+//            print("\n responseJSON- - - - -err = \(err)")
             // 下拉刷新时候清空旧数据（请求失败也清空）
             if (self.currentPage == 0 && self.dataList.count > 0){
                 self.dataList.removeAllObjects()
             }
             // 如果请求数据有效
-            if let dic = data as? NSDictionary{
+            if let dic = result.value as? NSDictionary{
                 print("\n responseJSON- - - - -data is NSDictionary")
                 self.processRequestResult(dic)
             }
@@ -113,7 +113,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                 if let arr = list["image_list"] as? NSArray{
                     for var i = 0; i < arr.count; ++i {
                         if let item = arr[i] as? [String:AnyObject] {
-                            var data = ImageInfoData(dic: item)
+                            let data = ImageInfoData(dic: item)
                             self.dataList.addObject(data)
                         }
                     }
@@ -139,13 +139,14 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         let w:CGFloat = (self.view.bounds.size.width - (3 * gallery_gap)) * 0.5
         var h = w;
         if let data = self.dataList.objectAtIndex(indexPath.item) as? ImageInfoData{
-            print("\n -------- w = \(data.width), h = \(data.height)")
+//            print("\n -------- w = \(data.width), h = \(data.height)", terminator: "")
             if (data.width != 0 && data.height != 0){// 如果没有宽高数据，则显示方形图片
                 h = w * CGFloat(data.height) / CGFloat(data.width)
             }
+            print("\n -------- url = \(data.url)", terminator: "")
         }
-        var rt = CGSize(width: w, height: h)
-        print("\n -------- rt = \(rt)")
+        let rt = CGSize(width: w, height: h)
+        print("\n -------- rt = \(rt)", terminator: "")
         return rt
     }
     
@@ -172,7 +173,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
 //        print("+++++++++++++++didSelectItemAtIndexPath-------\(indexPath)")
         if let imgData = dataList[indexPath.item] as? ImageInfoData{
-            var detail = GalleryDetailController()
+            let detail = GalleryDetailController()
             self.navigationController?.pushViewController(detail, animated: true)
             detail.navigationItem.title =  imgData.desc;
         }

@@ -11,7 +11,7 @@ class HomeGridCell : UICollectionViewCell
 {
     var bgImg:UIImageView?
     var title:UILabel?
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     override init(frame aRect: CGRect) {

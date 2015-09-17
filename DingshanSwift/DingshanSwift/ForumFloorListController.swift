@@ -74,31 +74,30 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
     
     func startRequest(){
         //        var urlStr:String = "http://v3.kuaigame.com/app/getcategoryarticle?uid=220154&device=iPhone5%2C2&pindex=0&psize=20&appver=3.2.1&key=cNCS0ipHRcFXsuW%2FTyO%2FN%2BmoHsk%3D&did=CD1FBB97-426F-4A83-90AB-A897D580BED2&e=1437637766&categoryid=3&clientid=21&aid=W%2Fsuzn3p2Tb3fQRp1ZaRxZlueKo%3D&iosver=8.4";
-        var parameter = ["topicid" : NSNumber(integer: self.topicData.topicId),
+        let parameter = ["topicid" : NSNumber(integer: self.topicData.topicId),
             "floorid" : NSNumber(integer: 0),
             "replyid" : NSNumber(integer: 0),
             "sorttype" : "0",
             "pindex" : "0",
             "psize" : "20",
             "json" : "1"]
-        var useJson = true
-        var url = ApiBuilder.forum_get_floor_list(parameter)
-        print("url = \(url)")
+//        var useJson = true
+        let url = ApiBuilder.forum_get_floor_list(parameter)
+        print("url = \(url)", terminator: "")
         self.request = Alamofire.request(.GET, url)
         // JSON
-        self.request?.responseJSON(options: .AllowFragments, completionHandler: { (requst1:NSURLRequest, response1:NSHTTPURLResponse?, data:AnyObject?,err: NSError?) -> Void in
-            
-            print("\n responseJSON- - - - -data = \(data)")
-            print("\n responseJSON- - - - -err = \(err)")
+        self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
+            print("\n responseJSON- - - - -data = \(result)")
+//            print("\n responseJSON- - - - -err = \(err)")
             
             // 下拉刷新时候清空旧数据（请求失败也清空）
             if (self.currentPage == 0 && self.tableSource?.items.count > 0){
                 self.tableSource?.removeAllItems()
             }
             // 如果请求数据有效
-            if data is NSDictionary{
+            if let dic = result.value as? NSDictionary{
                 print("\n responseJSON- - - - -data is NSDictionary")
-                self.processRequestResult(data as! NSDictionary)
+                self.processRequestResult(dic)
             }
             // 控件复位
             self.refreshView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
@@ -109,10 +108,10 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         if (200 == result["c"]?.integerValue){
             if let list = result["v"] as? NSDictionary{
                 if let arr = list["floor_list"] as? NSArray{
-                    print("\n dataArray- - -\(arr)")
+                    print("\n dataArray- - -\(arr)", terminator: "")
                     for var i = 0; i < arr.count; ++i {
                         if let item = arr[i] as? [String:AnyObject] {
-                            var data = ForumFloorData(dic: item)
+                            let data = ForumFloorData(dic: item)
                             self.tableSource?.items.addObject(data)
                         }
                     }
@@ -134,9 +133,9 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
 //MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)")
-        if let  cell = tableView.cellForRowAtIndexPath(indexPath) as? ForumFloorCell{
-            var detail = ForumReplyListController()
+        print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)", terminator: "")
+        if let _ = tableView.cellForRowAtIndexPath(indexPath) as? ForumFloorCell{
+            let detail = ForumReplyListController()
             detail.navigationItem.title = self.topicData.topicTitle
             self.navigationController?.pushViewController(detail, animated: true)
             if let data = self.tableSource?.items[indexPath.row] as? ForumFloorData{

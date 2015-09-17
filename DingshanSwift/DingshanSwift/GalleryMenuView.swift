@@ -11,9 +11,9 @@ class GalleryMenuView: UIView {
     
     var menuTitleArr = [AnyObject](){
         didSet{
-            var w:CGFloat = self.bounds.width / CGFloat(self.menuTitleArr.count)
+            let w:CGFloat = self.bounds.width / CGFloat(self.menuTitleArr.count)
             for (var i = 0; i < self.menuTitleArr.count; i++){
-                var btn = GalleryMenuButtton();
+                let btn = GalleryMenuButtton();
                 
                 btn.frame = CGRect(x: CGFloat(i) * w, y: CGFloat(0.0), width: w, height: self.bounds.height)
                 if let dic  = self.menuTitleArr[i] as? NSDictionary{
@@ -28,7 +28,7 @@ class GalleryMenuView: UIView {
         }
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     override init(frame aRect: CGRect) {
@@ -45,13 +45,13 @@ class GalleryMenuView: UIView {
     }
     
     func onTapBtn(sender:GalleryMenuButtton) {
-        print(sender)
+        print(sender, terminator: "")
         let btn = sender
         let index = btn.tag
         if(btn.curSelected){
             sender.curSelected = false;
             if let dic = self.menuTitleArr[index] as? NSDictionary{
-                print("tap menu btn:\(index) - - - - \(dic)")
+                print("tap menu btn:\(index) - - - - \(dic)", terminator: "")
                 self.frame = CGRectMake(0, TopBar_H, self.bounds.size.width, UIScreen.mainScreen().bounds.height - TopBar_H)
             }
         }else{

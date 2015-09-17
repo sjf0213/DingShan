@@ -11,7 +11,7 @@ class  GalleryViewCell : UICollectionViewCell
 {
     var bgImg:UIImageView?
     var title:UILabel?
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     override init(frame aRect: CGRect) {
@@ -36,6 +36,7 @@ class  GalleryViewCell : UICollectionViewCell
     func loadCellData(info:ImageInfoData)
     {
         title?.text = info.desc
+        print("=====info.url = \(info.url)");
         bgImg?.sd_setImageWithURL(NSURL(string: info.url))
     }
 }

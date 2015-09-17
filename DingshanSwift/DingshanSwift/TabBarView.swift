@@ -17,7 +17,7 @@ class TabBarView:UIView
 {
     var delegate: TabBarViewDelegate?
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     override init(frame aRect: CGRect) {
@@ -33,24 +33,24 @@ class TabBarView:UIView
         
         var btnArr = [UIControl]()
         
-        var btn1 = TabBarToggleBtn(frame: CGRectMake(0, 0, btnWidth, btnHeight));
+        let btn1 = TabBarToggleBtn(frame: CGRectMake(0, 0, btnWidth, btnHeight));
         btn1.img0 = UIImage(named: "tabbar_forum0")!;
         btn1.img1 = UIImage(named: "tabbar_forum1")!;
         btn1.title = "装吧"
         btnArr.append(btn1)
-        var btn2 = TabBarToggleBtn(frame: CGRectMake(btnWidth, 0, btnWidth, btnHeight));
+        let btn2 = TabBarToggleBtn(frame: CGRectMake(btnWidth, 0, btnWidth, btnHeight));
         btn2.img0 = UIImage(named: "tabbar_gallery0")!;
         btn2.img1 = UIImage(named: "tabbar_gallery1")!;
         btn2.title = "怦然心动"
         btnArr.append(btn2)
-        var btn3 = TabBarToggleBtn(frame: CGRectMake(btnWidth*2, 0, btnWidth, btnHeight));
+        let btn3 = TabBarToggleBtn(frame: CGRectMake(btnWidth*2, 0, btnWidth, btnHeight));
         btn3.img0 = UIImage(named: "tabbar_profile0")!;
         btn3.img1 = UIImage(named: "tabbar_profile1")!;
         btn3.title = "我的"
         btnArr.append(btn3)
         
         for(var i:Int = 0; i < btnArr.count; i++) {
-            var item = btnArr[i]
+            let item = btnArr[i]
             item.tag = i + 1000;
             item.addTarget(self, action:Selector("onTapBtn:"), forControlEvents: UIControlEvents.TouchUpInside)
             self.addSubview(item)
@@ -58,7 +58,7 @@ class TabBarView:UIView
     }
     
     func setHomeIndex(index:Int) {
-        print(" subviews.count = " + String(self.subviews.count))
+        print(" subviews.count = " + String(self.subviews.count), terminator: "")
         for obj in self.subviews{
             if let item = obj as? TabBarToggleBtn{
                 if (item.tag == index + 1000){
@@ -72,7 +72,7 @@ class TabBarView:UIView
     }
     
     func onTapBtn(sender:UIControl) {
-        print(String(sender.tag))
+        print(String(sender.tag), terminator: "")
         if let item = sender as? TabBarToggleBtn{
             item.curSelected = true;
             for obj in self.subviews{

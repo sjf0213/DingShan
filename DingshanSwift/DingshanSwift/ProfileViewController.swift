@@ -25,7 +25,7 @@ class ProfileViewController:DSViewController
         infoView.frame = CGRect(x: 0, y: 0-self.mainTable.contentInset.top, width: self.mainTable.bounds.width, height: self.mainTable.contentInset.top)
         self.mainTable.addSubview(infoView)
         
-        var loginBtn = UIButton(frame: CGRect(x:(self.view.bounds.size.width - 100)*0.5, y:100, width:100, height:50));
+        let loginBtn = UIButton(frame: CGRect(x:(self.view.bounds.size.width - 100)*0.5, y:100, width:100, height:50));
         loginBtn.backgroundColor = UIColor.lightGrayColor()
         loginBtn.setTitle("login", forState: UIControlState.Normal)
         loginBtn.addTarget(self, action:Selector("onTapLogin:"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -33,8 +33,8 @@ class ProfileViewController:DSViewController
     }
     
     func onTapLogin(sender:UIButton) {
-        print("onTapLogin")
-        var controller = ProfileLoginController()
+        print("onTapLogin", terminator: "")
+        let controller = ProfileLoginController()
         controller.loginDele = self.loginDele
         self.navigationController?.pushViewController(controller, animated: true)
     }
