@@ -199,6 +199,18 @@ static ApiBuilder * m_Instance;
     return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/Topic/replylist", HostName] args:dic];
 }
 
+/*
+ url:www.kokoguo.com/dingshan/Topic/createtopic?uid=1&aid=asdf&json=1&ctype=1
+ ctype为请求分类，就是设计的几个阶段
+ 请求方式：POST
+ "topic_title":"这是类型1",
+ "topic_content":"内容哈哈哈哈"
+ */
++(NSString *)forum_create_topic:(NSDictionary*)dic
+{
+    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/Topic/createtopic", HostName] args:dic];
+}
+
 // 图库 ////////////////////////////////////////////////
 // 图库-单图
 +(NSString *)forum_get_galary_single_list:(NSDictionary*)dic
