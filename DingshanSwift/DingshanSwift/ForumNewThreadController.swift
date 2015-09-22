@@ -75,6 +75,24 @@ class ForumNewThreadController : DSViewController{
                 let theJSONText = NSString(data: theJSONData, encoding: NSASCIIStringEncoding)
                 print("\ntheJSONText = \(theJSONText)")
                 self.request = Alamofire.upload(.POST, url, data: theJSONData)
+                .progress { bytesWritten, totalBytesWritten, totalBytesExpectedToWrite in
+                        print(totalBytesWritten)
+                        // This closure is NOT called on the main queue for performance
+                        // reasons. To update your ui, dispatch to the main queue.
+                        dispatch_async(dispatch_get_main_queue()) {
+                            print("Total bytes written on main queue: \(totalBytesWritten)")
+                        }
+                    }
+                .responseJSON { request, response, result in
+                    debugPrint(result)
+                    // 如果请求数据有效
+                    if let dic = result.value as? NSDictionary{
+                        debugPrint("\n responseJSON- - - - -data is NSDictionary\(dic)")
+                        if (200 == dic["c"]?.integerValue){
+                            self.close()
+                        }
+                    }
+                }
             }catch{
                 print(error)
             }

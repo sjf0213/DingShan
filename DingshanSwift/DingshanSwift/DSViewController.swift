@@ -35,4 +35,9 @@ class DSViewController:UIViewController
     override func viewDidLoad() {
         self.view.bringSubviewToFront(topView)
     }
+    
+    func close()
+    {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 }
