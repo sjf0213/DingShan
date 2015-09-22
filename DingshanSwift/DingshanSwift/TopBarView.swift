@@ -30,6 +30,7 @@ class TopBarView:UIView
     }
     override init(frame aRect: CGRect) {
         super.init(frame: aRect);
+        self.backgroundColor = NAVI_COLOR
         let topline = UIView(frame: CGRect(x: 0, y: TopBar_H - 0.5, width: self.bounds.width, height: 0.5))
         topline.backgroundColor = UIColor.grayColor()
         self.addSubview(topline)

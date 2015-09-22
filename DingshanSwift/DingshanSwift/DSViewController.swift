@@ -23,12 +23,10 @@ class DSViewController:UIViewController
     }
     
     //////////////////////////
-    override func loadView()
-    {
+    override func loadView(){
         super.loadView()
         self.navigationController?.navigationBar.hidden = true;
         topView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, TopBar_H)
-        topView.backgroundColor = NAVI_COLOR
         self.view.addSubview(topView);
         
         topView.backBlock = {self.navigationController?.popViewControllerAnimated(true)}
@@ -37,6 +35,4 @@ class DSViewController:UIViewController
     override func viewDidLoad() {
         self.view.bringSubviewToFront(topView)
     }
-    
-    
 }
