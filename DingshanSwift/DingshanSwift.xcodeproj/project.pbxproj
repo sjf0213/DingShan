@@ -388,9 +388,9 @@
 		F09ADD761B563452009B3A6D /* CommonFiles */ = {
 			isa = PBXGroup;
 			children = (
+				F0E574F01B6784BE000053B8 /* Loading */,
 				F035ECF31BB29D8100A8D8EC /* OpenUDID.h */,
 				F035ECF41BB29D8100A8D8EC /* OpenUDID.m */,
-				F0E574F01B6784BE000053B8 /* Loading */,
 				F05455541B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.h */,
 				F05455551B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m */,
 				F09C7AAC1B7CAEDC00648615 /* KASegmentButton.h */,

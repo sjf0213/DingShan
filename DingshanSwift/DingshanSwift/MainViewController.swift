@@ -8,7 +8,7 @@
 
 //import Foundation
 import UIKit
-
+import Alamofire
 
 protocol loginDelegate{
      func loginByWeixin()
@@ -24,6 +24,12 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     var galleryNavi:UINavigationController?
     var profileController:ProfileViewController?
     var profileNavi:UINavigationController?
+    
+    var request: Alamofire.Request? {
+        didSet {
+            oldValue?.cancel()
+        }
+    }
     override func loadView(){
         super.loadView()
         self.view.backgroundColor = UIColor.whiteColor()
@@ -63,7 +69,19 @@ extension MainViewController : loginDelegate
     
     /////////////////分配新用户
     func assignNewUser(){
-        
+        let parameter = ["did" : OpenUDID.value(),
+                        "json" : "1"]
+        let url = ApiBuilder.user_create_new(parameter)
+        print("url = \(url)", terminator: "")
+        self.request = Alamofire.request(.GET, url)
+        // JSON
+        self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
+            print("\n responseJSON- - - - -data = \(result)")
+                            // 如果请求数据有效
+            if let dic = result.value as? NSDictionary{
+                print("\n response- --dic = \(dic)")
+            }
+        })
     }
 }
 

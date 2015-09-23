@@ -72,7 +72,6 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
     }
     
     func startRequest(){
-        //        var urlStr:String = "http://v3.kuaigame.com/app/getcategoryarticle?uid=220154&device=iPhone5%2C2&pindex=0&psize=20&appver=3.2.1&key=cNCS0ipHRcFXsuW%2FTyO%2FN%2BmoHsk%3D&did=CD1FBB97-426F-4A83-90AB-A897D580BED2&e=1437637766&categoryid=3&clientid=21&aid=W%2Fsuzn3p2Tb3fQRp1ZaRxZlueKo%3D&iosver=8.4";
         let parameter = ["topicid" : NSNumber(integer: self.topicData.topicId),
             "floorid" : NSNumber(integer: 0),
             "replyid" : NSNumber(integer: 0),
@@ -80,7 +79,6 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
             "pindex" : "0",
             "psize" : "20",
             "json" : "1"]
-//        var useJson = true
         let url = ApiBuilder.forum_get_floor_list(parameter)
         print("url = \(url)", terminator: "")
         self.request = Alamofire.request(.GET, url)

@@ -26,4 +26,6 @@
 // 图库列表
 +(NSString *)gallery_get_galary_single_list:(NSDictionary*)dic;
 +(NSString *)gallery_get_galary_multi_list:(NSDictionary*)dic;
+// 用户
++(NSString *)user_create_new:(NSDictionary*)dic;
 @end
