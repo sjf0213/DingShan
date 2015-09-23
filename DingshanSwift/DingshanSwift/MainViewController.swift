@@ -12,6 +12,7 @@ import UIKit
 
 protocol loginDelegate{
      func loginByWeixin()
+     func assignNewUser()
 }
 
 class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
@@ -42,7 +43,6 @@ extension MainViewController : loginDelegate
     func loginByWeixin(){
         self.sendAuthRequest()
     }
-    
     // 微信登录
     func sendAuthRequest(){
         let req = SendAuthReq()
@@ -59,6 +59,11 @@ extension MainViewController : loginDelegate
             let alert = UIAlertView(title: strTitle, message: strMsg, delegate: self, cancelButtonTitle: "OK")
             alert.show()
         }
+    }
+    
+    /////////////////分配新用户
+    func assignNewUser(){
+        
     }
 }
 

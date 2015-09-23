@@ -19,9 +19,19 @@ class ProfileLoginController: DSViewController {
         wxLoginBtn.setTitle("微信登录", forState: UIControlState.Normal)
         wxLoginBtn.addTarget(self, action:Selector("onTapLogin"), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(wxLoginBtn)
+        
+        let skipBtn = UIButton(frame: CGRect(x:(self.view.bounds.size.width - 100)*0.5, y:self.view.bounds.size.height - 140, width:100, height:50));
+        skipBtn.backgroundColor = UIColor.grayColor()
+        skipBtn.setTitle("跳过", forState: UIControlState.Normal)
+        skipBtn.addTarget(self, action:Selector("onTapSkip"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(skipBtn)
     }
     
     func onTapLogin(){
         self.loginDele?.loginByWeixin()
+    }
+    
+    func onTapSkip(){
+        self.loginDele?.assignNewUser()
     }
 }
