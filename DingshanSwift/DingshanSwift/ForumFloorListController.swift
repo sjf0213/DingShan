@@ -26,7 +26,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         super.loadView()
         self.view.backgroundColor = UIColor.lightGrayColor()
         self.topTitle = "楼层列表"
-        self.tableSource = ArrayDataSource(withcellIdentifier: FloorCellIdentifier, configureCellBlock:{(cell, data) in
+        self.tableSource = ArrayDataSource(withcellIdentifier: FloorFollowingCellIdentifier, withFirstRowIdentifier:FloorLordCellIdentifier, configureCellBlock:{(cell, data) in
             if let itemCell = cell as? ForumFloorCell{
                 itemCell.clearData()
                 if let d = data as? ForumFloorData{
@@ -39,7 +39,6 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
             y:TopBar_H,
             width:self.view.bounds.width,
             height:60))
-//        refreshView?.backgroundColor = UIColor.cyanColor()
         refreshView?.delegate = self
         self.view.addSubview(self.refreshView!)
         
@@ -50,14 +49,14 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         mainTable.delegate = self
         mainTable.dataSource = self.tableSource
         mainTable.rowHeight = HomeRow_H
-        mainTable.registerClass(ForumFloorCell.classForCoder(), forCellReuseIdentifier: FloorCellIdentifier)
+        mainTable.registerClass(ForumFloorLordCell.classForCoder(), forCellReuseIdentifier: FloorLordCellIdentifier)
+        mainTable.registerClass(ForumFloorFollowingCell.classForCoder(), forCellReuseIdentifier: FloorFollowingCellIdentifier)
         self.view.addSubview(mainTable)
         
         self.refreshView?.loadinsets = self.mainTable.contentInset
         
         loadMoreView = LoadView(frame:CGRect(x:0, y:-1000, width:self.view.bounds.width, height:50))
         loadMoreView?.delegate = self
-//        refreshView?.backgroundColor = UIColor.cyanColor()
         loadMoreView?.loadinsets = self.mainTable.contentInset
         self.mainTable.addSubview(self.loadMoreView!)
     }

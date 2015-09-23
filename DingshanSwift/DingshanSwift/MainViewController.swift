@@ -9,7 +9,6 @@
 //import Foundation
 import UIKit
 
-let MAIN_TAB_H:CGFloat = 50
 
 protocol loginDelegate{
      func loginByWeixin()
