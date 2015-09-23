@@ -83,7 +83,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                           "psize" : "10",
                      "categoryid" : "1",
                            "json" : "1"]
-        let url = ApiBuilder.forum_get_galary_single_list(parameter)
+        let url = ApiBuilder.gallery_get_galary_single_list(parameter)
         print("url = \(url)", terminator: "")
         self.request = Alamofire.request(.GET, url)
         // JSON

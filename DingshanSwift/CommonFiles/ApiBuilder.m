@@ -186,17 +186,17 @@ static ApiBuilder * m_Instance;
 // 讨论区话题列表
 +(NSString *)forum_get_topic_list:(NSDictionary*)dic
 {
-    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/Topic/topiclist", HostName] args:dic];
+    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/topic/topiclist", HostName] args:dic];
 }
 // 讨论区楼层列表
 +(NSString *)forum_get_floor_list:(NSDictionary*)dic
 {
-    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/Topic/floorlist", HostName] args:dic];
+    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/topic/floorlist", HostName] args:dic];
 }
 // 讨论区回复列表
 +(NSString *)forum_get_reply_list:(NSDictionary*)dic
 {
-    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/Topic/replylist", HostName] args:dic];
+    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/topic/replylist", HostName] args:dic];
 }
 
 /*
@@ -208,18 +208,25 @@ static ApiBuilder * m_Instance;
  */
 +(NSString *)forum_create_topic:(NSDictionary*)dic
 {
-    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/Topic/createtopic", HostName] args:dic];
+    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/topic/createtopic", HostName] args:dic];
 }
 
 // 图库 ////////////////////////////////////////////////
 // 图库-单图
-+(NSString *)forum_get_galary_single_list:(NSDictionary*)dic
++(NSString *)gallery_get_galary_single_list:(NSDictionary*)dic
 {
-    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/Images/singleimageslist", HostName] args:dic];
+    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/images/singleimageslist", HostName] args:dic];
 }
 // 图库-多图
-+(NSString *)forum_get_galary_multi_list:(NSDictionary*)dic
++(NSString *)gallery_get_galary_multi_list:(NSDictionary*)dic
 {
-    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/Images/multiimageslist", HostName] args:dic];
+    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/images/multiimageslist", HostName] args:dic];
 }
+
+// 用户 ////////////////////////////////////////////////
++(NSString *)user_create_new:(NSDictionary*)dic
+{
+    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/user/createnewuser", HostName] args:dic];
+}
+
 @end

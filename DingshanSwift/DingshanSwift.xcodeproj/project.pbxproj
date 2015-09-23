@@ -17,7 +17,7 @@
 		F028C17A1B9C479300B8CECA /* GalleryMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F028C1791B9C479300B8CECA /* GalleryMenuItem.swift */; };
 		F035ECE71BB2880800A8D8EC /* ForumFloorLordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F035ECE61BB2880800A8D8EC /* ForumFloorLordCell.swift */; settings = {ASSET_TAGS = (); }; };
 		F035ECEE1BB2882900A8D8EC /* ForumFloorFollowingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F035ECED1BB2882900A8D8EC /* ForumFloorFollowingCell.swift */; settings = {ASSET_TAGS = (); }; };
-		F035ECF51BB29D8100A8D8EC /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = F035ECF41BB29D8100A8D8EC /* OpenUDID.m */; settings = {ASSET_TAGS = (); }; };
+		F035ECF51BB29D8100A8D8EC /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = F035ECF41BB29D8100A8D8EC /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F0507E5D1B67561A007E9024 /* KnowledgeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */; };
 		F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E641B675666007E9024 /* ForumFloorListController.swift */; };
 		F0507E691B6756D3007E9024 /* KnowledgeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */; };
