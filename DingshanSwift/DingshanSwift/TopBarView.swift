@@ -35,7 +35,7 @@ class TopBarView:UIView
         topline.backgroundColor = UIColor.grayColor()
         self.addSubview(topline)
         
-        titleLabel.frame = CGRect(x:44, y:20, width:self.bounds.size.width - 88, height:self.bounds.size.height - 20)
+        titleLabel = UILabel(frame: CGRect(x:44, y:20, width:self.bounds.size.width - 88, height:self.bounds.size.height - 20))
         titleLabel.textAlignment = NSTextAlignment.Center
         self.addSubview(titleLabel)
         

@@ -18,6 +18,7 @@
 		F035ECE71BB2880800A8D8EC /* ForumFloorLordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F035ECE61BB2880800A8D8EC /* ForumFloorLordCell.swift */; settings = {ASSET_TAGS = (); }; };
 		F035ECEE1BB2882900A8D8EC /* ForumFloorFollowingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F035ECED1BB2882900A8D8EC /* ForumFloorFollowingCell.swift */; settings = {ASSET_TAGS = (); }; };
 		F035ECF51BB29D8100A8D8EC /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = F035ECF41BB29D8100A8D8EC /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F035ECFC1BB2B8DC00A8D8EC /* ProfileUserInfoEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F035ECFB1BB2B8DC00A8D8EC /* ProfileUserInfoEditController.swift */; settings = {ASSET_TAGS = (); }; };
 		F0507E5D1B67561A007E9024 /* KnowledgeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */; };
 		F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E641B675666007E9024 /* ForumFloorListController.swift */; };
 		F0507E691B6756D3007E9024 /* KnowledgeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */; };
@@ -181,6 +182,7 @@
 		F035ECED1BB2882900A8D8EC /* ForumFloorFollowingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorFollowingCell.swift; sourceTree = "<group>"; };
 		F035ECF31BB29D8100A8D8EC /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
 		F035ECF41BB29D8100A8D8EC /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		F035ECFB1BB2B8DC00A8D8EC /* ProfileUserInfoEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUserInfoEditController.swift; sourceTree = "<group>"; };
 		F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailController.swift; sourceTree = "<group>"; };
 		F0507E641B675666007E9024 /* ForumFloorListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorListController.swift; sourceTree = "<group>"; };
 		F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeListCell.swift; sourceTree = "<group>"; };
@@ -652,6 +654,7 @@
 			children = (
 				F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */,
 				F0AB965E1BA8260200C72260 /* ProfileLoginController.swift */,
+				F035ECFB1BB2B8DC00A8D8EC /* ProfileUserInfoEditController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -890,6 +893,7 @@
 				F0AB96421BA6DD9700C72260 /* UIImage+WebP.m in Sources */,
 				F0C5F6B91B53D1E000B2C20D /* ViewController.swift in Sources */,
 				F0D00EA51B91AF160056BE3E /* TopBarView.swift in Sources */,
+				F035ECFC1BB2B8DC00A8D8EC /* ProfileUserInfoEditController.swift in Sources */,
 				F028C1701B9C417A00B8CECA /* GalleryDetailController.swift in Sources */,
 				417BEF9D1B5A535300F896A5 /* FileHelp.m in Sources */,
 				F0507E5D1B67561A007E9024 /* KnowledgeDetailController.swift in Sources */,
