@@ -87,15 +87,12 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         // JSON
         self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
             print("\n responseJSON- - - - -data = \(result)")
-//            print("\n responseJSON- - - - -err = \(err)")
-            
             // 下拉刷新时候清空旧数据（请求失败也清空）
             if (self.currentPage == 0 && self.tableSource?.items.count > 0){
                 self.tableSource?.removeAllItems()
             }
             // 如果请求数据有效
             if let dic = result.value as? NSDictionary{
-                print("\n responseJSON- - - - -data is NSDictionary")
                 self.processRequestResult(dic)
             }
             // 控件复位
@@ -104,6 +101,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         })
     }
     func processRequestResult(result:NSDictionary){
+        print("\n responseJSON- - - - -result dic:\(result)")
         if (200 == result["c"]?.integerValue){
             if let list = result["v"] as? NSDictionary{
                 if let arr = list["floor_list"] as? NSArray{

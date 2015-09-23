@@ -10,7 +10,7 @@ import Foundation
 class ForumFloorData : NSObject {
     var floorId:NSInteger = 0
     var contentText:String = ""
-    
+    var isLordFloor:Bool = false
     required override init() {
         super.init()
     }
@@ -26,4 +26,6 @@ class ForumFloorData : NSObject {
             print("-+- contentText = \(contentText)", terminator: "")
         }
     }
+    
+    
 }
