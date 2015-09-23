@@ -328,6 +328,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F035ECEF1BB2958D00A8D8EC /* TopicLevel */ = {
+			isa = PBXGroup;
+			children = (
+				F0C3C2501B5FA59500AB6E35 /* HomeController.swift */,
+				F0C3C29F1B60EA9C00AB6E35 /* HomeCell.swift */,
+			);
+			name = TopicLevel;
+			sourceTree = "<group>";
+		};
+		F035ECF01BB2959E00A8D8EC /* FloorLevel */ = {
+			isa = PBXGroup;
+			children = (
+				F0507E641B675666007E9024 /* ForumFloorListController.swift */,
+				F092E2931B6A357B003D2D30 /* ForumFloorCell.swift */,
+				F035ECE61BB2880800A8D8EC /* ForumFloorLordCell.swift */,
+				F035ECED1BB2882900A8D8EC /* ForumFloorFollowingCell.swift */,
+			);
+			name = FloorLevel;
+			sourceTree = "<group>";
+		};
+		F035ECF11BB295A700A8D8EC /* ReplyLevel */ = {
+			isa = PBXGroup;
+			children = (
+				F0A5E1451BA0534400BDA6BA /* ForumReplyListController.swift */,
+				F0A5E1471BA0536000BDA6BA /* ForumReplyCell.swift */,
+			);
+			name = ReplyLevel;
+			sourceTree = "<group>";
+		};
 		F0963A0E1BAABC4600AFCFD8 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -588,14 +617,9 @@
 		F0D00E7B1B917B010056BE3E /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				F0C3C2501B5FA59500AB6E35 /* HomeController.swift */,
-				F0C3C29F1B60EA9C00AB6E35 /* HomeCell.swift */,
-				F0507E641B675666007E9024 /* ForumFloorListController.swift */,
-				F092E2931B6A357B003D2D30 /* ForumFloorCell.swift */,
-				F035ECE61BB2880800A8D8EC /* ForumFloorLordCell.swift */,
-				F035ECED1BB2882900A8D8EC /* ForumFloorFollowingCell.swift */,
-				F0A5E1451BA0534400BDA6BA /* ForumReplyListController.swift */,
-				F0A5E1471BA0536000BDA6BA /* ForumReplyCell.swift */,
+				F035ECEF1BB2958D00A8D8EC /* TopicLevel */,
+				F035ECF01BB2959E00A8D8EC /* FloorLevel */,
+				F035ECF11BB295A700A8D8EC /* ReplyLevel */,
 				F0A5E1391BA045FA00BDA6BA /* ForumNewThreadController.swift */,
 				F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */,
 				F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */,

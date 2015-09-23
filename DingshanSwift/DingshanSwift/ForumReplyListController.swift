@@ -115,7 +115,7 @@ class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProt
                         self.tableSource?.removeAllItems();
                     }
                     // 只有分页的第一页有楼主层数据
-                    if let topicInfoDic = result.objectForKey("topic_info") as? [String:AnyObject]{
+                    if let topicInfoDic = result.objectForKey("floor_info") as? [String:AnyObject]{
                         if let title = topicInfoDic["topic_title"] as? String{
                             self.topTitle = title
                         }

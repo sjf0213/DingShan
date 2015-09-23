@@ -101,19 +101,34 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         })
     }
     func processRequestResult(result:NSDictionary){
-        print("\n responseJSON- - - - -result dic:\(result)")
+        
         if (200 == result["c"]?.integerValue){
             if let list = result["v"] as? NSDictionary{
-                if let arr = list["floor_list"] as? NSArray{
-                    print("\n dataArray- - -\(arr)", terminator: "")
-                    for var i = 0; i < arr.count; ++i {
-                        if let item = arr[i] as? [String:AnyObject] {
-                            let data = ForumFloorData(dic: item)
-                            self.tableSource?.items.addObject(data)
+                var allDataArray = [AnyObject]()
+                if (self.currentPage == 0){
+                    if(self.tableSource?.items.count > 0){
+                        self.tableSource?.removeAllItems();
+                    }
+                    // 只有分页的第一页有楼主层数据
+                    if let topicInfoDic = result.objectForKey("topic_info") as? [String:AnyObject]{
+                        if let title = topicInfoDic["topic_title"] as? String{
+                            self.topTitle = title
+                        }
+                        let lordData = ForumFloorData(dic: topicInfoDic);
+                        lordData.isLordFloor = true// 标记为楼主
+                        allDataArray.append(lordData)
+                    }
+                }
+                // 除楼主以外的回复
+                if let replyArr = list["floor_list"] as? NSArray{
+                    print("\n dataArray- - -\(replyArr)", terminator: "")
+                    for var i = 0; i < replyArr.count; ++i {
+                        if let item = replyArr[i] as? [String:AnyObject] {
+                            let data = ForumReplyData(dic: item)
+                            allDataArray.append(data)
                         }
                     }
-                    self.mainTable.reloadData()
-                    if (arr.count < Default_Request_Count) {
+                    if (replyArr.count < Default_Request_Count) {
                         self.loadMoreView?.isCanUse = false
                         self.loadMoreView?.hidden = true
                     }else{
@@ -121,12 +136,15 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
                         self.loadMoreView?.hidden = false
                     }
                 }
+                self.tableSource?.items.addObjectsFromArray(allDataArray)
+                self.mainTable.reloadData()
             }
         }else{
             // 失败时候清空数据后也要重新加载
             self.mainTable.reloadData()
         }
     }
+    
 //MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
