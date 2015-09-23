@@ -60,14 +60,15 @@ extension MainViewController : loginDelegate
     // 微信登录回调
     func onResp(resp:BaseResp){
         self.requireNewUserByDid(String(format: "wx_register_%@", "weixinID001"))
-        /*
+        
         if let temp = resp as? SendAuthResp {
-            let strTitle = "Auth结果"
-            let strMsg = String(format: "code:%@,state:%@,errcode:%zd", temp.code, temp.state, temp.errCode)
-            let alert = UIAlertView(title: strTitle, message: strMsg, delegate: self, cancelButtonTitle: "OK")
-            alert.show()
+            if(nil != temp.code && nil != temp.state){
+                let strTitle = "Auth结果"
+                let strMsg = String(format: "code:%@,state:%@,errcode:%zd", temp.code, temp.state, temp.errCode)
+                let alert = UIAlertView(title: strTitle, message: strMsg, delegate: self, cancelButtonTitle: "OK")
+                alert.show()
+            }
         }
-        */
     }
     
     /////////////////分配新用户
