@@ -59,25 +59,32 @@ extension MainViewController : loginDelegate
     }
     // 微信登录回调
     func onResp(resp:BaseResp){
+        self.requireNewUserByDid(String(format: "wx_register_%@", "weixinID001"))
+        /*
         if let temp = resp as? SendAuthResp {
             let strTitle = "Auth结果"
             let strMsg = String(format: "code:%@,state:%@,errcode:%zd", temp.code, temp.state, temp.errCode)
             let alert = UIAlertView(title: strTitle, message: strMsg, delegate: self, cancelButtonTitle: "OK")
             alert.show()
         }
+        */
     }
     
     /////////////////分配新用户
     func assignNewUser(){
-        let parameter = ["did" : OpenUDID.value(),
+        self.requireNewUserByDid(OpenUDID.value())
+    }
+    
+    func requireNewUserByDid(did:String){
+        let parameter = ["did" : did,
                         "json" : "1"]
         let url = ApiBuilder.user_create_new(parameter)
-        print("url = \(url)", terminator: "")
+        print("+++++++++url = \(url)", terminator: "")
         self.request = Alamofire.request(.GET, url)
         // JSON
         self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
             print("\n responseJSON- - - - -data = \(result)")
-                            // 如果请求数据有效
+            // 如果请求数据有效
             if let dic = result.value as? NSDictionary{
                 print("\n response- --dic = \(dic)")
             }
