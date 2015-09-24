@@ -26,7 +26,7 @@ class DSViewController:UIViewController
     override func loadView(){
         super.loadView()
         self.navigationController?.navigationBar.hidden = true;
-        topView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, TopBar_H)
+        topView = TopBarView(frame:CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, TopBar_H))
         self.view.addSubview(topView);
         
         topView.backBlock = {self.navigationController?.popViewControllerAnimated(true)}
