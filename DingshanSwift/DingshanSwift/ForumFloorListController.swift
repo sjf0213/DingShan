@@ -122,7 +122,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
                     print("\n dataArray- - -\(replyArr)", terminator: "")
                     for var i = 0; i < replyArr.count; ++i {
                         if let item = replyArr[i] as? [String:AnyObject] {
-                            let data = ForumReplyData(dic: item)
+                            let data = ForumFloorData(dic: item)
                             allDataArray.append(data)
                         }
                     }

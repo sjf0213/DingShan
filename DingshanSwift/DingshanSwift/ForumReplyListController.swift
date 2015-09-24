@@ -27,7 +27,16 @@ class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProt
         super.loadView()
         self.view.backgroundColor = UIColor.lightGrayColor()
         self.topTitle = "楼回复列表"
-        self.tableSource = ArrayDataSource(withcellIdentifier: ReplyCellIdentifier, configureCellBlock:{(cell, data) in
+        self.tableSource = ArrayDataSource(withcellIdentifier: ReplyCellIdentifier, withFirstRowIdentifier:ReplyLordCellIdentifier, configureCellBlock:{(cell, data) in
+            
+            // 层主
+            if let itemCell = cell as? ForumReplyLordCell{
+                itemCell.clearData()
+                if let d = data as? ForumFloorData{
+                    itemCell.loadCellData(d)
+                }
+            }
+            // 楼层回复
             if let itemCell = cell as? ForumReplyCell{
                 itemCell.clearData()
                 if let d = data as? ForumReplyData{
@@ -50,7 +59,9 @@ class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProt
         mainTable.delegate = self
         mainTable.dataSource = self.tableSource
         mainTable.rowHeight = HomeRow_H
+        mainTable.registerClass(ForumReplyLordCell.classForCoder(), forCellReuseIdentifier: ReplyLordCellIdentifier)
         mainTable.registerClass(ForumReplyCell.classForCoder(), forCellReuseIdentifier: ReplyCellIdentifier)
+        
         self.view.addSubview(mainTable)
         
         self.refreshView?.loadinsets = self.mainTable.contentInset
@@ -81,23 +92,19 @@ class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProt
             "pindex" : "0",
             "psize" : "20",
             "json" : "1"]
-//        var useJson = true
         let url = ApiBuilder.forum_get_reply_list(parameter)
         print("url = \(url)", terminator: "")
         self.request = Alamofire.request(.GET, url)
         // JSON
-//        self.request?.responseJSON(options: .AllowFragments, completionHandler: { (requst1:NSURLRequest, response1:NSHTTPURLResponse?, data:AnyObject?,err: NSError?) -> Void in
         self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
             
             print("\n responseJSON- - - - -data = \(result)")
-            
             // 下拉刷新时候清空旧数据（请求失败也清空）
             if (self.currentPage == 0 && self.tableSource?.items.count > 0){
                 self.tableSource?.removeAllItems()
             }
             // 如果请求数据有效
             if let dic = result.value as? NSDictionary{
-                print("\n responseJSON- - - - -data is NSDictionary")
                 self.processRequestResult(dic)
             }
             // 控件复位
@@ -106,26 +113,23 @@ class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProt
         })
     }
     func processRequestResult(result:NSDictionary){
+        print("\n processRequestResult- - - - -result:\(result)")
         
         if (200 == result["c"]?.integerValue){
-            if let list = result["v"] as? NSDictionary{
+            if let list = result["v"] as? [String:AnyObject]{
                 var allDataArray = [AnyObject]()
                 if (self.currentPage == 0){
                     if(self.tableSource?.items.count > 0){
                         self.tableSource?.removeAllItems();
                     }
-                    // 只有分页的第一页有楼主层数据
-                    if let topicInfoDic = result.objectForKey("floor_info") as? [String:AnyObject]{
-                        if let title = topicInfoDic["topic_title"] as? String{
-                            self.topTitle = title
-                        }
+                    // 只有分页的第一页有层主数据
+                    if let topicInfoDic = list["floor_info"] as? [String:AnyObject]{
                         let lordData = ForumFloorData(dic: topicInfoDic);
-                        lordData.isLordFloor = true// 标记为楼主
                         allDataArray.append(lordData)
                     }
                 }
-                // 除楼主以外的回复
-                if let replyArr = list["reply_list"] as? NSArray{
+                // 对层主的回复
+                if let replyArr = list["reply_list"] as? [AnyObject]{
                     print("\n dataArray- - -\(replyArr)", terminator: "")
                     for var i = 0; i < replyArr.count; ++i {
                         if let item = replyArr[i] as? [String:AnyObject] {

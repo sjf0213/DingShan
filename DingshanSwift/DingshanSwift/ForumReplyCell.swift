@@ -13,7 +13,7 @@ class ForumReplyCell : UITableViewCell{
     
     override init(style astyle:UITableViewCellStyle, reuseIdentifier str:String?) {
         super.init(style:astyle, reuseIdentifier:str)
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.2)
         
         content = UILabel(frame: CGRect(x: 89.0, y: 12, width: self.bounds.size.width - 89 - 15, height: 38))
         content.font = UIFont.systemFontOfSize(15.0)

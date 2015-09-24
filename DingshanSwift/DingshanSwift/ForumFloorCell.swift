@@ -31,6 +31,7 @@ class ForumFloorCell : UITableViewCell{
     }
     func clearData()
     {
+        print("\(self).clearData")
         content.text = ""
     }
     func loadCellData(data:ForumFloorData)
