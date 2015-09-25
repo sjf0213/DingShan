@@ -28,6 +28,7 @@
 		F08749BC1B54E872006E1FD3 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */; };
 		F08749BE1B54E89E006E1FD3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */; };
 		F092E2941B6A357B003D2D30 /* ForumFloorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F092E2931B6A357B003D2D30 /* ForumFloorCell.swift */; };
+		F0957EE01BB4ED5F0032BD6D /* ALBB_OSS_IOS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0957EDF1BB4ED5F0032BD6D /* ALBB_OSS_IOS_SDK.framework */; settings = {ASSET_TAGS = (); }; };
 		F09AB50B1B74A0BF00050A5C /* HomeGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AB50A1B74A0BF00050A5C /* HomeGridViewController.swift */; };
 		F09AB5111B74A0E400050A5C /* HomeGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AB5101B74A0E400050A5C /* HomeGridCell.swift */; };
 		F09ADD791B563452009B3A6D /* PhoneMainTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F09ADD781B563452009B3A6D /* PhoneMainTabBarButton.m */; };
@@ -195,6 +196,7 @@
 		F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F092E2931B6A357B003D2D30 /* ForumFloorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorCell.swift; sourceTree = "<group>"; };
+		F0957EDF1BB4ED5F0032BD6D /* ALBB_OSS_IOS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ALBB_OSS_IOS_SDK.framework; sourceTree = "<group>"; };
 		F09AB50A1B74A0BF00050A5C /* HomeGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeGridViewController.swift; sourceTree = "<group>"; };
 		F09AB5101B74A0E400050A5C /* HomeGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeGridCell.swift; sourceTree = "<group>"; };
 		F09ADD771B563452009B3A6D /* PhoneMainTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneMainTabBarButton.h; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				F0AB96761BA8352A00C72260 /* SystemConfiguration.framework in Frameworks */,
 				F0AB96741BA8352200C72260 /* libz.dylib in Frameworks */,
 				F0AB96711BA834EE00C72260 /* libsqlite3.0.dylib in Frameworks */,
+				F0957EE01BB4ED5F0032BD6D /* ALBB_OSS_IOS_SDK.framework in Frameworks */,
 				F0AB966E1BA82E0800C72260 /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +514,7 @@
 		F0AB96721BA834F600C72260 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				F0957EDF1BB4ED5F0032BD6D /* ALBB_OSS_IOS_SDK.framework */,
 				F0C3C2541B5FAA0C00AB6E35 /* Alamofire.xcodeproj */,
 				F0AB96691BA82DF000C72260 /* WeixinSDK */,
 				F0AB96141BA6DD9700C72260 /* SDWebImage */,
@@ -1050,6 +1054,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = DingshanSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1071,6 +1079,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = DingshanSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
