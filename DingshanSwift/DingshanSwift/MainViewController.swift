@@ -25,6 +25,23 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     var profileController:ProfileViewController?
     var profileNavi:UINavigationController?
     
+    // Aliyun OSS Begin
+    let accessKey = "3YpqwaeHIWQlIJQk"
+    let secretKey = "z9Pq9bnY6pzKzGnoS3DEz8END8lwwm"
+    let userImageBucket = "dingshanimage"
+    let uploadDataPath = "userupload"
+    let downloadObjectKey = "userupload/001.jpg"
+    let uploadObjectKey = "userupload/test.jpg"
+    
+    private var bucket:OSSBucket?
+    private var ossDownloadData:OSSData?
+    private var ossUploadData:OSSData?
+    private var ossRangeData:OSSData?
+    
+    private var fileDownloadData:OSSFile?
+    private var fileUploadData:OSSFile?
+    // Aliyun OSS End
+    
     var request: Alamofire.Request? {
         didSet {
             oldValue?.cancel()
@@ -36,11 +53,42 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     }
     
     override func viewDidLoad() {
+        self.initOSSService()
         tabbar = TabBarView(frame: CGRect(x: 0, y: self.view.bounds.height - MAIN_TAB_H, width: self.view.bounds.width, height: MAIN_TAB_H))
         tabbar?.delegate = self;
         tabbar?.setHomeIndex(0);
         self.view.addSubview(tabbar!)
 //        let config = MainConfig.sharedInstance
+    }
+    
+    func initOSSService(){
+        let ossService = ALBBOSSServiceProvider.getService()
+        ossService.setGlobalDefaultBucketAcl(PRIVATE)
+        ossService.setGlobalDefaultBucketHostId(HostName)
+        ossService.setAuthenticationType(ORIGIN_AKSK)
+        ossService.setGenerateToken { (method, md5, type, date, xoss, resource) -> String! in
+            let content = String(format:"%@\n%@\n%@\n%@\n%@%@", method, md5, type, date, xoss, resource)
+            var signature = OSSTool.calBase64Sha1WithData(content, withKey: self.secretKey)
+            signature = String(format:"OSS %@:%@", self.accessKey, signature)
+            print("Signature:\(signature)");
+            return signature
+        }
+        
+        bucket = ossService.getBucket(self.userImageBucket)
+        
+        ossDownloadData = ossService.getOSSDataWithBucket(bucket, key: downloadObjectKey)
+        ossUploadData = ossService.getOSSDataWithBucket(bucket, key:uploadObjectKey)
+        
+        let uploadData = UIImageJPEGRepresentation(UIImage(named: "home_ad.jpg")!, 0.21)
+        ossUploadData!.setData(uploadData, withType:"jpg")
+        ossUploadData!.enableUploadCheckMd5sum(true)
+        
+        ossRangeData = ossService.getOSSDataWithBucket(bucket, key:downloadObjectKey)
+        ossRangeData!.setRangeFrom(10, to: 20)
+        
+        fileDownloadData = ossService.getOSSFileWithBucket(bucket, key:downloadObjectKey)
+        fileUploadData = ossService.getOSSFileWithBucket(bucket, key:uploadObjectKey)
+        fileUploadData!.setPath(uploadDataPath, withContentType:"jpg")
     }
 }
 

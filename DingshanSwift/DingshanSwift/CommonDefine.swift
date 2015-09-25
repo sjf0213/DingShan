@@ -27,3 +27,4 @@ let MAIN_TAB_H:CGFloat = 50
 let HomeAd_H:CGFloat = 154
 let Default_Request_Count    =    20
 let HomeRow_H:CGFloat = 82.5
+let HostName = "image.kokoguo.com"
