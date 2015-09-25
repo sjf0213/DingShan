@@ -143,10 +143,10 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
             if (data.width != 0 && data.height != 0){// 如果没有宽高数据，则显示方形图片
                 h = w * CGFloat(data.height) / CGFloat(data.width)
             }
-            print("\n -------- url = \(data.url)", terminator: "")
+//            print("\n -------- url = \(data.url)", terminator: "")
         }
         let rt = CGSize(width: w, height: h)
-        print("\n -------- rt = \(rt)", terminator: "")
+//        print("\n -------- rt = \(rt)", terminator: "")
         return rt
     }
     

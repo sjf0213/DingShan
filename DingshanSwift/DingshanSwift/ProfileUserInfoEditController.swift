@@ -8,7 +8,7 @@
 
 import Foundation
 import Alamofire
-class ProfileUserInfoEditController : DSViewController{
+class ProfileUserInfoEditController : DSViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
     var ossDelegate:AnyObject?
     
@@ -26,10 +26,36 @@ class ProfileUserInfoEditController : DSViewController{
     }
     
     func onTapUploadHead(sender:UIButton) {
-        if let delegate = self.ossDelegate as? DSOSSDelegate{
-            let url = NSURL(string: "")
-            if url != nil{
-                delegate.uploadAliyunOSSImage(url!)
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        self.presentViewController(imagePicker, animated: true) { () -> Void in
+            // todo
+        }
+        
+//        if let delegate = self.ossDelegate as? DSOSSDelegate{
+//            let url = NSURL(string: "")
+//            if url != nil{
+//                delegate.uploadAliyunOSSImage(url!)
+//            }
+//        }
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let infoDic = info[UIImagePickerControllerReferenceURL];
+        print("infoDic = \(infoDic)")
+        if let tmp = infoDic as? [String:AnyObject]{
+            if let originalImgUrl = tmp["assets-library"]{
+                if let strUrl = originalImgUrl as? String{
+                    print("originalImgUrl = \(strUrl)")
+                    let imageUrl = NSURL(string: strUrl)
+                    if let delegate = self.ossDelegate as? DSOSSDelegate{
+                        if (imageUrl != nil){
+                            print("---------imageUrl = \(imageUrl)")
+                            delegate.uploadAliyunOSSImage(imageUrl!)
+                        }
+                    }
+                }
             }
         }
     }
