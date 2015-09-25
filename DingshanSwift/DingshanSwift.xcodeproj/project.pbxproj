@@ -286,8 +286,6 @@
 		F0C5F6BB1B53D1E000B2C20D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0C5F6BD1B53D1E000B2C20D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F0C5F6C01B53D1E000B2C20D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		F0C5F6CB1B53D1E000B2C20D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F0C5F6CC1B53D1E000B2C20D /* DingshanSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DingshanSwiftTests.swift; sourceTree = "<group>"; };
 		F0D00E741B917AAB0056BE3E /* TabBarToggleBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarToggleBtn.swift; sourceTree = "<group>"; };
 		F0D00E7E1B9182570056BE3E /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F0D00E981B9191B60056BE3E /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
@@ -543,7 +541,6 @@
 				F09ADD761B563452009B3A6D /* CommonFiles */,
 				F0AB96721BA834F600C72260 /* Framework */,
 				F09ADD7B1B563974009B3A6D /* Resources */,
-				F0C5F6C91B53D1E000B2C20D /* DingshanSwiftTests */,
 				F0C5F6B21B53D1E000B2C20D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -576,23 +573,6 @@
 			children = (
 				F0C5F6B51B53D1E000B2C20D /* Info.plist */,
 				417BEF911B5A4E0F00F896A5 /* GeneralConfig.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		F0C5F6C91B53D1E000B2C20D /* DingshanSwiftTests */ = {
-			isa = PBXGroup;
-			children = (
-				F0C5F6CC1B53D1E000B2C20D /* DingshanSwiftTests.swift */,
-				F0C5F6CA1B53D1E000B2C20D /* Supporting Files */,
-			);
-			path = DingshanSwiftTests;
-			sourceTree = "<group>";
-		};
-		F0C5F6CA1B53D1E000B2C20D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				F0C5F6CB1B53D1E000B2C20D /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
