@@ -8,7 +8,7 @@
 
 import Foundation
 class ProfileLoginController: DSViewController {
-    var loginDele:loginDelegate?
+    var loginDelegate:AnyObject?
     override func loadView()
     {
         super.loadView()
@@ -28,10 +28,14 @@ class ProfileLoginController: DSViewController {
     }
     
     func onTapLogin(){
-        self.loginDele?.loginByWeixin()
+        if let delegate = self.loginDelegate as? DSLoginDelegate{
+            delegate.loginByWeixin()
+        }
     }
     
     func onTapSkip(){
-        self.loginDele?.assignNewUser()
+        if let delegate = self.loginDelegate as? DSLoginDelegate{
+            delegate.assignNewUser()
+        }
     }
 }

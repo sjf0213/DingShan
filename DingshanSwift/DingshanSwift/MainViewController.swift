@@ -10,9 +10,13 @@
 import UIKit
 import Alamofire
 
-protocol loginDelegate{
+protocol DSLoginDelegate{
      func loginByWeixin()
      func assignNewUser()
+}
+
+protocol DSOSSDelegate{
+    func uploadAliyunOSSImage(url:NSURL)
 }
 
 class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
@@ -34,12 +38,12 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     let uploadObjectKey = "userupload/test.jpg"
     
     private var bucket:OSSBucket?
-    private var ossDownloadData:OSSData?
-    private var ossUploadData:OSSData?
-    private var ossRangeData:OSSData?
-    
-    private var fileDownloadData:OSSFile?
-    private var fileUploadData:OSSFile?
+//    private var ossDownloadData:OSSData?
+//    private var ossUploadData:OSSData?
+//    private var ossRangeData:OSSData?
+//    
+//    private var fileDownloadData:OSSFile?
+//    private var fileUploadData:OSSFile?
     // Aliyun OSS End
     
     var request: Alamofire.Request? {
@@ -73,26 +77,50 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
             print("Signature:\(signature)");
             return signature
         }
-        
         bucket = ossService.getBucket(self.userImageBucket)
         
-        ossDownloadData = ossService.getOSSDataWithBucket(bucket, key: downloadObjectKey)
-        ossUploadData = ossService.getOSSDataWithBucket(bucket, key:uploadObjectKey)
-        
-        let uploadData = UIImageJPEGRepresentation(UIImage(named: "home_ad.jpg")!, 0.21)
-        ossUploadData!.setData(uploadData, withType:"jpg")
-        ossUploadData!.enableUploadCheckMd5sum(true)
-        
-        ossRangeData = ossService.getOSSDataWithBucket(bucket, key:downloadObjectKey)
-        ossRangeData!.setRangeFrom(10, to: 20)
-        
-        fileDownloadData = ossService.getOSSFileWithBucket(bucket, key:downloadObjectKey)
-        fileUploadData = ossService.getOSSFileWithBucket(bucket, key:uploadObjectKey)
-        fileUploadData!.setPath(uploadDataPath, withContentType:"jpg")
+//        ossDownloadData = ossService.getOSSDataWithBucket(bucket, key: downloadObjectKey)
+//        ossUploadData = ossService.getOSSDataWithBucket(bucket, key:uploadObjectKey)
+//        
+//        let uploadData = UIImageJPEGRepresentation(UIImage(named: "home_ad.jpg")!, 0.21)
+//        ossUploadData!.setData(uploadData, withType:"jpg")
+//        ossUploadData!.enableUploadCheckMd5sum(true)
+//        
+//        ossRangeData = ossService.getOSSDataWithBucket(bucket, key:downloadObjectKey)
+//        ossRangeData!.setRangeFrom(10, to: 20)
+//        
+//        fileDownloadData = ossService.getOSSFileWithBucket(bucket, key:downloadObjectKey)
+//        fileUploadData = ossService.getOSSFileWithBucket(bucket, key:uploadObjectKey)
+//        fileUploadData!.setPath(uploadDataPath, withContentType:"jpg")
     }
 }
 
-extension MainViewController : loginDelegate
+extension MainViewController : DSOSSDelegate{
+    func uploadAliyunOSSImage(url:NSURL){
+        //        let fileURL = NSBundle.mainBundle().URLForResource("Default", withExtension: "png")
+        //        Alamofire.upload(.POST, "http://httpbin.org/post", file: fileURL!)
+        
+//        fileUploadData = ossService.getOSSFileWithBucket(bucket, key:uploadObjectKey)
+//        fileUploadData!.setPath(uploadDataPath, withContentType:"jpg")
+//        dispatch_async{dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) -> Void in
+            //            self.taskHandler = ossUploadData.uploadWithUploadCallback{(isSuccess, error) {
+            //                    if (isSuccess) {
+            //                    NSLog(@"suceess!");
+            //                    } else {
+            //                    NSLog(@"failed! Error message: %@", error);
+            //                    }
+            //                    } withProgressCallback:^(float progress) {
+            //                    NSLog(@"current progress: %f", progress);
+            //                    dispatch_async(dispatch_get_main_queue(), ^{
+            //                    [_ossDataProgressView setProgress:progress];
+            //                    });
+            //                }
+            //            }
+        
+    }
+}
+
+extension MainViewController : DSLoginDelegate
 {
     func loginByWeixin(){
         self.sendAuthRequest()
@@ -172,7 +200,7 @@ extension MainViewController : TabBarViewDelegate
         case 2:
             if profileController == nil{
                 profileController = ProfileViewController()
-                profileController?.loginDele = self
+                profileController?.delegate = self
                 profileNavi = UINavigationController(rootViewController: profileController!)
                 self.view.addSubview(profileNavi!.view)
             }

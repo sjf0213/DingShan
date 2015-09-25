@@ -10,8 +10,10 @@ import Foundation
 import Alamofire
 class ProfileUserInfoEditController : DSViewController{
     
-    private var userHeadView = UIButton()
+    var ossDelegate:AnyObject?
     
+    private var userHeadView = UIButton()
+
     override func loadView(){
         super.loadView()
         self.view.backgroundColor = UIColor(red: 0.9, green: 0.8, blue: 0.9, alpha: 1.0)
@@ -24,7 +26,11 @@ class ProfileUserInfoEditController : DSViewController{
     }
     
     func onTapUploadHead(sender:UIButton) {
-//        let fileURL = NSBundle.mainBundle().URLForResource("Default", withExtension: "png")
-//        Alamofire.upload(.POST, "http://httpbin.org/post", file: fileURL!)
+        if let delegate = self.ossDelegate as? DSOSSDelegate{
+            let url = NSURL(string: "")
+            if url != nil{
+                delegate.uploadAliyunOSSImage(url!)
+            }
+        }
     }
 }

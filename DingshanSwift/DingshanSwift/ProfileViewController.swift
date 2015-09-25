@@ -10,7 +10,7 @@ import UIKit
 let myTopInset:CGFloat = 295
 class ProfileViewController:DSViewController
 {
-    var loginDele:loginDelegate?
+    var delegate:AnyObject?
     var mainTable = UITableView()
     var infoView = UIView()
     
@@ -70,13 +70,14 @@ class ProfileViewController:DSViewController
     func onTapLogin(sender:UIButton) {
         print("onTapLogin", terminator: "")
         let controller = ProfileLoginController()
-        controller.loginDele = self.loginDele
+        controller.loginDelegate = self.delegate
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func onTapEditInfo(sender:UIButton) {
-        let detail = ProfileUserInfoEditController()
-        self.navigationController?.pushViewController(detail, animated: true)
+        let controller = ProfileUserInfoEditController()
+        controller.ossDelegate = self.delegate
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     
