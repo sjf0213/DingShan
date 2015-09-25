@@ -70,11 +70,12 @@ class ForumNewThreadController : DSViewController{
                           "topic_content":strContent]
             let url = ApiBuilder.forum_create_topic(parameter)
             
-            do{
-                let theJSONData = try NSJSONSerialization.dataWithJSONObject(postBody, options: NSJSONWritingOptions(rawValue: 0))
-                let theJSONText = NSString(data: theJSONData, encoding: NSASCIIStringEncoding)
-                print("\ntheJSONText = \(theJSONText)")
-                self.request = Alamofire.upload(.POST, url, data: theJSONData)
+//            do{
+//                let theJSONData = try NSJSONSerialization.dataWithJSONObject(postBody, options: NSJSONWritingOptions(rawValue: 0))
+//                let theJSONText = NSString(data: theJSONData, encoding: NSASCIIStringEncoding)
+//                print("\ntheJSONText = \(theJSONText)")
+//                self.request = Alamofire.upload(.POST, url, data: theJSONData)
+                self.request = Alamofire.request(.POST, url, parameters: postBody, encoding: .JSON)
                 .progress { bytesWritten, totalBytesWritten, totalBytesExpectedToWrite in
                         print(totalBytesWritten)
                         // This closure is NOT called on the main queue for performance
@@ -93,9 +94,9 @@ class ForumNewThreadController : DSViewController{
                         }
                     }
                 }
-            }catch{
-                print(error)
-            }
+//            }catch{
+//                print(error)
+//            }
         }
     }
 }
