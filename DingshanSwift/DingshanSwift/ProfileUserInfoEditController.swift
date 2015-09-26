@@ -32,31 +32,16 @@ class ProfileUserInfoEditController : DSViewController, UINavigationControllerDe
         self.presentViewController(imagePicker, animated: true) { () -> Void in
             // todo
         }
-        
-//        if let delegate = self.ossDelegate as? DSOSSDelegate{
-//            let url = NSURL(string: "")
-//            if url != nil{
-//                delegate.uploadAliyunOSSImage(url!)
-//            }
-//        }
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let infoDic = info[UIImagePickerControllerReferenceURL];
-        print("infoDic = \(infoDic)")
-        if let tmp = infoDic as? [String:AnyObject]{
-            if let originalImgUrl = tmp["assets-library"]{
-                if let strUrl = originalImgUrl as? String{
-                    print("originalImgUrl = \(strUrl)")
-                    let imageUrl = NSURL(string: strUrl)
-                    if let delegate = self.ossDelegate as? DSOSSDelegate{
-                        if (imageUrl != nil){
-                            print("---------imageUrl = \(imageUrl)")
-                            delegate.uploadAliyunOSSImage(imageUrl!)
-                        }
-                    }
-                }
+        let imageUrl = info[UIImagePickerControllerReferenceURL];
+        print("imageUrl = \(imageUrl)，\(imageUrl?.classForCoder)")
+        if let url = imageUrl as? NSURL{
+            if let delegate = self.ossDelegate as? DSOSSDelegate{
+                delegate.uploadAliyunOSSImage(url)
             }
         }
+        picker.dismissViewControllerAnimated(true) { () -> Void in }
     }
 }
