@@ -36,7 +36,7 @@ class ProfileUserInfoEditController : DSViewController, UINavigationControllerDe
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let imageUrl = info[UIImagePickerControllerReferenceURL];
-        print("imageUrl = \(imageUrl)，\(imageUrl?.classForCoder)")
+        print("imageUrl = \(imageUrl),----- classtype =\(imageUrl?.classForCoder)")
         if let url = imageUrl as? NSURL{
             if let delegate = self.ossDelegate as? DSOSSDelegate{
                 delegate.uploadAliyunOSSImage(url)

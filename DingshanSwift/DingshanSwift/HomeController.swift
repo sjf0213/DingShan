@@ -15,15 +15,9 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
     var refreshView:RefreshView?
     var loadMoreView:LoadView?
     var currentPage:NSInteger = 0
-    
-    // alamo part 
-//    var headers: [String: String] = [:]
-//    var body: String?
-//    var elapsedTime: NSTimeInterval?
     var request: Alamofire.Request? {
         didSet {
             oldValue?.cancel()
-            
 //            self.title = self.request?.description
 //            self.refreshControl?.endRefreshing()
 //            self.headers.removeAll()
@@ -95,42 +89,24 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
     }
     
     func startRequest(){
-        /*
-//        var urlStr:String = "http://v3.kuaigame.com/app/getcategoryarticle?uid=220154&device=iPhone5%2C2&pindex=0&psize=20&appver=3.2.1&key=cNCS0ipHRcFXsuW%2FTyO%2FN%2BmoHsk%3D&did=CD1FBB97-426F-4A83-90AB-A897D580BED2&e=1437637766&categoryid=3&clientid=21&aid=W%2Fsuzn3p2Tb3fQRp1ZaRxZlueKo%3D&iosver=8.4";
-        var parameter = ["categoryid" : "3",
-                            "pindex" : "0",
-                            "psize" : "20",
-                            "json" : "1"]
-        var useJson = true
-        var url = ApiBuilder.article_get_list(parameter)
-        */
-        
-        //"http://v3.kuaigame.com/topics/topiclist?iosver=8.4&uid=221188&device=iPhone5%2C2&pindex=0&psize=50&appver=3.3.0&key=xv0JOoDtfa2GqBwM3lAb0FpyeLc%3D&topicid=0&did=053F4F67-4445-4774-9060-B3CC0795EC7E&e=1438254601&clientid=21&aid=hypB2OIKaQ1jFyNWvljyE7HPV3E%3D&sorttype=1";
         let parameter = ["pindex" : "0",
                         "psize" : "50",
                         "sorttype" : "1",
                         "topicid":"0",
                         "json" : "1"]
-//        let useJson = true
         let url = ApiBuilder.forum_get_topic_list(parameter)
         print("url = \(url)", terminator: "")
         self.request = Alamofire.request(.GET, url)
         // JSON
-//        self.request?.responseJSON(options: .AllowFragments, completionHandler: { (requst1:NSURLRequest, response1:NSHTTPURLResponse?, data:AnyObject?,err: NSError?) -> Void in
         self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
             print("\n responseJSON- - - - -result = \(result)")
-//            print("\n responseJSON- - - - -err = \(err)")
-//            if let tmp = result is Alamofire.Result{
-//                tmp.Success
-//            }
-            
             // 下拉刷新时候清空旧数据（请求失败也清空）
             if (self.currentPage == 0 && self.tableSource?.items.count > 0){
                 self.tableSource?.removeAllItems()
             }
             // 如果请求数据有效
             if let dic = result.value as? NSDictionary{
-                print("\n responseJSON- - - - -data is NSDictionary")
+//                print("\n responseJSON- - - - -data is NSDictionary")
                 self.processRequestResult(dic)
             }
             // 控件复位
@@ -143,7 +119,7 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         if (200 == result["c"]?.integerValue){
             if let list = result["v"] as? NSDictionary{
                 if let arr = list["topic_list"] as? NSArray{
-                    print("\n dataArray- - -\(arr)", terminator: "")
+//                    print("\n dataArray- - -\(arr)", terminator: "")
                     for var i = 0; i < arr.count; ++i {
                         if let item = arr[i] as? [String:AnyObject] {
                             let data = ForumTopicData(dic: item)

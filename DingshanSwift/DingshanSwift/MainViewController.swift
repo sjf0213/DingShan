@@ -30,20 +30,12 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     var profileNavi:UINavigationController?
     
     // Aliyun OSS Begin
+    var ossService:ALBBOSSServiceProvider?
     let accessKey = "3YpqwaeHIWQlIJQk"
     let secretKey = "z9Pq9bnY6pzKzGnoS3DEz8END8lwwm"
     let userImageBucket = "dingshanimage"
     let uploadDataPath = "userupload"
-    let downloadObjectKey = "userupload/001.jpg"
-    let uploadObjectKey = "userupload/test.jpg"
-    
     private var bucket:OSSBucket?
-//    private var ossDownloadData:OSSData?
-//    private var ossUploadData:OSSData?
-//    private var ossRangeData:OSSData?
-//    
-//    private var fileDownloadData:OSSFile?
-//    private var fileUploadData:OSSFile?
     // Aliyun OSS End
     
     var request: Alamofire.Request? {
@@ -66,57 +58,35 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     }
     
     func initOSSService(){
-        let ossService = ALBBOSSServiceProvider.getService()
-        ossService.setGlobalDefaultBucketAcl(PRIVATE)
-        ossService.setGlobalDefaultBucketHostId(HostName)
-        ossService.setAuthenticationType(ORIGIN_AKSK)
-        ossService.setGenerateToken { (method, md5, type, date, xoss, resource) -> String! in
+        ossService = ALBBOSSServiceProvider.getService()
+        ossService?.setGlobalDefaultBucketAcl(PRIVATE)
+        ossService?.setGlobalDefaultBucketHostId(HostName)
+        ossService?.setAuthenticationType(ORIGIN_AKSK)
+        ossService?.setGenerateToken { (method, md5, type, date, xoss, resource) -> String! in
             let content = String(format:"%@\n%@\n%@\n%@\n%@%@", method, md5, type, date, xoss, resource)
             var signature = OSSTool.calBase64Sha1WithData(content, withKey: self.secretKey)
             signature = String(format:"OSS %@:%@", self.accessKey, signature)
             print("Signature:\(signature)");
             return signature
         }
-        bucket = ossService.getBucket(self.userImageBucket)
-        
-//        ossDownloadData = ossService.getOSSDataWithBucket(bucket, key: downloadObjectKey)
-//        ossUploadData = ossService.getOSSDataWithBucket(bucket, key:uploadObjectKey)
-//        
-//        let uploadData = UIImageJPEGRepresentation(UIImage(named: "home_ad.jpg")!, 0.21)
-//        ossUploadData!.setData(uploadData, withType:"jpg")
-//        ossUploadData!.enableUploadCheckMd5sum(true)
-//        
-//        ossRangeData = ossService.getOSSDataWithBucket(bucket, key:downloadObjectKey)
-//        ossRangeData!.setRangeFrom(10, to: 20)
-//        
-//        fileDownloadData = ossService.getOSSFileWithBucket(bucket, key:downloadObjectKey)
-//        fileUploadData = ossService.getOSSFileWithBucket(bucket, key:uploadObjectKey)
-//        fileUploadData!.setPath(uploadDataPath, withContentType:"jpg")
+        bucket = ossService?.getBucket(self.userImageBucket)
     }
 }
 
 extension MainViewController : DSOSSDelegate{
     func uploadAliyunOSSImage(url:NSURL){
-        //        let fileURL = NSBundle.mainBundle().URLForResource("Default", withExtension: "png")
-        //        Alamofire.upload(.POST, "http://httpbin.org/post", file: fileURL!)
-        
-//        fileUploadData = ossService.getOSSFileWithBucket(bucket, key:uploadObjectKey)
-//        fileUploadData!.setPath(uploadDataPath, withContentType:"jpg")
-//        dispatch_async{dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) -> Void in
-            //            self.taskHandler = ossUploadData.uploadWithUploadCallback{(isSuccess, error) {
-            //                    if (isSuccess) {
-            //                    NSLog(@"suceess!");
-            //                    } else {
-            //                    NSLog(@"failed! Error message: %@", error);
-            //                    }
-            //                    } withProgressCallback:^(float progress) {
-            //                    NSLog(@"current progress: %f", progress);
-            //                    dispatch_async(dispatch_get_main_queue(), ^{
-            //                    [_ossDataProgressView setProgress:progress];
-            //                    });
-            //                }
-            //            }
-        
+        let uploadObjectKey = "userupload/sjf01.jpg"
+        let fileUploadData = ossService?.getOSSFileWithBucket(bucket, key:uploadObjectKey)
+        fileUploadData?.setPath(uploadDataPath, withContentType:"jpg")
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){ ()-> Void in
+            var error:NSError?
+            fileUploadData?.upload(&error)
+            if let actualError = error {
+                print("fileSynUpload error is :\(actualError)");
+            } else {
+                NSLog("fileSynUpload succeed");
+            }
+        }
     }
 }
 
