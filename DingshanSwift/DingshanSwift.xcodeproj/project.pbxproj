@@ -363,6 +363,9 @@
 				F0C5F6BD1B53D1E000B2C20D /* Images.xcassets */,
 				F0C5F6BF1B53D1E000B2C20D /* LaunchScreen.xib */,
 				F09ADDA01B5640DD009B3A6D /* CommonDefine.swift */,
+				F0C5F6B51B53D1E000B2C20D /* Info.plist */,
+				417BEF911B5A4E0F00F896A5 /* GeneralConfig.plist */,
+				F09AB5251B74B6C400050A5C /* unused */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -561,8 +564,6 @@
 			isa = PBXGroup;
 			children = (
 				F0963A0E1BAABC4600AFCFD8 /* App */,
-				F0C5F6B41B53D1E000B2C20D /* Supporting Files */,
-				F09AB5251B74B6C400050A5C /* unused */,
 				F0D00E7A1B917AC00056BE3E /* General */,
 				F0D00E7B1B917B010056BE3E /* Home */,
 				F0D00E7C1B917B180056BE3E /* Gallery */,
@@ -570,15 +571,6 @@
 				F0BDA8E31B9EFE4700176531 /* Model */,
 			);
 			path = DingshanSwift;
-			sourceTree = "<group>";
-		};
-		F0C5F6B41B53D1E000B2C20D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				F0C5F6B51B53D1E000B2C20D /* Info.plist */,
-				417BEF911B5A4E0F00F896A5 /* GeneralConfig.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		F0D00E7A1B917AC00056BE3E /* General */ = {
