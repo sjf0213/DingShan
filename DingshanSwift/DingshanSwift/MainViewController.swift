@@ -33,6 +33,7 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     var ossClient:OSSClient?
     let AccessKey = "3YpqwaeHIWQlIJQk"
     let SecretKey = "z9Pq9bnY6pzKzGnoS3DEz8END8lwwm"
+    let endPoint = "http://oss-cn-hangzhou.aliyuncs.com"
     let userImageBucket = "dingshanimage"
     let uploadDataPath = "userupload"
 //    private var bucket:OSSBucket?
@@ -77,17 +78,19 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
         let credential = OSSPlainTextAKSKPairCredentialProvider(plainTextAccessKey: AccessKey, secretKey:SecretKey)
     
         // 自实现签名，可以用本地签名也可以远程加签
-//        id<OSSCredentialProvider> credential1 = [[OSSCustomSignerCredentialProvider alloc] initWithImplementedSigner:^NSString *(NSString *contentToSign, NSError *__autoreleasing *error) {
-//        NSString *signature = [OSSUtil calBase64Sha1WithData:contentToSign withSecret:@"3YpqwaeHIWQlIJQk"];
-//        if (signature != nil) {
-//        *error = nil;
-//        } else {
-//        // construct error object
-//        *error = [NSError errorWithDomain:@"<your error domain>" code:OSSClientErrorCodeSignFailed userInfo:nil];
-//        return nil;
-//        }
-//        return [NSString stringWithFormat:@"OSS %@:%@", @"z9Pq9bnY6pzKzGnoS3DEz8END8lwwm", signature];
-//        }];
+        /*
+        let credential1 = [[OSSCustomSignerCredentialProvider alloc] initWithImplementedSigner:^NSString *(NSString *contentToSign, NSError *__autoreleasing *error) {
+        NSString *signature = [OSSUtil calBase64Sha1WithData:contentToSign withSecret:@"3YpqwaeHIWQlIJQk"];
+        if (signature != nil) {
+        *error = nil;
+        } else {
+        // construct error object
+        *error = [NSError errorWithDomain:@"<your error domain>" code:OSSClientErrorCodeSignFailed userInfo:nil];
+        return nil;
+        }
+        return [NSString stringWithFormat:@"OSS %@:%@", @"z9Pq9bnY6pzKzGnoS3DEz8END8lwwm", signature];
+        }];
+        */
         
         /*
         
@@ -128,16 +131,14 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
         return token;
         }
         }];
+        */
         
-        
-        OSSClientConfiguration * conf = [OSSClientConfiguration new];
-        conf.maxRetryCount = 3;
-        conf.enableBackgroundTransmitService = NO; // 是否开启后台传输服务
-        conf.timeoutIntervalForRequest = 15;
-        conf.timeoutIntervalForResource = 24 * 60 * 60;
-        
-        ossClient = [[OSSClient alloc] initWithEndpoint:endPoint credentialProvider:credential clientConfiguration:conf];
-*/
+        let conf = OSSClientConfiguration()
+        conf.maxRetryCount = 3
+        conf.enableBackgroundTransmitService = false // 是否开启后台传输服务
+        conf.timeoutIntervalForRequest = 15
+        conf.timeoutIntervalForResource = 24 * 60 * 60
+        ossClient = OSSClient(endpoint: endPoint, credentialProvider: credential, clientConfiguration: conf)
     }
 }
 
@@ -162,10 +163,11 @@ extension MainViewController : DSOSSDelegate{
     // 2.1版本的OSS SDK
     // 同步上传
     func uploadAliyunOSSImage(url:NSURL) {
+        print("uploadAliyunOSSImage url = \(url)")
         let put = OSSPutObjectRequest()
         // required fields
-        put.bucketName = "android-test"
-        put.objectKey = "file1m"
+        put.bucketName = "sjf-test"
+        put.objectKey = "file123"
         put.uploadingFileURL = url
         put.uploadProgress = {(bytesSent, totalBytesSent, totalBytesExpectedToSend) -> Void in
             let log = String(format:"%zd, %zd, %zd", bytesSent, totalBytesSent, totalBytesExpectedToSend)
@@ -185,7 +187,6 @@ extension MainViewController : DSOSSDelegate{
                 print("upload object success!");
             }
         }
-        
     }
 }
 
