@@ -16,7 +16,7 @@ protocol DSLoginDelegate{
 }
 
 protocol DSOSSDelegate{
-    func uploadAliyunOSSImage(url:NSURL)
+    func uploadAliyunOSSImage(url:NSURL, withKey akey:String)
 }
 
 class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
@@ -33,10 +33,9 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     var ossClient:OSSClient?
     let AccessKey = "3YpqwaeHIWQlIJQk"
     let SecretKey = "z9Pq9bnY6pzKzGnoS3DEz8END8lwwm"
-    let endPoint = "http://oss-cn-hangzhou.aliyuncs.com"
+    let endPoint = "http://oss-cn-beijing.aliyuncs.com"
     let userImageBucket = "dingshanimage"
     let uploadDataPath = "userupload"
-//    private var bucket:OSSBucket?
     // Aliyun OSS End
     
     var request: Alamofire.Request? {
@@ -57,21 +56,6 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
         self.view.addSubview(tabbar!)
 //        let config = MainConfig.sharedInstance
     }
-    
-//    func initOSSService(){
-//        ossService = ALBBOSSServiceProvider.getService()
-//        ossService?.setGlobalDefaultBucketAcl(PRIVATE)
-//        ossService?.setGlobalDefaultBucketHostId(HostName)
-//        ossService?.setAuthenticationType(ORIGIN_AKSK)
-//        ossService?.setGenerateToken { (method, md5, type, date, xoss, resource) -> String! in
-//            let content = String(format:"%@\n%@\n%@\n%@\n%@%@", method, md5, type, date, xoss, resource)
-//            var signature = OSSTool.calBase64Sha1WithData(content, withKey: self.secretKey)
-//            signature = String(format:"OSS %@:%@", self.accessKey, signature)
-//            print("Signature:\(signature)");
-//            return signature
-//        }
-//        bucket = ossService?.getBucket(self.userImageBucket)
-//    }
     
     func initOSSClient() {
     
@@ -140,34 +124,34 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
         conf.timeoutIntervalForResource = 24 * 60 * 60
         ossClient = OSSClient(endpoint: endPoint, credentialProvider: credential, clientConfiguration: conf)
     }
+    
+    func createBucket() {
+        let create = OSSCreateBucketRequest()
+        create.bucketName = userImageBucket
+        create.xOssACL = "public-read"
+        create.location = "oss-cn-beijing"
+
+        let createTask = ossClient?.createBucket(create)
+        createTask?.continueWithBlock{ (task) -> AnyObject! in
+            if (task.error != nil) {
+                print("create bucket failed, error: %@", task.error);
+            } else {
+                print("create bucket success!");
+            }
+            return nil
+        }
+    }
 }
 
 extension MainViewController : DSOSSDelegate{
-    /* 1.3版本的OSSSDK
-    func uploadAliyunOSSImage(url:NSURL){
-        let uploadObjectKey = "userupload/sjf01.jpg"
-        let fileUploadData = ossService?.getOSSFileWithBucket(bucket, key:uploadObjectKey)
-        fileUploadData?.setPath(uploadDataPath, withContentType:"jpg")
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){ ()-> Void in
-            var error:NSError?
-            fileUploadData?.upload(&error)
-            if let actualError = error {
-                print("fileSynUpload error is :\(actualError)");
-            } else {
-                NSLog("fileSynUpload succeed");
-            }
-        }
-    }
-*/
-    
-    // 2.1版本的OSS SDK
-    // 同步上传
-    func uploadAliyunOSSImage(url:NSURL) {
+
+    // 同步上传, 2.1版本的OSS SDK
+    func uploadAliyunOSSImage(url:NSURL, withKey akey:String) {
         print("uploadAliyunOSSImage url = \(url)")
         let put = OSSPutObjectRequest()
         // required fields
-        put.bucketName = "sjf-test"
-        put.objectKey = "file123"
+        put.bucketName = userImageBucket
+        put.objectKey = akey
         put.uploadingFileURL = url
         put.uploadProgress = {(bytesSent, totalBytesSent, totalBytesExpectedToSend) -> Void in
             let log = String(format:"%zd, %zd, %zd", bytesSent, totalBytesSent, totalBytesExpectedToSend)

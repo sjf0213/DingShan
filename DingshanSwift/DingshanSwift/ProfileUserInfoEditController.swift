@@ -39,7 +39,7 @@ class ProfileUserInfoEditController : DSViewController, UINavigationControllerDe
         print("imageUrl = \(imageUrl),----- classtype =\(imageUrl?.classForCoder)")
         if let url = imageUrl as? NSURL{
             if let delegate = self.ossDelegate as? DSOSSDelegate{
-                delegate.uploadAliyunOSSImage(url)
+                delegate.uploadAliyunOSSImage(url, withKey:"user_head_uid123")
             }
         }
         picker.dismissViewControllerAnimated(true) { () -> Void in }
