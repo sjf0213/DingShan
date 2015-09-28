@@ -9,7 +9,7 @@
 import Foundation
 class ForumFloorCell : UITableViewCell{
     
-    private var content = UILabel()
+    var content = UILabel()
     
     override init(style astyle:UITableViewCellStyle, reuseIdentifier str:String?) {
         super.init(style:astyle, reuseIdentifier:str)
@@ -34,8 +34,7 @@ class ForumFloorCell : UITableViewCell{
         print("\(self).clearData")
         content.text = ""
     }
-    func loadCellData(data:ForumFloorData)
+    func loadCellData(data:AnyObject)
     {
-        content.text = data.contentText
     }
 }

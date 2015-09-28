@@ -9,7 +9,8 @@
 import Foundation
 class ForumTopicData : NSObject {
     var topicId:NSInteger = 0
-    var topicTitle:String = ""
+    var title:String = ""
+    var contentText:String = ""
     
     required override init() {
         super.init()
@@ -20,7 +21,10 @@ class ForumTopicData : NSObject {
             topicId = Int(num)!
         }
         if let tmp = dic["topic_title"] as? String{
-            topicTitle = tmp
+            title = tmp
+        }
+        if let tmp = dic["topic_content"] as? String{
+            contentText = tmp
         }
     }
 }

@@ -41,6 +41,6 @@ class HomeCell:UITableViewCell
     }
     func loadCellData(data:ForumTopicData)
     {
-        title.text = data.topicTitle
+        title.text = data.title
     }
 }

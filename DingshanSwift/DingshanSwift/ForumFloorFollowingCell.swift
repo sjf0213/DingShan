@@ -17,4 +17,11 @@ class ForumFloorFollowingCell : ForumFloorCell{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func loadCellData(data:AnyObject)
+    {
+        if let d = data as? ForumFloorData{
+            self.content.text = d.contentText
+        }
+    }
 }

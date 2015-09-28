@@ -27,9 +27,15 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         self.view.backgroundColor = UIColor.lightGrayColor()
         self.topTitle = "楼层列表"
         self.tableSource = ArrayDataSource(withcellIdentifier: FloorFollowingCellIdentifier, withFirstRowIdentifier:FloorLordCellIdentifier, configureCellBlock:{(cell, data) in
-            if let itemCell = cell as? ForumFloorCell{
-                itemCell.clearData()
-                if let d = data as? ForumFloorData{
+            if let d = data as? ForumTopicData{
+                if let itemCell = cell as? ForumFloorLordCell{
+                    itemCell.clearData()
+                    itemCell.loadCellData(d)
+                }
+            }
+            if let d = data as? ForumFloorData{
+                if let itemCell = cell as? ForumFloorFollowingCell{
+                    itemCell.clearData()
                     itemCell.loadCellData(d)
                 }
             }
@@ -101,25 +107,25 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
     func processRequestResult(result:NSDictionary){
         
         if (200 == result["c"]?.integerValue){
-            if let list = result["v"] as? NSDictionary{
+            if let v = result["v"] as? [String:AnyObject]{
                 var allDataArray = [AnyObject]()
+                print("\n v- - -\(v)")
                 if (self.currentPage == 0){
                     if(self.tableSource?.items.count > 0){
                         self.tableSource?.removeAllItems();
                     }
                     // 只有分页的第一页有楼主层数据
-                    if let topicInfoDic = result.objectForKey("topic_info") as? [String:AnyObject]{
+                    if let topicInfoDic = v["topic_info"] as? [String:AnyObject]{
                         if let title = topicInfoDic["topic_title"] as? String{
                             self.topTitle = title
                         }
-                        let lordData = ForumFloorData(dic: topicInfoDic);
-                        lordData.isLordFloor = true// 标记为楼主
+                        let lordData = ForumTopicData(dic: topicInfoDic);
+//                        lordData.isLordFloor = true// 标记为楼主
                         allDataArray.append(lordData)
                     }
                 }
                 // 除楼主以外的回复
-                if let replyArr = list["floor_list"] as? NSArray{
-                    print("\n dataArray- - -\(replyArr)", terminator: "")
+                if let replyArr = v["floor_list"] as? NSArray{
                     for var i = 0; i < replyArr.count; ++i {
                         if let item = replyArr[i] as? [String:AnyObject] {
                             let data = ForumFloorData(dic: item)
@@ -149,7 +155,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)", terminator: "")
         if let _ = tableView.cellForRowAtIndexPath(indexPath) as? ForumFloorCell{
             let detail = ForumReplyListController()
-            detail.navigationItem.title = self.topicData.topicTitle
+            detail.navigationItem.title = self.topicData.title
             self.navigationController?.pushViewController(detail, animated: true)
             if let data = self.tableSource?.items[indexPath.row] as? ForumFloorData{
                 detail.loadReplyListByTopicData(self.topicData,floor:data)
