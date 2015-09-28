@@ -28,7 +28,6 @@
 		F08749BC1B54E872006E1FD3 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */; };
 		F08749BE1B54E89E006E1FD3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */; };
 		F092E2941B6A357B003D2D30 /* ForumFloorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F092E2931B6A357B003D2D30 /* ForumFloorCell.swift */; };
-		F0957EED1BB5212F0032BD6D /* ALBB_OSS_IOS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0957EEC1BB5212F0032BD6D /* ALBB_OSS_IOS_SDK.framework */; settings = {ASSET_TAGS = (); }; };
 		F09AB50B1B74A0BF00050A5C /* HomeGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AB50A1B74A0BF00050A5C /* HomeGridViewController.swift */; };
 		F09AB5111B74A0E400050A5C /* HomeGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AB5101B74A0E400050A5C /* HomeGridCell.swift */; };
 		F09ADD791B563452009B3A6D /* PhoneMainTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F09ADD781B563452009B3A6D /* PhoneMainTabBarButton.m */; };
@@ -99,6 +98,8 @@
 		F0C5F6BC1B53D1E000B2C20D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0C5F6BA1B53D1E000B2C20D /* Main.storyboard */; };
 		F0C5F6BE1B53D1E000B2C20D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0C5F6BD1B53D1E000B2C20D /* Images.xcassets */; };
 		F0C5F6C11B53D1E000B2C20D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0C5F6BF1B53D1E000B2C20D /* LaunchScreen.xib */; };
+		F0C691121BB8E38D00B61494 /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C691111BB8E38D00B61494 /* AliyunOSSiOS.framework */; settings = {ASSET_TAGS = (); }; };
+		F0C691141BB8EEF900B61494 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C691131BB8EEF900B61494 /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
 		F0D00E751B917AAB0056BE3E /* TabBarToggleBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D00E741B917AAB0056BE3E /* TabBarToggleBtn.swift */; };
 		F0D00E7F1B9182570056BE3E /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D00E7E1B9182570056BE3E /* TabBarView.swift */; };
 		F0D00E991B9191B60056BE3E /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D00E981B9191B60056BE3E /* MainTabBar.swift */; };
@@ -188,7 +189,6 @@
 		F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F092E2931B6A357B003D2D30 /* ForumFloorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorCell.swift; sourceTree = "<group>"; };
-		F0957EEC1BB5212F0032BD6D /* ALBB_OSS_IOS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ALBB_OSS_IOS_SDK.framework; path = Aliyun/ALBB_OSS_IOS_SDK.framework; sourceTree = "<group>"; };
 		F09AB50A1B74A0BF00050A5C /* HomeGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeGridViewController.swift; sourceTree = "<group>"; };
 		F09AB5101B74A0E400050A5C /* HomeGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeGridCell.swift; sourceTree = "<group>"; };
 		F09ADD771B563452009B3A6D /* PhoneMainTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneMainTabBarButton.h; sourceTree = "<group>"; };
@@ -286,6 +286,8 @@
 		F0C5F6BB1B53D1E000B2C20D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0C5F6BD1B53D1E000B2C20D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F0C5F6C01B53D1E000B2C20D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F0C691111BB8E38D00B61494 /* AliyunOSSiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AliyunOSSiOS.framework; path = Aliyun/AliyunOSSiOS.framework; sourceTree = "<group>"; };
+		F0C691131BB8EEF900B61494 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Aliyun/Bolts.framework; sourceTree = "<group>"; };
 		F0D00E741B917AAB0056BE3E /* TabBarToggleBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarToggleBtn.swift; sourceTree = "<group>"; };
 		F0D00E7E1B9182570056BE3E /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F0D00E981B9191B60056BE3E /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
@@ -310,9 +312,10 @@
 				F0AB967A1BA835D900C72260 /* Foundation.framework in Frameworks */,
 				F0AB96781BA835C200C72260 /* UIKit.framework in Frameworks */,
 				F0AB96761BA8352A00C72260 /* SystemConfiguration.framework in Frameworks */,
+				F0C691121BB8E38D00B61494 /* AliyunOSSiOS.framework in Frameworks */,
 				F0AB96741BA8352200C72260 /* libz.dylib in Frameworks */,
+				F0C691141BB8EEF900B61494 /* Bolts.framework in Frameworks */,
 				F0AB96711BA834EE00C72260 /* libsqlite3.0.dylib in Frameworks */,
-				F0957EED1BB5212F0032BD6D /* ALBB_OSS_IOS_SDK.framework in Frameworks */,
 				F0AB966E1BA82E0800C72260 /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,7 +499,8 @@
 		F0AB96721BA834F600C72260 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				F0957EEC1BB5212F0032BD6D /* ALBB_OSS_IOS_SDK.framework */,
+				F0C691131BB8EEF900B61494 /* Bolts.framework */,
+				F0C691111BB8E38D00B61494 /* AliyunOSSiOS.framework */,
 				F0C3C2541B5FAA0C00AB6E35 /* Alamofire.xcodeproj */,
 				F0AB96691BA82DF000C72260 /* WeixinSDK */,
 				F0AB96141BA6DD9700C72260 /* SDWebImage */,
