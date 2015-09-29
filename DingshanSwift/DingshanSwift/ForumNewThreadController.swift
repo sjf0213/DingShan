@@ -26,7 +26,9 @@ class ForumNewThreadController : DSViewController{
         self.topTitle = "新话题"
         
         sendBtn = UIButton(frame: CGRect(x: self.view.bounds.size.width - 44, y: 20, width: 44, height: 44))
-        sendBtn.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.5)
+        sendBtn.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.1)
+        sendBtn.setTitle("发送", forState: UIControlState.Normal)
+        sendBtn.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
         self.topView.addSubview(sendBtn)
         sendBtn.addTarget(self, action: Selector("onTapSend"), forControlEvents: UIControlEvents.TouchUpInside)
         
