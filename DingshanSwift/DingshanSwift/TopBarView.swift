@@ -40,7 +40,7 @@ class TopBarView:UIView
         self.addSubview(titleLabel)
         
         backBtn.frame = CGRect(x: 0, y: 20, width: 44, height: 44)
-        backBtn.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.5)
+        backBtn.setImage(UIImage(named:"back_btn"), forState: UIControlState.Normal)
         self.addSubview(backBtn)
         backBtn.addTarget(self, action: Selector("onTapBack"), forControlEvents: UIControlEvents.TouchUpInside)
 

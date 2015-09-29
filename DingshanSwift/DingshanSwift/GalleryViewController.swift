@@ -31,7 +31,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     {
         super.loadView()
         self.view.backgroundColor = UIColor.whiteColor()
-        
+        self.backBtnHidden = true
         seg = KASegmentControl(frame: CGRectMake((self.topView.frame.size.width - 140)*0.5, 27, 140, 30),
                             withItems: ["套图", "单图"],
                             withLightedColor: THEME_COLOR)
