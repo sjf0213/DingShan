@@ -152,6 +152,8 @@ extension MainViewController : DSOSSDelegate{
         // required fields
         put.bucketName = userImageBucket
         put.objectKey = akey
+//        let tempUrl = NSBundle.mainBundle().URLForResource("home_ad", withExtension: "jpg")
+//        print("\ntempurl = \(tempUrl)")
         put.uploadingFileURL = url
         put.uploadProgress = {(bytesSent, totalBytesSent, totalBytesExpectedToSend) -> Void in
             let log = String(format:"%zd, %zd, %zd", bytesSent, totalBytesSent, totalBytesExpectedToSend)

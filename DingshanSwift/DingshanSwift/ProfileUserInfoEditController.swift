@@ -35,11 +35,23 @@ class ProfileUserInfoEditController : DSViewController, UINavigationControllerDe
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let imageUrl = info[UIImagePickerControllerReferenceURL];
-        print("imageUrl = \(imageUrl),----- classtype =\(imageUrl?.classForCoder)")
-        if let url = imageUrl as? NSURL{
+        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let data = UIImageJPEGRepresentation(image!, 1.0);
+        let DocumentsPath = NSHomeDirectory().URLString.stringByAppendingString("/Documents")
+        //文件管理器
+        let fileManager = NSFileManager.defaultManager()
+        let imageUrlstr = DocumentsPath.stringByAppendingString("/user_head_upload.jpg")
+        let imageUrl = NSURL(string: imageUrlstr)
+        //把刚刚图片转换的data对象拷贝至沙盒中 并保存为user_head_upload.jpg
+        do{
+            try fileManager.createDirectoryAtPath(DocumentsPath, withIntermediateDirectories: true, attributes: nil)
+            fileManager.createFileAtPath(imageUrlstr, contents: data, attributes: nil)
+        }catch{
+            print(error)
+        }
+        if imageUrl != nil{
             if let delegate = self.ossDelegate as? DSOSSDelegate{
-                delegate.uploadAliyunOSSImage(url, withKey:"userupload/user_head_uid123")
+                delegate.uploadAliyunOSSImage(imageUrl!, withKey:"userupload/user_head_1234567.jpg")
             }
         }
         picker.dismissViewControllerAnimated(true) { () -> Void in }
