@@ -89,6 +89,7 @@
 		F0AB967C1BA8362800C72260 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AB967B1BA8362800C72260 /* libc++.dylib */; };
 		F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADE21B1B55FEC8005E84FA /* DetailController.swift */; };
 		F0B6FABC1B81F3D000EE2439 /* GalleryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */; };
+		F0BC44CC1BBA839B004CB0B9 /* user_head_default.png in Resources */ = {isa = PBXBuildFile; fileRef = F0BC44CB1BBA839B004CB0B9 /* user_head_default.png */; settings = {ASSET_TAGS = (); }; };
 		F0BDA8E51B9EFE6700176531 /* ForumTopicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BDA8E41B9EFE6700176531 /* ForumTopicData.swift */; };
 		F0C3C2511B5FA59500AB6E35 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C3C2501B5FA59500AB6E35 /* HomeController.swift */; };
 		F0C3C26D1B60923F00AB6E35 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F0C3C25C1B5FAA0C00AB6E35 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -275,6 +276,7 @@
 		F0AB967B1BA8362800C72260 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		F0ADE21B1B55FEC8005E84FA /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewCell.swift; sourceTree = "<group>"; };
+		F0BC44CB1BBA839B004CB0B9 /* user_head_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_head_default.png; path = common/user_head_default.png; sourceTree = "<group>"; };
 		F0BDA8E41B9EFE6700176531 /* ForumTopicData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumTopicData.swift; sourceTree = "<group>"; };
 		F0C3C2501B5FA59500AB6E35 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		F0C3C2541B5FAA0C00AB6E35 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 		F0AA4FA61B93ED28007EDEA9 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				F0BC44CB1BBA839B004CB0B9 /* user_head_default.png */,
 				F0AA4FA71B93ED37007EDEA9 /* back_btn@2x~iphone.png */,
 				F0AA4FA81B93ED37007EDEA9 /* back_btn@3x~iphone.png */,
 				F0AA4FA91B93ED37007EDEA9 /* home_ad.jpg */,
@@ -753,6 +756,7 @@
 				F0AA4F9C1B93ECE7007EDEA9 /* tabbar_gallery1@3x~iphone.png in Resources */,
 				F0AA4F951B93ECE7007EDEA9 /* tabbar_forum0@2x~iphone.png in Resources */,
 				F0AA4F991B93ECE7007EDEA9 /* tabbar_gallery0@2x~iphone.png in Resources */,
+				F0BC44CC1BBA839B004CB0B9 /* user_head_default.png in Resources */,
 				F0AA4F9E1B93ECE7007EDEA9 /* tabbar_profile0@3x~iphone.png in Resources */,
 				F0AA4FAB1B93ED37007EDEA9 /* back_btn@3x~iphone.png in Resources */,
 				F0AA4F9B1B93ECE7007EDEA9 /* tabbar_gallery1@2x~iphone.png in Resources */,

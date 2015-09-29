@@ -20,6 +20,7 @@ class ProfileUserInfoEditController : DSViewController, UINavigationControllerDe
         
         userHeadView.frame = CGRect(x: (self.view.bounds.size.width - 73)*0.5, y: TopBar_H+50, width: 73, height: 73)
         userHeadView.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.2)
+        userHeadView.setImage(UIImage(named:"user_head_default"), forState: UIControlState.Normal)
         userHeadView.layer.cornerRadius = userHeadView.bounds.width * 0.5
         userHeadView.addTarget(self, action: Selector("onTapUploadHead:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(userHeadView)
