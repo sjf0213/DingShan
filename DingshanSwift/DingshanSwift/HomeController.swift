@@ -40,7 +40,7 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         })
         
         let newThreadBtn = UIButton(frame: CGRect(x: self.view.bounds.size.width - 44, y: 20, width: 44, height: 44))
-        newThreadBtn.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.5)
+        newThreadBtn.setImage(UIImage(named: "forum_topic_add_new"), forState: UIControlState.Normal)
         self.topView.addSubview(newThreadBtn)
         newThreadBtn.addTarget(self, action: Selector("onTapNewThread"), forControlEvents: UIControlEvents.TouchUpInside)
         

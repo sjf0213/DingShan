@@ -24,6 +24,8 @@
 		F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E641B675666007E9024 /* ForumFloorListController.swift */; };
 		F0507E691B6756D3007E9024 /* KnowledgeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */; };
 		F05455561B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F05455551B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m */; };
+		F085A34B1BBA8B2300E15705 /* forum_topic_add_new@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F085A3491BBA8B2300E15705 /* forum_topic_add_new@2x~iphone.png */; settings = {ASSET_TAGS = (); }; };
+		F085A34C1BBA8B2300E15705 /* forum_topic_add_new@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F085A34A1BBA8B2300E15705 /* forum_topic_add_new@3x~iphone.png */; settings = {ASSET_TAGS = (); }; };
 		F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749B31B54B905006E1FD3 /* MainViewController.swift */; };
 		F08749BC1B54E872006E1FD3 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */; };
 		F08749BE1B54E89E006E1FD3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */; };
@@ -185,6 +187,8 @@
 		F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeListCell.swift; sourceTree = "<group>"; };
 		F05455541B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
 		F05455551B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
+		F085A3491BBA8B2300E15705 /* forum_topic_add_new@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forum_topic_add_new@2x~iphone.png"; path = "common/forum_topic_add_new@2x~iphone.png"; sourceTree = "<group>"; };
+		F085A34A1BBA8B2300E15705 /* forum_topic_add_new@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forum_topic_add_new@3x~iphone.png"; path = "common/forum_topic_add_new@3x~iphone.png"; sourceTree = "<group>"; };
 		F08749B21B54B590006E1FD3 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F08749B31B54B905006E1FD3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
@@ -442,6 +446,8 @@
 		F0AA4FA61B93ED28007EDEA9 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				F085A3491BBA8B2300E15705 /* forum_topic_add_new@2x~iphone.png */,
+				F085A34A1BBA8B2300E15705 /* forum_topic_add_new@3x~iphone.png */,
 				F0BC44CB1BBA839B004CB0B9 /* user_head_default.png */,
 				F0AA4FA71B93ED37007EDEA9 /* back_btn@2x~iphone.png */,
 				F0AA4FA81B93ED37007EDEA9 /* back_btn@3x~iphone.png */,
@@ -755,6 +761,8 @@
 				F0AA4F971B93ECE7007EDEA9 /* tabbar_forum1@2x~iphone.png in Resources */,
 				F0AA4F9C1B93ECE7007EDEA9 /* tabbar_gallery1@3x~iphone.png in Resources */,
 				F0AA4F951B93ECE7007EDEA9 /* tabbar_forum0@2x~iphone.png in Resources */,
+				F085A34B1BBA8B2300E15705 /* forum_topic_add_new@2x~iphone.png in Resources */,
+				F085A34C1BBA8B2300E15705 /* forum_topic_add_new@3x~iphone.png in Resources */,
 				F0AA4F991B93ECE7007EDEA9 /* tabbar_gallery0@2x~iphone.png in Resources */,
 				F0BC44CC1BBA839B004CB0B9 /* user_head_default.png in Resources */,
 				F0AA4F9E1B93ECE7007EDEA9 /* tabbar_profile0@3x~iphone.png in Resources */,
