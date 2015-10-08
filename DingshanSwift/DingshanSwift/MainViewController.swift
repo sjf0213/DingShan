@@ -93,6 +93,20 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
             return nil
         }
     }
+    
+    // 微信登录回调
+    func onResp(resp:BaseResp){
+        self.requireNewUserByDid(String(format: "wx_register_%@", "weixinID001"))
+        
+        if let temp = resp as? SendAuthResp {
+            if(nil != temp.code && nil != temp.state){
+                let strTitle = "Auth结果"
+                let strMsg = String(format: "code:%@,state:%@,errcode:%zd", temp.code, temp.state, temp.errCode)
+                let alert = UIAlertView(title: strTitle, message: strMsg, delegate: self, cancelButtonTitle: "OK")
+                alert.show()
+            }
+        }
+    }
 }
 
 extension MainViewController : DSOSSDelegate{
@@ -142,19 +156,7 @@ extension MainViewController : DSLoginDelegate
         req.openID = OpenUDID.value()
         WXApi.sendAuthReq(req, viewController: self, delegate: self)
     }
-    // 微信登录回调
-    func onResp(resp:BaseResp){
-        self.requireNewUserByDid(String(format: "wx_register_%@", "weixinID001"))
-        
-        if let temp = resp as? SendAuthResp {
-            if(nil != temp.code && nil != temp.state){
-                let strTitle = "Auth结果"
-                let strMsg = String(format: "code:%@,state:%@,errcode:%zd", temp.code, temp.state, temp.errCode)
-                let alert = UIAlertView(title: strTitle, message: strMsg, delegate: self, cancelButtonTitle: "OK")
-                alert.show()
-            }
-        }
-    }
+    
     
     /////////////////分配新用户
     func assignNewUser(){
