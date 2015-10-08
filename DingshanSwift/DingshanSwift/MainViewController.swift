@@ -96,16 +96,43 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     
     // 微信登录回调
     func onResp(resp:BaseResp){
-        self.requireNewUserByDid(String(format: "wx_register_%@", "weixinID001"))
         
         if let temp = resp as? SendAuthResp {
             if(nil != temp.code && nil != temp.state){
-                let strTitle = "Auth结果"
-                let strMsg = String(format: "code:%@,state:%@,errcode:%zd", temp.code, temp.state, temp.errCode)
-                let alert = UIAlertView(title: strTitle, message: strMsg, delegate: self, cancelButtonTitle: "OK")
-                alert.show()
+                let url = String(format:"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",WeixinAppId, WeixinAppSecret, temp.code)
+                self.request = Alamofire.request(.GET, url)
+                // JSON
+                self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
+                    print("\n responseJSON- - - - -data = \(result)")
+                    // 如果请求数据有效
+                    if let dic = result.value as? [String:AnyObject]{
+                        print("\n response- - -dic = \(dic)")
+                        if let tocken = dic["access_token"] as? String{
+                            if let oid = dic["openid"] as? String{
+                                self.fetchUserInfoFromWeixin(tocken, openid: oid)
+                            }
+                        }
+                    }
+                })
             }
         }
+    }
+    
+    func fetchUserInfoFromWeixin(accessTocken:String,openid:String){
+        let url = String(format:"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@",accessTocken, openid)
+        self.request = Alamofire.request(.GET, url)
+        // JSON
+        self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
+            print("\n responseJSON- - - - -data = \(result)")
+            // 如果请求数据有效
+            if let dic = result.value as? [String:AnyObject]{
+                print("\n response- - -dic = \(dic)")
+                // 使用"unionid"注册新用户
+                if let unionid = dic["unionid"] as? String{
+                    self.requireNewUserByDid(String(format: "wx%@", unionid))
+                }
+            }
+        })
     }
 }
 
