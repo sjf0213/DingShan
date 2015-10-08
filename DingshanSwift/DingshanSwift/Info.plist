@@ -66,5 +66,16 @@
 		<string>mqqwpa</string>
 		<string>mqzone</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>weixin</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wx68cd5ad635a52c78</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

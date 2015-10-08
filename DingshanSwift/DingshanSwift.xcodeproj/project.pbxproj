@@ -20,6 +20,7 @@
 		F035ECF51BB29D8100A8D8EC /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = F035ECF41BB29D8100A8D8EC /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F035ECFC1BB2B8DC00A8D8EC /* ProfileUserInfoEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F035ECFB1BB2B8DC00A8D8EC /* ProfileUserInfoEditController.swift */; settings = {ASSET_TAGS = (); }; };
 		F035ED001BB3933700A8D8EC /* ForumReplyLordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F035ECFF1BB3933700A8D8EC /* ForumReplyLordCell.swift */; settings = {ASSET_TAGS = (); }; };
+		F04014D91BC67210009D5783 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F04014D81BC67210009D5783 /* CoreTelephony.framework */; };
 		F0507E5D1B67561A007E9024 /* KnowledgeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */; };
 		F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E641B675666007E9024 /* ForumFloorListController.swift */; };
 		F0507E691B6756D3007E9024 /* KnowledgeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */; };
@@ -182,6 +183,7 @@
 		F035ECF41BB29D8100A8D8EC /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
 		F035ECFB1BB2B8DC00A8D8EC /* ProfileUserInfoEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUserInfoEditController.swift; sourceTree = "<group>"; };
 		F035ECFF1BB3933700A8D8EC /* ForumReplyLordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumReplyLordCell.swift; sourceTree = "<group>"; };
+		F04014D81BC67210009D5783 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailController.swift; sourceTree = "<group>"; };
 		F0507E641B675666007E9024 /* ForumFloorListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorListController.swift; sourceTree = "<group>"; };
 		F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeListCell.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F04014D91BC67210009D5783 /* CoreTelephony.framework in Frameworks */,
 				F0AB967C1BA8362800C72260 /* libc++.dylib in Frameworks */,
 				F0AB967A1BA835D900C72260 /* Foundation.framework in Frameworks */,
 				F0AB96781BA835C200C72260 /* UIKit.framework in Frameworks */,
@@ -553,6 +556,7 @@
 		F0C5F6A81B53D1E000B2C20D = {
 			isa = PBXGroup;
 			children = (
+				F04014D81BC67210009D5783 /* CoreTelephony.framework */,
 				F0C5F6B31B53D1E000B2C20D /* DingshanSwift */,
 				F09ADD761B563452009B3A6D /* CommonFiles */,
 				F0AB96721BA834F600C72260 /* Framework */,

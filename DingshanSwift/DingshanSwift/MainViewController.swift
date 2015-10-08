@@ -10,6 +10,9 @@
 import UIKit
 import Alamofire
 
+let WeixinAppId = "wx68cd5ad635a52c78"
+let WeixinAppSecret = "52e1e407ce34ac5c71f02d7f1d4fd2b8"
+
 protocol DSLoginDelegate{
      func loginByWeixin()
      func assignNewUser()
@@ -50,7 +53,12 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     }
     
     override func viewDidLoad() {
+        //向微信注册
+        WXApi.registerApp(WeixinAppId, withDescription:"iDingshanDemo")
+        
+        //初始化aliyun OSS
         self.initOSSClient()
+        
         tabbar = TabBarView(frame: CGRect(x: 0, y: self.view.bounds.height - MAIN_TAB_H, width: self.view.bounds.width, height: MAIN_TAB_H))
         tabbar?.delegate = self;
         tabbar?.setHomeIndex(0);
@@ -128,9 +136,10 @@ extension MainViewController : DSLoginDelegate
     // 微信登录
     func sendAuthRequest(){
         let req = SendAuthReq()
-        req.scope = "snsapi_message,snsapi_userinfo,snsapi_friend,snsapi_contact"
-        req.state = "xxx"
-        req.openID = "0c806938e2413ce73eef92cc3";
+//        req.scope = "snsapi_message,snsapi_userinfo,snsapi_friend,snsapi_contact"
+        req.scope = "snsapi_userinfo"
+        req.state = "xxx123"
+        req.openID = OpenUDID.value()
         WXApi.sendAuthReq(req, viewController: self, delegate: self)
     }
     // 微信登录回调
