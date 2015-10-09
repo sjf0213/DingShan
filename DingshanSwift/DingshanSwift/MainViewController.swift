@@ -96,12 +96,10 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     
     // 微信登录回调
     func onResp(resp:BaseResp){
-        
         if let temp = resp as? SendAuthResp {
             if(nil != temp.code && nil != temp.state){
                 let url = String(format:"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",WeixinAppId, WeixinAppSecret, temp.code)
                 self.request = Alamofire.request(.GET, url)
-                // JSON
                 self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
                     print("\n responseJSON- - - - -data = \(result)")
                     // 如果请求数据有效
@@ -172,20 +170,6 @@ extension MainViewController : DSOSSDelegate{
 
 extension MainViewController : DSLoginDelegate
 {
-    func loginByWeixin(){
-        self.sendAuthRequest()
-    }
-    // 微信登录
-    func sendAuthRequest(){
-        let req = SendAuthReq()
-//        req.scope = "snsapi_message,snsapi_userinfo,snsapi_friend,snsapi_contact"
-        req.scope = "snsapi_userinfo"
-        req.state = "xxx123"
-        req.openID = OpenUDID.value()
-        WXApi.sendAuthReq(req, viewController: self, delegate: self)
-    }
-    
-    
     // 自动分配一个新用户
     func assignNewUser(){
         self.requireNewUserByDid(OpenUDID.value())
@@ -196,7 +180,7 @@ extension MainViewController : DSLoginDelegate
         let parameter = ["did" : did,
                         "json" : "1"]
         let url = ApiBuilder.user_create_new(parameter)
-        print("+++++++++url = \(url)", terminator: "")
+        print("+++++++++url = \(url)")
         self.request = Alamofire.request(.GET, url)
         // JSON
         self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
@@ -206,6 +190,14 @@ extension MainViewController : DSLoginDelegate
                 print("\n response- --dic = \(dic)")
             }
         })
+    }
+    
+    // 微信登录
+    func loginByWeixin(){
+        let req = SendAuthReq()
+        req.scope = "snsapi_userinfo"
+        req.state = "xxx123"
+        WXApi.sendAuthReq(req, viewController: self, delegate: self)
     }
 }
 
