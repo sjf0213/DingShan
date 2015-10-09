@@ -118,6 +118,7 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
         }
     }
     
+    // 获取微信用户的个人信息
     func fetchUserInfoFromWeixin(accessTocken:String,openid:String){
         let url = String(format:"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@",accessTocken, openid)
         self.request = Alamofire.request(.GET, url)
@@ -185,11 +186,12 @@ extension MainViewController : DSLoginDelegate
     }
     
     
-    /////////////////分配新用户
+    // 自动分配一个新用户
     func assignNewUser(){
         self.requireNewUserByDid(OpenUDID.value())
     }
     
+    // 注册一个新用户
     func requireNewUserByDid(did:String){
         let parameter = ["did" : did,
                         "json" : "1"]
