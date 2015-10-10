@@ -117,7 +117,7 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     }
     
     // 获取微信用户的个人信息
-    func fetchUserInfoFromWeixin(accessTocken:String,openid:String){
+    func fetchUserInfoFromWeixin(accessTocken:String, openid:String){
         let url = String(format:"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@",accessTocken, openid)
         self.request = Alamofire.request(.GET, url)
         // JSON
@@ -128,10 +128,43 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
                 print("\n response- - -dic = \(dic)")
                 // 使用"unionid"注册新用户
                 if let unionid = dic["unionid"] as? String{
-                    self.requireNewUserByDid(String(format: "wx%@", unionid))
+                    self.requireNewUserBySomeId(String(format: "wx_unionid_%@", unionid))
                 }
             }
         })
+    }
+}
+
+extension MainViewController : DSLoginDelegate
+{
+    // 自动分配一个新用户
+    func assignNewUser(){
+        self.requireNewUserBySomeId(OpenUDID.value())
+    }
+    
+    // 注册一个新用户
+    func requireNewUserBySomeId(someId:String){
+        let parameter = ["did" : someId,
+            "json" : "1"]
+        let url = ApiBuilder.user_create_new(parameter)
+        print("+++++++++url = \(url)")
+        self.request = Alamofire.request(.GET, url)
+        // JSON
+        self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
+            print("\n responseJSON- - - - -data = \(result)")
+            // 如果请求数据有效
+            if let dic = result.value as? NSDictionary{
+                print("\n response- --dic = \(dic)")
+            }
+        })
+    }
+    
+    // 微信登录
+    func loginByWeixin(){
+        let req = SendAuthReq()
+        req.scope = "snsapi_userinfo"
+        req.state = "xxx123"
+        WXApi.sendAuthReq(req, viewController: self, delegate: self)
     }
 }
 
@@ -167,40 +200,6 @@ extension MainViewController : DSOSSDelegate{
         }
     }
 }
-
-extension MainViewController : DSLoginDelegate
-{
-    // 自动分配一个新用户
-    func assignNewUser(){
-        self.requireNewUserByDid(OpenUDID.value())
-    }
-    
-    // 注册一个新用户
-    func requireNewUserByDid(did:String){
-        let parameter = ["did" : did,
-                        "json" : "1"]
-        let url = ApiBuilder.user_create_new(parameter)
-        print("+++++++++url = \(url)")
-        self.request = Alamofire.request(.GET, url)
-        // JSON
-        self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
-            print("\n responseJSON- - - - -data = \(result)")
-            // 如果请求数据有效
-            if let dic = result.value as? NSDictionary{
-                print("\n response- --dic = \(dic)")
-            }
-        })
-    }
-    
-    // 微信登录
-    func loginByWeixin(){
-        let req = SendAuthReq()
-        req.scope = "snsapi_userinfo"
-        req.state = "xxx123"
-        WXApi.sendAuthReq(req, viewController: self, delegate: self)
-    }
-}
-
 
 extension MainViewController : TabBarViewDelegate
 {
