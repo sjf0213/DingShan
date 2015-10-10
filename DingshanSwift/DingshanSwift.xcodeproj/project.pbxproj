@@ -514,16 +514,17 @@
 		F0AB96721BA834F600C72260 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				F0C691131BB8EEF900B61494 /* Bolts.framework */,
-				F0C691111BB8E38D00B61494 /* AliyunOSSiOS.framework */,
-				F0C3C2541B5FAA0C00AB6E35 /* Alamofire.xcodeproj */,
-				F0AB96691BA82DF000C72260 /* WeixinSDK */,
-				F0AB96141BA6DD9700C72260 /* SDWebImage */,
 				F0AB96731BA8352200C72260 /* libz.dylib */,
 				F0AB967B1BA8362800C72260 /* libc++.dylib */,
 				F0AB96701BA834EE00C72260 /* libsqlite3.0.dylib */,
+				F0C3C2541B5FAA0C00AB6E35 /* Alamofire.xcodeproj */,
+				F0AB96691BA82DF000C72260 /* WeixinSDK */,
+				F0AB96141BA6DD9700C72260 /* SDWebImage */,
+				F0C691131BB8EEF900B61494 /* Bolts.framework */,
+				F0C691111BB8E38D00B61494 /* AliyunOSSiOS.framework */,
 				F0AB96771BA835C200C72260 /* UIKit.framework */,
 				F0AB96791BA835D900C72260 /* Foundation.framework */,
+				F04014D81BC67210009D5783 /* CoreTelephony.framework */,
 				F0AB96751BA8352A00C72260 /* SystemConfiguration.framework */,
 			);
 			name = Framework;
@@ -556,7 +557,6 @@
 		F0C5F6A81B53D1E000B2C20D = {
 			isa = PBXGroup;
 			children = (
-				F04014D81BC67210009D5783 /* CoreTelephony.framework */,
 				F0C5F6B31B53D1E000B2C20D /* DingshanSwift */,
 				F09ADD761B563452009B3A6D /* CommonFiles */,
 				F0AB96721BA834F600C72260 /* Framework */,
