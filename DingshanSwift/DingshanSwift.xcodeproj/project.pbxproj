@@ -316,16 +316,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F04014D91BC67210009D5783 /* CoreTelephony.framework in Frameworks */,
-				F0AB967C1BA8362800C72260 /* libc++.dylib in Frameworks */,
-				F0AB967A1BA835D900C72260 /* Foundation.framework in Frameworks */,
-				F0AB96781BA835C200C72260 /* UIKit.framework in Frameworks */,
-				F0AB96761BA8352A00C72260 /* SystemConfiguration.framework in Frameworks */,
-				F0C691121BB8E38D00B61494 /* AliyunOSSiOS.framework in Frameworks */,
-				F0AB96741BA8352200C72260 /* libz.dylib in Frameworks */,
-				F0C691141BB8EEF900B61494 /* Bolts.framework in Frameworks */,
-				F0AB96711BA834EE00C72260 /* libsqlite3.0.dylib in Frameworks */,
 				F0AB966E1BA82E0800C72260 /* libWeChatSDK.a in Frameworks */,
+				F0C691121BB8E38D00B61494 /* AliyunOSSiOS.framework in Frameworks */,
+				F0C691141BB8EEF900B61494 /* Bolts.framework in Frameworks */,
+				F0AB96741BA8352200C72260 /* libz.dylib in Frameworks */,
+				F0AB967C1BA8362800C72260 /* libc++.dylib in Frameworks */,
+				F0AB96711BA834EE00C72260 /* libsqlite3.0.dylib in Frameworks */,
+				F04014D91BC67210009D5783 /* CoreTelephony.framework in Frameworks */,
+				F0AB96761BA8352A00C72260 /* SystemConfiguration.framework in Frameworks */,
+				F0AB96781BA835C200C72260 /* UIKit.framework in Frameworks */,
+				F0AB967A1BA835D900C72260 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

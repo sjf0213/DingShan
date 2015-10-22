@@ -13,6 +13,7 @@ class MainConfig {
 //    static let sharedInstance: MainConfig = MainConfig()
     
     var rootDic:NSDictionary?
+    var userInfo = UserInfoData()
     
     static let sharedInstance: MainConfig = MainConfig()
     

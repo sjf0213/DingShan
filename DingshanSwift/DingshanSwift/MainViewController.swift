@@ -63,7 +63,7 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
         tabbar?.delegate = self;
         tabbar?.setHomeIndex(0);
         self.view.addSubview(tabbar!)
-//        let config = MainConfig.sharedInstance
+        let _ = MainConfig.sharedInstance
     }
     
     func initOSSClient() {
