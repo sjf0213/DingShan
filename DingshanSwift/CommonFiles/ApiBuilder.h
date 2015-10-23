@@ -28,4 +28,5 @@
 +(NSString *)gallery_get_galary_multi_list:(NSDictionary*)dic;
 // 用户
 +(NSString *)user_create_new:(NSDictionary*)dic;
++(NSString *)user_update_info:(NSDictionary*)dic;
 @end

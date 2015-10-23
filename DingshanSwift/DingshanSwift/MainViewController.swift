@@ -120,15 +120,25 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     func fetchUserInfoFromWeixin(accessTocken:String, openid:String){
         let url = String(format:"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@",accessTocken, openid)
         self.request = Alamofire.request(.GET, url)
-        // JSON
         self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
             print("\n responseJSON- - - - -data = \(result)")
             // 如果请求数据有效
-            if let dic = result.value as? [String:AnyObject]{
-                print("\n response- - -dic = \(dic)")
+            if let wxInfoDic = result.value as? [String:AnyObject]{
+                print("\n response- - -wxInfoDic = \(wxInfoDic)")
                 // 使用"unionid"注册新用户
-                if let unionid = dic["unionid"] as? String{
-                    self.requireNewUserBySomeId(String(format: "wx_unionid_%@", unionid))
+                if let unionid = wxInfoDic["unionid"] as? String{
+                    let unionid = String(format: "wx_unionid_%@", unionid)
+                    self.requireNewUserBySomeId(unionid, completion:{(info:[String:AnyObject]) -> Void in
+                        //成功申请新用户之后覆盖微信的用户信息
+                        let name = wxInfoDic["nickname"] as? String
+                        let headimgurl = wxInfoDic["headimgurl"] as? String
+                        if name != nil && headimgurl != nil{
+                            let destDic = NSMutableDictionary(dictionary: info)
+                            destDic.setValue(name, forKey: "name")
+                            destDic.setValue(headimgurl, forKey: "imgurl")
+                            self.updateUserInfo(destDic)
+                        }
+                    })
                 }
             }
         })
@@ -139,31 +149,7 @@ extension MainViewController : DSLoginDelegate
 {
     // 自动分配一个新用户，相当于游客身份
     func assignNewUser(){
-        self.requireNewUserBySomeId(OpenUDID.value())
-    }
-    
-    // 用ID（比如微信的unionid）注册一个新用户
-    func requireNewUserBySomeId(someId:String){
-        let parameter = ["did" : someId,
-            "json" : "1"]
-        let url = ApiBuilder.user_create_new(parameter)
-        print("+++++++++url = \(url)")
-        self.request = Alamofire.request(.GET, url)
-        // JSON
-        self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
-            print("\n responseJSON- - - - -data = \(result)")
-            // 如果请求数据有效
-            if let dic = result.value as? [String:AnyObject]{
-                print("\n response- - -dic = \(dic)")
-                if let dataDic = dic["v"] as? [String:AnyObject]{
-                    MainConfig.sharedInstance.userInfo = UserInfoData(dic: dataDic)
-                    MainConfig.sharedInstance.userLoginDone = true
-                    print("\n MainConfig.sharedInstance.userInfo = \(MainConfig.sharedInstance.userInfo)")
-                    NSNotificationCenter.defaultCenter().postNotificationName(Notification_LoginSucceed, object: nil)
-                    NSNotificationCenter.defaultCenter().postNotificationName(Notification_UpdateUserInfo, object: nil)
-                }
-            }
-        })
+        self.requireNewUserBySomeId(OpenUDID.value(), completion: nil)
     }
     
     // 微信登录
@@ -172,6 +158,52 @@ extension MainViewController : DSLoginDelegate
         req.scope = "snsapi_userinfo"
         req.state = "xxx123"
         WXApi.sendAuthReq(req, viewController: self, delegate: self)
+    }
+    
+    // 用ID（比如微信的unionid）注册一个新用户
+    func requireNewUserBySomeId(someId:String,
+                     completion:((info:[String:AnyObject]) -> Void)?){
+        let parameter = ["did" : someId,
+            "json" : "1"]
+        let url = ApiBuilder.user_create_new(parameter)
+        print("+++++++++url = \(url)")
+        self.request = Alamofire.request(.GET, url)
+        self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
+            print("\n requireNewUserBySomeId.responseJSON- - - - -data = \(result)")
+            if result.isSuccess{
+                // 如果请求数据有效
+                if let dic = result.value as? [String:AnyObject]{
+                    print("\n response- - -dic = \(dic)")
+                    if let dingshanInfoDic = dic["v"] as? [String:AnyObject]{
+                        if (completion != nil){
+                            completion?(info: dingshanInfoDic)
+                        }
+                    }
+                }
+            }
+        })
+    }
+    
+//MARK - 有待使用真正的用户系统，改造
+    // 用微信用户数据更新服务器用户信息
+    func updateUserInfo(dic:NSDictionary){
+        let url = ApiBuilder.user_update_info(dic as? [String : AnyObject])
+        let postBody = dic as! [String : AnyObject]
+        self.request = Alamofire.request(.POST, url, parameters: postBody, encoding: .JSON)
+        print("+++++++++url  updateUserInfo= \(url)")
+        self.request?.responseJSON(completionHandler: { (request, response, result) -> Void in
+            print("\n updateUserInfo.responseJSON- - - - -data = \(result)")
+            
+            if result.isSuccess{
+                if let dic = result.value as? [String:AnyObject]{
+                    MainConfig.sharedInstance.userInfo = UserInfoData(dic: dic)
+                    MainConfig.sharedInstance.userLoginDone = true
+                    print("\n MainConfig.sharedInstance.userInfo = \(MainConfig.sharedInstance.userInfo)")
+                    NSNotificationCenter.defaultCenter().postNotificationName(Notification_LoginSucceed, object: nil)
+                    NSNotificationCenter.defaultCenter().postNotificationName(Notification_UpdateUserInfo, object: nil)
+                }
+            }
+        })
     }
 }
 

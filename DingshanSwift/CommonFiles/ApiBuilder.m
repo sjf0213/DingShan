@@ -110,7 +110,7 @@ static ApiBuilder * m_Instance;
 +(NSString *)signatureURL:(NSString*)url args:(NSDictionary *)args
 {
     NSMutableDictionary * finalDic = [NSMutableDictionary dictionaryWithDictionary:[ApiBuilder shareInstance].apiData];
-
+    
     if(([[NSDate date] timeIntervalSince1970]-startDate)>APICheckTimeInterval)
     {
         startDate = [[NSDate date]timeIntervalSince1970];
@@ -227,6 +227,11 @@ static ApiBuilder * m_Instance;
 +(NSString *)user_create_new:(NSDictionary*)dic
 {
     return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/user/createnewuser", HostName] args:dic];
+}
+
++(NSString *)user_update_info:(NSDictionary *)dic
+{
+    return [ApiBuilder signatureURL:[NSString stringWithFormat:@"%@/dingshan/user/updateuserinfo", HostName] args:dic];
 }
 
 @end
