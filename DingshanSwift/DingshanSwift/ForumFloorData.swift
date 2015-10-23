@@ -16,8 +16,8 @@ class ForumFloorData : NSObject {
     }
     
     init( dic : [String: AnyObject]){
-        if let num = dic["floor_id"] as? String {
-            floorId = Int(num)!
+        if let num = dic["floor_id"] as? NSNumber {
+            floorId = num.integerValue
         }
         if let tmp = dic["floor_content"] as? String{
             contentText = tmp

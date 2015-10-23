@@ -153,8 +153,12 @@ extension MainViewController : DSLoginDelegate
         self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
             print("\n responseJSON- - - - -data = \(result)")
             // 如果请求数据有效
-            if let dic = result.value as? NSDictionary{
-                print("\n response- --dic = \(dic)")
+            if let dic = result.value as? [String:AnyObject]{
+                print("\n response- - -dic = \(dic)")
+                if let dataDic = dic["v"] as? [String:AnyObject]{
+                    MainConfig.sharedInstance.userInfo = UserInfoData(dic: dataDic)
+                    print("\n MainConfig.sharedInstance.userInfo = \(MainConfig.sharedInstance.userInfo)")
+                }
             }
         })
     }

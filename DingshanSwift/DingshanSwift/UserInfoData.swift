@@ -7,6 +7,25 @@
 //
 
 import Foundation
+
+extension UserInfoData: CustomDebugStringConvertible{
+    override var debugDescription: String {
+        var str = "\n uid = "+String(uid)
+            str += "\n aid = " + aid
+            str += "\n did = " + did
+        
+        str += "\n name = " + userName
+        str += "\n userHeadUrl = " + userHeadUrl
+        
+        str += "\n userGender = " + String(userGender)
+        str += "\n userEmailAddr = " + userEmailAddr
+        str += "\n userPhoneNum = " + userPhoneNum
+        return str
+    }
+}
+
+
+
 class UserInfoData : NSObject {
     
     // 必要数据
@@ -23,20 +42,38 @@ class UserInfoData : NSObject {
     var userEmailAddr:String = ""//用户邮箱
     var userPhoneNum:String = ""//用户手机号
     
+    override var description : String {
+        
+        var str = "222\n uid = "+String(uid)
+        str += "\n aid = " + aid
+        str += "\n did = " + did
+        
+        str += "\n name = " + userName
+        str += "\n userHeadUrl = " + userHeadUrl
+        
+        str += "\n userGender = " + String(userGender)
+        str += "\n userEmailAddr = " + userEmailAddr
+        str += "\n userPhoneNum = " + userPhoneNum
+        
+        return str
+    }
+    
     required override init() {
         super.init()
     }
     
     init( dic : [String: AnyObject]){
         // 必要数据
-        if let tmp = dic["uid"] as? String {
-            uid = Int(tmp)!
+        let tmp = dic["uid"]
+        print("===================tmp : %@", tmp)
+        if let tmp = dic["uid"] as? NSNumber {
+            uid = tmp.integerValue
         }
         if let tmp = dic["aid"] as? String {
             aid = tmp
         }
         if let tmp = dic["did"] as? String {
-            aid = tmp
+            did = tmp
         }
         
         // 基本显示资料
@@ -48,8 +85,8 @@ class UserInfoData : NSObject {
         }
         
         // 附加资料
-        if let tmp = dic["gender"] as? String {
-            userGender = Int(tmp)!
+        if let tmp = dic["gender"] as? NSNumber {
+            userGender = tmp.integerValue
         }
         if let tmp = dic["email"] as? String {
             userEmailAddr = tmp
@@ -58,4 +95,5 @@ class UserInfoData : NSObject {
             userPhoneNum = tmp
         }
     }
+    
 }

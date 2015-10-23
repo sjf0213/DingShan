@@ -17,8 +17,8 @@ class ForumTopicData : NSObject {
     }
     
     init( dic : [String: AnyObject]){
-        if let num = dic["topic_id"] as? String {
-            topicId = Int(num)!
+        if let num = dic["topic_id"] as? NSNumber {
+            topicId = num.integerValue
         }
         if let tmp = dic["topic_title"] as? String{
             title = tmp
