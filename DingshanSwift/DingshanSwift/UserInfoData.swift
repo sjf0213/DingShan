@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+/*
 extension UserInfoData: CustomDebugStringConvertible{
     override var debugDescription: String {
         var str = "\n uid = "+String(uid)
@@ -23,8 +23,7 @@ extension UserInfoData: CustomDebugStringConvertible{
         return str
     }
 }
-
-
+*/
 
 class UserInfoData : NSObject {
     
@@ -44,7 +43,7 @@ class UserInfoData : NSObject {
     
     override var description : String {
         
-        var str = "222\n uid = "+String(uid)
+        var str = "--------------------------\n uid = "+String(uid)
         str += "\n aid = " + aid
         str += "\n did = " + did
         
@@ -64,8 +63,6 @@ class UserInfoData : NSObject {
     
     init( dic : [String: AnyObject]){
         // 必要数据
-        let tmp = dic["uid"]
-        print("===================tmp : %@", tmp)
         if let tmp = dic["uid"] as? NSNumber {
             uid = tmp.integerValue
         }

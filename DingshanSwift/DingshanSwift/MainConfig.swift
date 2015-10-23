@@ -14,6 +14,7 @@ class MainConfig {
     
     var rootDic:NSDictionary?
     var userInfo = UserInfoData()
+    var userLoginDone = false // 记录用户是否主动登录（还是跳过登录以游客身份浏览）
     
     static let sharedInstance: MainConfig = MainConfig()
     

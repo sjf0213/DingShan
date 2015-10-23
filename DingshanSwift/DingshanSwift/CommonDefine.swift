@@ -28,3 +28,6 @@ let HomeAd_H:CGFloat = 154
 let Default_Request_Count    =    20
 let HomeRow_H:CGFloat = 82.5
 let HostName = "image.kokoguo.com"
+
+let Notification_LoginSucceed = "Notification_LoginSucceed"
+let Notification_UpdateUserInfo = "Notification_UpdateUserInfo"

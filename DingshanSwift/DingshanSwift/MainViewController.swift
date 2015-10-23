@@ -137,12 +137,12 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
 
 extension MainViewController : DSLoginDelegate
 {
-    // 自动分配一个新用户
+    // 自动分配一个新用户，相当于游客身份
     func assignNewUser(){
         self.requireNewUserBySomeId(OpenUDID.value())
     }
     
-    // 注册一个新用户
+    // 用ID（比如微信的unionid）注册一个新用户
     func requireNewUserBySomeId(someId:String){
         let parameter = ["did" : someId,
             "json" : "1"]
@@ -157,7 +157,10 @@ extension MainViewController : DSLoginDelegate
                 print("\n response- - -dic = \(dic)")
                 if let dataDic = dic["v"] as? [String:AnyObject]{
                     MainConfig.sharedInstance.userInfo = UserInfoData(dic: dataDic)
+                    MainConfig.sharedInstance.userLoginDone = true
                     print("\n MainConfig.sharedInstance.userInfo = \(MainConfig.sharedInstance.userInfo)")
+                    NSNotificationCenter.defaultCenter().postNotificationName(Notification_LoginSucceed, object: nil)
+                    NSNotificationCenter.defaultCenter().postNotificationName(Notification_UpdateUserInfo, object: nil)
                 }
             }
         })

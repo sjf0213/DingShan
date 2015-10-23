@@ -25,6 +25,8 @@ class ProfileLoginController: DSViewController {
         skipBtn.setTitle("跳过", forState: UIControlState.Normal)
         skipBtn.addTarget(self, action:Selector("onTapSkip"), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(skipBtn)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("onClose"), name: Notification_LoginSucceed, object: nil)
     }
     
     func onTapLogin(){
@@ -36,6 +38,14 @@ class ProfileLoginController: DSViewController {
     func onTapSkip(){
         if let delegate = self.loginDelegate as? DSLoginDelegate{
             delegate.assignNewUser()
+        }
+    }
+    func onClose(){
+        print("---ProfileLoginController on close ")
+        if (self.navigationController?.visibleViewController == self){
+            self.navigationController?.popViewControllerAnimated(true);
+        }else{
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
 }

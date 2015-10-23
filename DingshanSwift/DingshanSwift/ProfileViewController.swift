@@ -16,6 +16,7 @@ class ProfileViewController:DSViewController
     
     private var userNameLabel = UILabel()
     private var userHeadView = UIButton()
+    private var userHeadImg = UIImageView()
     override func loadView()
     {
         super.loadView()
@@ -44,6 +45,9 @@ class ProfileViewController:DSViewController
         userHeadView.addTarget(self, action: Selector("onTapEditInfo:"), forControlEvents: UIControlEvents.TouchUpInside)
         infoView.addSubview(userHeadView)
         
+        userHeadImg.frame = userHeadView.bounds
+        userHeadView.addSubview(userHeadImg)
+        
         userNameLabel.frame = CGRect(x: 20, y: 128, width: self.view.bounds.size.width - 40, height: 16)
         userNameLabel.font = UIFont.systemFontOfSize(15.0)
         userNameLabel.textAlignment = NSTextAlignment.Center
@@ -65,6 +69,7 @@ class ProfileViewController:DSViewController
         topMenuView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
         infoView.addSubview(topMenuView)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("refreshInfo"), name: Notification_LoginSucceed, object: nil)
         
     }
     
@@ -81,5 +86,10 @@ class ProfileViewController:DSViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    
+    func refreshInfo(){
+        if MainConfig.sharedInstance.userLoginDone{
+            let info = MainConfig.sharedInstance.userInfo
+            userNameLabel.text = info.userName
+        }
+    }
 }
