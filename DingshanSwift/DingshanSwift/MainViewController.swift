@@ -136,12 +136,24 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
                             var destDic = Dictionary<String,AnyObject>()
                             destDic["nickname"] = name
                             destDic["imgurl"] = headimgurl
-                            self.updateUserInfo(destDic)
+                            //用拿到的微信数据更新用户信息
+                            self.updateUserInfo(destDic, completion:{(info:[NSObject:AnyObject]) -> Void in
+                                self.storeUserInfo(info)
+                            })
                         }
                     })
                 }
             }
         })
+    }
+    
+    func storeUserInfo(info:[NSObject:AnyObject]){
+        print("\n dic = \(info)")
+        MainConfig.sharedInstance.userInfo = UserInfoData(dic: info)
+        MainConfig.sharedInstance.userLoginDone = true
+        print("\n MainConfig.sharedInstance.userInfo = \(MainConfig.sharedInstance.userInfo)")
+        NSNotificationCenter.defaultCenter().postNotificationName(Notification_LoginSucceed, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(Notification_UpdateUserInfo, object: nil)
     }
 }
 
@@ -149,7 +161,9 @@ extension MainViewController : DSLoginDelegate
 {
     // 自动分配一个新用户，相当于游客身份
     func assignNewUser(){
-        self.requireNewUserBySomeId(OpenUDID.value(), completion: nil)
+        self.requireNewUserBySomeId(OpenUDID.value(), completion:{(info:[NSObject:AnyObject]) -> Void in
+            self.storeUserInfo(info)
+        })
     }
     
     // 微信登录
@@ -174,9 +188,9 @@ extension MainViewController : DSLoginDelegate
                 // 如果请求数据有效
                 if let dic = result.value as? [String:AnyObject]{
                     print("\n response- - -dic = \(dic)")
-                    if let dingshanInfoDic = dic["v"] as? [String:AnyObject]{
+                    if let dingshanInfoNewUserInfoDic = dic["v"] as? [String:AnyObject]{
                         if (completion != nil){
-                            completion?(info: dingshanInfoDic)
+                            completion?(info: dingshanInfoNewUserInfoDic)
                         }
                     }
                 }
@@ -186,7 +200,8 @@ extension MainViewController : DSLoginDelegate
     
 //MARK - 有待使用真正的用户系统，改造
     // 用微信用户数据更新服务器用户信息
-    func updateUserInfo(dic:[String:AnyObject]){
+    func updateUserInfo(dic:[String:AnyObject],
+                completion:((info:[NSObject:AnyObject]) -> Void)?){
         let url = ServerApi.user_update_info()
         let postBody = dic
         self.request = Alamofire.request(.POST, url, parameters: postBody, encoding: .JSON)
@@ -196,13 +211,10 @@ extension MainViewController : DSLoginDelegate
             
             if result.isSuccess{
                 if let v = result.value as? [String:AnyObject]{
-                    if let dic = v["v"] as? [String:AnyObject]{
-                        print("\n dic = \(dic)")
-                        MainConfig.sharedInstance.userInfo = UserInfoData(dic: dic)
-                        MainConfig.sharedInstance.userLoginDone = true
-                        print("\n MainConfig.sharedInstance.userInfo = \(MainConfig.sharedInstance.userInfo)")
-                        NSNotificationCenter.defaultCenter().postNotificationName(Notification_LoginSucceed, object: nil)
-                        NSNotificationCenter.defaultCenter().postNotificationName(Notification_UpdateUserInfo, object: nil)
+                    if let updatedUserInfoDic = v["v"] as? [String:AnyObject]{
+                        if (completion != nil){
+                            completion?(info: updatedUserInfoDic)
+                        }
                     }
                 }
             }

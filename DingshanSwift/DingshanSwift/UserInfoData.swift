@@ -61,7 +61,7 @@ class UserInfoData : NSObject {
         super.init()
     }
     
-    init( dic : [String: AnyObject]){
+    init( dic : [NSObject: AnyObject]){
         // 必要数据
         if let tmp = dic["uid"] as? NSNumber {
             uid = tmp.integerValue
