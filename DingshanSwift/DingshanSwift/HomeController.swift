@@ -94,7 +94,7 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
                         "sorttype" : "1",
                         "topicid":"0",
                         "json" : "1"]
-        let url = ApiBuilder.forum_get_topic_list(parameter)
+        let url = ServerApi.forum_get_topic_list(parameter)
         print("url = \(url)", terminator: "")
         self.request = Alamofire.request(.GET, url)
         // JSON

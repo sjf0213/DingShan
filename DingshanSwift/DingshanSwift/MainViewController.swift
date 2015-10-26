@@ -128,14 +128,14 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
                 // 使用"unionid"注册新用户
                 if let unionid = wxInfoDic["unionid"] as? String{
                     let unionid = String(format: "wx_unionid_%@", unionid)
-                    self.requireNewUserBySomeId(unionid, completion:{(info:[String:AnyObject]) -> Void in
+                    self.requireNewUserBySomeId(unionid, completion:{(info:[NSObject:AnyObject]) -> Void in
                         //成功申请新用户之后覆盖微信的用户信息
                         let name = wxInfoDic["nickname"] as? String
                         let headimgurl = wxInfoDic["headimgurl"] as? String
                         if name != nil && headimgurl != nil{
-                            let destDic = NSMutableDictionary(dictionary: info)
-                            destDic.setValue(name, forKey: "name")
-                            destDic.setValue(headimgurl, forKey: "imgurl")
+                            var destDic = Dictionary<String,AnyObject>()
+                            destDic["nickname"] = name
+                            destDic["imgurl"] = headimgurl
                             self.updateUserInfo(destDic)
                         }
                     })
@@ -162,10 +162,10 @@ extension MainViewController : DSLoginDelegate
     
     // 用ID（比如微信的unionid）注册一个新用户
     func requireNewUserBySomeId(someId:String,
-                     completion:((info:[String:AnyObject]) -> Void)?){
+                     completion:((info:[NSObject:AnyObject]) -> Void)?){
         let parameter = ["did" : someId,
             "json" : "1"]
-        let url = ApiBuilder.user_create_new(parameter)
+        let url = ServerApi.user_create_new(parameter)
         print("+++++++++url = \(url)")
         self.request = Alamofire.request(.GET, url)
         self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
@@ -186,9 +186,9 @@ extension MainViewController : DSLoginDelegate
     
 //MARK - 有待使用真正的用户系统，改造
     // 用微信用户数据更新服务器用户信息
-    func updateUserInfo(dic:NSDictionary){
-        let url = ApiBuilder.user_update_info(dic as? [String : AnyObject])
-        let postBody = dic as! [String : AnyObject]
+    func updateUserInfo(dic:[String:AnyObject]){
+        let url = ServerApi.user_update_info()
+        let postBody = dic
         self.request = Alamofire.request(.POST, url, parameters: postBody, encoding: .JSON)
         print("+++++++++url  updateUserInfo= \(url)")
         self.request?.responseJSON(completionHandler: { (request, response, result) -> Void in

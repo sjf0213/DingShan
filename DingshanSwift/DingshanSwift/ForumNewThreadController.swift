@@ -70,7 +70,7 @@ class ForumNewThreadController : DSViewController{
         if (strTitle != nil && strContent != nil){
             let postBody = ["topic_title":strTitle,
                           "topic_content":strContent]
-            let url = ApiBuilder.forum_create_topic(parameter)
+            let url = ServerApi.forum_create_topic(parameter)
             
 //            do{
 //                let theJSONData = try NSJSONSerialization.dataWithJSONObject(postBody, options: NSJSONWritingOptions(rawValue: 0))

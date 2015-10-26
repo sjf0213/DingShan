@@ -85,7 +85,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
             "pindex" : "0",
             "psize" : "20",
             "json" : "1"]
-        let url = ApiBuilder.forum_get_floor_list(parameter)
+        let url = ServerApi.forum_get_floor_list(parameter)
         print("url = \(url)", terminator: "")
         self.request = Alamofire.request(.GET, url)
         // JSON

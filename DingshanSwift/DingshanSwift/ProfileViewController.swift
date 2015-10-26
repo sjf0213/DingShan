@@ -69,7 +69,7 @@ class ProfileViewController:DSViewController
         topMenuView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
         infoView.addSubview(topMenuView)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("refreshInfo"), name: Notification_LoginSucceed, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("refreshInfo"), name: Notification_UpdateUserInfo, object: nil)
         
     }
     

@@ -27,7 +27,7 @@ class MainConfig {
         if exist
         {
             self.rootDic = NSDictionary(contentsOfFile: configPath!);
-            print("root dic = \(rootDic)", terminator: "")
+            print("\nroot dic = \(rootDic)", terminator: "")
         }
     }
     
