@@ -90,6 +90,7 @@ class ProfileViewController:DSViewController
         if MainConfig.sharedInstance.userLoginDone{
             let info = MainConfig.sharedInstance.userInfo
             userNameLabel.text = info.userName
+            userHeadImg.sd_setImageWithURL(NSURL(string: info.userHeadUrl))
         }
     }
 }

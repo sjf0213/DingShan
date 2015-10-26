@@ -195,12 +195,15 @@ extension MainViewController : DSLoginDelegate
             print("\n updateUserInfo.responseJSON- - - - -data = \(result)")
             
             if result.isSuccess{
-                if let dic = result.value as? [String:AnyObject]{
-                    MainConfig.sharedInstance.userInfo = UserInfoData(dic: dic)
-                    MainConfig.sharedInstance.userLoginDone = true
-                    print("\n MainConfig.sharedInstance.userInfo = \(MainConfig.sharedInstance.userInfo)")
-                    NSNotificationCenter.defaultCenter().postNotificationName(Notification_LoginSucceed, object: nil)
-                    NSNotificationCenter.defaultCenter().postNotificationName(Notification_UpdateUserInfo, object: nil)
+                if let v = result.value as? [String:AnyObject]{
+                    if let dic = v["v"] as? [String:AnyObject]{
+                        print("\n dic = \(dic)")
+                        MainConfig.sharedInstance.userInfo = UserInfoData(dic: dic)
+                        MainConfig.sharedInstance.userLoginDone = true
+                        print("\n MainConfig.sharedInstance.userInfo = \(MainConfig.sharedInstance.userInfo)")
+                        NSNotificationCenter.defaultCenter().postNotificationName(Notification_LoginSucceed, object: nil)
+                        NSNotificationCenter.defaultCenter().postNotificationName(Notification_UpdateUserInfo, object: nil)
+                    }
                 }
             }
         })
