@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScrollViewDelegate
 {
     var mainTable = UITableView();
@@ -15,16 +14,7 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
     var refreshView:RefreshView?
     var loadMoreView:LoadView?
     var currentPage:NSInteger = 0
-    var request: Alamofire.Request? {
-        didSet {
-            oldValue?.cancel()
-//            self.title = self.request?.description
-//            self.refreshControl?.endRefreshing()
-//            self.headers.removeAll()
-//            self.body = nil
-//            self.elapsedTime = nil
-        }
-    }
+
     override func loadView(){
         super.loadView()
         self.view.backgroundColor = UIColor.lightGrayColor()
@@ -94,25 +84,30 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
                         "sorttype" : "1",
                         "topicid":"0",
                         "json" : "1"]
+        
         let url = ServerApi.forum_get_topic_list(parameter)
         print("url = \(url)", terminator: "")
-        self.request = Alamofire.request(.GET, url)
-        // JSON
-        self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
-            print("\n responseJSON- - - - -result = \(result)")
-            // 下拉刷新时候清空旧数据（请求失败也清空）
-            if (self.currentPage == 0 && self.tableSource?.items.count > 0){
-                self.tableSource?.removeAllItems()
-            }
-            // 如果请求数据有效
-            if let dic = result.value as? NSDictionary{
-//                print("\n responseJSON- - - - -data is NSDictionary")
-                self.processRequestResult(dic)
-            }
-            // 控件复位
-            self.refreshView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
-            self.loadMoreView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
-        })
+ 
+        // AFNetworkingFormat
+        AFDSClient.sharedInstance.GET(url, parameters: nil,
+            success: {(task, JSON) -> Void in
+                print("\n AFDSClient.success- - - - -data = \(JSON)")
+                // 下拉刷新时候清空旧数据（请求失败也清空）
+                
+                if (self.currentPage == 0 && self.tableSource?.items.count > 0){
+                    self.tableSource?.removeAllItems()
+                }
+                // 如果请求数据有效
+                if let dic = JSON as? [NSObject:AnyObject]{
+                    self.processRequestResult(dic)
+                }
+                // 控件复位
+                self.refreshView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
+                self.loadMoreView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
+            },
+            failure: {( task, error) -> Void in
+                
+            })
     }
     
     func processRequestResult(result:NSDictionary){

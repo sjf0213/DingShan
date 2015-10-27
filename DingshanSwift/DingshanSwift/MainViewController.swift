@@ -72,9 +72,9 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     override func viewDidAppear(animated: Bool) {
         // 弹出登录页面
         //        if false == MainConfig.sharedInstance.userLoginDone{
-        let loginController = ProfileLoginController()
-        loginController.loginDelegate = self
-        self.presentViewController(loginController, animated: true, completion: nil)
+//        let loginController = ProfileLoginController()
+//        loginController.loginDelegate = self
+//        self.presentViewController(loginController, animated: true, completion: nil)
         //        }
     }
     

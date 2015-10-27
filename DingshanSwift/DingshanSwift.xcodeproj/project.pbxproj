@@ -20,6 +20,7 @@
 		F00CFF831BDF182D002C8ECC /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = F00CFF781BDF182D002C8ECC /* AFURLRequestSerialization.m */; };
 		F00CFF841BDF182D002C8ECC /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = F00CFF7A1BDF182D002C8ECC /* AFURLResponseSerialization.m */; };
 		F00CFF851BDF182D002C8ECC /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F00CFF7C1BDF182D002C8ECC /* AFURLSessionManager.m */; };
+		F00CFF911BDF1FBD002C8ECC /* AFDSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00CFF901BDF1FBD002C8ECC /* AFDSClient.swift */; };
 		F028C1701B9C417A00B8CECA /* GalleryDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F028C16F1B9C417A00B8CECA /* GalleryDetailController.swift */; };
 		F028C1761B9C435B00B8CECA /* GalleryMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F028C1751B9C435B00B8CECA /* GalleryMenuView.swift */; };
 		F028C1781B9C43CA00B8CECA /* GalleryMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F028C1771B9C43CA00B8CECA /* GalleryMenuButton.swift */; };
@@ -202,6 +203,7 @@
 		F00CFF7A1BDF182D002C8ECC /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		F00CFF7B1BDF182D002C8ECC /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		F00CFF7C1BDF182D002C8ECC /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		F00CFF901BDF1FBD002C8ECC /* AFDSClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFDSClient.swift; sourceTree = "<group>"; };
 		F028C16F1B9C417A00B8CECA /* GalleryDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryDetailController.swift; sourceTree = "<group>"; };
 		F028C1751B9C435B00B8CECA /* GalleryMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryMenuView.swift; sourceTree = "<group>"; };
 		F028C1771B9C43CA00B8CECA /* GalleryMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryMenuButton.swift; sourceTree = "<group>"; };
@@ -654,6 +656,7 @@
 				F0D00E741B917AAB0056BE3E /* TabBarToggleBtn.swift */,
 				F0ADE21B1B55FEC8005E84FA /* DetailController.swift */,
 				F03B1EC11BDDC30A00430F6C /* ServerApi.swift */,
+				F00CFF901BDF1FBD002C8ECC /* AFDSClient.swift */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -915,6 +918,7 @@
 				417BEF9D1B5A535300F896A5 /* FileHelp.m in Sources */,
 				F0507E5D1B67561A007E9024 /* KnowledgeDetailController.swift in Sources */,
 				F0A20AD31B62499E00F1F311 /* CommonUtility.m in Sources */,
+				F00CFF911BDF1FBD002C8ECC /* AFDSClient.swift in Sources */,
 				F00CFF801BDF182D002C8ECC /* AFNetworkReachabilityManager.m in Sources */,
 				F00CFF831BDF182D002C8ECC /* AFURLRequestSerialization.m in Sources */,
 				F0AB96371BA6DD9700C72260 /* NSData+ImageContentType.m in Sources */,
