@@ -51,7 +51,6 @@
 		F09C7AB11B7CAEDC00648615 /* KASegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F09C7AAF1B7CAEDC00648615 /* KASegmentControl.m */; };
 		F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */; };
 		F0A1C3AB1B5CE296001597CF /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */; };
-		F0A20AC71B6246EA00F1F311 /* ApiBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AC61B6246EA00F1F311 /* ApiBuilder.m */; };
 		F0A20AD31B62499E00F1F311 /* CommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AD21B62499E00F1F311 /* CommonUtility.m */; };
 		F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AD51B624A9500F1F311 /* CocoaSecurity.m */; };
 		F0A20AD81B62548800F1F311 /* KnowledgeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */; };
@@ -200,8 +199,6 @@
 		F09C7AAF1B7CAEDC00648615 /* KASegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASegmentControl.m; sourceTree = "<group>"; };
 		F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainConfig.swift; sourceTree = "<group>"; };
 		F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
-		F0A20AC51B6246EA00F1F311 /* ApiBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiBuilder.h; sourceTree = "<group>"; };
-		F0A20AC61B6246EA00F1F311 /* ApiBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiBuilder.m; sourceTree = "<group>"; };
 		F0A20AD11B62499E00F1F311 /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
 		F0A20AD21B62499E00F1F311 /* CommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtility.m; sourceTree = "<group>"; };
 		F0A20AD41B624A9500F1F311 /* CocoaSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaSecurity.h; sourceTree = "<group>"; };
@@ -423,8 +420,6 @@
 				F0A20AD51B624A9500F1F311 /* CocoaSecurity.m */,
 				F0A20AD11B62499E00F1F311 /* CommonUtility.h */,
 				F0A20AD21B62499E00F1F311 /* CommonUtility.m */,
-				F0A20AC51B6246EA00F1F311 /* ApiBuilder.h */,
-				F0A20AC61B6246EA00F1F311 /* ApiBuilder.m */,
 				417BEF9B1B5A535300F896A5 /* FileHelp.h */,
 				417BEF9C1B5A535300F896A5 /* FileHelp.m */,
 				417BEF981B5A4F9300F896A5 /* ArrayDataSource.h */,
@@ -798,7 +793,6 @@
 				F0E574F91B6784BE000053B8 /* RefreshIconView.m in Sources */,
 				F05455561B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				F00CFF811BDF182D002C8ECC /* AFSecurityPolicy.m in Sources */,
-				F0A20AC71B6246EA00F1F311 /* ApiBuilder.m in Sources */,
 				F00CFF851BDF182D002C8ECC /* AFURLSessionManager.m in Sources */,
 				F0A5E13A1BA045FA00BDA6BA /* ForumNewThreadController.swift in Sources */,
 				F0D591B11BA185EE00C0346D /* ImageInfoData.swift in Sources */,
