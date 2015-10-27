@@ -104,7 +104,7 @@ class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProt
                 self.tableSource?.removeAllItems()
             }
             // 如果请求数据有效
-            if let dic = result.value as? NSDictionary{
+            if let dic = result.value as? [NSObject:AnyObject]{
                 self.processRequestResult(dic)
             }
             // 控件复位

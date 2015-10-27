@@ -63,6 +63,8 @@ class UserInfoData : NSObject {
     
     init( dic : [NSObject: AnyObject]){
         // 必要数据
+        let num1 = dic["uid"]
+        print("num1:\(num1)",num1.dynamicType)
         if let tmp = dic["uid"] as? NSNumber {
             uid = tmp.integerValue
         }

@@ -68,23 +68,24 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
     
     func loadFloorListByTopicData(data:ForumTopicData)
     {
+        print("\n---loadFloorListByTopicData = \(data)")
         self.topicData = data;
         self.startRequest();
     }
     
     func startRequest(){
-        let parameter = ["topicid" : NSNumber(integer: self.topicData.topicId),
-            "floorid" : NSNumber(integer: 0),
-            "replyid" : NSNumber(integer: 0),
+        let parameter:[NSObject:AnyObject] = ["topicid" : String(self.topicData.topicId),
+            "floorid" : String(0),
+            "replyid" : String(0),
             "sorttype" : "0",
             "pindex" : "0",
             "psize" : "20",
             "json" : "1"]
         let url = ServerApi.forum_get_floor_list(parameter)
-        print("url = \(url)", terminator: "")
+        print("startRequest.url = \(url)")
         AFDSClient.sharedInstance.GET(url, parameters: nil,
-            success: {(task, JSON) -> Void in
-                print("\n responseJSON- - - - -data = \(JSON)")
+            success: {(task, JSON:AnyObject) -> Void in
+                print("\n responseJSON- - - - -data = \(JSON), \(JSON.dynamicType)", JSON.dynamicType)
                 // 下拉刷新时候清空旧数据（请求失败也清空）
                 if (self.currentPage == 0 && self.tableSource?.items.count > 0){
                     self.tableSource?.removeAllItems()
