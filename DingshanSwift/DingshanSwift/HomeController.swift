@@ -88,7 +88,6 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         let url = ServerApi.forum_get_topic_list(parameter)
         print("url = \(url)", terminator: "")
  
-        // AFNetworkingFormat
         AFDSClient.sharedInstance.GET(url, parameters: nil,
             success: {(task, JSON) -> Void in
                 print("\n AFDSClient.success- - - - -data = \(JSON)")
@@ -104,9 +103,8 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
                 // 控件复位
                 self.refreshView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
                 self.loadMoreView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
-            },
-            failure: {( task, error) -> Void in
-                
+            }, failure: {( task, error) -> Void in
+                print("\n failure: TIP --- e:\(error)")
             })
     }
     
@@ -134,6 +132,9 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         }else{
             // 失败时候清空数据后也要重新加载
             self.mainTable.reloadData()
+            if let c = result["c"], let v = result["v"]{
+                print("\n TIP --- c:\(c), v:\(v)")
+            }
         }
     }
     
