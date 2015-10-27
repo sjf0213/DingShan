@@ -8,7 +8,6 @@
 
 //import Foundation
 import UIKit
-import Alamofire
 
 let WeixinAppId = "wx68cd5ad635a52c78"
 let WeixinAppSecret = "52e1e407ce34ac5c71f02d7f1d4fd2b8"
@@ -42,11 +41,6 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     let uploadDataPath = "userupload"
     // Aliyun OSS End
     
-    var request: Alamofire.Request? {
-        didSet {
-            oldValue?.cancel()
-        }
-    }
     override func loadView(){
         super.loadView()
         self.view.backgroundColor = UIColor.whiteColor()
@@ -111,19 +105,24 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
         if let temp = resp as? SendAuthResp {
             if(nil != temp.code && nil != temp.state){
                 let url = String(format:"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",WeixinAppId, WeixinAppSecret, temp.code)
-                self.request = Alamofire.request(.GET, url)
-                self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
-                    print("\n responseJSON- - - - -data = \(result)")
-                    // 如果请求数据有效
-                    if let dic = result.value as? [String:AnyObject]{
-                        print("\n response- - -dic = \(dic)")
-                        if let tocken = dic["access_token"] as? String{
-                            if let oid = dic["openid"] as? String{
-                                self.fetchUserInfoFromWeixin(tocken, openid: oid)
+                print("\n onResp.url- - - - = \(url)")
+                let wxSessionManager = AFHTTPSessionManager()
+                wxSessionManager.securityPolicy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.None)
+                wxSessionManager.GET(url, parameters: nil,
+                    success: {(task, JSON:AnyObject) -> Void in
+                        print("\n responseJSON- - - - = \(JSON)")
+                        // 如果请求数据有效
+                        if let dic = JSON as? [NSObject:AnyObject]{
+                            print("\n response- - -dic = \(dic)")
+                            if let tocken = dic["access_token"] as? String{
+                                if let oid = dic["openid"] as? String{
+                                    self.fetchUserInfoFromWeixin(tocken, openid: oid)
+                                }
                             }
                         }
-                    }
-                })
+                    }, failure: {( task, error) -> Void in
+                            print("\n failure: TIP --- e:\(error)")
+                    })
             }
         }
     }
@@ -131,32 +130,34 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     // 获取微信用户的个人信息
     func fetchUserInfoFromWeixin(accessTocken:String, openid:String){
         let url = String(format:"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@",accessTocken, openid)
-        self.request = Alamofire.request(.GET, url)
-        self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
-            print("\n responseJSON- - - - -data = \(result)")
-            // 如果请求数据有效
-            if let wxInfoDic = result.value as? [String:AnyObject]{
-                print("\n response- - -wxInfoDic = \(wxInfoDic)")
-                // 使用"unionid"注册新用户
-                if let unionid = wxInfoDic["unionid"] as? String{
-                    let unionid = String(format: "wx_unionid_%@", unionid)
-                    self.requireNewUserBySomeId(unionid, completion:{(info:[NSObject:AnyObject]) -> Void in
-                        //成功申请新用户之后覆盖微信的用户信息
-                        let name = wxInfoDic["nickname"] as? String
-                        let headimgurl = wxInfoDic["headimgurl"] as? String
-                        if name != nil && headimgurl != nil{
-                            var destDic = Dictionary<String,AnyObject>()
-                            destDic["nickname"] = name
-                            destDic["imgurl"] = headimgurl
-                            //用拿到的微信数据更新用户信息
-                            self.updateUserInfo(destDic, completion:{(info:[NSObject:AnyObject]) -> Void in
-                                self.storeUserInfo(info)
-                            })
-                        }
-                    })
+        AFDSClient.sharedInstance.GET(url, parameters: nil,
+            success: {(task, JSON:AnyObject) -> Void in
+                print("\n fetchUserInfoFromWeixin.JSON = \(JSON)")
+                // 如果请求数据有效
+                if let wxInfoDic = JSON as? [NSObject:AnyObject]{
+                    print("\n response- - -wxInfoDic = \(wxInfoDic)")
+                    // 使用"unionid"注册新用户
+                    if let unionid = wxInfoDic["unionid"] as? String{
+                        let unionid = String(format: "wx_unionid_%@", unionid)
+                        self.requireNewUserBySomeId(unionid, completion:{(info:[NSObject:AnyObject]) -> Void in
+                            //成功申请新用户之后覆盖微信的用户信息
+                            let name = wxInfoDic["nickname"] as? String
+                            let headimgurl = wxInfoDic["headimgurl"] as? String
+                            if name != nil && headimgurl != nil{
+                                var destDic = Dictionary<String,AnyObject>()
+                                destDic["nickname"] = name
+                                destDic["imgurl"] = headimgurl
+                                //用拿到的微信数据更新用户信息
+                                self.updateUserInfo(destDic, completion:{(info:[NSObject:AnyObject]) -> Void in
+                                    self.storeUserInfo(info)
+                                })
+                            }
+                        })
+                    }
                 }
-            }
-        })
+            }, failure: {( task, error) -> Void in
+                print("\n failure: TIP --- e:\(error)")
+            })
     }
     
     func storeUserInfo(info:[NSObject:AnyObject]){
@@ -190,15 +191,14 @@ extension MainViewController : DSLoginDelegate
     func requireNewUserBySomeId(someId:String,
                      completion:((info:[NSObject:AnyObject]) -> Void)?){
         let parameter = ["did" : someId,
-            "json" : "1"]
+                        "json" : "1"]
         let url = ServerApi.user_create_new(parameter)
         print("+++++++++url = \(url)")
-        self.request = Alamofire.request(.GET, url)
-        self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
-            print("\n requireNewUserBySomeId.responseJSON- - - - -data = \(result)")
-            if result.isSuccess{
+        AFDSClient.sharedInstance.GET(url, parameters: nil,
+            success: {(task, JSON:AnyObject) -> Void in
+                print("\n requireNewUserBySomeId.responseJSON- - - -  = \(JSON)")
                 // 如果请求数据有效
-                if let dic = result.value as? [String:AnyObject]{
+                if let dic = JSON as? [String:AnyObject]{
                     print("\n response- - -dic = \(dic)")
                     if let dingshanInfoNewUserInfoDic = dic["v"] as? [String:AnyObject]{
                         if (completion != nil){
@@ -206,31 +206,33 @@ extension MainViewController : DSLoginDelegate
                         }
                     }
                 }
-            }
-        })
+            }, failure: {( task, error) -> Void in
+                print("\n failure: TIP --- e:\(error)")
+            })
     }
-    
+
 //MARK - 有待使用真正的用户系统，改造
     // 用微信用户数据更新服务器用户信息
     func updateUserInfo(dic:[String:AnyObject],
                 completion:((info:[NSObject:AnyObject]) -> Void)?){
         let url = ServerApi.user_update_info()
         let postBody = dic
-        self.request = Alamofire.request(.POST, url, parameters: postBody, encoding: .JSON)
-        print("+++++++++url  updateUserInfo= \(url)")
-        self.request?.responseJSON(completionHandler: { (request, response, result) -> Void in
-            print("\n updateUserInfo.responseJSON- - - - -data = \(result)")
-            
-            if result.isSuccess{
-                if let v = result.value as? [String:AnyObject]{
+        AFDSClient.sharedInstance.POST(url, parameters: postBody,
+            constructingBodyWithBlock:{(formData) -> Void in
+//                formData.appendPartWithFormData(data:postBody, name: "123")
+            },
+            success: {(task, JSON:AnyObject) -> Void in
+                print("\n updateUserInfo.responseJSON- - - - -data = \(JSON)")
+                if let v = JSON as? [String:AnyObject]{
                     if let updatedUserInfoDic = v["v"] as? [String:AnyObject]{
                         if (completion != nil){
                             completion?(info: updatedUserInfoDic)
                         }
                     }
                 }
-            }
-        })
+            }, failure: {( task, error) -> Void in
+                print("\n failure: TIP --- e:\(error)")
+            })
     }
 }
 

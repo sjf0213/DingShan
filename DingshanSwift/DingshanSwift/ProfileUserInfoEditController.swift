@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 class ProfileUserInfoEditController : DSViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
     var ossDelegate:AnyObject?
@@ -38,7 +37,7 @@ class ProfileUserInfoEditController : DSViewController, UINavigationControllerDe
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         let data = UIImageJPEGRepresentation(image!, 1.0);
-        let DocumentsPath = NSHomeDirectory().URLString.stringByAppendingString("/Documents")
+        let DocumentsPath = NSHomeDirectory().stringByAppendingString("/Documents")
         //文件管理器
         let fileManager = NSFileManager.defaultManager()
         let imageUrlstr = DocumentsPath.stringByAppendingString("/user_head_upload.jpg")

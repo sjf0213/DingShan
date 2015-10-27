@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScrollViewDelegate
 {
     var mainTable = UITableView();
@@ -17,11 +16,6 @@ class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProt
     var refreshView:RefreshView?
     var loadMoreView:LoadView?
     var currentPage:NSInteger = 0
-    var request: Alamofire.Request? {
-        didSet {
-            oldValue?.cancel()
-        }
-    }
     override func loadView()
     {
         super.loadView()
@@ -94,22 +88,22 @@ class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProt
             "json" : "1"]
         let url = ServerApi.forum_get_reply_list(parameter)
         print("url = \(url)", terminator: "")
-        self.request = Alamofire.request(.GET, url)
-        // JSON
-        self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
-            
-            print("\n responseJSON- - - - -data = \(result)")
-            // 下拉刷新时候清空旧数据（请求失败也清空）
-            if (self.currentPage == 0 && self.tableSource?.items.count > 0){
-                self.tableSource?.removeAllItems()
-            }
-            // 如果请求数据有效
-            if let dic = result.value as? [NSObject:AnyObject]{
-                self.processRequestResult(dic)
-            }
-            // 控件复位
-            self.refreshView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
-            self.loadMoreView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
+        AFDSClient.sharedInstance.GET(url, parameters: nil,
+            success: {(task, JSON) -> Void in
+            print("\n responseJSON- - - - -data = \(JSON)")
+                // 下拉刷新时候清空旧数据（请求失败也清空）
+                if (self.currentPage == 0 && self.tableSource?.items.count > 0){
+                    self.tableSource?.removeAllItems()
+                }
+                // 如果请求数据有效
+                if let dic = JSON as? [NSObject:AnyObject]{
+                    self.processRequestResult(dic)
+                }
+                // 控件复位
+                self.refreshView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
+                self.loadMoreView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
+            }, failure: {( task, error) -> Void in
+                print("\n failure: TIP --- e:\(error)")
         })
     }
     func processRequestResult(result:NSDictionary){

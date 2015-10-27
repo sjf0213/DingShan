@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 let gallery_gap:CGFloat = 10.0
 
@@ -22,11 +21,6 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     var currentPage:NSInteger = 0
     var dataList =  NSMutableArray()
     
-    var request: Alamofire.Request? {
-        didSet {
-            oldValue?.cancel()
-        }
-    }
     override func loadView()
     {
         super.loadView()
@@ -81,23 +75,24 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                            "json" : "1"]
         let url = ServerApi.gallery_get_galary_single_list(parameter)
         print("url = \(url)", terminator: "")
-        self.request = Alamofire.request(.GET, url)
-        // JSON
-        self.request?.responseJSON(completionHandler: {(request, response, result) -> Void in
+        AFDSClient.sharedInstance.GET(url, parameters: nil,
+            success: {(task, JSON) -> Void in
         
-            print("\n responseJSON- - - - -data = \(result)")
-            // 下拉刷新时候清空旧数据（请求失败也清空）
-            if (self.currentPage == 0 && self.dataList.count > 0){
-                self.dataList.removeAllObjects()
-            }
-            // 如果请求数据有效
-            if let dic = result.value as? NSDictionary{
-                print("\n responseJSON- - - - -data is NSDictionary")
-                self.processRequestResult(dic)
-            }
-            // 控件复位
-            self.refreshView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainCollection)
-            self.loadMoreView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainCollection)
+                print("\n responseJSON- - - - -data = \(JSON)")
+                // 下拉刷新时候清空旧数据（请求失败也清空）
+                if (self.currentPage == 0 && self.dataList.count > 0){
+                    self.dataList.removeAllObjects()
+                }
+                // 如果请求数据有效
+                if let dic = JSON as? NSDictionary{
+                    print("\n responseJSON- - - - -data is NSDictionary")
+                    self.processRequestResult(dic)
+                }
+                // 控件复位
+                self.refreshView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainCollection)
+                self.loadMoreView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainCollection)
+            }, failure: {( task, error) -> Void in
+                print("\n failure: TIP --- e:\(error)")
         })
     }
     

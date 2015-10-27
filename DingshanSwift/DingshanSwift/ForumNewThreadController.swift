@@ -7,18 +7,12 @@
 //
 
 import Foundation
-import Alamofire
 let edge_w:CGFloat = 15.0
 class ForumNewThreadController : DSViewController{
     
     private var sendBtn = UIButton()
     private var titleTextField = UITextField()
     private var contentTextView = UITextView()
-    var request: Alamofire.Request? {
-        didSet {
-            oldValue?.cancel()
-        }
-    }
     override func loadView()
     {
         super.loadView()
@@ -72,33 +66,18 @@ class ForumNewThreadController : DSViewController{
                           "topic_content":strContent]
             let url = ServerApi.forum_create_topic(parameter)
             
-//            do{
-//                let theJSONData = try NSJSONSerialization.dataWithJSONObject(postBody, options: NSJSONWritingOptions(rawValue: 0))
-//                let theJSONText = NSString(data: theJSONData, encoding: NSASCIIStringEncoding)
-//                print("\ntheJSONText = \(theJSONText)")
-//                self.request = Alamofire.upload(.POST, url, data: theJSONData)
-                self.request = Alamofire.request(.POST, url, parameters: postBody, encoding: .JSON)
-                .progress { bytesWritten, totalBytesWritten, totalBytesExpectedToWrite in
-                        print(totalBytesWritten)
-                        // This closure is NOT called on the main queue for performance
-                        // reasons. To update your ui, dispatch to the main queue.
-                        dispatch_async(dispatch_get_main_queue()) {
-                            print("Total bytes written on main queue: \(totalBytesWritten)")
-                        }
-                    }
-                .responseJSON { request, response, result in
-                    debugPrint(result)
+            AFDSClient.sharedInstance.POST(url, parameters: postBody,
+                success: {(task, JSON) -> Void in
                     // 如果请求数据有效
-                    if let dic = result.value as? NSDictionary{
-                        debugPrint("\n responseJSON- - - - -data is NSDictionary\(dic)")
+                    if let dic = JSON as? NSDictionary{
+                        debugPrint("\n responseJSON- - - - -data is NSDictionary\(JSON)")
                         if (200 == dic["c"]?.integerValue){
                             self.close()
                         }
                     }
-                }
-//            }catch{
-//                print(error)
-//            }
+                }, failure: {( task, error) -> Void in
+                    print("\n failure: TIP --- e:\(error)")
+                })
         }
     }
 }
