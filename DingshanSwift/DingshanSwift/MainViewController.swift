@@ -66,12 +66,16 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
         let _ = MainConfig.sharedInstance
         
         
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         // 弹出登录页面
-//        if false == MainConfig.sharedInstance.userLoginDone{
-            let loginController = ProfileLoginController()
-            loginController.loginDelegate = self
-            self.presentViewController(loginController, animated: true, completion: nil)
-//        }
+        //        if false == MainConfig.sharedInstance.userLoginDone{
+        let loginController = ProfileLoginController()
+        loginController.loginDelegate = self
+        self.presentViewController(loginController, animated: true, completion: nil)
+        //        }
     }
     
     func initOSSClient() {

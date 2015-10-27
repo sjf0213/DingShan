@@ -90,6 +90,7 @@ class ServerApi: NSObject {
         print("signatureURL.result = ", result)
         return result as String;
     }
+    
     class func user_update_info() -> String{
         return ServerApi.signatureURL("dingshan/user/updateuserinfo", args: nil)
     }
