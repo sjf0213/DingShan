@@ -17,7 +17,7 @@
 #import "../Commonfiles/Loading/LoadSuit.h"
 #import "../Commonfiles/KASegmentControl.h"
 #import "../CommonFiles/CHTCollectionViewWaterfallLayout.h"
-#import "../SDWebImage/SDWebImage/WebImage.h"
+#import "../SDWebImage/WebImage.h"
 #import "../AFNetworking/AFNetworking.h"
 #import "../WeixinSDK/WXApi.h"
 #import "../WeixinSDK/WXApiObject.h"
