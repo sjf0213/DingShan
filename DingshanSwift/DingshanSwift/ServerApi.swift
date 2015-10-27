@@ -42,8 +42,10 @@ class ServerApi: NSObject {
         var result = targetUrlString
         result += "?"
         for (onekey, onevalue) in finalDic{
-            result += String(format:"%@=%@", onekey, CommonUtility.urlEncodedString(onevalue as? String))
-            result += "&"
+            if let v = onevalue as? String{
+                result += String(format:"%@=%@", onekey, CommonUtility.urlEncodedString(v))
+                result += "&"
+            }
         }
         result = result.substringToIndex(result.endIndex.predecessor())// 去掉最后一个"&"
         print("signatureURL.result = ", result)

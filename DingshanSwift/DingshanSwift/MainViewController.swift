@@ -64,6 +64,14 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
         tabbar?.setHomeIndex(0);
         self.view.addSubview(tabbar!)
         let _ = MainConfig.sharedInstance
+        
+        
+        // 弹出登录页面
+//        if false == MainConfig.sharedInstance.userLoginDone{
+            let loginController = ProfileLoginController()
+            loginController.loginDelegate = self
+            self.presentViewController(loginController, animated: true, completion: nil)
+//        }
     }
     
     func initOSSClient() {
