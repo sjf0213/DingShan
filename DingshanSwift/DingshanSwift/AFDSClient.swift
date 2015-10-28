@@ -17,6 +17,7 @@ class AFDSClient: AFHTTPSessionManager {
         dispatch_once(&Static.onceToken) {
             Static.instance = AFDSClient(baseURL: NSURL(string: HostName))
             Static.instance!.securityPolicy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.None)
+            Static.instance!.requestSerializer = AFJSONRequestSerializer()
         }
         return Static.instance!
     }
