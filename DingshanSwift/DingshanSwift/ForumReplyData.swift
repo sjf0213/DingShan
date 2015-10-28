@@ -16,8 +16,14 @@ class ForumReplyData : NSObject {
     }
     
     init( dic : [NSObject: AnyObject]){
-        if let num = dic["reply_id"] as? NSNumber {
-            replyId = num.integerValue
+        if let s = dic["reply_id"] as? String {
+            if let n = Int(s){
+                replyId = n
+            }
+        }else{
+            if let n = dic["reply_id"] as? NSNumber{
+                replyId = n.integerValue
+            }
         }
         if let tmp = dic["reply_content"] as? String{
             contentText = tmp

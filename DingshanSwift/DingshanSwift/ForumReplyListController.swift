@@ -79,9 +79,9 @@ class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProt
     }
     
     func startRequest(){
-        let parameter = ["topicid" : NSNumber(integer: self.topicData.topicId),
-            "floorid" : self.floorData.floorId,
-            "replyid" : NSNumber(integer: 0),
+        let parameter = ["topicid" : String(self.topicData.topicId),
+            "floorid" : String(self.floorData.floorId),
+            "replyid" : String(0),
             "sorttype" : "0",
             "pindex" : "0",
             "psize" : "20",

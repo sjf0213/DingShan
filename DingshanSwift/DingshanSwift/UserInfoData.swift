@@ -63,14 +63,20 @@ class UserInfoData : NSObject {
     
     init( dic : [NSObject: AnyObject]){
         // 必要数据
-        let num1 = dic["uid"]
-        print("num1:\(num1)",num1.dynamicType)
-        if let tmp = dic["uid"] as? NSNumber {
-            uid = tmp.integerValue
+        if let s = dic["uid"] as? String {
+            if let n = Int(s){
+                uid = n
+            }
+        }else{
+            if let n = dic["uid"] as? NSNumber{
+                uid = n.integerValue
+            }
         }
+        
         if let tmp = dic["aid"] as? String {
             aid = tmp
         }
+        
         if let tmp = dic["did"] as? String {
             did = tmp
         }
@@ -79,17 +85,26 @@ class UserInfoData : NSObject {
         if let tmp = dic["nickname"] as? String {
             userName = tmp
         }
+        
         if let tmp = dic["imgurl"] as? String {
             userHeadUrl = tmp
         }
         
         // 附加资料
-        if let tmp = dic["gender"] as? NSNumber {
-            userGender = tmp.integerValue
+        if let s = dic["gender"] as? String {
+            if let n = Int(s){
+                userGender = n
+            }
+        }else{
+            if let n = dic["gender"] as? NSNumber{
+                userGender = n.integerValue
+            }
         }
+        
         if let tmp = dic["email"] as? String {
             userEmailAddr = tmp
         }
+        
         if let tmp = dic["phone"] as? String {
             userPhoneNum = tmp
         }

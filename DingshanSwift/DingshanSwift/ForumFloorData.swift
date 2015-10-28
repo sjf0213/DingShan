@@ -8,7 +8,7 @@
 
 import Foundation
 class ForumFloorData : NSObject {
-    var floorId:NSInteger = 0
+    var floorId:Int = 0
     var contentText:String = ""
     var isLordFloor:Bool = false
     required override init() {
@@ -16,8 +16,14 @@ class ForumFloorData : NSObject {
     }
     
     init( dic : [NSObject: AnyObject]){
-        if let num = dic["floor_id"] as? NSNumber {
-            floorId = num.integerValue
+        if let s = dic["floor_id"] as? String {
+            if let n = Int(s){
+                floorId = n
+            }
+        }else{
+            if let n = dic["floor_id"] as? NSNumber{
+                floorId = n.integerValue
+            }
         }
         if let tmp = dic["floor_content"] as? String{
             contentText = tmp

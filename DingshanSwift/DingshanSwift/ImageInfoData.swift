@@ -8,30 +8,51 @@
 
 import Foundation
 class ImageInfoData: NSObject {
-    var imageId:NSInteger = 0
+    var imageId:Int = 0
     var desc:String = ""
     var url:String = ""
-    var width:NSInteger = 0
-    var height:NSInteger = 0
+    var width:Int = 0
+    var height:Int = 0
     required override init() {
         super.init()
     }
     
     init( dic : [NSObject:AnyObject]){
-        if let num = dic["image_id"] as? NSNumber {
-            imageId = num.integerValue
+        if let s = dic["image_id"] as? String {
+            if let n = Int(s){
+                imageId = n
+            }
+        }else{
+            if let n = dic["image_id"] as? NSNumber{
+                imageId = n.integerValue
+            }
         }
+        ////////////
         if let tmp = dic["image_url"] as? String{
             url = tmp
         }
         if let tmp = dic["image_name"] as? String{
             desc = tmp
         }
-        if let num = dic["image_width"] as? NSNumber {
-            width = num.integerValue
+        ////////////
+        if let s = dic["image_width"] as? String {
+            if let n = Int(s){
+                width = n
+            }
+        }else{
+            if let n = dic["image_width"] as? NSNumber{
+                width = n.integerValue
+            }
         }
-        if let num = dic["image_height"] as? NSNumber {
-            height = num.integerValue
+        ////////////
+        if let s = dic["image_height"] as? String {
+            if let n = Int(s){
+                height = n
+            }
+        }else{
+            if let n = dic["image_height"] as? NSNumber{
+                height = n.integerValue
+            }
         }
     }
 }

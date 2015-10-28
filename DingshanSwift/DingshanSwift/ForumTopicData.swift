@@ -8,7 +8,7 @@
 
 import Foundation
 class ForumTopicData : NSObject {
-    var topicId:NSInteger = 0
+    var topicId:Int = 0
     var title:String = ""
     var contentText:String = ""
     override var description : String {
@@ -24,13 +24,17 @@ class ForumTopicData : NSObject {
     }
     
     init( dic : [NSObject: AnyObject]){
-        let num1 = dic["topic_id"]
-        print("num:\(num1)",num1.dynamicType)
-        if let age = dic["topic_id"] as? NSNumber{
-            topicId = age.integerValue
+//        let num1 = dic["topic_id"]
+//        print("num:\(num1)",num1.dynamicType)
+        if let s = dic["topic_id"] as? String {
+            if let n = Int(s){
+                topicId = n
+            }
+        }else{
+            if let n = dic["topic_id"] as? NSNumber{
+                topicId = n.integerValue
+            }
         }
-        
-            
         if let tmp = dic["topic_title"] as? String{
             title = tmp
         }
