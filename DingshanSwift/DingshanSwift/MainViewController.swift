@@ -14,7 +14,7 @@ let WeixinAppSecret = "52e1e407ce34ac5c71f02d7f1d4fd2b8"
 
 protocol DSLoginDelegate{
      func loginByWeixin()
-     func assignNewUser()
+     func assignNewGuestUser()
 }
 
 protocol DSOSSDelegate{
@@ -104,60 +104,73 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
     func onResp(resp:BaseResp){
         if let temp = resp as? SendAuthResp {
             if(nil != temp.code && nil != temp.state){
+                print("WeixinCallback.onResp, temp.code = \(temp.code) temp.code, temp.state = \(temp.state)")
                 let url = String(format:"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",WeixinAppId, WeixinAppSecret, temp.code)
                 print("\n onResp.url- - - - = \(url)")
-                let wxSessionManager = AFHTTPSessionManager()
-                wxSessionManager.securityPolicy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.None)
-                wxSessionManager.GET(url, parameters: nil,
-                    success: {(task, JSON:AnyObject) -> Void in
-                        print("\n responseJSON- - - - = \(JSON)")
-                        // 如果请求数据有效
-                        if let dic = JSON as? [NSObject:AnyObject]{
-                            print("\n response- - -dic = \(dic)")
-                            if let tocken = dic["access_token"] as? String{
-                                if let oid = dic["openid"] as? String{
-                                    self.fetchUserInfoFromWeixin(tocken, openid: oid)
+                // 通过微信api请求access_token
+                let request = NSURLRequest(URL: NSURL(string: url)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: 3)
+                NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { (response, data, err) -> Void in
+                    print("\n response- - - - = \(response)")
+                    if let resp = response as? NSHTTPURLResponse{
+                        if 200 == resp.statusCode {
+                            do{
+                                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
+                                print("\n onResp.response.json- - - - = \(json)")
+                                if let dic = json as? [NSObject:AnyObject]{
+                                    if let tocken = dic["access_token"] as? String{
+                                        if let oid = dic["openid"] as? String{
+                                            self.fetchUserInfoFromWeixin(tocken, openid: oid)
+                                        }
+                                    }
                                 }
+                            }catch{
+                                print("\n onResp.response- - - - error =", error)
                             }
                         }
-                    }, failure: {( task, error) -> Void in
-                            print("\n failure: TIP --- e:\(error)")
-                    })
+                    }
+                })
             }
         }
     }
     
-    // 获取微信用户的个人信息
+    // // 通过微信api请求用户的个人信息
     func fetchUserInfoFromWeixin(accessTocken:String, openid:String){
         let url = String(format:"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@",accessTocken, openid)
-        AFDSClient.sharedInstance.GET(url, parameters: nil,
-            success: {(task, JSON:AnyObject) -> Void in
-                print("\n fetchUserInfoFromWeixin.JSON = \(JSON)")
-                // 如果请求数据有效
-                if let wxInfoDic = JSON as? [NSObject:AnyObject]{
-                    print("\n response- - -wxInfoDic = \(wxInfoDic)")
-                    // 使用"unionid"注册新用户
-                    if let unionid = wxInfoDic["unionid"] as? String{
-                        let unionid = String(format: "wx_unionid_%@", unionid)
-                        self.requireNewUserBySomeId(unionid, completion:{(info:[NSObject:AnyObject]) -> Void in
-                            //成功申请新用户之后覆盖微信的用户信息
-                            let name = wxInfoDic["nickname"] as? String
-                            let headimgurl = wxInfoDic["headimgurl"] as? String
-                            if name != nil && headimgurl != nil{
-                                var destDic = Dictionary<String,AnyObject>()
-                                destDic["nickname"] = name
-                                destDic["imgurl"] = headimgurl
-                                //用拿到的微信数据更新用户信息
-                                self.updateUserInfo(destDic, completion:{(info:[NSObject:AnyObject]) -> Void in
-                                    self.storeUserInfo(info)
+        // 通过微信api请求access_token
+        let request = NSURLRequest(URL: NSURL(string: url)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: 3)
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { (response, data, err) -> Void in
+            
+            print("\n response- - - - = \(response)")
+            if let resp = response as? NSHTTPURLResponse{
+                if 200 == resp.statusCode {
+                    do{
+                        let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
+                        print("\n onResp.response.json- - - - = \(json)")
+                        if let wxInfoDic = json as? [NSObject:AnyObject]{
+                            if let unionid = wxInfoDic["unionid"] as? String{
+                                let unionid = String(format: "wx_unionid_%@", unionid)
+                                self.requireNewUserBySomeId(unionid, completion:{(info:[NSObject:AnyObject]) -> Void in
+                                    //成功申请新用户之后覆盖微信的用户信息
+                                    let name = wxInfoDic["nickname"] as? String
+                                    let headimgurl = wxInfoDic["headimgurl"] as? String
+                                    if name != nil && headimgurl != nil{
+                                        var destDic = Dictionary<String,AnyObject>()
+                                        destDic["nickname"] = name
+                                        destDic["imgurl"] = headimgurl
+                                        //用拿到的微信数据更新用户信息
+                                        self.updateUserInfo(destDic, completion:{(info:[NSObject:AnyObject]) -> Void in
+                                            self.storeUserInfo(info)
+                                        })
+                                    }
                                 })
                             }
-                        })
+                        }
+                    }catch{
+                        print("\n onResp.response- - - - error =", error)
                     }
                 }
-            }, failure: {( task, error) -> Void in
-                print("\n failure: TIP --- e:\(error)")
-            })
+            }
+        })
     }
     
     func storeUserInfo(info:[NSObject:AnyObject]){
@@ -173,7 +186,7 @@ class MainViewController:UIViewController,UIAlertViewDelegate,WXApiDelegate
 extension MainViewController : DSLoginDelegate
 {
     // 自动分配一个新用户，相当于游客身份
-    func assignNewUser(){
+    func assignNewGuestUser(){
         self.requireNewUserBySomeId(OpenUDID.value(), completion:{(info:[NSObject:AnyObject]) -> Void in
             self.storeUserInfo(info)
         })
@@ -218,9 +231,6 @@ extension MainViewController : DSLoginDelegate
         let url = ServerApi.user_update_info()
         let postBody = dic
         AFDSClient.sharedInstance.POST(url, parameters: postBody,
-            constructingBodyWithBlock:{(formData) -> Void in
-//                formData.appendPartWithFormData(data:postBody, name: "123")
-            },
             success: {(task, JSON:AnyObject) -> Void in
                 print("\n updateUserInfo.responseJSON- - - - -data = \(JSON)")
                 if let v = JSON as? [String:AnyObject]{

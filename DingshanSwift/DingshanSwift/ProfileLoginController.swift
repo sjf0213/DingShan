@@ -37,7 +37,7 @@ class ProfileLoginController: DSViewController {
     
     func onTapSkip(){
         if let delegate = self.loginDelegate as? DSLoginDelegate{
-            delegate.assignNewUser()
+            delegate.assignNewGuestUser()
         }
     }
     func onClose(){
