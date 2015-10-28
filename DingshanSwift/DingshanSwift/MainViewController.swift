@@ -224,7 +224,7 @@ extension MainViewController : DSLoginDelegate
             })
     }
 
-//MARK - 有待使用真正的用户系统，改造
+// MARK: - 有待使用真正的用户系统，改造
     // 用微信用户数据更新服务器用户信息
     func updateUserInfo(dic:[String:AnyObject],
                 completion:((info:[NSObject:AnyObject]) -> Void)?){

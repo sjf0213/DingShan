@@ -144,7 +144,7 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         self.navigationController?.pushViewController(newThreadController, animated: true)
     }
     
-//MARK: - UITableViewDelegate
+// MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)", terminator: "")
@@ -158,7 +158,7 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         }
     }
     
-//MARK: - UIScrollViewDelegate
+// MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(scrollView: UIScrollView){
         if (scrollView.contentOffset.y <= 0){
             self.refreshView?.RefreshScrollViewDidScroll(scrollView)
@@ -178,7 +178,7 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         self.refreshView?.RefreshScrollViewDidEndDecelerating(scrollView)
     }
     
-//MARK: - LoadViewProtocol Methods
+// MARK: - LoadViewProtocol Methods
     
     //开始加载数据
     func BeginLoadingData(view:UIView){
