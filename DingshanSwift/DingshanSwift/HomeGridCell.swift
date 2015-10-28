@@ -32,10 +32,10 @@ class HomeGridCell : UICollectionViewCell
         title?.text = nil;
     }
     
-    func loadCellData(info:NSDictionary)
+    func loadCellData(info:[NSObject:AnyObject])
     {
-        bgImg?.image = UIImage(named: (info.objectForKey("bg") as? String)!)
-        title?.text = info.objectForKey("title") as? String
+        bgImg?.image = UIImage(named: (info["bg"] as? String)!)
+        title?.text = info["title"] as? String
     }
     
 }

@@ -106,18 +106,18 @@ class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProt
                 print("\n failure: TIP --- e:\(error)")
         })
     }
-    func processRequestResult(result:NSDictionary){
+    func processRequestResult(result:[NSObject:AnyObject]){
         print("\n processRequestResult- - - - -result:\(result)")
         
         if (200 == result["c"]?.integerValue){
-            if let list = result["v"] as? [String:AnyObject]{
+            if let list = result["v"] as? [NSObject:AnyObject]{
                 var allDataArray = [AnyObject]()
                 if (self.currentPage == 0){
                     if(self.tableSource?.items.count > 0){
                         self.tableSource?.removeAllItems();
                     }
                     // 只有分页的第一页有层主数据
-                    if let topicInfoDic = list["floor_info"] as? [String:AnyObject]{
+                    if let topicInfoDic = list["floor_info"] as? [NSObject:AnyObject]{
                         let lordData = ForumFloorData(dic: topicInfoDic);
                         allDataArray.append(lordData)
                     }
@@ -126,7 +126,7 @@ class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProt
                 if let replyArr = list["reply_list"] as? [AnyObject]{
                     print("\n dataArray- - -\(replyArr)", terminator: "")
                     for var i = 0; i < replyArr.count; ++i {
-                        if let item = replyArr[i] as? [String:AnyObject] {
+                        if let item = replyArr[i] as? [NSObject:AnyObject] {
                             let data = ForumReplyData(dic: item)
                             allDataArray.append(data)
                         }

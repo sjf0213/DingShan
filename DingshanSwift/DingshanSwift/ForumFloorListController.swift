@@ -101,10 +101,10 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
                 print("\n failure: TIP --- e:\(error)")
             })
     }
-    func processRequestResult(result:NSDictionary){
+    func processRequestResult(result:[NSObject:AnyObject]){
         
         if (200 == result["c"]?.integerValue){
-            if let v = result["v"] as? [String:AnyObject]{
+            if let v = result["v"] as? [NSObject:AnyObject]{
                 var allDataArray = [AnyObject]()
                 print("\n v- - -\(v)")
                 if (self.currentPage == 0){
@@ -112,7 +112,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
                         self.tableSource?.removeAllItems();
                     }
                     // 只有分页的第一页有楼主层数据
-                    if let topicInfoDic = v["topic_info"] as? [String:AnyObject]{
+                    if let topicInfoDic = v["topic_info"] as? [NSObject:AnyObject]{
                         if let title = topicInfoDic["topic_title"] as? String{
                             self.topTitle = title
                         }

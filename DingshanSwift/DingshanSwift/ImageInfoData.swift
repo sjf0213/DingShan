@@ -17,7 +17,7 @@ class ImageInfoData: NSObject {
         super.init()
     }
     
-    init( dic : [String: AnyObject]){
+    init( dic : [NSObject:AnyObject]){
         if let num = dic["image_id"] as? NSNumber {
             imageId = num.integerValue
         }

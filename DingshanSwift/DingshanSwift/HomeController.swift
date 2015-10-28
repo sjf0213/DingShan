@@ -108,13 +108,13 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
             })
     }
     
-    func processRequestResult(result:NSDictionary){
+    func processRequestResult(result:[NSObject:AnyObject]){
         if (200 == result["c"]?.integerValue){
-            if let list = result["v"] as? NSDictionary{
-                if let arr = list["topic_list"] as? NSArray{
+            if let list = result["v"] as? [NSObject:AnyObject]{
+                if let arr = list["topic_list"] as? [AnyObject]{
 //                    print("\n dataArray- - -\(arr)", terminator: "")
                     for var i = 0; i < arr.count; ++i {
-                        if let item = arr[i] as? [String:AnyObject] {
+                        if let item = arr[i] as? [NSObject:AnyObject] {
                             let data = ForumTopicData(dic: item)
                             self.tableSource?.items.addObject(data)
                         }

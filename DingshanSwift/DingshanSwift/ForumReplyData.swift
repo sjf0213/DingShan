@@ -15,7 +15,7 @@ class ForumReplyData : NSObject {
         super.init()
     }
     
-    init( dic : [String: AnyObject]){
+    init( dic : [NSObject: AnyObject]){
         if let num = dic["reply_id"] as? NSNumber {
             replyId = num.integerValue
         }

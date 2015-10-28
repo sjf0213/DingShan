@@ -16,8 +16,8 @@ class GalleryMenuView: UIView {
                 let btn = GalleryMenuButtton();
                 
                 btn.frame = CGRect(x: CGFloat(i) * w, y: CGFloat(0.0), width: w, height: self.bounds.height)
-                if let dic  = self.menuTitleArr[i] as? NSDictionary{
-                    if let title = dic.objectForKey("title") as? String{
+                if let dic  = self.menuTitleArr[i] as? [NSObject:AnyObject]{
+                    if let title = dic["title"] as? String{
                         btn.setTitle(title, forState: UIControlState.Normal)
                         self.addSubview(btn);
                     }
@@ -50,7 +50,7 @@ class GalleryMenuView: UIView {
         let index = btn.tag
         if(btn.curSelected){
             sender.curSelected = false;
-            if let dic = self.menuTitleArr[index] as? NSDictionary{
+            if let dic = self.menuTitleArr[index] as? [NSObject:AnyObject]{
                 print("tap menu btn:\(index) - - - - \(dic)", terminator: "")
                 self.frame = CGRectMake(0, TopBar_H, self.bounds.size.width, UIScreen.mainScreen().bounds.height - TopBar_H)
             }

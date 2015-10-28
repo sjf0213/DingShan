@@ -69,8 +69,8 @@ class ForumNewThreadController : DSViewController{
             AFDSClient.sharedInstance.POST(url, parameters: postBody,
                 success: {(task, JSON) -> Void in
                     // 如果请求数据有效
-                    if let dic = JSON as? NSDictionary{
-                        debugPrint("\n responseJSON- - - - -data is NSDictionary\(JSON)")
+                    if let dic = JSON as? [NSObject:AnyObject]{
+                        debugPrint("\n responseJSON- - - - -data:\(JSON)")
                         if (200 == dic["c"]?.integerValue){
                             self.close()
                         }

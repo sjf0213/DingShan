@@ -12,7 +12,7 @@ class MainConfig {
     
 //    static let sharedInstance: MainConfig = MainConfig()
     
-    var rootDic:NSDictionary?
+    var rootDic:[NSObject:AnyObject]?
     var userInfo = UserInfoData()
     var userLoginDone = false // 记录用户是否主动登录（还是跳过登录以游客身份浏览）
     
@@ -26,7 +26,9 @@ class MainConfig {
         // print("\n-----isFileExist:\(exist)")
         if exist
         {
-            self.rootDic = NSDictionary(contentsOfFile: configPath!);
+            if let dict = NSDictionary(contentsOfFile: configPath!) as? Dictionary<NSObject, AnyObject> {
+                self.rootDic = dict
+            }
             print("\nroot dic = \(rootDic)", terminator: "")
         }
     }

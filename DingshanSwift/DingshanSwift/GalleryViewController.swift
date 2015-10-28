@@ -84,8 +84,8 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                     self.dataList.removeAllObjects()
                 }
                 // 如果请求数据有效
-                if let dic = JSON as? NSDictionary{
-                    print("\n responseJSON- - - - -data is NSDictionary")
+                if let dic = JSON as? [NSObject:AnyObject]{
+                    print("\n responseJSON- - - - -data:", dic)
                     self.processRequestResult(dic)
                 }
                 // 控件复位
@@ -96,12 +96,12 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         })
     }
     
-    func processRequestResult(result:NSDictionary){
+    func processRequestResult(result:[NSObject:AnyObject]){
         if (200 == result["c"]?.integerValue){
-            if let list = result["v"] as? NSDictionary{
-                if let arr = list["image_list"] as? NSArray{
+            if let list = result["v"] as? [NSObject:AnyObject]{
+                if let arr = list["image_list"] as? [AnyObject]{
                     for var i = 0; i < arr.count; ++i {
-                        if let item = arr[i] as? [String:AnyObject] {
+                        if let item = arr[i] as? [NSObject:AnyObject] {
                             let data = ImageInfoData(dic: item)
                             self.dataList.addObject(data)
                         }
