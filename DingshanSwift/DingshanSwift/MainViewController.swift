@@ -211,9 +211,9 @@ extension MainViewController : DSLoginDelegate
             success: {(task, JSON:AnyObject) -> Void in
                 print("\n requireNewUserBySomeId.responseJSON- - - -  = \(JSON)")
                 // 如果请求数据有效
-                if let dic = JSON as? [String:AnyObject]{
+                if let dic = JSON as? [NSObject:AnyObject]{
                     print("\n response- - -dic = \(dic)")
-                    if let dingshanInfoNewUserInfoDic = dic["v"] as? [String:AnyObject]{
+                    if let dingshanInfoNewUserInfoDic = dic["v"] as? [NSObject:AnyObject]{
                         if (completion != nil){
                             completion?(info: dingshanInfoNewUserInfoDic)
                         }
@@ -226,15 +226,17 @@ extension MainViewController : DSLoginDelegate
 
 // MARK: - 有待使用真正的用户系统，改造
     // 用微信用户数据更新服务器用户信息
-    func updateUserInfo(dic:[String:AnyObject],
+    func updateUserInfo(dic:[NSObject:AnyObject],
                 completion:((info:[NSObject:AnyObject]) -> Void)?){
         let url = ServerApi.user_update_info()
         let postBody = dic
+        print("updateUserInfo+++++++++url = \(url)")
+        print("updateUser.postBody = \(postBody)")
         AFDSClient.sharedInstance.POST(url, parameters: postBody,
             success: {(task, JSON:AnyObject) -> Void in
                 print("\n updateUserInfo.responseJSON- - - - -data = \(JSON)")
-                if let v = JSON as? [String:AnyObject]{
-                    if let updatedUserInfoDic = v["v"] as? [String:AnyObject]{
+                if let v = JSON as? [NSObject:AnyObject]{
+                    if let updatedUserInfoDic = v["v"] as? [NSObject:AnyObject]{
                         if (completion != nil){
                             completion?(info: updatedUserInfoDic)
                         }
@@ -242,7 +244,7 @@ extension MainViewController : DSLoginDelegate
                 }
             }, failure: {( task, error) -> Void in
                 print("\n failure: TIP --- e:\(error)")
-            })
+        })
     }
 }
 

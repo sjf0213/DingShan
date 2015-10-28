@@ -124,7 +124,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
                 // 除楼主以外的回复
                 if let replyArr = v["floor_list"] as? NSArray{
                     for var i = 0; i < replyArr.count; ++i {
-                        if let item = replyArr[i] as? [String:AnyObject] {
+                        if let item = replyArr[i] as? [NSObject:AnyObject] {
                             let data = ForumFloorData(dic: item)
                             allDataArray.append(data)
                         }
