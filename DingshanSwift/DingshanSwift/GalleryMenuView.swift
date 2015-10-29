@@ -12,8 +12,7 @@ class GalleryMenuView: UIView {
         didSet{
             if isExpanded{
                 self.frame = CGRectMake(0, TopBar_H, self.bounds.size.width, UIScreen.mainScreen().bounds.height - TopBar_H)
-                self.subItemContainer?.frame = CGRectMake(0, GalleryMenuBar_H, self.frame.size.width, self.frame.size.height - GalleryMenuBar_H)
-                print("self.subItemContainer?.frame = \(self.subItemContainer?.frame)")
+                
             }else{
                 self.frame = CGRectMake(0, TopBar_H, self.bounds.size.width, GalleryMenuBar_H)
                 self.subItemContainer?.frame = CGRectZero
@@ -100,6 +99,9 @@ class GalleryMenuView: UIView {
                             self.subItemContainer!.addSubview(btn)
                         }
                     }
+                    let rowCount:Int = (subItems.count-1)/4 + 1
+                    let offh = GalleryMenuItem_H*CGFloat(rowCount) + GalleryMenuItem_H*50.0/80.0/2.0
+                    self.subItemContainer?.frame = CGRectMake(0, GalleryMenuBar_H, self.frame.size.width, offh)
                 }
             }
         }else{
