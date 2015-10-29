@@ -14,12 +14,12 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
 {
     var seg:KASegmentControl?
     var menuView = GalleryMenuView()
-//    var foldMenu:UIView?
     var mainCollection:UICollectionView?
     var refreshView:RefreshView?
     var loadMoreView:LoadView?
     var currentPage:NSInteger = 0
     var dataList =  NSMutableArray()
+    var menuSelectedData = [NSObject:AnyObject]()
     
     override func loadView()
     {
@@ -54,7 +54,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         mainCollection?.registerClass(GalleryViewCell.classForCoder(), forCellWithReuseIdentifier: GalleryViewCellIdentifier)
         
         self.view.addSubview(mainCollection!)
-        
+        self.view.bringSubviewToFront(menuView)
     }
     
     override func viewDidLoad() {
@@ -100,7 +100,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         AFDSClient.sharedInstance.GET(url, parameters: nil,
             success: {(task, JSON) -> Void in
         
-                print("\n responseJSON- - - - -data = \(JSON)")
+//                print("\n responseJSON- - - - -data = \(JSON)")
                 // 下拉刷新时候清空旧数据（请求失败也清空）
                 if (self.currentPage == 0 && self.dataList.count > 0){
                     self.dataList.removeAllObjects()
