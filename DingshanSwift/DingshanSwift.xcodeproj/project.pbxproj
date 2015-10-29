@@ -481,6 +481,17 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		F0A3AF5B1BE1C08700C252FD /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				F028C1751B9C435B00B8CECA /* GalleryMenuView.swift */,
+				F028C1771B9C43CA00B8CECA /* GalleryMenuButton.swift */,
+				F00632221B9DA7D000C4D9C5 /* GalleryMenuSubView.swift */,
+				F028C1791B9C479300B8CECA /* GalleryMenuItem.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
 		F0AA4FA51B93ED1C007EDEA9 /* tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -620,13 +631,10 @@
 		F0D00E7C1B917B180056BE3E /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
-				F028C1751B9C435B00B8CECA /* GalleryMenuView.swift */,
-				F028C1771B9C43CA00B8CECA /* GalleryMenuButton.swift */,
-				F00632221B9DA7D000C4D9C5 /* GalleryMenuSubView.swift */,
-				F028C1791B9C479300B8CECA /* GalleryMenuItem.swift */,
 				F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */,
 				F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */,
 				F028C16F1B9C417A00B8CECA /* GalleryDetailController.swift */,
+				F0A3AF5B1BE1C08700C252FD /* Menu */,
 			);
 			name = Gallery;
 			sourceTree = "<group>";

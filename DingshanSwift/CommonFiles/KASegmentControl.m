@@ -64,8 +64,19 @@
                 }
             }
         }
+        
+        [self addObserver:self forKeyPath:@"selectedSegmentIndex" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    if ([keyPath isEqual: @"selectedSegmentIndex"]) {
+        if (self.tapSegmentItemHandler) {
+            self.tapSegmentItemHandler(self.selectedSegmentIndex);
+        }
+    }
 }
 
 -(void)setFrame:(CGRect)frame
@@ -85,9 +96,6 @@
     KASegmentButton* btn = (KASegmentButton*)sender;
     [self setIndex:btn.tag];
     self.selectedSegmentIndex = btn.tag;
-    if (self.tapSegmentItemHandler) {
-        self.tapSegmentItemHandler(self.selectedSegmentIndex);
-    }
 }
 
 -(void)setSelectedSegmentIndex:(NSInteger)index

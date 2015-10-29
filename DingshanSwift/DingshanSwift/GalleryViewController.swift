@@ -30,11 +30,12 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                             withItems: ["套图", "单图"],
                             withLightedColor: THEME_COLOR)
         self.topView.addSubview(seg!)
-        seg?.selectedSegmentIndex = 1;
+        seg?.tapSegmentItemHandler = {(selectedIndex)->Void in
+            self.changeBySegIndex(selectedIndex)
+        }
         
         menuView.frame = CGRectMake(0, self.topView.frame.size.height, self.view.bounds.size.width, 40)
         self.view.addSubview(menuView)
-        menuView.menuTitleArr = [["title":"1"], ["title":"2"], ["title":"3"]]
         
         let layout = CHTCollectionViewWaterfallLayout()
         layout.sectionInset = UIEdgeInsetsMake(gallery_gap, gallery_gap, gallery_gap, gallery_gap);
@@ -57,8 +58,30 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     }
     
     override func viewDidLoad() {
-        
+        seg?.selectedSegmentIndex = 1;
         self.startRequest()
+    }
+    
+    // 切换套图与单图
+    func changeBySegIndex(index:Int)->Void{
+        self.currentPage = 0
+        self.dataList.removeAllObjects()
+        mainCollection?.reloadData()
+        
+        if let configAll = MainConfig.sharedInstance.rootDic?["GalleryMenu"] as? [NSObject:AnyObject]{
+            
+            var menu:[AnyObject]?
+            if 0 == index{
+                menu = configAll["Single"] as? [AnyObject]
+            }
+            if (1 == index){
+                menu = configAll["Multi"] as? [AnyObject]
+            }
+            if menu != nil{
+                print("GALLERY menu = \(menu)")
+                menuView.menuConfig = menu!
+            }
+        }
     }
     
     func onTapBtn(sender:UIButton) {
@@ -69,9 +92,8 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     }
     
     func startRequest(){
-        let parameter = ["pindex" : "0",
+        let parameter = [   "iid" : String(self.currentPage),
                           "psize" : "10",
-                     "categoryid" : "1",
                            "json" : "1"]
         let url = ServerApi.gallery_get_galary_single_list(parameter)
         print("url = \(url)", terminator: "")
@@ -121,7 +143,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
             self.mainCollection?.reloadData()
         }
     }
-    
+// MARK: UICollectionViewDelegate
     func collectionView (collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
