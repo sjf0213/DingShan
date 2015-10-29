@@ -28,7 +28,7 @@ class GalleryMenuView: UIView {
                     v.removeFromSuperview()
                 }
             }
-            print("menuConfig = \(menuConfig)")
+//            print("menuConfig = \(menuConfig)")
             let w:CGFloat = self.bounds.width / CGFloat(self.menuConfig.count)
             let h:CGFloat = GalleryMenuBar_H
             for (var i = 0; i < self.menuConfig.count; i++){
@@ -77,11 +77,11 @@ class GalleryMenuView: UIView {
                 v.removeFromSuperview()
             }
             if let dic = self.menuConfig[index] as? [NSObject:AnyObject]{
-                print("tap menu btn:\(index) - - - - \(dic)", terminator: "")
+//                print("tap menu btn:\(index) - - - - \(dic)", terminator: "")
                 self.isExpanded = true
                 // 生成所有二级菜单
                 if let subItems = dic["items"] as? [AnyObject]{
-                    print("----------sub menu items", subItems)
+//                    print("----------sub menu items", subItems)
                     let w:CGFloat = self.bounds.width / 4
                     let h:CGFloat = GalleryMenuItem_H
                     for (var i = 0; i < subItems.count; i++){
@@ -94,7 +94,6 @@ class GalleryMenuView: UIView {
                             btn.addTarget(self, action: Selector("onTapItem:"), forControlEvents: UIControlEvents.TouchUpInside)
                             if let t = one["title"] as? String{
                                 btn.setTitle(t, forState: UIControlState.Normal)
-                                print("t = \(t)")
                             }
                             self.subItemContainer!.addSubview(btn)
                         }
