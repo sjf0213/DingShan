@@ -23,6 +23,7 @@ class  GalleryViewCell : UICollectionViewCell
         title = UILabel(frame: CGRect(x: 0, y: frame.size.height - 15, width: frame.size.width, height: 15))
         title?.textAlignment = NSTextAlignment.Center;
         title?.textColor = UIColor.whiteColor()
+        title?.font = UIFont.systemFontOfSize(11.0)
         title?.backgroundColor = UIColor .blackColor().colorWithAlphaComponent(0.3)
         self.addSubview(title!)
     }

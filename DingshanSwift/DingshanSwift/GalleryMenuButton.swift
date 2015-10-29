@@ -8,6 +8,7 @@
 
 import Foundation
 class GalleryMenuButtton:UIButton {
+    var titleColor = UIColor(white: 160/255.0, alpha: 1.0)
     var curSelected:Bool = false{
         willSet(newCurSelected){
             if (newCurSelected){
@@ -22,11 +23,9 @@ class GalleryMenuButtton:UIButton {
     }
     override init(frame aRect: CGRect) {
         super.init(frame: aRect);
-        self.backgroundColor = UIColor.cyanColor().colorWithAlphaComponent(0.1)
-        self.layer.cornerRadius = 3.0;
-        self.layer.borderColor = UIColor.blackColor().CGColor
-        self.layer.borderWidth = 0.5;
         
-        self.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        self.backgroundColor = UIColor.whiteColor()
+        self.titleLabel?.font = UIFont.systemFontOfSize(13.0)
+        self.setTitleColor(titleColor, forState: UIControlState.Normal)
     }
 }

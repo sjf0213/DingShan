@@ -12,16 +12,22 @@ class GalleryMenuView: UIView {
         didSet{
             if isExpanded{
                 self.frame = CGRectMake(0, TopBar_H, self.bounds.size.width, UIScreen.mainScreen().bounds.height - TopBar_H)
+                self.subItemContainer?.frame = CGRectMake(0, GalleryMenuBar_H, self.frame.size.width, self.frame.size.height - GalleryMenuBar_H)
+                print("self.subItemContainer?.frame = \(self.subItemContainer?.frame)")
             }else{
                 self.frame = CGRectMake(0, TopBar_H, self.bounds.size.width, GalleryMenuBar_H)
+                self.subItemContainer?.frame = CGRectZero
             }
         }
     }
-    var subItemContainer = UIView()
+//    var menuBtnContainer:UIView?
+    var subItemContainer:UIView?
     var menuConfig = [AnyObject](){
         didSet{
             for v in self.subviews{
-                v.removeFromSuperview()
+                if v != subItemContainer{
+                    v.removeFromSuperview()
+                }
             }
             print("menuConfig = \(menuConfig)")
             let w:CGFloat = self.bounds.width / CGFloat(self.menuConfig.count)
@@ -46,7 +52,7 @@ class GalleryMenuView: UIView {
     }
     override init(frame aRect: CGRect) {
         super.init(frame: aRect);
-        self.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.1)
+        self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.2)
         
         let topline = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: 0.5))
         topline.backgroundColor = UIColor.grayColor()
@@ -55,6 +61,11 @@ class GalleryMenuView: UIView {
         let buttomline = UIView(frame: CGRect(x: 0, y: self.bounds.size.height - 0.5, width: self.bounds.width, height: 0.5))
         buttomline.backgroundColor = UIColor.grayColor()
         self.addSubview(buttomline)
+        
+        self.subItemContainer = UIView(frame: CGRectZero)
+        self.subItemContainer?.backgroundColor = UIColor.whiteColor()
+        self.subItemContainer?.clipsToBounds = true
+        self.addSubview(self.subItemContainer!)
     }
     
     func onTapBtn(sender:GalleryMenuButtton) {
@@ -63,38 +74,38 @@ class GalleryMenuView: UIView {
         let index = btn.tag
         if(false == btn.curSelected){
             sender.curSelected = true;
-            for v in self.subviews{
+            for v in self.subItemContainer!.subviews{
                 v.removeFromSuperview()
             }
             if let dic = self.menuConfig[index] as? [NSObject:AnyObject]{
                 print("tap menu btn:\(index) - - - - \(dic)", terminator: "")
-//                self.frame = CGRectMake(0, TopBar_H, self.bounds.size.width, UIScreen.mainScreen().bounds.height - TopBar_H)
                 self.isExpanded = true
                 // 生成所有二级菜单
-                if let subItems = dic["items"] as? [String]{
+                if let subItems = dic["items"] as? [AnyObject]{
                     print("----------sub menu items", subItems)
                     let w:CGFloat = self.bounds.width / 4
                     let h:CGFloat = GalleryMenuItem_H
                     for (var i = 0; i < subItems.count; i++){
-                        let btn = GalleryMenuItem()
-                        let row:Int = i/4
-                        let col:Int = i%4
-                        print("----------row:",row)
-                        btn.frame = CGRect(x: w * CGFloat(col), y: h * CGFloat(row) + GalleryMenuBar_H, width: w, height: h)
-                        print("----------btn.frame:",btn.frame)
-                        let title = subItems[i]
-                        btn.setTitle(title, forState: UIControlState.Normal)
-                        self.addSubview(btn)
-                        btn.tag = i;
-                        btn.addTarget(self, action: Selector("onTapItem:"), forControlEvents: UIControlEvents.TouchUpInside)
+                        if let one = subItems[i] as? [NSObject:AnyObject]{
+                            let row:Int = i/4
+                            let col:Int = i%4
+                            let rect = CGRect(x: w * CGFloat(col), y: h * CGFloat(row), width: w, height: h)
+                            let btn = GalleryMenuItem(frame: rect)
+                            btn.tag = i
+                            btn.addTarget(self, action: Selector("onTapItem:"), forControlEvents: UIControlEvents.TouchUpInside)
+                            if let t = one["title"] as? String{
+                                btn.setTitle(t, forState: UIControlState.Normal)
+                                print("t = \(t)")
+                            }
+                            self.subItemContainer!.addSubview(btn)
+                        }
                     }
                 }
             }
         }else{
             sender.curSelected = false;
-//            self.frame = CGRectMake(0, TopBar_H, self.bounds.size.width, GalleryMenuBar_H)
             self.isExpanded = false
-            for v in self.subviews{
+            for v in self.subItemContainer!.subviews{
                 v.removeFromSuperview()
             }
         }
@@ -102,6 +113,10 @@ class GalleryMenuView: UIView {
     
     func onTapItem(item:GalleryMenuItem) {
         print("----------sub menu items title:", item.titleLabel?.text)
+        
+        if(false == item.curSelected){
+            item.curSelected = true;
+        }
         self.isExpanded = false
     }
 }
