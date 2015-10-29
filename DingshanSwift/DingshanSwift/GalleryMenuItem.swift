@@ -27,7 +27,7 @@ class GalleryMenuItem:UIButton {
     override init(frame aRect: CGRect) {
         super.init(frame: aRect);
         let container = UIView(frame: CGRect(x: (frame.size.width-frame.size.width*96.0/160.0)/2.0, y: frame.size.height*(1.0 - 50.0/80.0)/2.0, width: frame.size.width*96.0/160.0, height: frame.size.height*50.0/80.0))
-        print("container. frame = =",container.frame)
+        container.userInteractionEnabled = false
         self.addSubview(container)
         container.backgroundColor = UIColor.clearColor()
         container.layer.borderColor = borderColor.CGColor
