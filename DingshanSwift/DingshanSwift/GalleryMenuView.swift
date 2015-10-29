@@ -11,6 +11,9 @@ class GalleryMenuView: UIView {
     
     var menuConfig = [AnyObject](){
         didSet{
+            for v in self.subviews{
+                v.removeFromSuperview()
+            }
             let w:CGFloat = self.bounds.width / CGFloat(self.menuConfig.count)
             for (var i = 0; i < self.menuConfig.count; i++){
                 let btn = GalleryMenuButtton();

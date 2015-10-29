@@ -72,10 +72,10 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
             
             var menu:[AnyObject]?
             if 0 == index{
-                menu = configAll["Single"] as? [AnyObject]
+                menu = configAll["Multi"] as? [AnyObject]
             }
             if (1 == index){
-                menu = configAll["Multi"] as? [AnyObject]
+                menu = configAll["Single"] as? [AnyObject]
             }
             if menu != nil{
                 print("GALLERY menu = \(menu)")
