@@ -35,7 +35,9 @@ class GalleryMenuView: UIView {
                 let btn = GalleryMenuButtton();
                 btn.frame = CGRect(x: CGFloat(i) * w, y: CGFloat(0.0), width: w, height: h)
                 if let dic  = self.menuConfig[i] as? [NSObject:AnyObject]{
-                    if let title = dic["title"] as? String{
+                    if var title = dic["title"] as? String{
+                        title += " "
+                        title += String.fontAwesomeIconStringForIconIdentifier("fa-angle-up")
                         btn.setTitle(title, forState: UIControlState.Normal)
                         self.addSubview(btn);
                     }

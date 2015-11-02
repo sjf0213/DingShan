@@ -25,7 +25,7 @@ class GalleryMenuButtton:UIButton {
         super.init(frame: aRect);
         
         self.backgroundColor = UIColor.whiteColor()
-        self.titleLabel?.font = UIFont.systemFontOfSize(13.0)
+        self.titleLabel?.font = UIFont(name: "FontAwesome", size: 13.0)
         self.setTitleColor(titleColor, forState: UIControlState.Normal)
     }
 }
