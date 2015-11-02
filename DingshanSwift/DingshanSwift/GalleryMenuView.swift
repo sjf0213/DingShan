@@ -8,6 +8,8 @@
 
 import Foundation
 class GalleryMenuView: UIView {
+    
+    var tapItemHandler : ((category:Int, index:Int) -> Void)?
     var isExpanded:Bool = false {
         didSet{
             if isExpanded{
@@ -70,7 +72,7 @@ class GalleryMenuView: UIView {
     func onTapBtn(sender:GalleryMenuButtton) {
         print(sender, terminator: "")
         let btn = sender
-        let index = btn.tag
+        let index = btn.tag - 1
         if(false == btn.curSelected){
             // 把其他菜单按钮复位
             self.resetMenu()
@@ -80,7 +82,7 @@ class GalleryMenuView: UIView {
                 self.isExpanded = true
                 // 生成所有二级菜单
                 if let subItems = dic["items"] as? [AnyObject]{
-                    self.generateMenuItems(subItems, category: index)
+                    self.generateMenuItems(subItems, category: btn.tag)
                 }
             }
         }else{
@@ -124,6 +126,10 @@ class GalleryMenuView: UIView {
         UIView.animateWithDuration(0.3, animations: {() -> Void in }, completion: { (flag) -> Void in
             self.resetMenu()
             self.isExpanded = false
+            
+            if (self.tapItemHandler != nil) {
+                self.tapItemHandler?(category:item.category, index: item.tag)
+            }
         })
     }
     

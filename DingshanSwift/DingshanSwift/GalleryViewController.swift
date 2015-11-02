@@ -55,6 +55,10 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         
         self.view.addSubview(mainCollection!)
         self.view.bringSubviewToFront(menuView)
+        
+        menuView.tapItemHandler = {(category:Int, index:Int) -> Void in
+            print("-----------tapItemHandler: cate = \(category), index = \(index)")
+        }
     }
     
     override func viewDidLoad() {
