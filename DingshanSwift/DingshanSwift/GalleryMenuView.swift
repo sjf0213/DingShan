@@ -35,10 +35,9 @@ class GalleryMenuView: UIView {
                 let btn = GalleryMenuButtton();
                 btn.frame = CGRect(x: CGFloat(i) * w, y: CGFloat(0.0), width: w, height: h)
                 if let dic  = self.menuConfig[i] as? [NSObject:AnyObject]{
-                    if var title = dic["title"] as? String{
-                        title += " "
-                        title += String.fontAwesomeIconStringForIconIdentifier("fa-angle-up")
-                        btn.setTitle(title, forState: UIControlState.Normal)
+                    if let title = dic["title"] as? String{
+                        btn.btnText = title
+                        btn.curSelected = false
                         self.addSubview(btn);
                     }
                 }
@@ -74,16 +73,22 @@ class GalleryMenuView: UIView {
         let btn = sender
         let index = btn.tag
         if(false == btn.curSelected){
-            sender.curSelected = true;
+            // 把其他菜单按钮复位
+            for btn in self.subviews{
+                if let b = btn as? GalleryMenuButtton{
+                    b.curSelected = false
+                }
+            }
             for v in self.subItemContainer!.subviews{
                 v.removeFromSuperview()
             }
+            
+            // 生成自己的二级菜单
+            sender.curSelected = true;
             if let dic = self.menuConfig[index] as? [NSObject:AnyObject]{
-//                print("tap menu btn:\(index) - - - - \(dic)", terminator: "")
                 self.isExpanded = true
                 // 生成所有二级菜单
                 if let subItems = dic["items"] as? [AnyObject]{
-//                    print("----------sub menu items", subItems)
                     let w:CGFloat = self.bounds.width / 4
                     let h:CGFloat = GalleryMenuItem_H
                     for (var i = 0; i < subItems.count; i++){
@@ -106,6 +111,7 @@ class GalleryMenuView: UIView {
                 }
             }
         }else{
+            // 收起菜单
             sender.curSelected = false;
             self.isExpanded = false
             for v in self.subItemContainer!.subviews{
