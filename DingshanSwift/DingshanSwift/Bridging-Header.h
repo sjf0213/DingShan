@@ -23,5 +23,8 @@
 #import "../WeixinSDK/WXApiObject.h"
 #import <AliyunOSSiOS/OSSService.h>
 #import <AliyunOSSiOS/OSSCompat.h>
-
+#import "../FontAwesome/FAImageView.h"
+#import "../FontAwesome/NSString+FontAwesome.h"
+#import "../FontAwesome/UIFont+FontAwesome.h"
+#import "../FontAwesome/UIImage+FontAwesome.h"
 #endif

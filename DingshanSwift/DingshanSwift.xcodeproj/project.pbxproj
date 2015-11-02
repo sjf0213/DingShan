@@ -46,6 +46,12 @@
 		F035ECFC1BB2B8DC00A8D8EC /* ProfileUserInfoEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F035ECFB1BB2B8DC00A8D8EC /* ProfileUserInfoEditController.swift */; };
 		F035ED001BB3933700A8D8EC /* ForumReplyLordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F035ECFF1BB3933700A8D8EC /* ForumReplyLordCell.swift */; };
 		F03B1EC21BDDC30A00430F6C /* ServerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03B1EC11BDDC30A00430F6C /* ServerApi.swift */; };
+		F03E68CE1BE711B1001D04D1 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F03E68CD1BE711B1001D04D1 /* FontAwesome.ttf */; };
+		F03E68D01BE711FC001D04D1 /* String+FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E68CF1BE711FC001D04D1 /* String+FontAwesome.swift */; };
+		F03E68DA1BE71259001D04D1 /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F03E68D31BE71259001D04D1 /* FAImageView.m */; };
+		F03E68DB1BE71259001D04D1 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = F03E68D51BE71259001D04D1 /* NSString+FontAwesome.m */; };
+		F03E68DC1BE71259001D04D1 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = F03E68D71BE71259001D04D1 /* UIFont+FontAwesome.m */; };
+		F03E68DD1BE71259001D04D1 /* UIImage+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = F03E68D91BE71259001D04D1 /* UIImage+FontAwesome.m */; };
 		F04014D91BC67210009D5783 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F04014D81BC67210009D5783 /* CoreTelephony.framework */; };
 		F0507E5D1B67561A007E9024 /* KnowledgeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */; };
 		F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E641B675666007E9024 /* ForumFloorListController.swift */; };
@@ -206,6 +212,16 @@
 		F035ECFB1BB2B8DC00A8D8EC /* ProfileUserInfoEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUserInfoEditController.swift; sourceTree = "<group>"; };
 		F035ECFF1BB3933700A8D8EC /* ForumReplyLordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumReplyLordCell.swift; sourceTree = "<group>"; };
 		F03B1EC11BDDC30A00430F6C /* ServerApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerApi.swift; sourceTree = "<group>"; };
+		F03E68CD1BE711B1001D04D1 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		F03E68CF1BE711FC001D04D1 /* String+FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FontAwesome.swift"; sourceTree = "<group>"; };
+		F03E68D21BE71259001D04D1 /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
+		F03E68D31BE71259001D04D1 /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
+		F03E68D41BE71259001D04D1 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		F03E68D51BE71259001D04D1 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		F03E68D61BE71259001D04D1 /* UIFont+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FontAwesome.h"; sourceTree = "<group>"; };
+		F03E68D71BE71259001D04D1 /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FontAwesome.m"; sourceTree = "<group>"; };
+		F03E68D81BE71259001D04D1 /* UIImage+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FontAwesome.h"; sourceTree = "<group>"; };
+		F03E68D91BE71259001D04D1 /* UIImage+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FontAwesome.m"; sourceTree = "<group>"; };
 		F04014D81BC67210009D5783 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailController.swift; sourceTree = "<group>"; };
 		F0507E641B675666007E9024 /* ForumFloorListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorListController.swift; sourceTree = "<group>"; };
@@ -416,6 +432,21 @@
 			name = ReplyLevel;
 			sourceTree = "<group>";
 		};
+		F03E68D11BE71259001D04D1 /* FontAwesome */ = {
+			isa = PBXGroup;
+			children = (
+				F03E68D21BE71259001D04D1 /* FAImageView.h */,
+				F03E68D31BE71259001D04D1 /* FAImageView.m */,
+				F03E68D41BE71259001D04D1 /* NSString+FontAwesome.h */,
+				F03E68D51BE71259001D04D1 /* NSString+FontAwesome.m */,
+				F03E68D61BE71259001D04D1 /* UIFont+FontAwesome.h */,
+				F03E68D71BE71259001D04D1 /* UIFont+FontAwesome.m */,
+				F03E68D81BE71259001D04D1 /* UIImage+FontAwesome.h */,
+				F03E68D91BE71259001D04D1 /* UIImage+FontAwesome.m */,
+			);
+			path = FontAwesome;
+			sourceTree = "<group>";
+		};
 		F0963A0E1BAABC4600AFCFD8 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,6 +504,7 @@
 		F09ADD7B1B563974009B3A6D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F03E68CD1BE711B1001D04D1 /* FontAwesome.ttf */,
 				F0AA4FA61B93ED28007EDEA9 /* common */,
 				F0AA4FA51B93ED1C007EDEA9 /* tabbar */,
 			);
@@ -538,6 +570,7 @@
 				F0AB96731BA8352200C72260 /* libz.dylib */,
 				F0AB967B1BA8362800C72260 /* libc++.dylib */,
 				F0AB96701BA834EE00C72260 /* libsqlite3.0.dylib */,
+				F03E68D11BE71259001D04D1 /* FontAwesome */,
 				F0AB96691BA82DF000C72260 /* WeixinSDK */,
 				F00CFF921BDF8A2D002C8ECC /* SDWebImage */,
 				F00CFF691BDF182D002C8ECC /* AFNetworking */,
@@ -598,6 +631,7 @@
 		F0D00E7A1B917AC00056BE3E /* General */ = {
 			isa = PBXGroup;
 			children = (
+				F03E68CF1BE711FC001D04D1 /* String+FontAwesome.swift */,
 				F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */,
 				F09C7AA61B7CA60900648615 /* DSViewController.swift */,
 				F08749B31B54B905006E1FD3 /* MainViewController.swift */,
@@ -733,6 +767,7 @@
 				F085A34C1BBA8B2300E15705 /* forum_topic_add_new@3x~iphone.png in Resources */,
 				F0AA4F991B93ECE7007EDEA9 /* tabbar_gallery0@2x~iphone.png in Resources */,
 				F0BC44CC1BBA839B004CB0B9 /* user_head_default.png in Resources */,
+				F03E68CE1BE711B1001D04D1 /* FontAwesome.ttf in Resources */,
 				F0AA4F9E1B93ECE7007EDEA9 /* tabbar_profile0@3x~iphone.png in Resources */,
 				F0AA4FAB1B93ED37007EDEA9 /* back_btn@3x~iphone.png in Resources */,
 				F0AA4F9B1B93ECE7007EDEA9 /* tabbar_gallery1@2x~iphone.png in Resources */,
@@ -766,8 +801,10 @@
 				F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */,
 				F0D00E751B917AAB0056BE3E /* TabBarToggleBtn.swift in Sources */,
 				F00CFFC01BDF8A2D002C8ECC /* UIImage+MultiFormat.m in Sources */,
+				F03E68DC1BE71259001D04D1 /* UIFont+FontAwesome.m in Sources */,
 				F0B6FABC1B81F3D000EE2439 /* GalleryViewCell.swift in Sources */,
 				F00CFFBD1BDF8A2D002C8ECC /* SDWebImagePrefetcher.m in Sources */,
+				F03E68DA1BE71259001D04D1 /* FAImageView.m in Sources */,
 				F09ADDA11B5640DD009B3A6D /* CommonDefine.swift in Sources */,
 				F00CFF7F1BDF182D002C8ECC /* AFHTTPSessionManager.m in Sources */,
 				F0A5E1461BA0534400BDA6BA /* ForumReplyListController.swift in Sources */,
@@ -781,6 +818,7 @@
 				F028C1781B9C43CA00B8CECA /* GalleryMenuButton.swift in Sources */,
 				F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */,
 				F09C7AB01B7CAEDC00648615 /* KASegmentButton.m in Sources */,
+				F03E68DD1BE71259001D04D1 /* UIImage+FontAwesome.m in Sources */,
 				F092E2941B6A357B003D2D30 /* ForumFloorCell.swift in Sources */,
 				F00CFFB51BDF8A2D002C8ECC /* MKAnnotationView+WebCache.m in Sources */,
 				F00CFFC21BDF8A2D002C8ECC /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -824,6 +862,7 @@
 				F00CFF911BDF1FBD002C8ECC /* AFDSClient.swift in Sources */,
 				F00CFF801BDF182D002C8ECC /* AFNetworkReachabilityManager.m in Sources */,
 				F00CFF831BDF182D002C8ECC /* AFURLRequestSerialization.m in Sources */,
+				F03E68DB1BE71259001D04D1 /* NSString+FontAwesome.m in Sources */,
 				F09AB5111B74A0E400050A5C /* HomeGridCell.swift in Sources */,
 				F028C17A1B9C479300B8CECA /* GalleryMenuItem.swift in Sources */,
 				F0BDA8E51B9EFE6700176531 /* ForumTopicData.swift in Sources */,
@@ -835,6 +874,7 @@
 				F09AB50B1B74A0BF00050A5C /* HomeGridViewController.swift in Sources */,
 				F0C5F6B71B53D1E000B2C20D /* AppDelegate.swift in Sources */,
 				F0A5E1441BA04C5000BDA6BA /* UserInfoData.swift in Sources */,
+				F03E68D01BE711FC001D04D1 /* String+FontAwesome.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
