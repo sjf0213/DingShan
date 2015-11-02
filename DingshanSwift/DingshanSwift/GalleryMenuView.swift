@@ -40,7 +40,7 @@ class GalleryMenuView: UIView {
                         self.addSubview(btn);
                     }
                 }
-                btn.tag = i;
+                btn.tag = i+1;
                 btn.addTarget(self, action: Selector("onTapBtn:"), forControlEvents: UIControlEvents.TouchUpInside)
             }
         }
@@ -80,7 +80,7 @@ class GalleryMenuView: UIView {
                 self.isExpanded = true
                 // 生成所有二级菜单
                 if let subItems = dic["items"] as? [AnyObject]{
-                    self.generateMenuItems(subItems)
+                    self.generateMenuItems(subItems, category: index)
                 }
             }
         }else{
@@ -94,7 +94,7 @@ class GalleryMenuView: UIView {
     }
     
     // 生成所有二级菜单
-    func generateMenuItems(data:[AnyObject]){
+    func generateMenuItems(data:[AnyObject], category:Int){
         let w:CGFloat = self.bounds.width / 4
         let h:CGFloat = GalleryMenuItem_H
         for (var i = 0; i < data.count; i++){
@@ -104,6 +104,7 @@ class GalleryMenuView: UIView {
                 let rect = CGRect(x: w * CGFloat(col), y: h * CGFloat(row), width: w, height: h)
                 let btn = GalleryMenuItem(frame: rect)
                 btn.tag = i
+                btn.category = category
                 btn.addTarget(self, action: Selector("onTapItem:"), forControlEvents: UIControlEvents.TouchUpInside)
                 if let t = one["title"] as? String{
                     btn.setTitle(t, forState: UIControlState.Normal)
@@ -119,8 +120,11 @@ class GalleryMenuView: UIView {
     // 点击二级菜单项
     func onTapItem(item:GalleryMenuItem) {
         print("----------sub menu items title:", item.titleLabel?.text)
-        self.resetMenu()
-        self.isExpanded = false
+        item.curSelected = true
+        UIView.animateWithDuration(0.3, animations: {() -> Void in }, completion: { (flag) -> Void in
+            self.resetMenu()
+            self.isExpanded = false
+        })
     }
     
     // 复位所有菜单状态

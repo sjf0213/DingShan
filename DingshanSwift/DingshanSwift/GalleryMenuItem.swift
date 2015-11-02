@@ -13,6 +13,7 @@ class GalleryMenuItem:UIButton {
     let borderColorHighLighted = UIColor(red: 252/255.0, green: 74/255.0, blue: 100/255.0, alpha: 1.0)
     let titleColorHighLighted = UIColor(red: 252/255.0, green: 74/255.0, blue: 100/255.0, alpha: 1.0)
     var container:UIView?
+    var category:Int = 0;
     var curSelected:Bool = false{
         didSet(newCurSelected){
             if (newCurSelected){
@@ -20,6 +21,15 @@ class GalleryMenuItem:UIButton {
                 container?.layer.borderColor = borderColorHighLighted.CGColor
             }else{
                 self.setTitleColor(titleColorNormal, forState: UIControlState.Normal)
+                container?.layer.borderColor = borderColorNormal.CGColor
+            }
+        }
+    }
+    override internal var highlighted:Bool{
+        didSet{
+            if (highlighted){
+                container?.layer.borderColor = borderColorHighLighted.CGColor
+            }else{
                 container?.layer.borderColor = borderColorNormal.CGColor
             }
         }
@@ -36,7 +46,8 @@ class GalleryMenuItem:UIButton {
         container?.backgroundColor = UIColor.clearColor()
         container?.layer.cornerRadius = 3.0;
         container?.layer.borderWidth = 0.5;
-        self.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
+        self.setTitleColor(titleColorNormal, forState: UIControlState.Normal)
+        self.setTitleColor(titleColorHighLighted, forState: UIControlState.Highlighted)
         self.titleLabel?.font = UIFont.systemFontOfSize(13.0)
     }
 }
