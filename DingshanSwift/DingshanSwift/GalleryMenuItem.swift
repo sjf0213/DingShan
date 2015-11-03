@@ -13,7 +13,7 @@ class GalleryMenuItem:UIButton {
     let borderColorHighLighted = UIColor(red: 252/255.0, green: 74/255.0, blue: 100/255.0, alpha: 1.0)
     let titleColorHighLighted = UIColor(red: 252/255.0, green: 74/255.0, blue: 100/255.0, alpha: 1.0)
     var container:UIView?
-    var category:Int = 0;
+    var keyName = String()
     var curSelected:Bool = false{
         didSet(newCurSelected){
             if (newCurSelected){

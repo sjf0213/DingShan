@@ -8,8 +8,7 @@
 
 import Foundation
 class GalleryMenuView: UIView {
-    
-    var tapItemHandler : ((category:Int, index:Int) -> Void)?
+    var tapItemHandler : ((keyName:String, index:Int) -> Void)?
     var isExpanded:Bool = false {
         didSet{
             if isExpanded{
@@ -38,6 +37,9 @@ class GalleryMenuView: UIView {
                 if let dic  = self.menuConfig[i] as? [NSObject:AnyObject]{
                     if let title = dic["title"] as? String{
                         btn.btnText = title
+                        if let key = dic["name"] as? String{
+                            btn.keyName = key
+                        }
                         btn.curSelected = false
                         self.addSubview(btn);
                     }
@@ -82,7 +84,7 @@ class GalleryMenuView: UIView {
                 self.isExpanded = true
                 // 生成所有二级菜单
                 if let subItems = dic["items"] as? [AnyObject]{
-                    self.generateMenuItems(subItems, category: btn.tag)
+                    self.generateMenuItems(subItems, keyName: btn.keyName)
                 }
             }
         }else{
@@ -96,7 +98,7 @@ class GalleryMenuView: UIView {
     }
     
     // 生成所有二级菜单
-    func generateMenuItems(data:[AnyObject], category:Int){
+    func generateMenuItems(data:[AnyObject], keyName:String){
         let w:CGFloat = self.bounds.width / 4
         let h:CGFloat = GalleryMenuItem_H
         for (var i = 0; i < data.count; i++){
@@ -106,7 +108,7 @@ class GalleryMenuView: UIView {
                 let rect = CGRect(x: w * CGFloat(col), y: h * CGFloat(row), width: w, height: h)
                 let btn = GalleryMenuItem(frame: rect)
                 btn.tag = i
-                btn.category = category
+                btn.keyName = keyName
                 btn.addTarget(self, action: Selector("onTapItem:"), forControlEvents: UIControlEvents.TouchUpInside)
                 if let t = one["title"] as? String{
                     btn.setTitle(t, forState: UIControlState.Normal)
@@ -121,14 +123,14 @@ class GalleryMenuView: UIView {
     
     // 点击二级菜单项
     func onTapItem(item:GalleryMenuItem) {
-        print("----------sub menu items title:", item.titleLabel?.text)
+        print("----------sub menu items title:\(item.titleLabel?.text), tagIndex:\(item.tag)")
         item.curSelected = true
         UIView.animateWithDuration(0.3, animations: {() -> Void in }, completion: { (flag) -> Void in
             self.resetMenu()
             self.isExpanded = false
             
             if (self.tapItemHandler != nil) {
-                self.tapItemHandler?(category:item.category, index: item.tag)
+                self.tapItemHandler?(keyName:item.keyName, index: item.tag)
             }
         })
     }

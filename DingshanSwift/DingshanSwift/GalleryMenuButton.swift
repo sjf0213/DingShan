@@ -13,6 +13,7 @@ class GalleryMenuButtton:UIButton {
     var tailUp = " " + String.fontAwesomeIconStringForIconIdentifier("fa-angle-up")
     var tailDown = " " + String.fontAwesomeIconStringForIconIdentifier("fa-angle-down")
     var btnText = ""
+    var keyName = String()
     var curSelected:Bool = false{
         willSet(newCurSelected){
             if (newCurSelected){
