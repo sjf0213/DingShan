@@ -19,13 +19,23 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     var loadMoreView:LoadView?
     var currentPage:NSInteger = 0
     var dataList =  NSMutableArray()
-    var menuSelectedData = [NSObject:AnyObject]()
+    var singleConfig:[AnyObject]?
+    var multiConfig:[AnyObject]?
     
     override func loadView()
     {
         super.loadView()
         self.view.backgroundColor = UIColor.whiteColor()
         self.backBtnHidden = true
+        
+        // 读取菜单配置
+        if let configAll = MainConfig.sharedInstance.rootDic?["GalleryMenu"] as? [NSObject:AnyObject]{
+            singleConfig = configAll["Single"] as? [AnyObject]
+            multiConfig = configAll["Multi"] as? [AnyObject]
+            print("-----------multiConfig = \(multiConfig)")
+        }
+        
+        // 初始化切换按钮
         seg = KASegmentControl(frame: CGRectMake((self.topView.frame.size.width - 140)*0.5, 27, 140, 30),
                             withItems: ["套图", "单图"],
                             withLightedColor: THEME_COLOR)
@@ -34,6 +44,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
             self.changeBySegIndex(selectedIndex)
         }
         
+        // 初始化菜单
         menuView.frame = CGRectMake(0, self.topView.frame.size.height, self.view.bounds.size.width, 40)
         self.view.addSubview(menuView)
         
@@ -58,6 +69,8 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         
         menuView.tapItemHandler = {(category:Int, index:Int) -> Void in
             print("-----------tapItemHandler: cate = \(category), index = \(index)")
+            self.currentPage = 0
+            //
         }
     }
     
@@ -71,20 +84,11 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         self.currentPage = 0
         self.dataList.removeAllObjects()
         mainCollection?.reloadData()
-        
-        if let configAll = MainConfig.sharedInstance.rootDic?["GalleryMenu"] as? [NSObject:AnyObject]{
-            
-            var menu:[AnyObject]?
-            if 0 == index{
-                menu = configAll["Multi"] as? [AnyObject]
-            }
-            if (1 == index){
-                menu = configAll["Single"] as? [AnyObject]
-            }
-            if menu != nil{
-                print("GALLERY menu = \(menu)")
-                menuView.menuConfig = menu!
-            }
+        if 0 == index{
+            menuView.menuConfig = multiConfig!
+        }
+        if (1 == index){
+            menuView.menuConfig = singleConfig!
         }
     }
     

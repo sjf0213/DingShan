@@ -10,7 +10,7 @@
 				<key>type</key>
 				<string>text</string>
 				<key>name</key>
-				<string>Style</string>
+				<string>style</string>
 				<key>title</key>
 				<string>风格</string>
 				<key>items</key>
@@ -93,7 +93,7 @@
 				<key>type</key>
 				<string>text</string>
 				<key>name</key>
-				<string>Space</string>
+				<string>space</string>
 				<key>title</key>
 				<string>空间</string>
 				<key>items</key>
@@ -182,7 +182,7 @@
 				<key>type</key>
 				<string>text</string>
 				<key>name</key>
-				<string>Corner</string>
+				<string>part</string>
 				<key>title</key>
 				<string>局部</string>
 				<key>items</key>
@@ -289,7 +289,7 @@
 				<key>type</key>
 				<string>text</string>
 				<key>name</key>
-				<string>Color</string>
+				<string>color</string>
 				<key>title</key>
 				<string>色系</string>
 				<key>items</key>
@@ -375,7 +375,7 @@
 				<key>type</key>
 				<string>text</string>
 				<key>name</key>
-				<string>Style</string>
+				<string>style</string>
 				<key>title</key>
 				<string>风格</string>
 				<key>items</key>
@@ -458,7 +458,7 @@
 				<key>type</key>
 				<string>text</string>
 				<key>name</key>
-				<string>HouseType</string>
+				<string>size</string>
 				<key>title</key>
 				<string>户型</string>
 				<key>items</key>
@@ -517,7 +517,7 @@
 				<key>type</key>
 				<string>text</string>
 				<key>name</key>
-				<string>Color</string>
+				<string>color</string>
 				<key>title</key>
 				<string>色系</string>
 				<key>items</key>
