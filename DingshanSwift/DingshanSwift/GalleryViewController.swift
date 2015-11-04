@@ -105,7 +105,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                                                "json" : "1"]
         if config != nil{
             for one in config! {
-                parameter[one.0] = one.1
+                parameter[one.0] = String(one.1)
             }
         }
         print("Multi = = = = = = =parameter = \(parameter)", terminator: "")
@@ -117,7 +117,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         }
         let url = ServerApi.gallery_get_galary_list(type, dic:parameter)
         
-        print("url = \(url)", terminator: "")
+        print("\n---$$$---url = \(url)", terminator: "")
         AFDSClient.sharedInstance.GET(url, parameters: nil,
             success: {(task, JSON) -> Void in
         
