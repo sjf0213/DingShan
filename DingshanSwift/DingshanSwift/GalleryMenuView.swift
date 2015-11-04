@@ -96,7 +96,6 @@ class GalleryMenuView: UIView {
             sender.curSelected = true;
             if let dic = self.menuConfig[index] as? [NSObject:AnyObject]{
                 self.isExpanded = true
-                // 生成所有二级菜单
                 if let subItems = dic["items"] as? [AnyObject]{
                     self.generateMenuItems(subItems, keyName: btn.keyName)
                 }
@@ -111,7 +110,7 @@ class GalleryMenuView: UIView {
         }
     }
     
-    // 生成所有二级菜单
+    // 生成所有二级菜单项
     func generateMenuItems(data:[AnyObject], keyName:String){
         let w:CGFloat = self.bounds.width / 4
         let h:CGFloat = GalleryMenuItem_H
@@ -127,6 +126,11 @@ class GalleryMenuView: UIView {
                 if let t = one["title"] as? String{
                     btn.setTitle(t, forState: UIControlState.Normal)
                 }
+                if let k = self.userSelectConfig?[keyName] as? Int{
+                    if k == i{
+                        btn.curSelected = true;
+                    }
+                }
                 self.subItemContainer!.addSubview(btn)
             }
         }
@@ -138,6 +142,13 @@ class GalleryMenuView: UIView {
     // 点击二级菜单项
     func onTapItem(item:GalleryMenuItem) {
         print("----------sub menu items title:\(item.titleLabel?.text), tagIndex:\(item.tag)")
+        for v in self.subItemContainer!.subviews{
+            if let i = v as? GalleryMenuItem{
+                if i != item{
+                    i.curSelected = false
+                }
+            }
+        }
         item.curSelected = true
         // 更新设置
         self.userSelectConfig?.updateValue(item.tag, forKey: item.keyName)

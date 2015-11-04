@@ -15,8 +15,8 @@ class GalleryMenuItem:UIButton {
     var container:UIView?
     var keyName = String()
     var curSelected:Bool = false{
-        didSet(newCurSelected){
-            if (newCurSelected){
+        didSet{
+            if (curSelected){
                 self.setTitleColor(titleColorHighLighted, forState: UIControlState.Normal)
                 container?.layer.borderColor = borderColorHighLighted.CGColor
             }else{
