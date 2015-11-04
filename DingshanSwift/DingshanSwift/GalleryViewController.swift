@@ -25,7 +25,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     override func loadView()
     {
         super.loadView()
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = NAVI_COLOR
         self.backBtnHidden = true
         
         // 读取菜单配置
