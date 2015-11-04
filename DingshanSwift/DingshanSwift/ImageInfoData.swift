@@ -17,6 +17,16 @@ class ImageInfoData: NSObject {
         super.init()
     }
     
+    override var description : String {
+        
+        var str = "--------------------------\n image_id = "+String(imageId)
+        str += "\n image_url = " + url
+        str += "\n image_name = " + desc
+        str += "\n w = " + String(width)
+        str += "\n h = " + String(height)
+        return str
+    }
+    
     init( dic : [NSObject:AnyObject]){
         if let s = dic["image_id"] as? String {
             if let n = Int(s){

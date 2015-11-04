@@ -10,6 +10,7 @@
 		417BEF921B5A4E0F00F896A5 /* GeneralConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 417BEF911B5A4E0F00F896A5 /* GeneralConfig.plist */; };
 		417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 417BEF991B5A4F9300F896A5 /* ArrayDataSource.m */; };
 		417BEF9D1B5A535300F896A5 /* FileHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 417BEF9C1B5A535300F896A5 /* FileHelp.m */; };
+		F007353D1BEA103000383687 /* CHTCollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F007353C1BEA103000383687 /* CHTCollectionViewWaterfallLayout.swift */; };
 		F00CFF7D1BDF182D002C8ECC /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F00CFF6B1BDF182D002C8ECC /* AFHTTPRequestOperation.m */; };
 		F00CFF7E1BDF182D002C8ECC /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F00CFF6D1BDF182D002C8ECC /* AFHTTPRequestOperationManager.m */; };
 		F00CFF7F1BDF182D002C8ECC /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F00CFF6F1BDF182D002C8ECC /* AFHTTPSessionManager.m */; };
@@ -147,6 +148,7 @@
 		417BEF991B5A4F9300F896A5 /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
 		417BEF9B1B5A535300F896A5 /* FileHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelp.h; sourceTree = "<group>"; };
 		417BEF9C1B5A535300F896A5 /* FileHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelp.m; sourceTree = "<group>"; };
+		F007353C1BEA103000383687 /* CHTCollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTCollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
 		F00CFF6A1BDF182D002C8ECC /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		F00CFF6B1BDF182D002C8ECC /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		F00CFF6C1BDF182D002C8ECC /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 		F0D00E7A1B917AC00056BE3E /* General */ = {
 			isa = PBXGroup;
 			children = (
+				F007353C1BEA103000383687 /* CHTCollectionViewWaterfallLayout.swift */,
 				F03E68CF1BE711FC001D04D1 /* String+FontAwesome.swift */,
 				F0A1C3A21B5CCCDA001597CF /* MainConfig.swift */,
 				F09C7AA61B7CA60900648615 /* DSViewController.swift */,
@@ -833,6 +836,7 @@
 				417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */,
 				F0E574F91B6784BE000053B8 /* RefreshIconView.m in Sources */,
 				F05455561B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m in Sources */,
+				F007353D1BEA103000383687 /* CHTCollectionViewWaterfallLayout.swift in Sources */,
 				F00CFF811BDF182D002C8ECC /* AFSecurityPolicy.m in Sources */,
 				F00CFFC31BDF8A2D002C8ECC /* UIImageView+WebCache.m in Sources */,
 				F00CFFC41BDF8A2D002C8ECC /* UIView+WebCacheOperation.m in Sources */,

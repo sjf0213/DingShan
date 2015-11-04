@@ -16,7 +16,7 @@
 #import "../Commonfiles/CocoaSecurity.h"
 #import "../Commonfiles/Loading/LoadSuit.h"
 #import "../Commonfiles/KASegmentControl.h"
-#import "../CommonFiles/CHTCollectionViewWaterfallLayout.h"
+//#import "../CommonFiles/CHTCollectionViewWaterfallLayout.h"
 #import "../SDWebImage/WebImage.h"
 #import "../AFNetworking/AFNetworking.h"
 #import "../WeixinSDK/WXApi.h"

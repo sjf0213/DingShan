@@ -158,7 +158,9 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                             }
                         }
                     }
+                    print("\n---===---self.dataList = \(self.dataList)")
                     self.mainCollection?.reloadData()
+                    
                     if (list.count < Default_Request_Count) {
                         self.loadMoreView?.isCanUse = false
                         self.loadMoreView?.hidden = true
@@ -179,12 +181,13 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     {
         let w:CGFloat = (self.view.bounds.size.width - (3 * gallery_gap)) * 0.5
         var h = w;
-        if let data = self.dataList.objectAtIndex(indexPath.item) as? ImageInfoData{
+        if let data = self.dataList.objectAtIndex(indexPath.row) as? ImageInfoData{
             if (data.width != 0 && data.height != 0){// 如果没有宽高数据，则显示方形图片
                 h = w * CGFloat(data.height) / CGFloat(data.width)
             }
         }
         let rt = CGSize(width: w, height: h)
+        print("\n indexPath:\(indexPath) - - - - rt:\(rt)")
         return rt
     }
     
@@ -198,7 +201,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
 //        print("+++++++++++++++cellForItemAtIndexPath-------\(indexPath)")
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(GalleryViewCellIdentifier, forIndexPath: indexPath) as? GalleryViewCell{
             cell.clearData()
-            if let item = self.dataList.objectAtIndex(indexPath.item) as? ImageInfoData{
+            if let item = self.dataList.objectAtIndex(indexPath.row) as? ImageInfoData{
                 cell.loadCellData(item)
             }
             return cell
@@ -209,7 +212,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
 //        print("+++++++++++++++didSelectItemAtIndexPath-------\(indexPath)")
-        if let imgData = dataList[indexPath.item] as? ImageInfoData{
+        if let imgData = dataList[indexPath.row] as? ImageInfoData{
             let detail = GalleryDetailController()
             self.navigationController?.pushViewController(detail, animated: true)
             detail.navigationItem.title =  imgData.desc;
