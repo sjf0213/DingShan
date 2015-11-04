@@ -25,6 +25,7 @@ class GalleryMenuView: UIView {
     var menuConfig = [AnyObject](){
         didSet{
             // print("menuConfig = \(menuConfig)")
+            self.resetMenu()
             // 生成用于请求的用户选择记录
             var dicOne = [NSObject:AnyObject]()
             for item in menuConfig{
@@ -83,15 +84,17 @@ class GalleryMenuView: UIView {
         self.subItemContainer?.backgroundColor = UIColor.whiteColor()
         self.subItemContainer?.clipsToBounds = true
         self.addSubview(self.subItemContainer!)
+        
+        let tapRec = UITapGestureRecognizer(target: self, action: Selector("onTapMenu"))
+        self.addGestureRecognizer(tapRec)
     }
     
     func onTapBtn(sender:GalleryMenuButtton) {
         print(sender, terminator: "")
         let btn = sender
         let index = btn.tag - 1
+        self.resetMenu()
         if(false == btn.curSelected){
-            // 把其他菜单按钮复位
-            self.resetMenu()
             // 生成自己的二级菜单
             sender.curSelected = true;
             if let dic = self.menuConfig[index] as? [NSObject:AnyObject]{
@@ -99,13 +102,6 @@ class GalleryMenuView: UIView {
                 if let subItems = dic["items"] as? [AnyObject]{
                     self.generateMenuItems(subItems, keyName: btn.keyName)
                 }
-            }
-        }else{
-            // 收起菜单
-            sender.curSelected = false;
-            self.isExpanded = false
-            for v in self.subItemContainer!.subviews{
-                v.removeFromSuperview()
             }
         }
     }
@@ -155,7 +151,6 @@ class GalleryMenuView: UIView {
         
         UIView.animateWithDuration(0.3, animations: {() -> Void in }, completion: { (flag) -> Void in
             self.resetMenu()
-            self.isExpanded = false
             if (self.tapItemHandler != nil && self.userSelectConfig != nil) {
                 self.tapItemHandler?(config:self.userSelectConfig!)
             }
@@ -164,16 +159,21 @@ class GalleryMenuView: UIView {
     
     // 复位所有菜单状态
     func resetMenu(){
+        // 收起菜单
+        self.isExpanded = false
+        // 一级项置灰
         for v in self.subviews{
             if let b = v as? GalleryMenuButtton{
                 b.curSelected = false
             }
         }
+        // 清空二级项
         for v in self.subItemContainer!.subviews{
-            if let b = v as? GalleryMenuItem{
-                b.curSelected = false
-            }
             v.removeFromSuperview()
         }
+    }
+    
+    func onTapMenu(){
+        self.resetMenu()
     }
 }

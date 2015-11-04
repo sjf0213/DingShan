@@ -75,7 +75,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     
     override func viewDidLoad() {
         seg?.selectedSegmentIndex = 1;
-        self.startRequest(nil)
+        
     }
     
     // 切换套图与单图
@@ -89,6 +89,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         if (1 == index){
             menuView.menuConfig = singleConfig!
         }
+        self.startRequest(nil)
     }
     
     func onTapBtn(sender:UIButton) {
@@ -127,7 +128,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                 }
                 // 如果请求数据有效
                 if let dic = JSON as? [NSObject:AnyObject]{
-//                    print("\n responseJSON- - - - -data:", dic)
+                    print("\n responseJSON- - - - -data:", dic)
                     self.processRequestResult(dic)
                 }
                 // 控件复位
