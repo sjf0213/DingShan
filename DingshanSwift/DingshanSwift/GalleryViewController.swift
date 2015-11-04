@@ -56,12 +56,15 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         mainCollection = UICollectionView(frame: CGRect(x: 0,
             y: self.topView.bounds.size.height + self.menuView.bounds.size.height,
             width: self.view.bounds.size.width,
-            height: self.view.bounds.size.height - self.topView.bounds.size.height - self.menuView.bounds.size.height), collectionViewLayout: layout)
+            height: self.view.bounds.size.height - self.topView.bounds.size.height - self.menuView.bounds.size.height - MAIN_TAB_H), collectionViewLayout: layout)
         mainCollection?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         mainCollection?.backgroundColor = UIColor.clearColor()
         mainCollection?.dataSource = self;
         mainCollection?.delegate = self;
         mainCollection?.registerClass(GalleryViewCell.classForCoder(), forCellWithReuseIdentifier: GalleryViewCellIdentifier)
+        
+        mainCollection?.autoresizingMask = [UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleWidth]
+        mainCollection?.alwaysBounceVertical = true
         
         self.view.addSubview(mainCollection!)
         self.view.bringSubviewToFront(menuView)
@@ -179,16 +182,23 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     func collectionView (collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
-        let w:CGFloat = (self.view.bounds.size.width - (3 * gallery_gap)) * 0.5
-        var h = w;
+//        let w:CGFloat = (self.view.bounds.size.width - (3 * gallery_gap)) * 0.5
+//        var h = w;
+//        if let data = self.dataList.objectAtIndex(indexPath.row) as? ImageInfoData{
+//            if (data.width != 0 && data.height != 0){// 如果没有宽高数据，则显示方形图片
+//                h = w * CGFloat(data.height) / CGFloat(data.width)
+//            }
+//        }
+//        let rt = CGSize(width: w, height: h)
+//        print("\n indexPath:\(indexPath) - - - - rt:\(rt)")
+//        return rt
+        
+        var sz = CGSize(width: 100.0, height: 100.0)
         if let data = self.dataList.objectAtIndex(indexPath.row) as? ImageInfoData{
-            if (data.width != 0 && data.height != 0){// 如果没有宽高数据，则显示方形图片
-                h = w * CGFloat(data.height) / CGFloat(data.width)
-            }
+            sz = CGSize(width: data.width, height: data.height)
         }
-        let rt = CGSize(width: w, height: h)
-        print("\n indexPath:\(indexPath) - - - - rt:\(rt)")
-        return rt
+        print("\n indexPath:\(indexPath) - - - - size:\(sz)")
+        return sz
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int

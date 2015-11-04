@@ -34,6 +34,12 @@ class  GalleryViewCell : UICollectionViewCell
         title?.text = nil;
     }
     
+    override func layoutSubviews() {
+        bgImg?.frame = self.bounds
+        title?.frame = CGRect(x: 0, y: frame.size.height - 15, width: frame.size.width, height: 15)
+        
+    }
+    
     func loadCellData(info:ImageInfoData)
     {
         title?.text = info.desc
