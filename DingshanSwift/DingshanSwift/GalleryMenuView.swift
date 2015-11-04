@@ -8,7 +8,8 @@
 
 import Foundation
 class GalleryMenuView: UIView {
-    var tapItemHandler : ((keyName:String, index:Int) -> Void)?
+    var tapItemHandler : ((config:[NSObject:AnyObject]) -> Void)?
+    var userSelectConfig:[NSObject:AnyObject]?
     var isExpanded:Bool = false {
         didSet{
             if isExpanded{
@@ -23,12 +24,25 @@ class GalleryMenuView: UIView {
     var subItemContainer:UIView?
     var menuConfig = [AnyObject](){
         didSet{
+            // print("menuConfig = \(menuConfig)")
+            // 生成用于请求的用户选择记录
+            var dicOne = [NSObject:AnyObject]()
+            for item in menuConfig{
+                if let obj = item as? [NSObject:AnyObject]{
+                    if let name = obj["name"] as? String{
+                        dicOne[name] = 0
+                    }
+                }
+            }
+            self.userSelectConfig = dicOne
+            print("-----------userSelectConfig = \(userSelectConfig)")
+            
+            // 清空一级菜单，并重新生成一级菜单
             for v in self.subviews{
                 if v != subItemContainer{
                     v.removeFromSuperview()
                 }
             }
-            // print("menuConfig = \(menuConfig)")
             let w:CGFloat = self.bounds.width / CGFloat(self.menuConfig.count)
             let h:CGFloat = GalleryMenuBar_H
             for (var i = 0; i < self.menuConfig.count; i++){
@@ -125,12 +139,14 @@ class GalleryMenuView: UIView {
     func onTapItem(item:GalleryMenuItem) {
         print("----------sub menu items title:\(item.titleLabel?.text), tagIndex:\(item.tag)")
         item.curSelected = true
+        // 更新设置
+        self.userSelectConfig?.updateValue(item.tag, forKey: item.keyName)
+        
         UIView.animateWithDuration(0.3, animations: {() -> Void in }, completion: { (flag) -> Void in
             self.resetMenu()
             self.isExpanded = false
-            
-            if (self.tapItemHandler != nil) {
-                self.tapItemHandler?(keyName:item.keyName, index: item.tag)
+            if (self.tapItemHandler != nil && self.userSelectConfig != nil) {
+                self.tapItemHandler?(config:self.userSelectConfig!)
             }
         })
     }

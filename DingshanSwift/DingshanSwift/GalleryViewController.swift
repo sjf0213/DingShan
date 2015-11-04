@@ -22,8 +22,6 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     var singleConfig:[AnyObject]?
     var multiConfig:[AnyObject]?
     
-    var userSelectConfig:[NSObject:AnyObject]?
-    
     override func loadView()
     {
         super.loadView()
@@ -34,26 +32,8 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         if let configAll = MainConfig.sharedInstance.rootDic?["GalleryMenu"] as? [NSObject:AnyObject]{
             multiConfig = configAll["Multi"] as? [AnyObject]
             singleConfig = configAll["Single"] as? [AnyObject]
-            var dicM = [NSObject:AnyObject]()
-            for item in multiConfig!{
-                if let obj = item as? [NSObject:AnyObject]{
-                    if let name = obj["name"] as? String{
-                        dicM[name] = 0
-                    }
-                }
-            }
-            var dicS = [NSObject:AnyObject]()
-            for item in singleConfig!{
-                if let obj = item as? [NSObject:AnyObject]{
-                    if let name = obj["name"] as? String{
-                        dicS[name] = 0
-                    }
-                }
-            }
-            userSelectConfig = ["Multi":dicM,
-                               "Single":dicS];
         }
-        print("-----------userSelectConfig = \(userSelectConfig)")
+        
         // 初始化切换按钮
         seg = KASegmentControl(frame: CGRectMake((self.topView.frame.size.width - 140)*0.5, 27, 140, 30),
                             withItems: ["套图", "单图"],
@@ -86,27 +66,16 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         self.view.addSubview(mainCollection!)
         self.view.bringSubviewToFront(menuView)
         
-        menuView.tapItemHandler = {(keyName:String, index:Int) -> Void in
-            print("-----------tapItemHandler: keyName = \(keyName), index = \(index)")
+        menuView.tapItemHandler = {(config:[NSObject:AnyObject]) -> Void in
+            print("-----------Changed ! ! !userSelectConfig = \(config)")
             self.currentPage = 0
-            var tochagneDic:[NSObject:AnyObject]?
-            if 0 == self.seg?.selectedSegmentIndex{// 套图
-                tochagneDic = self.userSelectConfig?["Multi"] as? [NSObject:AnyObject]
-                tochagneDic?.updateValue(index, forKey: keyName)
-                self.userSelectConfig?.updateValue(tochagneDic!, forKey: "Multi")
-            }else if 1 == self.seg?.selectedSegmentIndex{// 单图
-                tochagneDic = self.userSelectConfig?["Single"] as? [NSObject:AnyObject]
-                tochagneDic?.updateValue(index, forKey: keyName)
-                self.userSelectConfig?.updateValue(tochagneDic!, forKey: "Single")
-            }
-            print("-----------Changed ! ! !userSelectConfig = \(self.userSelectConfig)")
-            self.startRequest()
+            self.startRequest(config)
         }
     }
     
     override func viewDidLoad() {
         seg?.selectedSegmentIndex = 1;
-        self.startRequest()
+        self.startRequest(nil)
     }
     
     // 切换套图与单图
@@ -129,28 +98,23 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         
     }
     
-    func startRequest(){
+    func startRequest(config:[NSObject:AnyObject]?){
         var parameter:[NSObject:AnyObject] = [  "iid" : String(self.currentPage),
                                               "psize" : "10",
                                                "json" : "1"]
-        var url = ""
-        if 0 == seg?.selectedSegmentIndex{
-            if let config = self.userSelectConfig?["Multi"] as? [NSObject:AnyObject]{
-                for one in config {
-                    parameter[one.0] = one.1
-                }
+        if config != nil{
+            for one in config! {
+                parameter[one.0] = one.1
             }
-            print("Multi = = = = = = =parameter = \(parameter)", terminator: "")
-            url = ServerApi.gallery_get_galary_multi_list(parameter)
-        }else if 1 == seg?.selectedSegmentIndex{
-            if let config = self.userSelectConfig?["Single"] as? [NSObject:AnyObject]{
-                for one in config {
-                    parameter[one.0] = one.1
-                }
-            }
-            print("Single = = = = = = =parameter = \(parameter)", terminator: "")
-            url = ServerApi.gallery_get_galary_single_list(parameter)
         }
+        print("Multi = = = = = = =parameter = \(parameter)", terminator: "")
+        var type = ""
+        if 0 == seg?.selectedSegmentIndex{
+            type = "multi"
+        }else if 1 == seg?.selectedSegmentIndex{
+            type = "single"
+        }
+        let url = ServerApi.gallery_get_galary_list(type, dic:parameter)
         
         print("url = \(url)", terminator: "")
         AFDSClient.sharedInstance.GET(url, parameters: nil,

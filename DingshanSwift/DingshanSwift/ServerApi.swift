@@ -67,11 +67,13 @@ class ServerApi: NSObject {
     }
     
     // 图库列表
-    class func gallery_get_galary_single_list(dic:[NSObject : AnyObject]) -> String{
-        return ServerApi.signatureURL("dingshan/images/singleimageslist", args: dic)
-    }
-    class func gallery_get_galary_multi_list(dic:[NSObject : AnyObject]) -> String{
-        return ServerApi.signatureURL("dingshan/images/multiimageslist", args: dic)
+    class func gallery_get_galary_list(type: String, dic: [NSObject : AnyObject]) -> String{
+        if type == "single"{
+            return ServerApi.signatureURL("dingshan/images/singleimageslist", args: dic)
+        }else if type == "multi"{
+            return ServerApi.signatureURL("dingshan/images/multiimageslist", args: dic)
+        }
+        return ""
     }
     
     // 用户
