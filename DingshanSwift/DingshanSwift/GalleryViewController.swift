@@ -141,16 +141,25 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     
     func processRequestResult(result:[NSObject:AnyObject]){
         if (200 == result["c"]?.integerValue){
-            if let list = result["v"] as? [NSObject:AnyObject]{
-                if let arr = list["image_list"] as? [AnyObject]{
-                    for var i = 0; i < arr.count; ++i {
-                        if let item = arr[i] as? [NSObject:AnyObject] {
-                            let data = ImageInfoData(dic: item)
-                            self.dataList.addObject(data)
+            if let v = result["v"] as? [NSObject:AnyObject]{
+                if let list = v["image_list"] as? [AnyObject]{
+                    for item in list{
+                        if let arr = item["imageurls"] as? [AnyObject]{// 组图
+                            if arr.count > 0{
+                                if let firstImageData = arr[0] as? [NSObject:AnyObject]{
+                                    let data = ImageInfoData(dic: firstImageData)
+                                    self.dataList.addObject(data)
+                                }
+                            }
+                        }else{// 单图
+                            if let data = item as? [NSObject:AnyObject]{
+                                let data = ImageInfoData(dic: data)
+                                self.dataList.addObject(data)
+                            }
                         }
                     }
                     self.mainCollection?.reloadData()
-                    if (arr.count < Default_Request_Count) {
+                    if (list.count < Default_Request_Count) {
                         self.loadMoreView?.isCanUse = false
                         self.loadMoreView?.hidden = true
                     }else{
