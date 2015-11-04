@@ -40,15 +40,16 @@ class GalleryMenuView: UIView {
             
             // 清空一级菜单，并重新生成一级菜单
             for v in self.subviews{
-                if v != subItemContainer{
+                if v is GalleryMenuButtton{
                     v.removeFromSuperview()
                 }
             }
             let w:CGFloat = self.bounds.width / CGFloat(self.menuConfig.count)
-            let h:CGFloat = GalleryMenuBar_H
+            let h:CGFloat = GalleryMenuBar_H - 0.5
             for (var i = 0; i < self.menuConfig.count; i++){
                 let btn = GalleryMenuButtton();
-                btn.frame = CGRect(x: CGFloat(i) * w, y: CGFloat(0.0), width: w, height: h)
+                let offsetX:CGFloat = i == 0 ? 0.0 : 0.5
+                btn.frame = CGRect(x: CGFloat(i) * w + offsetX, y: CGFloat(0.0), width: w - offsetX, height: h)
                 if let dic  = self.menuConfig[i] as? [NSObject:AnyObject]{
                     if let title = dic["title"] as? String{
                         btn.btnText = title
@@ -70,15 +71,17 @@ class GalleryMenuView: UIView {
     }
     override init(frame aRect: CGRect) {
         super.init(frame: aRect);
-        self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.2)
-        
-        let topline = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: 0.5))
-        topline.backgroundColor = UIColor.grayColor()
-        self.addSubview(topline)
-        
-        let buttomline = UIView(frame: CGRect(x: 0, y: self.bounds.size.height - 0.5, width: self.bounds.width, height: 0.5))
-        buttomline.backgroundColor = UIColor.grayColor()
-        self.addSubview(buttomline)
+        self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        let firstLevelBgView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: GalleryMenuBar_H))
+        firstLevelBgView.backgroundColor = NAVI_COLOR
+        self.addSubview(firstLevelBgView)
+//        let topline = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: 0.5))
+//        topline.backgroundColor = UIColor.grayColor()
+//        self.addSubview(topline)
+//        
+//        let buttomline = UIView(frame: CGRect(x: 0, y: self.bounds.size.height - 0.5, width: self.bounds.width, height: 0.5))
+//        buttomline.backgroundColor = UIColor.grayColor()
+//        self.addSubview(buttomline)
         
         self.subItemContainer = UIView(frame: CGRectZero)
         self.subItemContainer?.backgroundColor = UIColor.whiteColor()
@@ -131,7 +134,7 @@ class GalleryMenuView: UIView {
             }
         }
         let rowCount:Int = (data.count-1)/4 + 1
-        let offh = GalleryMenuItem_H*CGFloat(rowCount) + GalleryMenuItem_H*50.0/80.0/2.0
+        let offh = GalleryMenuItem_H*CGFloat(rowCount) + GalleryMenuItem_H*50.0/80.0/2.5
         self.subItemContainer?.frame = CGRectMake(0, GalleryMenuBar_H, self.frame.size.width, offh)
     }
     
