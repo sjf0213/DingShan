@@ -39,10 +39,8 @@ class GalleryMenuView: UIView {
             print("-----------userSelectConfig = \(userSelectConfig)")
             
             // 清空一级菜单，并重新生成一级菜单
-            for v in self.subviews{
-                if v is GalleryMenuButtton{
-                    v.removeFromSuperview()
-                }
+            for v in self.btnBgContainer!.subviews{
+                v.removeFromSuperview()
             }
             let w:CGFloat = self.bounds.width / CGFloat(self.menuConfig.count)
             let h:CGFloat = GalleryMenuBar_H - 0.5
@@ -57,7 +55,7 @@ class GalleryMenuView: UIView {
                             btn.keyName = key
                         }
                         btn.curSelected = false
-                        self.addSubview(btn);
+                        self.btnBgContainer?.addSubview(btn);
                     }
                 }
                 btn.tag = i+1;
@@ -147,7 +145,9 @@ class GalleryMenuView: UIView {
         item.curSelected = true
         // 更新设置
         self.userSelectConfig?.updateValue(item.tag, forKey: item.keyName)
+        // 更新Btn显示
         
+        // 点击动作，进入下一个页面
         UIView.animateWithDuration(0.3, animations: {() -> Void in }, completion: { (flag) -> Void in
             self.resetMenu()
             if (self.tapItemHandler != nil && self.userSelectConfig != nil) {
@@ -161,7 +161,7 @@ class GalleryMenuView: UIView {
         // 收起菜单
         self.isExpanded = false
         // 一级项置灰
-        for v in self.subviews{
+        for v in self.btnBgContainer!.subviews{
             if let b = v as? GalleryMenuButtton{
                 b.curSelected = false
             }
