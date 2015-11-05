@@ -22,8 +22,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     var singleConfig:[AnyObject]?
     var multiConfig:[AnyObject]?
     
-    override func loadView()
-    {
+    override func loadView(){
         super.loadView()
         self.view.backgroundColor = NAVI_COLOR
         self.backBtnHidden = true
@@ -111,7 +110,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                 parameter[one.0] = String(one.1)
             }
         }
-        print("Multi = = = = = = =parameter = \(parameter)", terminator: "")
+//        print("Multi = = = = = = =parameter = \(parameter)", terminator: "")
         var type = ""
         if 0 == seg?.selectedSegmentIndex{
             type = "multi"
@@ -120,7 +119,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         }
         let url = ServerApi.gallery_get_galary_list(type, dic:parameter)
         
-        print("\n---$$$---url = \(url)", terminator: "")
+//        print("\n---$$$---url = \(url)", terminator: "")
         AFDSClient.sharedInstance.GET(url, parameters: nil,
             success: {(task, JSON) -> Void in
         
@@ -131,7 +130,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                 }
                 // 如果请求数据有效
                 if let dic = JSON as? [NSObject:AnyObject]{
-                    print("\n responseJSON- - - - -data:", dic)
+//                    print("\n responseJSON- - - - -data:", dic)
                     self.processRequestResult(dic)
                 }
                 // 控件复位
@@ -161,7 +160,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                             }
                         }
                     }
-                    print("\n---===---self.dataList = \(self.dataList)")
+//                    print("\n---===---self.dataList = \(self.dataList)")
                     self.mainCollection?.reloadData()
                     
                     if (list.count < Default_Request_Count) {
@@ -180,35 +179,19 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     }
 // MARK: UICollectionViewDelegate
     func collectionView (collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
-    {
-//        let w:CGFloat = (self.view.bounds.size.width - (3 * gallery_gap)) * 0.5
-//        var h = w;
-//        if let data = self.dataList.objectAtIndex(indexPath.row) as? ImageInfoData{
-//            if (data.width != 0 && data.height != 0){// 如果没有宽高数据，则显示方形图片
-//                h = w * CGFloat(data.height) / CGFloat(data.width)
-//            }
-//        }
-//        let rt = CGSize(width: w, height: h)
-//        print("\n indexPath:\(indexPath) - - - - rt:\(rt)")
-//        return rt
-        
+        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
         var sz = CGSize(width: 100.0, height: 100.0)
         if let data = self.dataList.objectAtIndex(indexPath.row) as? ImageInfoData{
             sz = CGSize(width: data.width, height: data.height)
         }
-        print("\n indexPath:\(indexPath) - - - - size:\(sz)")
         return sz
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
-    {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return self.dataList.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
-    {
-//        print("+++++++++++++++cellForItemAtIndexPath-------\(indexPath)")
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(GalleryViewCellIdentifier, forIndexPath: indexPath) as? GalleryViewCell{
             cell.clearData()
             if let item = self.dataList.objectAtIndex(indexPath.row) as? ImageInfoData{
@@ -221,7 +204,6 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
-//        print("+++++++++++++++didSelectItemAtIndexPath-------\(indexPath)")
         if let imgData = dataList[indexPath.row] as? ImageInfoData{
             let detail = GalleryDetailController()
             self.navigationController?.pushViewController(detail, animated: true)

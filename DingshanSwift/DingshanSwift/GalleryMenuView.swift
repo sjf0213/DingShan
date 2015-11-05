@@ -8,8 +8,11 @@
 
 import Foundation
 class GalleryMenuView: UIView {
-    var tapItemHandler : ((config:[NSObject:AnyObject]) -> Void)?
-    var userSelectConfig:[NSObject:AnyObject]?
+    var tapItemHandler : ((config:[NSObject:AnyObject]) -> Void)?// 用户点击处理
+    var userSelectConfig:[NSObject:AnyObject]?// 记住用户当前的选择
+    var btnBgContainer:UIView?  // 一级按钮容器
+    var subItemContainer:UIView?// 二级按钮容器
+    // 二级菜单的展开与收起
     var isExpanded:Bool = false {
         didSet{
             if isExpanded{
@@ -20,8 +23,7 @@ class GalleryMenuView: UIView {
             }
         }
     }
-    var btnBgContainer:UIView?
-    var subItemContainer:UIView?
+    // 菜单内容的配置
     var menuConfig = [AnyObject](){
         didSet{
             // print("menuConfig = \(menuConfig)")
@@ -36,7 +38,7 @@ class GalleryMenuView: UIView {
                 }
             }
             self.userSelectConfig = dicOne
-            print("-----------userSelectConfig = \(userSelectConfig)")
+            // print("-----------userSelectConfig = \(userSelectConfig)")
             
             // 清空一级菜单，并重新生成一级菜单
             for v in self.btnBgContainer!.subviews{
@@ -67,6 +69,7 @@ class GalleryMenuView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
     override init(frame aRect: CGRect) {
         super.init(frame: aRect);
         self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
@@ -82,9 +85,12 @@ class GalleryMenuView: UIView {
         let tapRec = UITapGestureRecognizer(target: self, action: Selector("onTapMenu"))
         self.addGestureRecognizer(tapRec)
     }
+    
     override func layoutSubviews() {
         self.btnBgContainer?.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: GalleryMenuBar_H)
     }
+    
+    // 点击一级按钮
     func onTapBtn(sender:GalleryMenuButtton) {
         print(sender, terminator: "")
         let btn = sender
@@ -146,7 +152,13 @@ class GalleryMenuView: UIView {
         // 更新设置
         self.userSelectConfig?.updateValue(item.tag, forKey: item.keyName)
         // 更新Btn显示
-        
+        for v in self.btnBgContainer!.subviews{
+            if let b = v as? GalleryMenuButtton{
+                if b.keyName == item.keyName{
+                    b.btnText = item.titleForState(UIControlState.Normal)!
+                }
+            }
+        }
         // 点击动作，进入下一个页面
         UIView.animateWithDuration(0.3, animations: {() -> Void in }, completion: { (flag) -> Void in
             self.resetMenu()
@@ -172,6 +184,7 @@ class GalleryMenuView: UIView {
         }
     }
     
+    // 点击菜单覆盖的黑色半透明区域，收起菜单
     func onTapMenu(){
         self.resetMenu()
     }

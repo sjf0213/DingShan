@@ -28,8 +28,7 @@ class  GalleryViewCell : UICollectionViewCell
         self.addSubview(title!)
     }
     
-    func clearData()
-    {
+    func clearData(){
         bgImg?.image = nil;
         title?.text = nil;
     }
@@ -40,8 +39,7 @@ class  GalleryViewCell : UICollectionViewCell
         
     }
     
-    func loadCellData(info:ImageInfoData)
-    {
+    func loadCellData(info:ImageInfoData){
         title?.text = info.desc
         let url = NSURL(string: info.url.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
         bgImg?.sd_setImageWithURL(url)

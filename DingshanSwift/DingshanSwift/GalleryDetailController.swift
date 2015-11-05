@@ -9,11 +9,8 @@
 import Foundation
 
 class GalleryDetailController: DSViewController {
-    override func loadView()
-    {
+    override func loadView(){
         super.loadView()
         self.view.backgroundColor = UIColor.whiteColor()
-        
-        
     }
 }
