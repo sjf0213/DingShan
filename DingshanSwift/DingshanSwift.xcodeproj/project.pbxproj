@@ -59,7 +59,6 @@
 		F0507E5D1B67561A007E9024 /* KnowledgeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */; };
 		F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E641B675666007E9024 /* ForumFloorListController.swift */; };
 		F0507E691B6756D3007E9024 /* KnowledgeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */; };
-		F05455561B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F05455551B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m */; };
 		F085A34B1BBA8B2300E15705 /* forum_topic_add_new@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F085A3491BBA8B2300E15705 /* forum_topic_add_new@2x~iphone.png */; };
 		F085A34C1BBA8B2300E15705 /* forum_topic_add_new@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F085A34A1BBA8B2300E15705 /* forum_topic_add_new@3x~iphone.png */; };
 		F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08749B31B54B905006E1FD3 /* MainViewController.swift */; };
@@ -68,7 +67,6 @@
 		F092E2941B6A357B003D2D30 /* ForumFloorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F092E2931B6A357B003D2D30 /* ForumFloorCell.swift */; };
 		F09AB50B1B74A0BF00050A5C /* HomeGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AB50A1B74A0BF00050A5C /* HomeGridViewController.swift */; };
 		F09AB5111B74A0E400050A5C /* HomeGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AB5101B74A0E400050A5C /* HomeGridCell.swift */; };
-		F09ADD791B563452009B3A6D /* PhoneMainTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F09ADD781B563452009B3A6D /* PhoneMainTabBarButton.m */; };
 		F09ADDA11B5640DD009B3A6D /* CommonDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09ADDA01B5640DD009B3A6D /* CommonDefine.swift */; };
 		F09C7AA71B7CA60900648615 /* DSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C7AA61B7CA60900648615 /* DSViewController.swift */; };
 		F09C7AB01B7CAEDC00648615 /* KASegmentButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F09C7AAD1B7CAEDC00648615 /* KASegmentButton.m */; };
@@ -123,7 +121,6 @@
 		F0C691141BB8EEF900B61494 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C691131BB8EEF900B61494 /* Bolts.framework */; };
 		F0D00E751B917AAB0056BE3E /* TabBarToggleBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D00E741B917AAB0056BE3E /* TabBarToggleBtn.swift */; };
 		F0D00E7F1B9182570056BE3E /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D00E7E1B9182570056BE3E /* TabBarView.swift */; };
-		F0D00E991B9191B60056BE3E /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D00E981B9191B60056BE3E /* MainTabBar.swift */; };
 		F0D00EA51B91AF160056BE3E /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D00EA41B91AF160056BE3E /* TopBarView.swift */; };
 		F0D591B11BA185EE00C0346D /* ImageInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D591B01BA185EE00C0346D /* ImageInfoData.swift */; };
 		F0E574F81B6784BE000053B8 /* LoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E574F21B6784BE000053B8 /* LoadView.m */; };
@@ -232,8 +229,6 @@
 		F0507E5C1B67561A007E9024 /* KnowledgeDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailController.swift; sourceTree = "<group>"; };
 		F0507E641B675666007E9024 /* ForumFloorListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorListController.swift; sourceTree = "<group>"; };
 		F0507E681B6756D3007E9024 /* KnowledgeListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeListCell.swift; sourceTree = "<group>"; };
-		F05455541B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
-		F05455551B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
 		F085A3491BBA8B2300E15705 /* forum_topic_add_new@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forum_topic_add_new@2x~iphone.png"; path = "common/forum_topic_add_new@2x~iphone.png"; sourceTree = "<group>"; };
 		F085A34A1BBA8B2300E15705 /* forum_topic_add_new@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forum_topic_add_new@3x~iphone.png"; path = "common/forum_topic_add_new@3x~iphone.png"; sourceTree = "<group>"; };
 		F08749B21B54B590006E1FD3 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -243,8 +238,6 @@
 		F092E2931B6A357B003D2D30 /* ForumFloorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorCell.swift; sourceTree = "<group>"; };
 		F09AB50A1B74A0BF00050A5C /* HomeGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeGridViewController.swift; sourceTree = "<group>"; };
 		F09AB5101B74A0E400050A5C /* HomeGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeGridCell.swift; sourceTree = "<group>"; };
-		F09ADD771B563452009B3A6D /* PhoneMainTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneMainTabBarButton.h; sourceTree = "<group>"; };
-		F09ADD781B563452009B3A6D /* PhoneMainTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneMainTabBarButton.m; sourceTree = "<group>"; };
 		F09ADDA01B5640DD009B3A6D /* CommonDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonDefine.swift; sourceTree = "<group>"; };
 		F09C7AA61B7CA60900648615 /* DSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSViewController.swift; sourceTree = "<group>"; };
 		F09C7AAC1B7CAEDC00648615 /* KASegmentButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KASegmentButton.h; sourceTree = "<group>"; };
@@ -307,7 +300,6 @@
 		F0C691131BB8EEF900B61494 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Aliyun/Bolts.framework; sourceTree = "<group>"; };
 		F0D00E741B917AAB0056BE3E /* TabBarToggleBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarToggleBtn.swift; sourceTree = "<group>"; };
 		F0D00E7E1B9182570056BE3E /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
-		F0D00E981B9191B60056BE3E /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		F0D00EA41B91AF160056BE3E /* TopBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		F0D591B01BA185EE00C0346D /* ImageInfoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfoData.swift; sourceTree = "<group>"; };
 		F0E574F11B6784BE000053B8 /* LoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadView.h; sourceTree = "<group>"; };
@@ -475,7 +467,6 @@
 			children = (
 				F09AB50A1B74A0BF00050A5C /* HomeGridViewController.swift */,
 				F09AB5101B74A0E400050A5C /* HomeGridCell.swift */,
-				F0D00E981B9191B60056BE3E /* MainTabBar.swift */,
 				F0A1C3AA1B5CE296001597CF /* HomeTableCell.swift */,
 			);
 			name = unused;
@@ -487,8 +478,6 @@
 				F0E574F01B6784BE000053B8 /* Loading */,
 				F035ECF31BB29D8100A8D8EC /* OpenUDID.h */,
 				F035ECF41BB29D8100A8D8EC /* OpenUDID.m */,
-				F05455541B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.h */,
-				F05455551B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m */,
 				F09C7AAC1B7CAEDC00648615 /* KASegmentButton.h */,
 				F09C7AAD1B7CAEDC00648615 /* KASegmentButton.m */,
 				F09C7AAE1B7CAEDC00648615 /* KASegmentControl.h */,
@@ -501,8 +490,6 @@
 				417BEF9C1B5A535300F896A5 /* FileHelp.m */,
 				417BEF981B5A4F9300F896A5 /* ArrayDataSource.h */,
 				417BEF991B5A4F9300F896A5 /* ArrayDataSource.m */,
-				F09ADD771B563452009B3A6D /* PhoneMainTabBarButton.h */,
-				F09ADD781B563452009B3A6D /* PhoneMainTabBarButton.m */,
 			);
 			path = CommonFiles;
 			sourceTree = "<group>";
@@ -807,7 +794,6 @@
 				F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */,
 				F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */,
 				F028C1761B9C435B00B8CECA /* GalleryMenuView.swift in Sources */,
-				F09ADD791B563452009B3A6D /* PhoneMainTabBarButton.m in Sources */,
 				F035ECF51BB29D8100A8D8EC /* OpenUDID.m in Sources */,
 				F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */,
 				F0D00E751B917AAB0056BE3E /* TabBarToggleBtn.swift in Sources */,
@@ -824,7 +810,6 @@
 				F09C7AA71B7CA60900648615 /* DSViewController.swift in Sources */,
 				F0E574FA1B6784BE000053B8 /* RefreshView.m in Sources */,
 				F0C3C2511B5FA59500AB6E35 /* HomeController.swift in Sources */,
-				F0D00E991B9191B60056BE3E /* MainTabBar.swift in Sources */,
 				F00CFFB81BDF8A2D002C8ECC /* SDWebImageCompat.m in Sources */,
 				F028C1781B9C43CA00B8CECA /* GalleryMenuButton.swift in Sources */,
 				F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */,
@@ -843,7 +828,6 @@
 				F0E574F81B6784BE000053B8 /* LoadView.m in Sources */,
 				417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */,
 				F0E574F91B6784BE000053B8 /* RefreshIconView.m in Sources */,
-				F05455561B7F9588004282F4 /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				F007353D1BEA103000383687 /* CHTCollectionViewWaterfallLayout.swift in Sources */,
 				F00CFF811BDF182D002C8ECC /* AFSecurityPolicy.m in Sources */,
 				F00CFFC31BDF8A2D002C8ECC /* UIImageView+WebCache.m in Sources */,

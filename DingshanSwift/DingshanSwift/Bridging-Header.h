@@ -9,14 +9,12 @@
 #ifndef DingshanSwift_Bridging_Header_h
 #define DingshanSwift_Bridging_Header_h
 #import "../Commonfiles/OpenUDID.h"
-#import "../Commonfiles/PhoneMainTabBarButton.h"
 #import "../Commonfiles/ArrayDataSource.h"
 #import "../Commonfiles/FileHelp.h"
 #import "../Commonfiles/CommonUtility.h"
 #import "../Commonfiles/CocoaSecurity.h"
 #import "../Commonfiles/Loading/LoadSuit.h"
 #import "../Commonfiles/KASegmentControl.h"
-//#import "../CommonFiles/CHTCollectionViewWaterfallLayout.h"
 #import "../SDWebImage/WebImage.h"
 #import "../AFNetworking/AFNetworking.h"
 #import "../WeixinSDK/WXApi.h"
