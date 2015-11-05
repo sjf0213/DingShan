@@ -14,13 +14,13 @@ class GalleryMenuView: UIView {
         didSet{
             if isExpanded{
                 self.frame = CGRectMake(0, TopBar_H, self.bounds.size.width, UIScreen.mainScreen().bounds.height - TopBar_H)
-                
             }else{
                 self.frame = CGRectMake(0, TopBar_H, self.bounds.size.width, GalleryMenuBar_H)
                 self.subItemContainer?.frame = CGRectZero
             }
         }
     }
+    var btnBgContainer:UIView?
     var subItemContainer:UIView?
     var menuConfig = [AnyObject](){
         didSet{
@@ -65,23 +65,16 @@ class GalleryMenuView: UIView {
             }
         }
     }
-    
+    // MARK: init
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     override init(frame aRect: CGRect) {
         super.init(frame: aRect);
         self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
-        let firstLevelBgView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: GalleryMenuBar_H))
-        firstLevelBgView.backgroundColor = NAVI_COLOR
-        self.addSubview(firstLevelBgView)
-//        let topline = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: 0.5))
-//        topline.backgroundColor = UIColor.grayColor()
-//        self.addSubview(topline)
-//        
-//        let buttomline = UIView(frame: CGRect(x: 0, y: self.bounds.size.height - 0.5, width: self.bounds.width, height: 0.5))
-//        buttomline.backgroundColor = UIColor.grayColor()
-//        self.addSubview(buttomline)
+        self.btnBgContainer = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: GalleryMenuBar_H))
+        self.btnBgContainer?.backgroundColor = NAVI_COLOR
+        self.addSubview(self.btnBgContainer!)
         
         self.subItemContainer = UIView(frame: CGRectZero)
         self.subItemContainer?.backgroundColor = UIColor.whiteColor()
@@ -91,7 +84,9 @@ class GalleryMenuView: UIView {
         let tapRec = UITapGestureRecognizer(target: self, action: Selector("onTapMenu"))
         self.addGestureRecognizer(tapRec)
     }
-    
+    override func layoutSubviews() {
+        self.btnBgContainer?.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: GalleryMenuBar_H)
+    }
     func onTapBtn(sender:GalleryMenuButtton) {
         print(sender, terminator: "")
         let btn = sender
@@ -101,10 +96,11 @@ class GalleryMenuView: UIView {
             // 生成自己的二级菜单
             sender.curSelected = true;
             if let dic = self.menuConfig[index] as? [NSObject:AnyObject]{
-                self.isExpanded = true
+                
                 if let subItems = dic["items"] as? [AnyObject]{
                     self.generateMenuItems(subItems, keyName: btn.keyName)
                 }
+                self.isExpanded = true
             }
         }
     }
