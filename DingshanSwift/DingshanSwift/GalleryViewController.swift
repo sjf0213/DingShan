@@ -71,6 +71,8 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         menuView.tapItemHandler = {(config:[NSObject:AnyObject]) -> Void in
             print("-----------Changed ! ! !userSelectConfig = \(config)")
             self.currentPage = 0
+            self.dataList.removeAllObjects()
+            self.mainCollection?.reloadData()
             self.startRequest(config)
         }
     }
@@ -84,7 +86,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     func changeBySegIndex(index:Int)->Void{
         self.currentPage = 0
         self.dataList.removeAllObjects()
-        mainCollection?.reloadData()
+        self.mainCollection?.reloadData()
         if 0 == index{
             menuView.menuConfig = multiConfig!
         }
@@ -110,7 +112,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                 parameter[one.0] = String(one.1)
             }
         }
-//        print("Multi = = = = = = =parameter = \(parameter)", terminator: "")
+        // print("Multi = = = = = = =parameter = \(parameter)", terminator: "")
         var type = ""
         if 0 == seg?.selectedSegmentIndex{
             type = "multi"
@@ -119,18 +121,18 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         }
         let url = ServerApi.gallery_get_galary_list(type, dic:parameter)
         
-//        print("\n---$$$---url = \(url)", terminator: "")
+        // print("\n---$$$---url = \(url)", terminator: "")
         AFDSClient.sharedInstance.GET(url, parameters: nil,
             success: {(task, JSON) -> Void in
         
-//                print("\n responseJSON- - - - -data = \(JSON)")
+                print("\n responseJSON- - - - -data = \(JSON)")
                 // 下拉刷新时候清空旧数据（请求失败也清空）
                 if (self.currentPage == 0 && self.dataList.count > 0){
                     self.dataList.removeAllObjects()
                 }
                 // 如果请求数据有效
                 if let dic = JSON as? [NSObject:AnyObject]{
-//                    print("\n responseJSON- - - - -data:", dic)
+                    // print("\n responseJSON- - - - -data:", dic)
                     self.processRequestResult(dic)
                 }
                 // 控件复位
@@ -160,7 +162,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                             }
                         }
                     }
-//                    print("\n---===---self.dataList = \(self.dataList)")
+                    // print("\n---===---self.dataList = \(self.dataList)")
                     self.mainCollection?.reloadData()
                     
                     if (list.count < Default_Request_Count) {
@@ -177,7 +179,8 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
             self.mainCollection?.reloadData()
         }
     }
-// MARK: UICollectionViewDelegate
+    
+    // MARK: UICollectionViewDelegate
     func collectionView (collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
         var sz = CGSize(width: 100.0, height: 100.0)
