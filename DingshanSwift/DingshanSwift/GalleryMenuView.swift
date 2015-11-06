@@ -160,7 +160,8 @@ class GalleryMenuView: UIView {
             }
         }
         // 点击动作，进入下一个页面
-        UIView.animateWithDuration(0.3, animations: {() -> Void in }, completion: { (flag) -> Void in
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+            
             self.resetMenu()
             if (self.tapItemHandler != nil && self.userSelectConfig != nil) {
                 self.tapItemHandler?(config:self.userSelectConfig!)

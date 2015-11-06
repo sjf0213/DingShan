@@ -15,12 +15,13 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     var seg:KASegmentControl?
     var menuView = GalleryMenuView()
     var mainCollection:UICollectionView?
-    var refreshView:RefreshView?
-    var loadMoreView:LoadView?
+//    var refreshView:RefreshView?
+//    var loadMoreView:LoadView?
     var currentPage:NSInteger = 0
     var dataList =  NSMutableArray()
     var singleConfig:[AnyObject]?
     var multiConfig:[AnyObject]?
+    var configCache:[NSObject:AnyObject]?
     
     override func loadView(){
         super.loadView()
@@ -65,16 +66,32 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         mainCollection?.autoresizingMask = [UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleWidth]
         mainCollection?.alwaysBounceVertical = true
         
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = THEME_COLOR
+        
+        mainCollection?.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            self?.currentPage = 0
+            self?.dataList.removeAllObjects()
+            self?.mainCollection?.reloadData()
+            self?.startRequest(self?.configCache)
+            }, loadingView: loadingView)
+        mainCollection?.dg_setPullToRefreshBackgroundColor(NAVI_COLOR)
+        mainCollection?.dg_setPullToRefreshFillColor(NAVI_COLOR)
         self.view.addSubview(mainCollection!)
         self.view.bringSubviewToFront(menuView)
         
-        menuView.tapItemHandler = {(config:[NSObject:AnyObject]) -> Void in
+        menuView.tapItemHandler = {[weak self](config:[NSObject:AnyObject]) -> Void in
             print("-----------Changed ! ! !userSelectConfig = \(config)")
-            self.currentPage = 0
-            self.dataList.removeAllObjects()
-            self.mainCollection?.reloadData()
-            self.startRequest(config)
+            self?.configCache = config
+            self?.currentPage = 0
+            self?.dataList.removeAllObjects()
+            self?.mainCollection?.reloadData()
+            self?.startRequest(config)
         }
+    }
+    
+    deinit {
+        self.mainCollection?.dg_removePullToRefresh()
     }
     
     override func viewDidLoad() {
@@ -136,10 +153,12 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                     self.processRequestResult(dic)
                 }
                 // 控件复位
-                self.refreshView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainCollection)
-                self.loadMoreView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainCollection)
-            }, failure: {( task, error) -> Void in
+                self.mainCollection?.dg_stopLoading()
+//                self.refreshView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainCollection)
+//                self.loadMoreView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainCollection)
+            }, failure: {[weak self]( task, error) -> Void in
                 print("\n failure: TIP --- e:\(error)")
+                self?.mainCollection?.dg_stopLoading()
         })
     }
     
@@ -165,13 +184,13 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                     // print("\n---===---self.dataList = \(self.dataList)")
                     self.mainCollection?.reloadData()
                     
-                    if (list.count < Default_Request_Count) {
-                        self.loadMoreView?.isCanUse = false
-                        self.loadMoreView?.hidden = true
-                    }else{
-                        self.loadMoreView?.isCanUse = true
-                        self.loadMoreView?.hidden = false
-                    }
+//                    if (list.count < Default_Request_Count) {
+//                        self.loadMoreView?.isCanUse = false
+//                        self.loadMoreView?.hidden = true
+//                    }else{
+//                        self.loadMoreView?.isCanUse = true
+//                        self.loadMoreView?.hidden = false
+//                    }
                 }
             }
         }else{

@@ -73,6 +73,11 @@
 		F0A20AD31B62499E00F1F311 /* CommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AD21B62499E00F1F311 /* CommonUtility.m */; };
 		F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AD51B624A9500F1F311 /* CocoaSecurity.m */; };
 		F0A20AD81B62548800F1F311 /* KnowledgeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */; };
+		F0A2E1911BEC797E006EF631 /* DGElasticPullToRefreshConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A2E18C1BEC797E006EF631 /* DGElasticPullToRefreshConstants.swift */; };
+		F0A2E1921BEC797E006EF631 /* DGElasticPullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A2E18D1BEC797E006EF631 /* DGElasticPullToRefreshExtensions.swift */; };
+		F0A2E1931BEC797E006EF631 /* DGElasticPullToRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A2E18E1BEC797E006EF631 /* DGElasticPullToRefreshLoadingView.swift */; };
+		F0A2E1941BEC797E006EF631 /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A2E18F1BEC797E006EF631 /* DGElasticPullToRefreshLoadingViewCircle.swift */; };
+		F0A2E1951BEC797E006EF631 /* DGElasticPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A2E1901BEC797E006EF631 /* DGElasticPullToRefreshView.swift */; };
 		F0A5E13A1BA045FA00BDA6BA /* ForumNewThreadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A5E1391BA045FA00BDA6BA /* ForumNewThreadController.swift */; };
 		F0A5E1401BA04B3800BDA6BA /* ForumFloorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A5E13F1BA04B3800BDA6BA /* ForumFloorData.swift */; };
 		F0A5E1421BA04B4800BDA6BA /* ForumReplyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A5E1411BA04B4800BDA6BA /* ForumReplyData.swift */; };
@@ -244,6 +249,11 @@
 		F0A20AD41B624A9500F1F311 /* CocoaSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaSecurity.h; sourceTree = "<group>"; };
 		F0A20AD51B624A9500F1F311 /* CocoaSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaSecurity.m; sourceTree = "<group>"; };
 		F0A20AD71B62548800F1F311 /* KnowledgeListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeListController.swift; sourceTree = "<group>"; };
+		F0A2E18C1BEC797E006EF631 /* DGElasticPullToRefreshConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshConstants.swift; sourceTree = "<group>"; };
+		F0A2E18D1BEC797E006EF631 /* DGElasticPullToRefreshExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshExtensions.swift; sourceTree = "<group>"; };
+		F0A2E18E1BEC797E006EF631 /* DGElasticPullToRefreshLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingView.swift; sourceTree = "<group>"; };
+		F0A2E18F1BEC797E006EF631 /* DGElasticPullToRefreshLoadingViewCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingViewCircle.swift; sourceTree = "<group>"; };
+		F0A2E1901BEC797E006EF631 /* DGElasticPullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshView.swift; sourceTree = "<group>"; };
 		F0A5E1391BA045FA00BDA6BA /* ForumNewThreadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumNewThreadController.swift; sourceTree = "<group>"; };
 		F0A5E13F1BA04B3800BDA6BA /* ForumFloorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumFloorData.swift; sourceTree = "<group>"; };
 		F0A5E1411BA04B4800BDA6BA /* ForumReplyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumReplyData.swift; sourceTree = "<group>"; };
@@ -500,6 +510,18 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		F0A2E18B1BEC797E006EF631 /* DGElasticPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				F0A2E18C1BEC797E006EF631 /* DGElasticPullToRefreshConstants.swift */,
+				F0A2E18D1BEC797E006EF631 /* DGElasticPullToRefreshExtensions.swift */,
+				F0A2E18E1BEC797E006EF631 /* DGElasticPullToRefreshLoadingView.swift */,
+				F0A2E18F1BEC797E006EF631 /* DGElasticPullToRefreshLoadingViewCircle.swift */,
+				F0A2E1901BEC797E006EF631 /* DGElasticPullToRefreshView.swift */,
+			);
+			path = DGElasticPullToRefresh;
+			sourceTree = "<group>";
+		};
 		F0A3AF5B1BE1C08700C252FD /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +587,7 @@
 				F0AB96691BA82DF000C72260 /* WeixinSDK */,
 				F00CFF921BDF8A2D002C8ECC /* SDWebImage */,
 				F00CFF691BDF182D002C8ECC /* AFNetworking */,
+				F0A2E18B1BEC797E006EF631 /* DGElasticPullToRefresh */,
 				F0C691131BB8EEF900B61494 /* Bolts.framework */,
 				F0C691111BB8E38D00B61494 /* AliyunOSSiOS.framework */,
 				F0AB96771BA835C200C72260 /* UIKit.framework */,
@@ -611,7 +634,7 @@
 			children = (
 				F0963A0E1BAABC4600AFCFD8 /* App */,
 				F007354B1BEB380A00383687 /* UIFrame */,
-				F0D00E7A1B917AC00056BE3E /* General */,
+				F0D00E7A1B917AC00056BE3E /* Network */,
 				F0D00E7B1B917B010056BE3E /* Home */,
 				F0D00E7C1B917B180056BE3E /* Gallery */,
 				F0D00E7D1B917B540056BE3E /* Profile */,
@@ -620,13 +643,13 @@
 			path = DingshanSwift;
 			sourceTree = "<group>";
 		};
-		F0D00E7A1B917AC00056BE3E /* General */ = {
+		F0D00E7A1B917AC00056BE3E /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				F03B1EC11BDDC30A00430F6C /* ServerApi.swift */,
 				F00CFF901BDF1FBD002C8ECC /* AFDSClient.swift */,
 			);
-			name = General;
+			name = Network;
 			sourceTree = "<group>";
 		};
 		F0D00E7B1B917B010056BE3E /* Home */ = {
@@ -780,6 +803,7 @@
 				F00CFFC11BDF8A2D002C8ECC /* UIImage+WebP.m in Sources */,
 				F09C7AB11B7CAEDC00648615 /* KASegmentControl.m in Sources */,
 				F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */,
+				F0A2E1921BEC797E006EF631 /* DGElasticPullToRefreshExtensions.swift in Sources */,
 				F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */,
 				F028C1761B9C435B00B8CECA /* GalleryMenuView.swift in Sources */,
 				F035ECF51BB29D8100A8D8EC /* OpenUDID.m in Sources */,
@@ -789,6 +813,7 @@
 				F03E68DC1BE71259001D04D1 /* UIFont+FontAwesome.m in Sources */,
 				F0B6FABC1B81F3D000EE2439 /* GalleryViewCell.swift in Sources */,
 				F00CFFBD1BDF8A2D002C8ECC /* SDWebImagePrefetcher.m in Sources */,
+				F0A2E1931BEC797E006EF631 /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 				F03E68DA1BE71259001D04D1 /* FAImageView.m in Sources */,
 				F09ADDA11B5640DD009B3A6D /* CommonDefine.swift in Sources */,
 				F00CFF7F1BDF182D002C8ECC /* AFHTTPSessionManager.m in Sources */,
@@ -800,10 +825,12 @@
 				F0C3C2511B5FA59500AB6E35 /* HomeController.swift in Sources */,
 				F00CFFB81BDF8A2D002C8ECC /* SDWebImageCompat.m in Sources */,
 				F028C1781B9C43CA00B8CECA /* GalleryMenuButton.swift in Sources */,
+				F0A2E1951BEC797E006EF631 /* DGElasticPullToRefreshView.swift in Sources */,
 				F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */,
 				F09C7AB01B7CAEDC00648615 /* KASegmentButton.m in Sources */,
 				F03E68DD1BE71259001D04D1 /* UIImage+FontAwesome.m in Sources */,
 				F092E2941B6A357B003D2D30 /* ForumFloorCell.swift in Sources */,
+				F0A2E1911BEC797E006EF631 /* DGElasticPullToRefreshConstants.swift in Sources */,
 				F00CFFB51BDF8A2D002C8ECC /* MKAnnotationView+WebCache.m in Sources */,
 				F00CFFC21BDF8A2D002C8ECC /* UIImageView+HighlightedWebCache.m in Sources */,
 				F0A5E1481BA0536000BDA6BA /* ForumReplyCell.swift in Sources */,
@@ -818,6 +845,7 @@
 				F0E574F91B6784BE000053B8 /* RefreshIconView.m in Sources */,
 				F007353D1BEA103000383687 /* CHTCollectionViewWaterfallLayout.swift in Sources */,
 				F00CFF811BDF182D002C8ECC /* AFSecurityPolicy.m in Sources */,
+				F0A2E1941BEC797E006EF631 /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
 				F00CFFC31BDF8A2D002C8ECC /* UIImageView+WebCache.m in Sources */,
 				F00CFFC41BDF8A2D002C8ECC /* UIView+WebCacheOperation.m in Sources */,
 				F00CFF851BDF182D002C8ECC /* AFURLSessionManager.m in Sources */,
