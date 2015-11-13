@@ -16,9 +16,8 @@
 #define cEqualFloats(f1, f2, epsilon)    ( fabs( (f1) - (f2) ) < epsilon )
 #define cNotEqualFloats(f1, f2, epsilon)    ( !cEqualFloats(f1, f2, epsilon) )
 
-
-
-
+#define StartPosition 5.0
+#define PulltoRefreshThreshold 60.0
 @interface UzysRadialProgressActivityIndicatorBackgroundLayer : CALayer
 
 @property (nonatomic,assign) CGFloat outlineWidth;
@@ -70,7 +69,7 @@
 @property (nonatomic, strong) UzysRadialProgressActivityIndicatorBackgroundLayer *backgroundLayer;
 @property (nonatomic, strong) CAShapeLayer *shapeLayer;
 @property (nonatomic, strong) CALayer *imageLayer;
-//@property (nonatomic, assign) double progress;
+@property (nonatomic, assign) double progress;
 
 @end
 @implementation UzysRadialProgressActivityIndicator
@@ -114,7 +113,7 @@
     self.backgroundLayer = backgroundLayer;
     
     if(!self.imageIcon)
-        self.imageIcon = [UIImage imageNamed:@"centerIcon"];
+        self.imageIcon = nil;//[UIImage imageNamed:@"centerIcon"];
     
     //init icon layer
     CALayer *imageLayer = [CALayer layer];
@@ -152,7 +151,7 @@
 - (void)updatePath {
     CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     
-    UIBezierPath *bezierPath = [UIBezierPath bezierPathWithArcCenter:center radius:(self.bounds.size.width/2 - self.borderWidth)  startAngle:M_PI - DEGREES_TO_RADIANS(-90) endAngle:M_PI -DEGREES_TO_RADIANS(360-90) clockwise:NO];
+    UIBezierPath *bezierPath = [UIBezierPath bezierPathWithArcCenter:center radius:(self.bounds.size.width/2 - self.borderWidth)  startAngle:2*M_PI - DEGREES_TO_RADIANS(-90) endAngle:2*M_PI -DEGREES_TO_RADIANS(360-90) clockwise:NO];
 
     self.shapeLayer.path = bezierPath.CGPath;
 }
@@ -160,22 +159,32 @@
 #pragma mark - ScrollViewInset
 - (void)setupScrollViewContentInsetForLoadingIndicator:(actionHandler)handler animation:(BOOL)animation
 {
-    
     UIEdgeInsets currentInsets = self.scrollView.contentInset;
-    float idealOffset = self.originalTopInset + self.bounds.size.height + 20.0;
-    currentInsets.top = idealOffset;
     
+    if (self.posType == indicator_top) {
+        float idealOffset = self.originalTopInset + self.bounds.size.height + 20.0;
+        NSLog(@"A----idealOffsetA = %f", idealOffset);
+        currentInsets.top = idealOffset;
+    }else if(self.posType == indicator_bottom) {
+        float idealOffset = self.originalBottomInset + self.bounds.size.height + 20.0;
+        NSLog(@"B----idealOffsetB = %f", idealOffset);
+        currentInsets.bottom = idealOffset;
+    }
     [self setScrollViewContentInset:currentInsets handler:handler animation:animation];
 }
 - (void)resetScrollViewContentInset:(actionHandler)handler animation:(BOOL)animation
 {
     UIEdgeInsets currentInsets = self.scrollView.contentInset;
-    currentInsets.top = self.originalTopInset;
+    if (self.posType == indicator_top) {
+        currentInsets.top = self.originalTopInset;
+    }else if (self.posType == indicator_bottom) {
+        currentInsets.bottom = self.originalBottomInset;
+    }
     [self setScrollViewContentInset:currentInsets handler:handler animation:animation];
 }
 - (void)setScrollViewContentInset:(UIEdgeInsets)contentInset handler:(actionHandler)handler animation:(BOOL)animation
 {
-    NSLog(@"offset %f",self.scrollView.contentOffset.y);
+    NSLog(@"AB----set Content Inset = contentInset.top = %f, contentInset.bottom = %f", contentInset.top, contentInset.bottom);
     if(animation)
     {
         [UIView animateWithDuration:0.3
@@ -184,7 +193,11 @@
                          animations:^{
                              self.scrollView.contentInset = contentInset;
                              if(self.state == UZYSPullToRefreshStateLoading && self.scrollView.contentOffset.y <10) {
-                                 self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x, -1*contentInset.top);
+                                 if (self.posType == indicator_top) {
+                                     self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x, -1*contentInset.top);
+                                 }else if (self.posType == indicator_bottom) {
+                                     self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x, -1*contentInset.bottom);
+                                 }
                              }
                          }
                          completion:^(BOOL finished) {
@@ -196,9 +209,12 @@
     {
         self.scrollView.contentInset = contentInset;
         if(self.state == UZYSPullToRefreshStateLoading && self.scrollView.contentOffset.y <10) {
-            self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x, -1*contentInset.top);
+            if (self.posType == indicator_top) {
+                self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x, -1*contentInset.top);
+            }else if (self.posType == indicator_bottom) {
+                self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x, -1*contentInset.bottom);
+            }
         }
-        
         if(handler)
             handler();
     }
@@ -207,7 +223,8 @@
 #pragma mark - property
 - (void)setProgress:(double)progress
 {
-    static double prevProgress;
+    static double prevProgressTop;
+    static double prevProgressBottom;
     
     if(progress > 1.0)
     {
@@ -215,12 +232,19 @@
     }
     
     self.alpha = 1.0 * progress;
+    
+    double prev = 0.0;
+    if (self.posType == indicator_top) {
+        prev = prevProgressTop;
+    }else if (self.posType == indicator_bottom) {
+        prev = prevProgressBottom;
+    }
 
     if (progress >= 0 && progress <=1.0) {
         //rotation Animation
         CABasicAnimation *animationImage = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-        animationImage.fromValue = [NSNumber numberWithFloat:DEGREES_TO_RADIANS(180-180*prevProgress)];
-        animationImage.toValue = [NSNumber numberWithFloat:DEGREES_TO_RADIANS(180-180*progress)];
+        animationImage.fromValue = [NSNumber numberWithFloat:DEGREES_TO_RADIANS(2*M_PI - 360*prev)];
+        animationImage.toValue = [NSNumber numberWithFloat:DEGREES_TO_RADIANS(2*M_PI - 360*progress)];
         animationImage.duration = 0.15;
         animationImage.removedOnCompletion = NO;
         animationImage.fillMode = kCAFillModeForwards;
@@ -239,7 +263,12 @@
         
     }
     _progress = progress;
-    prevProgress = progress;
+    if (self.posType == indicator_top) {
+        prevProgressTop = progress;
+    }else if (self.posType == indicator_bottom) {
+        prevProgressBottom = progress;
+    }
+    
 }
 -(void)setLayerOpacity:(CGFloat)opacity
 {
@@ -260,7 +289,11 @@
 - (void)setProgressThreshold:(CGFloat)progressThreshold
 {
     _progressThreshold = progressThreshold;
-//    self.frame = CGRectMake(self.frame.origin.x, self.progressThreshold, self.frame.size.width, self.frame.size.height);
+    if (self.posType == indicator_top){
+        self.frame = CGRectMake(self.frame.origin.x, self.progressThreshold, self.frame.size.width, self.frame.size.height);
+    }else if (self.posType == indicator_bottom){
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.size.height-self.progressThreshold, self.frame.size.width, self.frame.size.height);
+    }
 }
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -282,47 +315,85 @@
 }
 - (void)scrollViewDidScroll:(CGPoint)contentOffset
 {
-//    static double prevProgress;
-//    CGFloat yOffset = contentOffset.y;
-//    self.progress = ((yOffset+ self.originalTopInset + StartPosition)/-self.progressThreshold);
-//    self.center = CGPointMake(self.center.x, (contentOffset.y+ self.originalTopInset)/2);
-//    
-//    switch (_state) {
-//        case UZYSPullToRefreshStateStopped: //finish
-//            break;
-//        case UZYSPullToRefreshStateNone: //detect action
-//        {
-//            if(self.scrollView.isDragging && yOffset <0 )
-//            {
-//                self.state = UZYSPullToRefreshStateTriggering;
-//            }
-//        }
-//        case UZYSPullToRefreshStateTriggering: //progress
-//        {
-//            if(self.progress >= 1.0)
-//                self.state = UZYSPullToRefreshStateTriggered;
-//        }
-//            break;
-//        case UZYSPullToRefreshStateTriggered: //fire actionhandler
-//            if(self.scrollView.dragging == NO && prevProgress > 0.99)
-//            {
-//                [self actionTriggeredState];
-//            }
-//            break;
-//        case UZYSPullToRefreshStateLoading: //wait until stopIndicatorAnimation
-//            break;
-//        case UZYSPullToRefreshStateCanFinish:
-//            if(self.progress < 0.01 + ((CGFloat)StartPosition/-self.progressThreshold) && self.progress > -0.01 +((CGFloat)StartPosition/-self.progressThreshold))
-//            {
-//                self.state = UZYSPullToRefreshStateNone;
-//            }
-//
-//            break;
-//        default:
-//            break;
-//    }
-//    prevProgress = self.progress;
+    static double prevProgressTop;
+    static double prevProgressBottom;
+    CGFloat yOffset = contentOffset.y;
+    CGFloat ll = self.scrollView.contentSize.height-self.scrollView.frame.size.height;
+    if (self.posType == indicator_top){
+        self.progress = ((yOffset + self.originalTopInset + StartPosition)/-self.progressThreshold);
+        self.center = CGPointMake(self.center.x, (contentOffset.y + self.originalTopInset)/2);
+//        NSLog(@"A- - - - yOffset = %.1f,  _state = %zd, self.progress = %.2f, prevProgressTop = %.2f", yOffset, self.state, self.progress, prevProgressTop);
+        
+    }else if (self.posType == indicator_bottom){
+        self.progress = (MAX((yOffset  - ll - self.originalBottomInset),  StartPosition) / self.progressThreshold);
+        NSLog(@"B- - - - yOffset = %.1f, ll = %.1f,  _state = %zd, self.progress = %.2f", yOffset, ll, self.state, self.progress);
+        self.center = CGPointMake(self.center.x,  self.scrollView.contentSize.height + 20);
+        NSLog(@"B-------yOffset = %.1f, self.frame = (%.1f, %.1f)(%.1f, %.1f),",yOffset, self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+    }
     
+    switch (_state) {
+        case UZYSPullToRefreshStateStopped: //finish
+            break;
+        case UZYSPullToRefreshStateNone: //detect action
+        {
+            if (self.posType == indicator_top){
+                if(self.scrollView.isDragging && yOffset <0 ){
+                    self.state = UZYSPullToRefreshStateTriggering;
+                }
+            }else if (self.posType == indicator_bottom){
+                if (self.scrollView.isDragging && yOffset > ll){
+//                    NSLog(@"B-------UZYSPullToRefreshStateTriggering");
+                    self.state = UZYSPullToRefreshStateTriggering;
+                }
+            }
+        }
+        case UZYSPullToRefreshStateTriggering: //progress
+        {
+            if(self.progress >= 1.0){
+//                NSLog(@"B-------UZYS PullToRefresh State Triggered");
+                self.state = UZYSPullToRefreshStateTriggered;
+            }
+        }
+            break;
+        case UZYSPullToRefreshStateTriggered: //fire actionhandler
+        {
+//            NSLog(@"AB-------self.scrollView.dragging = %zd, prevProgressTop = %f, prevProgressBottom = %f", self.scrollView.dragging, prevProgressTop, prevProgressBottom);
+            float prev = 0;
+            if (self.posType == indicator_top){
+                prev = prevProgressTop;
+            }else if (self.posType == indicator_bottom){
+                prev = prevProgressBottom;
+            }
+            if(self.scrollView.dragging == NO && prev > 0.99)
+            {
+                [self actionTriggeredState];
+            }
+        }
+            break;
+        case UZYSPullToRefreshStateLoading: //wait until stopIndicatorAnimation
+            break;
+        case UZYSPullToRefreshStateCanFinish:
+            NSLog(@"AB-------self.progress = %f, compare to: %f", self.progress, ((CGFloat)StartPosition/-self.progressThreshold));
+            CGFloat std = 0.0;
+            if (self.posType == indicator_top){
+                std = ((CGFloat)StartPosition/-self.progressThreshold);
+            }else if (self.posType == indicator_bottom){
+                std = ((CGFloat)StartPosition/self.progressThreshold);
+            }
+            if(fabs(self.progress - std) < 0.01)
+            {
+                self.state = UZYSPullToRefreshStateNone;
+            }
+
+            break;
+        default:
+            break;
+    }
+    if (self.posType == indicator_top){
+        prevProgressTop = self.progress;
+    }else if (self.posType == indicator_bottom){
+        prevProgressBottom = self.progress;
+    }
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {

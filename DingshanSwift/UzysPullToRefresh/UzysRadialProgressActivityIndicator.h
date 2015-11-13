@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define StartPosition 5.0
-#define PulltoRefreshThreshold 60.0
-
 typedef void (^actionHandler)(void);
 typedef NS_ENUM(NSUInteger, UZYSPullToRefreshState) {
     UZYSPullToRefreshStateNone =0,
@@ -21,10 +18,15 @@ typedef NS_ENUM(NSUInteger, UZYSPullToRefreshState) {
     UZYSPullToRefreshStateCanFinish,
 };
 
+typedef NS_ENUM(NSUInteger, IndicatorPosType) {
+    indicator_top =0,
+    indicator_bottom,
+};
 
 @interface UzysRadialProgressActivityIndicator : UIView
 
 @property (nonatomic,assign) BOOL isObserving;
+@property (nonatomic,assign) IndicatorPosType posType;
 
 @property (nonatomic,assign) CGFloat originalTopInset;
 @property (nonatomic,assign) CGFloat landscapeTopInset;
@@ -43,7 +45,7 @@ typedef NS_ENUM(NSUInteger, UZYSPullToRefreshState) {
 @property (nonatomic,assign) CGFloat borderWidth;
 @property (nonatomic,assign) CGFloat progressThreshold;
 
-@property (nonatomic, assign) double progress;
+
 - (void)stopIndicatorAnimation;
 - (void)manuallyTriggered;
 
@@ -51,5 +53,4 @@ typedef NS_ENUM(NSUInteger, UZYSPullToRefreshState) {
 - (void)setSize:(CGSize) size;
 
 - (void)orientationChange:(UIDeviceOrientation)orientation;
--(void)actionTriggeredState;
 @end

@@ -34,8 +34,9 @@ static char UIScrollViewPullToLoadMoreView;
 {
     if(self.pullToRefreshView == nil)
     {
-        UzysRadialProgressActivityIndicatorA *view = [[UzysRadialProgressActivityIndicatorA alloc] initWithImage:[UIImage imageNamed:@"centerIcon"]];
+        UzysRadialProgressActivityIndicator *view = [[UzysRadialProgressActivityIndicator alloc] initWithImage:[UIImage imageNamed:@"centerIcon"]];
         view.pullToRefreshHandler = handler;
+        view.posType = indicator_top;
         view.scrollView = self;
         view.frame = CGRectMake((self.bounds.size.width - view.bounds.size.width)/2,
                                 -view.bounds.size.height, view.bounds.size.width, view.bounds.size.height);
@@ -89,7 +90,8 @@ static char UIScrollViewPullToLoadMoreView;
 {
     if(self.pullToLoadMoreView == nil)
     {
-        UzysRadialProgressActivityIndicatorB *view = [[UzysRadialProgressActivityIndicatorB alloc] initWithImage:[UIImage imageNamed:@"centerIcon"]];
+        UzysRadialProgressActivityIndicator *view = [[UzysRadialProgressActivityIndicator alloc] initWithImage:[UIImage imageNamed:@"centerIcon"]];
+        view.posType = indicator_bottom;
         view.pullToRefreshHandler = handler;
         view.scrollView = self;
         view.frame = CGRectMake((self.bounds.size.width - view.bounds.size.width)/2,
@@ -111,7 +113,7 @@ static char UIScrollViewPullToLoadMoreView;
                 if(cEqualFloats(self.contentInset.top, 0.00, cDefaultFloatComparisonEpsilon) &&cEqualFloats(self.frame.origin.y, 0.0, cDefaultFloatComparisonEpsilon))
                 {
                     view.portraitBottomInset = 64.0;
-                    view.originalBottomInset = 64.0;
+                    view.originalBottomInset = 0.0;
                     
                     if(IS_IPHONE6PLUS)
                         view.landscapeBottomInset = 44.0;
@@ -135,9 +137,19 @@ static char UIScrollViewPullToLoadMoreView;
 {
     [self.pullToRefreshView manuallyTriggered];
 }
+
+- (void)triggerPullToLoadMore
+{
+    [self.pullToLoadMoreView manuallyTriggered];
+}
+
 - (void)stopRefreshAnimation
 {
     [self.pullToRefreshView stopIndicatorAnimation];
+}
+
+- (void)stopLoadMoreAnimation
+{
     [self.pullToLoadMoreView stopIndicatorAnimation];
 }
 #pragma mark - property

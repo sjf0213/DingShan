@@ -108,6 +108,9 @@
 		F0AB96781BA835C200C72260 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AB96771BA835C200C72260 /* UIKit.framework */; };
 		F0AB967A1BA835D900C72260 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AB96791BA835D900C72260 /* Foundation.framework */; };
 		F0AB967C1BA8362800C72260 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AB967B1BA8362800C72260 /* libc++.dylib */; };
+		F0AB9B121BF5C6FC004424FE /* DSActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AB9B0D1BF5C6FC004424FE /* DSActivityIndicatorView.m */; };
+		F0AB9B131BF5C6FC004424FE /* UIScrollView+UzysCircularProgressPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AB9B0F1BF5C6FC004424FE /* UIScrollView+UzysCircularProgressPullToRefresh.m */; };
+		F0AB9B141BF5C6FC004424FE /* UzysRadialProgressActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AB9B111BF5C6FC004424FE /* UzysRadialProgressActivityIndicator.m */; };
 		F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADE21B1B55FEC8005E84FA /* DetailController.swift */; };
 		F0B6FABC1B81F3D000EE2439 /* GalleryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */; };
 		F0BC44CC1BBA839B004CB0B9 /* user_head_default.png in Resources */ = {isa = PBXBuildFile; fileRef = F0BC44CB1BBA839B004CB0B9 /* user_head_default.png */; };
@@ -286,6 +289,12 @@
 		F0AB96771BA835C200C72260 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F0AB96791BA835D900C72260 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F0AB967B1BA8362800C72260 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		F0AB9B0C1BF5C6FC004424FE /* DSActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSActivityIndicatorView.h; sourceTree = "<group>"; };
+		F0AB9B0D1BF5C6FC004424FE /* DSActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSActivityIndicatorView.m; sourceTree = "<group>"; };
+		F0AB9B0E1BF5C6FC004424FE /* UIScrollView+UzysCircularProgressPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+UzysCircularProgressPullToRefresh.h"; sourceTree = "<group>"; };
+		F0AB9B0F1BF5C6FC004424FE /* UIScrollView+UzysCircularProgressPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+UzysCircularProgressPullToRefresh.m"; sourceTree = "<group>"; };
+		F0AB9B101BF5C6FC004424FE /* UzysRadialProgressActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UzysRadialProgressActivityIndicator.h; sourceTree = "<group>"; };
+		F0AB9B111BF5C6FC004424FE /* UzysRadialProgressActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UzysRadialProgressActivityIndicator.m; sourceTree = "<group>"; };
 		F0ADE21B1B55FEC8005E84FA /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewCell.swift; sourceTree = "<group>"; };
 		F0BC44CB1BBA839B004CB0B9 /* user_head_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_head_default.png; path = common/user_head_default.png; sourceTree = "<group>"; };
@@ -481,6 +490,7 @@
 		F09ADD761B563452009B3A6D /* CommonFiles */ = {
 			isa = PBXGroup;
 			children = (
+				F0AB9B0B1BF5C6FC004424FE /* UzysPullToRefresh */,
 				F0E574F01B6784BE000053B8 /* Loading */,
 				F035ECF31BB29D8100A8D8EC /* OpenUDID.h */,
 				F035ECF41BB29D8100A8D8EC /* OpenUDID.m */,
@@ -597,6 +607,19 @@
 			);
 			name = Framework;
 			sourceTree = "<group>";
+		};
+		F0AB9B0B1BF5C6FC004424FE /* UzysPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				F0AB9B0C1BF5C6FC004424FE /* DSActivityIndicatorView.h */,
+				F0AB9B0D1BF5C6FC004424FE /* DSActivityIndicatorView.m */,
+				F0AB9B0E1BF5C6FC004424FE /* UIScrollView+UzysCircularProgressPullToRefresh.h */,
+				F0AB9B0F1BF5C6FC004424FE /* UIScrollView+UzysCircularProgressPullToRefresh.m */,
+				F0AB9B101BF5C6FC004424FE /* UzysRadialProgressActivityIndicator.h */,
+				F0AB9B111BF5C6FC004424FE /* UzysRadialProgressActivityIndicator.m */,
+			);
+			path = UzysPullToRefresh;
+			sourceTree = SOURCE_ROOT;
 		};
 		F0BDA8E31B9EFE4700176531 /* Model */ = {
 			isa = PBXGroup;
@@ -824,6 +847,7 @@
 				F0E574FA1B6784BE000053B8 /* RefreshView.m in Sources */,
 				F0C3C2511B5FA59500AB6E35 /* HomeController.swift in Sources */,
 				F00CFFB81BDF8A2D002C8ECC /* SDWebImageCompat.m in Sources */,
+				F0AB9B141BF5C6FC004424FE /* UzysRadialProgressActivityIndicator.m in Sources */,
 				F028C1781B9C43CA00B8CECA /* GalleryMenuButton.swift in Sources */,
 				F0A2E1951BEC797E006EF631 /* DGElasticPullToRefreshView.swift in Sources */,
 				F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */,
@@ -853,10 +877,12 @@
 				F0D591B11BA185EE00C0346D /* ImageInfoData.swift in Sources */,
 				F00CFFBC1BDF8A2D002C8ECC /* SDWebImageManager.m in Sources */,
 				F0C3C2A01B60EA9C00AB6E35 /* HomeCell.swift in Sources */,
+				F0AB9B131BF5C6FC004424FE /* UIScrollView+UzysCircularProgressPullToRefresh.m in Sources */,
 				F00CFFBB1BDF8A2D002C8ECC /* SDWebImageDownloaderOperation.m in Sources */,
 				F0507E691B6756D3007E9024 /* KnowledgeListCell.swift in Sources */,
 				F00CFFB91BDF8A2D002C8ECC /* SDWebImageDecoder.m in Sources */,
 				F0A5E1421BA04B4800BDA6BA /* ForumReplyData.swift in Sources */,
+				F0AB9B121BF5C6FC004424FE /* DSActivityIndicatorView.m in Sources */,
 				F00CFF821BDF182D002C8ECC /* AFURLConnectionOperation.m in Sources */,
 				F035ECE71BB2880800A8D8EC /* ForumFloorLordCell.swift in Sources */,
 				F08749BE1B54E89E006E1FD3 /* ProfileViewController.swift in Sources */,
