@@ -103,7 +103,7 @@
     self.progressThreshold = PulltoRefreshThreshold;
     //init actitvity indicator
     _activityIndicatorView = [[DSActivityIndicatorView alloc] initWithFrame:self.bounds];
-    _activityIndicatorView.image = [UIImage imageNamed:@"centerIcon"];
+    _activityIndicatorView.image = [UIImage imageNamed:@"refresh_center_icon"];
     [self addSubview:_activityIndicatorView];
     
     //init background layer

@@ -15,14 +15,13 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     var seg:KASegmentControl?
     var menuView = GalleryMenuView()
     var mainCollection:UICollectionView?
-//    var refreshView:RefreshView?
-//    var loadMoreView:LoadView?
     var currentPage:NSInteger = 0
     var dataList =  NSMutableArray()
     var singleConfig:[AnyObject]?
     var multiConfig:[AnyObject]?
     var configCache:[NSObject:AnyObject]?
-    
+    var indicatorTop:UzysRadialProgressActivityIndicator?
+    var indicatorBottom:UzysRadialProgressActivityIndicator?
     override func loadView(){
         super.loadView()
         self.view.backgroundColor = NAVI_COLOR
@@ -66,17 +65,20 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         mainCollection?.autoresizingMask = [UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleWidth]
         mainCollection?.alwaysBounceVertical = true
         
-        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = THEME_COLOR
-        
-        mainCollection?.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+        mainCollection?.addPullToRefreshActionHandler({ [weak self] () -> Void in
             self?.currentPage = 0
             self?.dataList.removeAllObjects()
             self?.mainCollection?.reloadData()
             self?.startRequest(self?.configCache)
-            }, loadingView: loadingView)
-        mainCollection?.dg_setPullToRefreshBackgroundColor(NAVI_COLOR)
-        mainCollection?.dg_setPullToRefreshFillColor(NAVI_COLOR)
+        })
+        mainCollection?.addPullToLoadMoreActionHandler({ [weak self] () -> Void in
+            self?.startRequest(self?.configCache)
+        })
+        indicatorTop?.progressThreshold = 64.0
+        indicatorBottom?.progressThreshold = 44;
+        mainCollection?.addTopInsetInPortrait(0, topInsetInLandscape: 0)
+        mainCollection?.addBottomInsetInPortrait(0, bottomInsetInLandscape: 0)
+        
         self.view.addSubview(mainCollection!)
         self.view.bringSubviewToFront(menuView)
         
@@ -91,7 +93,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     }
     
     deinit {
-        self.mainCollection?.dg_removePullToRefresh()
+        //
     }
     
     override func viewDidLoad() {
@@ -122,7 +124,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     
     func startRequest(config:[NSObject:AnyObject]?){
         var parameter:[NSObject:AnyObject] = [  "iid" : String(self.currentPage),
-                                              "psize" : "10",
+                                              "psize" : "30",
                                                "json" : "1"]
         if config != nil{
             for one in config! {
@@ -140,25 +142,25 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         
         // print("\n---$$$---url = \(url)", terminator: "")
         AFDSClient.sharedInstance.GET(url, parameters: nil,
-            success: {(task, JSON) -> Void in
-        
+            success: {[weak self](task, JSON) -> Void in
                 print("\n responseJSON- - - - -data = \(JSON)")
                 // 下拉刷新时候清空旧数据（请求失败也清空）
-                if (self.currentPage == 0 && self.dataList.count > 0){
-                    self.dataList.removeAllObjects()
+                if (self?.currentPage == 0 && self?.dataList.count > 0){
+                    self?.dataList.removeAllObjects()
                 }
+                self?.currentPage++
                 // 如果请求数据有效
                 if let dic = JSON as? [NSObject:AnyObject]{
                     // print("\n responseJSON- - - - -data:", dic)
-                    self.processRequestResult(dic)
+                    self?.processRequestResult(dic)
                 }
                 // 控件复位
-                self.mainCollection?.dg_stopLoading()
-//                self.refreshView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainCollection)
-//                self.loadMoreView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainCollection)
+                self?.mainCollection?.stopRefreshAnimation()
+                self?.mainCollection?.stopLoadMoreAnimation()
             }, failure: {[weak self]( task, error) -> Void in
                 print("\n failure: TIP --- e:\(error)")
-                self?.mainCollection?.dg_stopLoading()
+                self?.mainCollection?.stopRefreshAnimation()
+                self?.mainCollection?.stopLoadMoreAnimation()
         })
     }
     
@@ -183,14 +185,6 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                     }
                     // print("\n---===---self.dataList = \(self.dataList)")
                     self.mainCollection?.reloadData()
-                    
-//                    if (list.count < Default_Request_Count) {
-//                        self.loadMoreView?.isCanUse = false
-//                        self.loadMoreView?.hidden = true
-//                    }else{
-//                        self.loadMoreView?.isCanUse = true
-//                        self.loadMoreView?.hidden = false
-//                    }
                 }
             }
         }else{

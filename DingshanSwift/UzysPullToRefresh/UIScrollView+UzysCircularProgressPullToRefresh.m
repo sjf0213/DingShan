@@ -34,12 +34,12 @@ static char UIScrollViewPullToLoadMoreView;
 {
     if(self.pullToRefreshView == nil)
     {
-        UzysRadialProgressActivityIndicator *view = [[UzysRadialProgressActivityIndicator alloc] initWithImage:[UIImage imageNamed:@"centerIcon"]];
+        UzysRadialProgressActivityIndicator *view = [[UzysRadialProgressActivityIndicator alloc] initWithImage:[UIImage imageNamed:@"refresh_center_icon"]];
         view.pullToRefreshHandler = handler;
         view.posType = indicator_top;
         view.scrollView = self;
-        view.frame = CGRectMake((self.bounds.size.width - view.bounds.size.width)/2,
-                                -view.bounds.size.height, view.bounds.size.width, view.bounds.size.height);
+        view.frame = CGRectMake((self.bounds.size.width - view.frame.size.width)/2,
+                                -view.frame.size.height, view.frame.size.width, view.frame.size.height);
         view.originalTopInset = self.contentInset.top;
         
         if(cEqualFloats(pInsetTop, CGFLOAT_MAX, cDefaultFloatComparisonEpsilon) && cEqualFloats(lInsetTop, CGFLOAT_MAX, cDefaultFloatComparisonEpsilon)) //NOT DEFINE LANDSCAPE , PORTRAIT INSET
@@ -90,7 +90,7 @@ static char UIScrollViewPullToLoadMoreView;
 {
     if(self.pullToLoadMoreView == nil)
     {
-        UzysRadialProgressActivityIndicator *view = [[UzysRadialProgressActivityIndicator alloc] initWithImage:[UIImage imageNamed:@"centerIcon"]];
+        UzysRadialProgressActivityIndicator *view = [[UzysRadialProgressActivityIndicator alloc] initWithImage:[UIImage imageNamed:@"refresh_center_icon"]];
         view.posType = indicator_bottom;
         view.pullToRefreshHandler = handler;
         view.scrollView = self;
