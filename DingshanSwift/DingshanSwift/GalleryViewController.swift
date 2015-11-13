@@ -57,7 +57,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
             width: self.view.bounds.size.width,
             height: self.view.bounds.size.height - self.topView.bounds.size.height - self.menuView.bounds.size.height - MAIN_TAB_H), collectionViewLayout: layout)
         mainCollection?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        mainCollection?.backgroundColor = UIColor.clearColor()
+        mainCollection?.backgroundColor = UIColor.whiteColor()
         mainCollection?.dataSource = self;
         mainCollection?.delegate = self;
         mainCollection?.registerClass(GalleryViewCell.classForCoder(), forCellWithReuseIdentifier: GalleryViewCellIdentifier)
@@ -70,12 +70,17 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
             self?.dataList.removeAllObjects()
             self?.mainCollection?.reloadData()
             self?.startRequest(self?.configCache)
+            print("A_DONE------- self.frame = (\(self?.indicatorTop?.frame.origin.x), \(self?.indicatorTop?.frame.origin.y), \(self?.indicatorTop?.frame.size.width), \(self?.indicatorTop?.frame.size.height)")
+            
         })
         mainCollection?.addPullToLoadMoreActionHandler({ [weak self] () -> Void in
             self?.startRequest(self?.configCache)
+            print("B_DONE------- self.frame = (\(self?.indicatorBottom?.frame.origin.x), \(self?.indicatorBottom?.frame.origin.y), \(self?.indicatorBottom?.frame.size.width), \(self?.indicatorBottom?.frame.size.height)")
+            
         })
         indicatorTop?.progressThreshold = 64.0
         indicatorBottom?.progressThreshold = 44;
+        
         
         self.view.addSubview(mainCollection!)
         self.view.bringSubviewToFront(menuView)

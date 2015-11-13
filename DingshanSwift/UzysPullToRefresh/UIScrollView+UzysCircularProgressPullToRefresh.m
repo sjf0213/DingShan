@@ -27,6 +27,7 @@ static char UIScrollViewPullToLoadMoreView;
         UzysRadialProgressActivityIndicator *view = [[UzysRadialProgressActivityIndicator alloc] initWithImage:[UIImage imageNamed:@"refresh_center_icon"]];
         view.pullToRefreshHandler = handler;
         view.posType = indicator_top;
+        view.backgroundColor = [[UIColor cyanColor] colorWithAlphaComponent:0.5];
         view.scrollView = self;
         view.frame = CGRectMake((self.bounds.size.width - view.frame.size.width)/2,
                                 -view.frame.size.height, view.frame.size.width, view.frame.size.height);
@@ -37,6 +38,7 @@ static char UIScrollViewPullToLoadMoreView;
         [self sendSubviewToBack:view];
         self.pullToRefreshView = view;
         self.showPullToRefresh = YES;
+        NSLog(@"A_DONE------- self.frame = (%.1f, %.1f)(%.1f, %.1f),", view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
     }
 }
 
@@ -45,6 +47,7 @@ static char UIScrollViewPullToLoadMoreView;
         UzysRadialProgressActivityIndicator *view = [[UzysRadialProgressActivityIndicator alloc] initWithImage:[UIImage imageNamed:@"refresh_center_icon"]];
         view.posType = indicator_bottom;
         view.pullToRefreshHandler = handler;
+        view.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
         view.scrollView = self;
         view.frame = CGRectMake((self.bounds.size.width - view.bounds.size.width)/2,
                                 -view.bounds.size.height, view.bounds.size.width, view.bounds.size.height);
@@ -55,6 +58,8 @@ static char UIScrollViewPullToLoadMoreView;
         [self sendSubviewToBack:view];
         self.pullToLoadMoreView = view;
         self.showPullToLoadMore = YES;
+        NSLog(@"B_DONE------- self.frame = (%.1f, %.1f)(%.1f, %.1f),", view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+
     }
 }
 
@@ -83,15 +88,15 @@ static char UIScrollViewPullToLoadMoreView;
 }
 
 - (void)setPullToRefreshView:(UzysRadialProgressActivityIndicator *)pullToRefreshView{
-    [self willChangeValueForKey:@"UzysRadialProgressActivityIndicatorA"];
+    [self willChangeValueForKey:@"UzysRadialProgressActivityIndicatorTop"];
     objc_setAssociatedObject(self, &UIScrollViewPullToRefreshView, pullToRefreshView, OBJC_ASSOCIATION_ASSIGN);
-    [self didChangeValueForKey:@"UzysRadialProgressActivityIndicatorA"];
+    [self didChangeValueForKey:@"UzysRadialProgressActivityIndicatorTop"];
 }
 
 - (void)setPullToLoadMoreView:(UzysRadialProgressActivityIndicator *)pullToLoadMoreView{
-    [self willChangeValueForKey:@"UzysRadialProgressActivityIndicatorB"];
+    [self willChangeValueForKey:@"UzysRadialProgressActivityIndicatorBottom"];
     objc_setAssociatedObject(self, &UIScrollViewPullToLoadMoreView, pullToLoadMoreView, OBJC_ASSOCIATION_ASSIGN);
-    [self didChangeValueForKey:@"UzysRadialProgressActivityIndicatorB"];
+    [self didChangeValueForKey:@"UzysRadialProgressActivityIndicatorBottom"];
 }
 
 - (UzysRadialProgressActivityIndicator *)pullToRefreshView{

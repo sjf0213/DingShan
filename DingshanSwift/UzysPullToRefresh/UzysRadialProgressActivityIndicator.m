@@ -102,7 +102,7 @@
     self.progressThreshold = PulltoRefreshThreshold;
     //init actitvity indicator
     _activityIndicatorView = [[DSActivityIndicatorView alloc] initWithFrame:self.bounds];
-    _activityIndicatorView.image = [UIImage imageNamed:@"wait"];
+    _activityIndicatorView.image = [UIImage imageNamed:@"refresh_center_icon"];
     [self addSubview:_activityIndicatorView];
     
     //init background layer
@@ -290,8 +290,11 @@
     _progressThreshold = progressThreshold;
     if (self.posType == indicator_top){
         self.frame = CGRectMake(self.frame.origin.x, self.progressThreshold, self.frame.size.width, self.frame.size.height);
+        NSLog(@"A_progressThreshold------- self.frame = (%.1f, %.1f)(%.1f, %.1f),", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
     }else if (self.posType == indicator_bottom){
+        
         self.frame = CGRectMake(self.frame.origin.x, self.frame.size.height-self.progressThreshold, self.frame.size.width, self.frame.size.height);
+        NSLog(@"B_progressThreshold------- self.frame = (%.1f, %.1f)(%.1f, %.1f),", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
     }
 }
 #pragma mark - KVO
@@ -322,6 +325,7 @@
         self.progress = ((yOffset + self.originalTopInset + StartPosition)/-self.progressThreshold);
         self.center = CGPointMake(self.center.x, (contentOffset.y + self.originalTopInset)/2);
 //        NSLog(@"A- - - - yOffset = %.1f,  _state = %zd, self.progress = %.2f, prevProgressTop = %.2f", yOffset, self.state, self.progress, prevProgressTop);
+        NSLog(@"B-------yOffset = %.1f, self.frame = (%.1f, %.1f)(%.1f, %.1f),",yOffset, self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
         
     }else if (self.posType == indicator_bottom){
         self.progress = (MAX((yOffset  - ll - self.originalBottomInset),  StartPosition) / self.progressThreshold);
