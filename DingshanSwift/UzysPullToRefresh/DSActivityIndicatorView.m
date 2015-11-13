@@ -9,7 +9,7 @@
 #import "DSActivityIndicatorView.h"
 
 @implementation DSActivityIndicatorView
-- (instancetype)initWithFrame:(CGRect)frame
+- (nonnull instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -29,7 +29,7 @@
     [self.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
 }
 - (void)stopAnimating{
-    [self.layer removeAnimationForKey:@"rotationAnimation"];
+    [self.layer removeAnimationForKey:@"refresh_center_icon"];
     self.alpha = 0.0;
 }
 - (BOOL)isAnimating{

@@ -76,8 +76,6 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         })
         indicatorTop?.progressThreshold = 64.0
         indicatorBottom?.progressThreshold = 44;
-        mainCollection?.addTopInsetInPortrait(0, topInsetInLandscape: 0)
-        mainCollection?.addBottomInsetInPortrait(0, bottomInsetInLandscape: 0)
         
         self.view.addSubview(mainCollection!)
         self.view.bringSubviewToFront(menuView)

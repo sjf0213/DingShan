@@ -99,11 +99,10 @@
     self.contentMode = UIViewContentModeRedraw;
     self.state = UZYSPullToRefreshStateNone;
     self.backgroundColor = [UIColor clearColor];
-    self.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.5];
     self.progressThreshold = PulltoRefreshThreshold;
     //init actitvity indicator
     _activityIndicatorView = [[DSActivityIndicatorView alloc] initWithFrame:self.bounds];
-    _activityIndicatorView.image = [UIImage imageNamed:@"refresh_center_icon"];
+    _activityIndicatorView.image = [UIImage imageNamed:@"wait"];
     [self addSubview:_activityIndicatorView];
     
     //init background layer
@@ -326,9 +325,9 @@
         
     }else if (self.posType == indicator_bottom){
         self.progress = (MAX((yOffset  - ll - self.originalBottomInset),  StartPosition) / self.progressThreshold);
-        NSLog(@"B- - - - yOffset = %.1f, ll = %.1f,  _state = %zd, self.progress = %.2f", yOffset, ll, self.state, self.progress);
+//        NSLog(@"B- - - - yOffset = %.1f, ll = %.1f,  _state = %zd, self.progress = %.2f", yOffset, ll, self.state, self.progress);
         self.center = CGPointMake(self.center.x,  self.scrollView.contentSize.height + 20);
-        NSLog(@"B-------yOffset = %.1f, self.frame = (%.1f, %.1f)(%.1f, %.1f),",yOffset, self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+//        NSLog(@"B-------yOffset = %.1f, self.frame = (%.1f, %.1f)(%.1f, %.1f),",yOffset, self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
     }
     
     switch (_state) {
@@ -449,43 +448,6 @@
     [self setupScrollViewContentInsetForLoadingIndicator:nil animation:YES];
     if(self.pullToRefreshHandler)
         self.pullToRefreshHandler();
-}
-
-#pragma mark - public method
-- (void)orientationChange:(UIDeviceOrientation)orientation {
-    
-    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-    UIInterfaceOrientation statusBarOrientation = [UIApplication sharedApplication].statusBarOrientation;
-    
-    if((NSInteger)deviceOrientation !=(NSInteger)statusBarOrientation){
-        return;
-    }
-    
-    if(UIDeviceOrientationIsLandscape(orientation))
-    {
-        if(cNotEqualFloats( self.landscapeTopInset , 0.0 , cDefaultFloatComparisonEpsilon))
-            self.originalTopInset = self.landscapeTopInset;
-    }
-    else
-    {
-        if(cNotEqualFloats( self.portraitTopInset , 0.0 , cDefaultFloatComparisonEpsilon))
-            self.originalTopInset = self.portraitTopInset;
-    }
-    [self setSize:_imageIcon.size];
-//    self.frame = CGRectMake((self.scrollView.bounds.size.width - self.bounds.size.width)/2, self.frame.origin.y, self.bounds.size.width, self.bounds.size.height);
-    if(self.state == UZYSPullToRefreshStateLoading)
-    {
-        [self setupScrollViewContentInsetForLoadingIndicator:^{
-        } animation:NO];
-    }
-    else
-    {
-        [self resetScrollViewContentInset:^{
-        } animation:NO];
-    }
-    self.alpha = 1.0f;
-    
-    
 }
 
 - (void)stopIndicatorAnimation

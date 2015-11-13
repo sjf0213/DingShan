@@ -22,18 +22,8 @@ static char UIScrollViewPullToLoadMoreView;
 @implementation UIScrollView (UzysCircularProgressPullToRefresh)
 @dynamic pullToRefreshView, pullToLoadMoreView, showPullToRefresh, showPullToLoadMore;
 
-- (void)addPullToRefreshActionHandler:(actionHandler)handler
-{
-    if(self.pullToRefreshView == nil)
-    {
-        [self addPullToRefreshActionHandler:handler portraitContentInsetTop:CGFLOAT_MAX landscapeInsetTop:CGFLOAT_MAX];
-    }
-}
-
-- (void)addPullToRefreshActionHandler:(actionHandler)handler portraitContentInsetTop:(CGFloat)pInsetTop landscapeInsetTop:(CGFloat)lInsetTop
-{
-    if(self.pullToRefreshView == nil)
-    {
+- (void)addPullToRefreshActionHandler:(actionHandler)handler{
+    if(self.pullToRefreshView == nil){
         UzysRadialProgressActivityIndicator *view = [[UzysRadialProgressActivityIndicator alloc] initWithImage:[UIImage imageNamed:@"refresh_center_icon"]];
         view.pullToRefreshHandler = handler;
         view.posType = indicator_top;
@@ -41,35 +31,7 @@ static char UIScrollViewPullToLoadMoreView;
         view.frame = CGRectMake((self.bounds.size.width - view.frame.size.width)/2,
                                 -view.frame.size.height, view.frame.size.width, view.frame.size.height);
         view.originalTopInset = self.contentInset.top;
-        
-        if(cEqualFloats(pInsetTop, CGFLOAT_MAX, cDefaultFloatComparisonEpsilon) && cEqualFloats(lInsetTop, CGFLOAT_MAX, cDefaultFloatComparisonEpsilon)) //NOT DEFINE LANDSCAPE , PORTRAIT INSET
-        {
-            if(IS_IOS7)
-            {
-                if(cEqualFloats(self.contentInset.top, 64.00, cDefaultFloatComparisonEpsilon) && cEqualFloats(self.frame.origin.y, 0.0, cDefaultFloatComparisonEpsilon))
-                {
-                    view.portraitTopInset = 64.0;
-                    view.landscapeTopInset = 52.0;
-                }
-            }
-            else if(IS_IOS8)
-            {
-                if(cEqualFloats(self.contentInset.top, 0.00, cDefaultFloatComparisonEpsilon) &&cEqualFloats(self.frame.origin.y, 0.0, cDefaultFloatComparisonEpsilon))
-                {
-                    view.portraitTopInset = 64.0;
-                    view.originalTopInset = 64.0;
-                    
-                    if(IS_IPHONE6PLUS)
-                        view.landscapeTopInset = 44.0;
-                    else
-                        view.landscapeTopInset = 32.0;
-                    
-                }
-            }
-        }else{
-            view.portraitTopInset = pInsetTop;
-            view.landscapeTopInset = lInsetTop;
-        }
+        view.originalTopInset = 0.0;
         
         [self addSubview:view];
         [self sendSubviewToBack:view];
@@ -78,18 +40,8 @@ static char UIScrollViewPullToLoadMoreView;
     }
 }
 
-- (void)addPullToLoadMoreActionHandler:(actionHandler)handler
-{
-    if(self.pullToLoadMoreView == nil)
-    {
-        [self addPullToLoadMoreActionHandler:handler portraitContentInsetBottom:CGFLOAT_MAX landscapeInsetBottom:CGFLOAT_MAX];
-    }
-}
-
-- (void)addPullToLoadMoreActionHandler:(actionHandler)handler portraitContentInsetBottom:(CGFloat)pInsetBottom landscapeInsetBottom:(CGFloat)lInsetBottom
-{
-    if(self.pullToLoadMoreView == nil)
-    {
+- (void)addPullToLoadMoreActionHandler:(actionHandler)handler{
+    if(self.pullToLoadMoreView == nil){
         UzysRadialProgressActivityIndicator *view = [[UzysRadialProgressActivityIndicator alloc] initWithImage:[UIImage imageNamed:@"refresh_center_icon"]];
         view.posType = indicator_bottom;
         view.pullToRefreshHandler = handler;
@@ -97,35 +49,8 @@ static char UIScrollViewPullToLoadMoreView;
         view.frame = CGRectMake((self.bounds.size.width - view.bounds.size.width)/2,
                                 -view.bounds.size.height, view.bounds.size.width, view.bounds.size.height);
         view.originalBottomInset = self.contentInset.bottom;
+        view.originalBottomInset = 0.0;
         
-        if(cEqualFloats(pInsetBottom, CGFLOAT_MAX, cDefaultFloatComparisonEpsilon) && cEqualFloats(lInsetBottom, CGFLOAT_MAX, cDefaultFloatComparisonEpsilon)) //NOT DEFINE LANDSCAPE , PORTRAIT INSET
-        {
-            if(IS_IOS7)
-            {
-                if(cEqualFloats(self.contentInset.top, 64.00, cDefaultFloatComparisonEpsilon) && cEqualFloats(self.frame.origin.y, 0.0, cDefaultFloatComparisonEpsilon))
-                {
-                    view.portraitBottomInset = 64.0;
-                    view.landscapeBottomInset = 52.0;
-                }
-            }
-            else if(IS_IOS8)
-            {
-                if(cEqualFloats(self.contentInset.top, 0.00, cDefaultFloatComparisonEpsilon) &&cEqualFloats(self.frame.origin.y, 0.0, cDefaultFloatComparisonEpsilon))
-                {
-                    view.portraitBottomInset = 64.0;
-                    view.originalBottomInset = 0.0;
-                    
-                    if(IS_IPHONE6PLUS)
-                        view.landscapeBottomInset = 44.0;
-                    else
-                        view.landscapeBottomInset = 32.0;
-                    
-                }
-            }
-        }else{
-            view.portraitBottomInset = pInsetBottom;
-            view.landscapeBottomInset = lInsetBottom;
-        }
         [self addSubview:view];
         [self sendSubviewToBack:view];
         self.pullToLoadMoreView = view;
@@ -133,104 +58,63 @@ static char UIScrollViewPullToLoadMoreView;
     }
 }
 
-- (void)triggerPullToRefresh
-{
+- (void)triggerPullToRefresh{
     [self.pullToRefreshView manuallyTriggered];
 }
 
-- (void)triggerPullToLoadMore
-{
+- (void)triggerPullToLoadMore{
     [self.pullToLoadMoreView manuallyTriggered];
 }
 
-- (void)stopRefreshAnimation
-{
+- (void)stopRefreshAnimation{
     [self.pullToRefreshView stopIndicatorAnimation];
 }
 
-- (void)stopLoadMoreAnimation
-{
+- (void)stopLoadMoreAnimation{
     [self.pullToLoadMoreView stopIndicatorAnimation];
 }
 #pragma mark - property
-- (void)addTopInsetInPortrait:(CGFloat)pInset TopInsetInLandscape:(CGFloat)lInset
-{
-    self.pullToRefreshView.portraitTopInset = pInset;
-    self.pullToRefreshView.landscapeTopInset = lInset;
-    
-    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    if(orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown)
-    {
-        self.pullToRefreshView.originalTopInset = self.pullToRefreshView.portraitTopInset;
-    }
-    else
-    {
-        self.pullToRefreshView.originalTopInset = self.pullToRefreshView.landscapeTopInset;
-    }
-    
+- (void)addTopInsetInPortrait:(CGFloat)pInset{
+    self.pullToRefreshView.originalTopInset = pInset;
 }
 
-- (void)addBottomInsetInPortrait:(CGFloat)pInset BottomInsetInLandscape:(CGFloat)lInset
-{
-    self.pullToLoadMoreView.portraitBottomInset = pInset;
-    self.pullToLoadMoreView.landscapeBottomInset = lInset;
-    
-    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    if(orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown)
-    {
-        self.pullToLoadMoreView.originalBottomInset = self.pullToLoadMoreView.portraitBottomInset;
-    }
-    else
-    {
-        self.pullToLoadMoreView.originalBottomInset = self.pullToLoadMoreView.landscapeBottomInset;
-    }
-    
+- (void)addBottomInsetInPortrait:(CGFloat)pInset{
+    self.pullToLoadMoreView.originalBottomInset = pInset;
 }
 
-- (void)setPullToRefreshView:(UzysRadialProgressActivityIndicator *)pullToRefreshView
-{
+- (void)setPullToRefreshView:(UzysRadialProgressActivityIndicator *)pullToRefreshView{
     [self willChangeValueForKey:@"UzysRadialProgressActivityIndicatorA"];
     objc_setAssociatedObject(self, &UIScrollViewPullToRefreshView, pullToRefreshView, OBJC_ASSOCIATION_ASSIGN);
     [self didChangeValueForKey:@"UzysRadialProgressActivityIndicatorA"];
 }
 
-- (void)setPullToLoadMoreView:(UzysRadialProgressActivityIndicator *)pullToLoadMoreView
-{
+- (void)setPullToLoadMoreView:(UzysRadialProgressActivityIndicator *)pullToLoadMoreView{
     [self willChangeValueForKey:@"UzysRadialProgressActivityIndicatorB"];
     objc_setAssociatedObject(self, &UIScrollViewPullToLoadMoreView, pullToLoadMoreView, OBJC_ASSOCIATION_ASSIGN);
     [self didChangeValueForKey:@"UzysRadialProgressActivityIndicatorB"];
 }
 
-- (UzysRadialProgressActivityIndicator *)pullToRefreshView
-{
+- (UzysRadialProgressActivityIndicator *)pullToRefreshView{
     return objc_getAssociatedObject(self, &UIScrollViewPullToRefreshView);
 }
 
-- (UzysRadialProgressActivityIndicator *)pullToLoadMoreView
-{
+- (UzysRadialProgressActivityIndicator *)pullToLoadMoreView{
     return objc_getAssociatedObject(self, &UIScrollViewPullToLoadMoreView);
 }
 
 - (void)setShowPullToRefresh:(BOOL)showPullToRefresh {
     self.pullToRefreshView.hidden = !showPullToRefresh;
     
-    if(showPullToRefresh)
-    {
-        if(!self.pullToRefreshView.isObserving)
-        {
+    if(showPullToRefresh){
+        if(!self.pullToRefreshView.isObserving){
             [self addObserver:self.pullToRefreshView forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
             [self addObserver:self.pullToRefreshView forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
             [self addObserver:self.pullToRefreshView forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
             [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:[UIDevice currentDevice]];
-
             self.pullToRefreshView.isObserving = YES;
         }
-    }
-    else
-    {
-        if(self.pullToRefreshView.isObserving)
-        {
+    }else{
+        if(self.pullToRefreshView.isObserving){
             [self removeObserver:self.pullToRefreshView forKeyPath:@"contentOffset"];
             [self removeObserver:self.pullToRefreshView forKeyPath:@"contentSize"];
             [self removeObserver:self.pullToRefreshView forKeyPath:@"frame"];
@@ -245,21 +129,16 @@ static char UIScrollViewPullToLoadMoreView;
 - (void)setShowPullToLoadMore:(BOOL)showPullToLoadMore {
     self.pullToLoadMoreView.hidden = !showPullToLoadMore;
     
-    if(showPullToLoadMore)
-    {
-        if(!self.pullToLoadMoreView.isObserving)
-        {
+    if(showPullToLoadMore){
+        if(!self.pullToLoadMoreView.isObserving){
             [self addObserver:self.pullToLoadMoreView forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
             [self addObserver:self.pullToLoadMoreView forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
             [self addObserver:self.pullToLoadMoreView forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
             [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:[UIDevice currentDevice]];
             
             self.pullToLoadMoreView.isObserving = YES;
         }
-    }
-    else
-    {
+    }else{
         if(self.pullToLoadMoreView.isObserving)
         {
             [self removeObserver:self.pullToLoadMoreView forKeyPath:@"contentOffset"];
@@ -273,22 +152,12 @@ static char UIScrollViewPullToLoadMoreView;
     }
 }
 
-- (BOOL)showPullToRefresh
-{
+- (BOOL)showPullToRefresh{
     return !self.pullToRefreshView.hidden;
 }
 
-- (BOOL)showPullToLoadMore
-{
+- (BOOL)showPullToLoadMore{
     return !self.pullToLoadMoreView.hidden;
-}
-
-- (void) orientationChanged:(NSNotification *)note
-{
-    UIDevice * device = note.object;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.pullToRefreshView orientationChange:device.orientation];
-     });
 }
 
 @end

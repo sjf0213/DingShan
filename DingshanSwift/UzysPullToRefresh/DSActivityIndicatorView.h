@@ -12,7 +12,7 @@
 
 @property(nullable, nonatomic, strong)UIImage* image;
 
-- (nullable instancetype)initWithFrame:(CGRect)frame;
+- (nonnull instancetype)initWithFrame:(CGRect)frame;
 - (void)startAnimating;
 - (void)stopAnimating;
 
