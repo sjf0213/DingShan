@@ -325,13 +325,18 @@
         self.progress = ((yOffset + self.originalTopInset + StartPosition)/-self.progressThreshold);
         self.center = CGPointMake(self.center.x, (contentOffset.y + self.originalTopInset)/2);
 //        NSLog(@"A- - - - yOffset = %.1f,  _state = %zd, self.progress = %.2f, prevProgressTop = %.2f", yOffset, self.state, self.progress, prevProgressTop);
-        NSLog(@"B-------yOffset = %.1f, self.frame = (%.1f, %.1f)(%.1f, %.1f),",yOffset, self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+//        NSLog(@"A------yOffset = %.1f, self.frame = (%.1f, %.1f)(%.1f, %.1f),",yOffset, self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
         
     }else if (self.posType == indicator_bottom){
+        
         self.progress = (MAX((yOffset  - ll - self.originalBottomInset),  StartPosition) / self.progressThreshold);
+        CGFloat s =  ll - self.originalBottomInset;
+        CGFloat p = (yOffset  - ll - self.originalBottomInset);
+        self.progress = (p + s) / s;
 //        NSLog(@"B- - - - yOffset = %.1f, ll = %.1f,  _state = %zd, self.progress = %.2f", yOffset, ll, self.state, self.progress);
         self.center = CGPointMake(self.center.x,  self.scrollView.contentSize.height + 20);
 //        NSLog(@"B-------yOffset = %.1f, self.frame = (%.1f, %.1f)(%.1f, %.1f),",yOffset, self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+        NSLog(@"B-------yOffset = %.1f, p = %f, self.progress  = %f", yOffset, p, self.progress );
     }
     
     switch (_state) {

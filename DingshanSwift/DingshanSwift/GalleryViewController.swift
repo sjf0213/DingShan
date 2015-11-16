@@ -115,7 +115,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         if (1 == index){
             menuView.menuConfig = singleConfig!
         }
-        self.startRequest(nil)
+        mainCollection?.triggerPullToRefresh()
     }
     
     func onTapBtn(sender:UIButton) {
