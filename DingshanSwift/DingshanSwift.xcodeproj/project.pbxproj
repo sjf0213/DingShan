@@ -11,6 +11,9 @@
 		417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 417BEF991B5A4F9300F896A5 /* ArrayDataSource.m */; };
 		417BEF9D1B5A535300F896A5 /* FileHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 417BEF9C1B5A535300F896A5 /* FileHelp.m */; };
 		F00530161BFB26090059E7CE /* DSLoadMoreEndTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = F00530151BFB26090059E7CE /* DSLoadMoreEndTipView.m */; };
+		F00530221BFB2E210059E7CE /* ScrollContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F005301F1BFB2E210059E7CE /* ScrollContainerView.m */; };
+		F00530231BFB2E210059E7CE /* ScrollShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F00530211BFB2E210059E7CE /* ScrollShowView.m */; };
+		F00530261BFB2F6D0059E7CE /* AsynRequestImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F00530251BFB2F6D0059E7CE /* AsynRequestImageView.m */; };
 		F007353D1BEA103000383687 /* CHTCollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F007353C1BEA103000383687 /* CHTCollectionViewWaterfallLayout.swift */; };
 		F00735441BEA211200383687 /* wait@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F00735421BEA211200383687 /* wait@2x~iphone.png */; };
 		F00735451BEA211200383687 /* wait@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F00735431BEA211200383687 /* wait@3x~iphone.png */; };
@@ -150,6 +153,13 @@
 		417BEF9C1B5A535300F896A5 /* FileHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelp.m; sourceTree = "<group>"; };
 		F00530141BFB26090059E7CE /* DSLoadMoreEndTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLoadMoreEndTipView.h; sourceTree = "<group>"; };
 		F00530151BFB26090059E7CE /* DSLoadMoreEndTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLoadMoreEndTipView.m; sourceTree = "<group>"; };
+		F005301D1BFB2E210059E7CE /* ScrollContainerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollContainerDelegate.h; sourceTree = "<group>"; };
+		F005301E1BFB2E210059E7CE /* ScrollContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollContainerView.h; sourceTree = "<group>"; };
+		F005301F1BFB2E210059E7CE /* ScrollContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollContainerView.m; sourceTree = "<group>"; };
+		F00530201BFB2E210059E7CE /* ScrollShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollShowView.h; sourceTree = "<group>"; };
+		F00530211BFB2E210059E7CE /* ScrollShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollShowView.m; sourceTree = "<group>"; };
+		F00530241BFB2F6D0059E7CE /* AsynRequestImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsynRequestImageView.h; sourceTree = "<group>"; };
+		F00530251BFB2F6D0059E7CE /* AsynRequestImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsynRequestImageView.m; sourceTree = "<group>"; };
 		F007353C1BEA103000383687 /* CHTCollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTCollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
 		F00735421BEA211200383687 /* wait@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wait@2x~iphone.png"; path = "common/wait@2x~iphone.png"; sourceTree = "<group>"; };
 		F00735431BEA211200383687 /* wait@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wait@3x~iphone.png"; path = "common/wait@3x~iphone.png"; sourceTree = "<group>"; };
@@ -339,6 +349,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F005301C1BFB2E210059E7CE /* PhotoBrowse */ = {
+			isa = PBXGroup;
+			children = (
+				F00530241BFB2F6D0059E7CE /* AsynRequestImageView.h */,
+				F00530251BFB2F6D0059E7CE /* AsynRequestImageView.m */,
+				F00530201BFB2E210059E7CE /* ScrollShowView.h */,
+				F00530211BFB2E210059E7CE /* ScrollShowView.m */,
+				F005301D1BFB2E210059E7CE /* ScrollContainerDelegate.h */,
+				F005301E1BFB2E210059E7CE /* ScrollContainerView.h */,
+				F005301F1BFB2E210059E7CE /* ScrollContainerView.m */,
+			);
+			path = PhotoBrowse;
+			sourceTree = "<group>";
+		};
 		F007354B1BEB380A00383687 /* UIFrame */ = {
 			isa = PBXGroup;
 			children = (
@@ -485,6 +509,7 @@
 		F09ADD761B563452009B3A6D /* CommonFiles */ = {
 			isa = PBXGroup;
 			children = (
+				F005301C1BFB2E210059E7CE /* PhotoBrowse */,
 				F0E574F01B6784BE000053B8 /* Loading */,
 				F035ECF31BB29D8100A8D8EC /* OpenUDID.h */,
 				F035ECF41BB29D8100A8D8EC /* OpenUDID.m */,
@@ -809,11 +834,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F00CFFBA1BDF8A2D002C8ECC /* SDWebImageDownloader.m in Sources */,
+				F00530221BFB2E210059E7CE /* ScrollContainerView.m in Sources */,
 				F00530161BFB26090059E7CE /* DSLoadMoreEndTipView.m in Sources */,
 				F00CFFC11BDF8A2D002C8ECC /* UIImage+WebP.m in Sources */,
 				F09C7AB11B7CAEDC00648615 /* KASegmentControl.m in Sources */,
 				F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */,
 				F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */,
+				F00530261BFB2F6D0059E7CE /* AsynRequestImageView.m in Sources */,
 				F028C1761B9C435B00B8CECA /* GalleryMenuView.swift in Sources */,
 				F035ECF51BB29D8100A8D8EC /* OpenUDID.m in Sources */,
 				F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */,
@@ -863,6 +890,7 @@
 				F00CFFBB1BDF8A2D002C8ECC /* SDWebImageDownloaderOperation.m in Sources */,
 				F0507E691B6756D3007E9024 /* KnowledgeListCell.swift in Sources */,
 				F00CFFB91BDF8A2D002C8ECC /* SDWebImageDecoder.m in Sources */,
+				F00530231BFB2E210059E7CE /* ScrollShowView.m in Sources */,
 				F0A5E1421BA04B4800BDA6BA /* ForumReplyData.swift in Sources */,
 				F0AB9B121BF5C6FC004424FE /* DSActivityIndicatorView.m in Sources */,
 				F00CFF821BDF182D002C8ECC /* AFURLConnectionOperation.m in Sources */,
