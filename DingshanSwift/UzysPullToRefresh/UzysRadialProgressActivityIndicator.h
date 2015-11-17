@@ -16,6 +16,7 @@ typedef NS_ENUM(NSUInteger, UZYSPullToRefreshState) {
     UZYSPullToRefreshStateTriggered,
     UZYSPullToRefreshStateLoading,
     UZYSPullToRefreshStateCanFinish,
+    UZYSPullToRefreshStateDisabled,
 };
 
 typedef NS_ENUM(NSUInteger, IndicatorPosType) {
@@ -29,7 +30,12 @@ typedef NS_ENUM(NSUInteger, IndicatorPosType) {
 @property (nonatomic,assign) IndicatorPosType posType;
 
 @property (nonatomic,assign) CGFloat originalTopInset;
+@property (nonatomic,assign) CGFloat landscapeTopInset;
+@property (nonatomic,assign) CGFloat portraitTopInset;
+
 @property (nonatomic,assign) CGFloat originalBottomInset;
+@property (nonatomic,assign) CGFloat landscapeBottomInset;
+@property (nonatomic,assign) CGFloat portraitBottomInset;
 
 @property (nonatomic,assign) UZYSPullToRefreshState state;
 @property (nonatomic,weak) UIScrollView *scrollView;
@@ -46,4 +52,9 @@ typedef NS_ENUM(NSUInteger, IndicatorPosType) {
 
 - (id)initWithImage:(UIImage *)image;
 - (void)setSize:(CGSize) size;
+
+- (void)orientationChange:(UIDeviceOrientation)orientation;
+
+//- (void)enableLoadMoreIndicator:(BOOL)enable;
+- (void)showEndTip;
 @end

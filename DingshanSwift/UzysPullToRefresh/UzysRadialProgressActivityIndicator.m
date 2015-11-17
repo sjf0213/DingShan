@@ -9,6 +9,7 @@
 #import "UzysRadialProgressActivityIndicator.h"
 #import "UIScrollView+UzysCircularProgressPullToRefresh.h"
 #import "DSActivityIndicatorView.h"
+#import "DSLoadMoreEndTipView.h"
 #define DEGREES_TO_RADIANS(x) (x)/180.0*M_PI
 #define RADIANS_TO_DEGREES(x) (x)/M_PI*180.0
 
@@ -18,6 +19,7 @@
 
 #define StartPosition 5.0
 #define PulltoRefreshThreshold 60.0
+
 @interface UzysRadialProgressActivityIndicatorBackgroundLayer : CALayer
 
 @property (nonatomic,assign) CGFloat outlineWidth;
@@ -66,6 +68,8 @@
 /*-----------------------------------------------------------------*/
 @interface UzysRadialProgressActivityIndicator()
 @property (nonatomic, strong) DSActivityIndicatorView *activityIndicatorView;  //Loading Indicator
+@property (nonatomic, strong) DSLoadMoreEndTipView* endTipView;
+@property (nonatomic, strong) UILabel* endTipLabel;
 @property (nonatomic, strong) UzysRadialProgressActivityIndicatorBackgroundLayer *backgroundLayer;
 @property (nonatomic, strong) CAShapeLayer *shapeLayer;
 @property (nonatomic, strong) CALayer *imageLayer;
@@ -99,11 +103,18 @@
     self.contentMode = UIViewContentModeRedraw;
     self.state = UZYSPullToRefreshStateNone;
     self.backgroundColor = [UIColor clearColor];
+//    self.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.5];
     self.progressThreshold = PulltoRefreshThreshold;
     //init actitvity indicator
     _activityIndicatorView = [[DSActivityIndicatorView alloc] initWithFrame:self.bounds];
     _activityIndicatorView.image = [UIImage imageNamed:@"refresh_center_icon"];
     [self addSubview:_activityIndicatorView];
+    
+    _endTipView = [[DSLoadMoreEndTipView alloc] initWithFrame:self.bounds];
+    _endTipView.clipsToBounds = NO;
+    _endTipView.backgroundColor = [[UIColor cyanColor] colorWithAlphaComponent:0.3];
+    [self addSubview:_endTipView];
+    _endTipView.hidden = YES;
     
     //init background layer
     UzysRadialProgressActivityIndicatorBackgroundLayer *backgroundLayer = [[UzysRadialProgressActivityIndicatorBackgroundLayer alloc] initWithBorderWidth:self.borderWidth];
@@ -162,11 +173,11 @@
     
     if (self.posType == indicator_top) {
         float idealOffset = self.originalTopInset + self.bounds.size.height + 20.0;
-        NSLog(@"A----idealOffsetA = %f", idealOffset);
+//        NSLog(@"A----idealOffsetA = %f", idealOffset);
         currentInsets.top = idealOffset;
     }else if(self.posType == indicator_bottom) {
         float idealOffset = self.originalBottomInset + self.bounds.size.height + 20.0;
-        NSLog(@"B----idealOffsetB = %f", idealOffset);
+//        NSLog(@"B----idealOffsetB = %f", idealOffset);
         currentInsets.bottom = idealOffset;
     }
     [self setScrollViewContentInset:currentInsets handler:handler animation:animation];
@@ -183,7 +194,7 @@
 }
 - (void)setScrollViewContentInset:(UIEdgeInsets)contentInset handler:(actionHandler)handler animation:(BOOL)animation
 {
-    NSLog(@"AB----set Content Inset = contentInset.top = %f, contentInset.bottom = %f", contentInset.top, contentInset.bottom);
+//    NSLog(@"AB----set Content Inset = contentInset.top = %f, contentInset.bottom = %f", contentInset.top, contentInset.bottom);
     if(animation)
     {
         [UIView animateWithDuration:0.3
@@ -290,11 +301,8 @@
     _progressThreshold = progressThreshold;
     if (self.posType == indicator_top){
         self.frame = CGRectMake(self.frame.origin.x, self.progressThreshold, self.frame.size.width, self.frame.size.height);
-        NSLog(@"A_progressThreshold------- self.frame = (%.1f, %.1f)(%.1f, %.1f),", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
     }else if (self.posType == indicator_bottom){
-        
         self.frame = CGRectMake(self.frame.origin.x, self.frame.size.height-self.progressThreshold, self.frame.size.width, self.frame.size.height);
-        NSLog(@"B_progressThreshold------- self.frame = (%.1f, %.1f)(%.1f, %.1f),", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
     }
 }
 #pragma mark - KVO
@@ -325,18 +333,16 @@
         self.progress = ((yOffset + self.originalTopInset + StartPosition)/-self.progressThreshold);
         self.center = CGPointMake(self.center.x, (contentOffset.y + self.originalTopInset)/2);
 //        NSLog(@"A- - - - yOffset = %.1f,  _state = %zd, self.progress = %.2f, prevProgressTop = %.2f", yOffset, self.state, self.progress, prevProgressTop);
-//        NSLog(@"A------yOffset = %.1f, self.frame = (%.1f, %.1f)(%.1f, %.1f),",yOffset, self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
         
     }else if (self.posType == indicator_bottom){
-        
-        self.progress = (MAX((yOffset  - ll - self.originalBottomInset),  StartPosition) / self.progressThreshold);
-        CGFloat s =  ll - self.originalBottomInset;
-        CGFloat p = (yOffset  - ll - self.originalBottomInset);
-        self.progress = (p + s) / s;
+//        self.progress = (MAX((yOffset  - ll - self.originalBottomInset),  StartPosition) / self.progressThreshold);
+        CGFloat s =  ll + self.originalBottomInset;
+        self.progress = (yOffset) / s;
+//        NSLog(@"B-------s = %f, yOffset = %.1f, self.originalBottomInset = %f, self.progress  = %f", s, yOffset, self.originalBottomInset, self.progress);
+        self.center = CGPointMake(self.center.x,  self.scrollView.contentSize.height + 10 + self.bounds.size.height*0.5);
 //        NSLog(@"B- - - - yOffset = %.1f, ll = %.1f,  _state = %zd, self.progress = %.2f", yOffset, ll, self.state, self.progress);
-        self.center = CGPointMake(self.center.x,  self.scrollView.contentSize.height + 20);
 //        NSLog(@"B-------yOffset = %.1f, self.frame = (%.1f, %.1f)(%.1f, %.1f),",yOffset, self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
-        NSLog(@"B-------yOffset = %.1f, p = %f, self.progress  = %f", yOffset, p, self.progress );
+        
     }
     
     switch (_state) {
@@ -369,29 +375,39 @@
             float prev = 0;
             if (self.posType == indicator_top){
                 prev = prevProgressTop;
+                if(self.scrollView.dragging == NO && prev > 0.99)
+                {
+                    [self actionTriggeredState];
+                }
             }else if (self.posType == indicator_bottom){
                 prev = prevProgressBottom;
+                if(prev > 0.99)
+                {
+                    [self actionTriggeredState];
+                }
             }
-            if(self.scrollView.dragging == NO && prev > 0.99)
-            {
-                [self actionTriggeredState];
-            }
+            
         }
             break;
         case UZYSPullToRefreshStateLoading: //wait until stopIndicatorAnimation
             break;
         case UZYSPullToRefreshStateCanFinish:
-            NSLog(@"AB-------self.progress = %f, compare to: %f", self.progress, ((CGFloat)StartPosition/-self.progressThreshold));
+        {
             CGFloat std = 0.0;
             if (self.posType == indicator_top){
+//                NSLog(@"A-------self.progress = %f, compare to: %f", self.progress, ((CGFloat)StartPosition/-self.progressThreshold));
                 std = ((CGFloat)StartPosition/-self.progressThreshold);
+                if(fabs(self.progress - std) < 0.01)
+                {
+                    self.state = UZYSPullToRefreshStateNone;
+                }
             }else if (self.posType == indicator_bottom){
-                std = ((CGFloat)StartPosition/self.progressThreshold);
-            }
-            if(fabs(self.progress - std) < 0.01)
-            {
+                
                 self.state = UZYSPullToRefreshStateNone;
             }
+        }
+            break;
+        case UZYSPullToRefreshStateDisabled:
 
             break;
         default:
@@ -445,6 +461,7 @@
 }
 -(void)actionTriggeredState
 {
+//    NSLog(@"****************** - - - actionTriggeredState-------*--*-*-");
     self.state = UZYSPullToRefreshStateLoading;
     
     [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState animations:^{
@@ -459,10 +476,68 @@
         self.pullToRefreshHandler();
 }
 
+-(void)actionEndTip
+{
+//    NSLog(@"+ - - - - - - - - actionEndTip- - - - - - - - -");
+    self.state = UZYSPullToRefreshStateDisabled;
+    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.activityIndicatorView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+    } completion:^(BOOL finished) {
+        self.activityIndicatorView.transform = CGAffineTransformIdentity;
+        [self.activityIndicatorView stopAnimating];
+//        [self setupScrollViewContentInsetForLoadingIndicator:nil animation:YES];
+    }];
+}
+
+#pragma mark - public method
+- (void)orientationChange:(UIDeviceOrientation)orientation {
+    
+    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+    UIInterfaceOrientation statusBarOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    
+    if((NSInteger)deviceOrientation !=(NSInteger)statusBarOrientation){
+        return;
+    }
+    
+    if(UIDeviceOrientationIsLandscape(orientation))
+    {
+        if(cNotEqualFloats( self.landscapeTopInset , 0.0 , cDefaultFloatComparisonEpsilon))
+            self.originalTopInset = self.landscapeTopInset;
+    }
+    else
+    {
+        if(cNotEqualFloats( self.portraitTopInset , 0.0 , cDefaultFloatComparisonEpsilon))
+            self.originalTopInset = self.portraitTopInset;
+    }
+    [self setSize:_imageIcon.size];
+//    self.frame = CGRectMake((self.scrollView.bounds.size.width - self.bounds.size.width)/2, self.frame.origin.y, self.bounds.size.width, self.bounds.size.height);
+    if(self.state == UZYSPullToRefreshStateLoading)
+    {
+        [self setupScrollViewContentInsetForLoadingIndicator:^{
+        } animation:NO];
+    }
+    else
+    {
+        [self resetScrollViewContentInset:^{
+        } animation:NO];
+    }
+    self.alpha = 1.0f;
+    
+    
+}
+
 - (void)stopIndicatorAnimation
 {
     [self actionStopState];
 }
+
+- (void)showEndTip
+{
+    [self.endTipView setTipSize:CGSizeMake(self.scrollView.bounds.size.width, 45)];
+    self.endTipView.hidden = NO;
+    [self actionEndTip];
+}
+
 - (void)manuallyTriggered
 {
     [self setLayerOpacity:0.0];
@@ -483,6 +558,7 @@
     self.frame=rect;
     self.shapeLayer.frame = self.bounds;
     self.activityIndicatorView.frame = self.bounds;
+    self.endTipView.frame = self.bounds;
     self.imageLayer.frame = CGRectInset(self.bounds, self.borderWidth, self.borderWidth);
     
     self.backgroundLayer.frame = self.bounds;

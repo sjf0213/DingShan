@@ -29,7 +29,7 @@
     [self.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
 }
 - (void)stopAnimating{
-    [self.layer removeAnimationForKey:@"refresh_center_icon"];
+    [self.layer removeAnimationForKey:@"rotationAnimation"];
     self.alpha = 0.0;
 }
 - (BOOL)isAnimating{
@@ -45,4 +45,7 @@
     UIImageView* imgView = [[UIImageView alloc] initWithImage:image];
     [self addSubview:imgView];
 }
+
+
+
 @end
