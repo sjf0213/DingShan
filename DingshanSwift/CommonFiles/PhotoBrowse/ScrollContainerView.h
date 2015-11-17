@@ -37,7 +37,7 @@ typedef enum {
 @property(nonatomic, copy) void (^tapSubmitHandler)(NSString *imageUrlString, NSInteger articleid, CGPoint relativeTouchPoint, NSString *commentText);
 
 - (UIView*)getCurrentShowView;
-- (void)AddDataSourceByArray:(NSArray *)array;
-- (void)UpdateDataSourceByArray:(NSArray *)array;
-- (void)MoveViewByOffset:(NSInteger)offset;
+- (void)addDataSourceByArray:(NSArray *)array;
+- (void)updateDataSourceByArray:(NSArray *)array;
+- (void)moveViewByOffset:(NSInteger)offset;
 @end

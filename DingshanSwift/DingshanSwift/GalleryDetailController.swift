@@ -21,4 +21,8 @@ class GalleryDetailController: DSViewController {
         container = ScrollContainerView(frame: self.view.bounds);
         self.view.addSubview(container!)
     }
+    
+    func loadImageArray(arr:[AnyObject]){
+        container?.addDataSourceByArray(arr)
+    }
 }

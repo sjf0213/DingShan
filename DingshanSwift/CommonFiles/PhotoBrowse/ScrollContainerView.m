@@ -105,7 +105,7 @@
     return self;
 }
 
--(void)MoveViewByOffset:(NSInteger)offset
+-(void)moveViewByOffset:(NSInteger)offset
 {
     //需要移动到第几个视图
     self.currentPageNumber = offset;
@@ -134,7 +134,7 @@
 
 #pragma mark - 加载数据
 //
-- (void)AddDataSourceByArray:(NSArray *)array{
+- (void)addDataSourceByArray:(NSArray *)array{
     
     if (array != nil && [array count]>0) {
         //第一次进入页面时刷新各视图
@@ -158,7 +158,6 @@
             }
         }
         
-        
         // 重新赋值图片集合
         [self.datasource removeAllObjects];
         [self.datasource addObjectsFromArray:array];
@@ -172,7 +171,7 @@
     self.currentShowNumber = self.currentPageNumber + 1;
 }
 
--(void)UpdateDataSourceByArray:(NSArray *)array
+-(void)updateDataSourceByArray:(NSArray *)array
 {
     if (array != nil && [array count]>0) {
         NSString* currentImgURL = [self.datasource objectAtIndex:self.currentPageNumber];
@@ -195,7 +194,7 @@
                     if ([item isEqualToString:currentImgURL])
                     {
                         newindex = i;
-                        [self MoveViewByOffset:newindex];
+                        [self moveViewByOffset:newindex];
                         break;
                     }
                 }
@@ -311,7 +310,7 @@
     UIView * currentview = [self.views objectAtIndex:((int)viewCount/2)];
     //容错处理，产生原因可能是当内存消耗过大时，导致某些方法没调用，视图显示不正确。
     if ((width * self.currentPageNumber +width/2) != currentview.center.x) {
-        [self MoveViewByOffset:self.currentPageNumber];
+        [self moveViewByOffset:self.currentPageNumber];
     }
     
 }
