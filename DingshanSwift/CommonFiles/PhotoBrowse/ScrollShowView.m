@@ -16,9 +16,6 @@
 @end
 
 @implementation ScrollShowView
-{
-    NSInteger maxCommentDisplayCount;
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -190,9 +187,7 @@ CGSize SizeThatFits(CGSize target, CGSize source) {
 }
 
 #pragma mark -
-- (void)RefreshByData:(NSObject *)obj replys:(NSMutableArray *)replys withMaxCount:(NSInteger)maxCount{
-//    DLog(@"RefreshByData----------------------replysCount = %zd",replys.count);
-    maxCommentDisplayCount = maxCount;
+- (void)RefreshByData:(NSObject *)obj {
     self.imageScrollView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     self.imageScrollView.scrollEnabled = NO;
     self.imageView.frame = self.imageScrollView.frame;

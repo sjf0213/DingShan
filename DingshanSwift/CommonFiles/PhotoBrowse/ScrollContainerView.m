@@ -19,12 +19,9 @@
 @property (nonatomic) NSInteger         RequestSpace;
 @property (nonatomic) RequestState      state;
 @property (nonatomic) UIView            *coverView;
-@property (nonatomic) CGRect            keyboardFrame;
 @property (nonatomic) NSTimeInterval    keyboardAnimationDuration;
 @property (nonatomic) ScrollShowView    *curScrollShowView;
 @property (nonatomic) BOOL              isShowingCover;
-@property (nonatomic) NSMutableArray    *replyDicts;
-@property (nonatomic) NSInteger photoAlbumArticleId;
 @end
 
 @implementation ScrollContainerView
@@ -128,8 +125,7 @@
             tempview.hidden = NO;
             if (index < self.datasource.count) {
                 NSString *imageUrlString = [self.datasource objectAtIndex:index];
-                NSMutableArray *replys = [self imageReplysForImageUrlString:imageUrlString replyDicts:self.replyDicts];
-                [tempview RefreshByData:imageUrlString replys:replys withMaxCount:maxCommentDisplayCount];
+                [tempview RefreshByData:imageUrlString];
             }
         }
     }
@@ -138,45 +134,12 @@
 
 #pragma mark - 加载数据
 //
-- (void)AddDataSourceByArray:(NSArray *)array replyInfo:(NSArray *)replyInfo
-{
-    [self AddDataSourceByArray:array replyInfo:replyInfo articleId:0 withMaxCommentCount:NSIntegerMax];
-}
-// 只有美图加评论功能需要在展示图片时候传给article_id
-- (void)AddDataSourceByArray:(NSArray *)array replyInfo:(NSArray *)replyInfo articleId:(NSInteger)article_id withMaxCommentCount:(NSInteger)max
-{
-    NSLog(@"AddDataSourceByArray-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+replyCount = %zd, dispalyMax = %zd", replyInfo.count, max);
-    maxCommentDisplayCount = max;
-    self.photoAlbumArticleId = article_id;
+- (void)AddDataSourceByArray:(NSArray *)array{
+    
     if (array != nil && [array count]>0) {
         //第一次进入页面时刷新各视图
         if (isFirstEnter) {
             isFirstEnter = NO;
-            
-            // 将评论数据模型处理为可写，为之后添加评论做准备
-            [self.replyDicts removeAllObjects];
-            [replyInfo enumerateObjectsUsingBlock:^(NSDictionary *srcReplyListDict, NSUInteger idx, BOOL *stop) {
-                NSMutableDictionary *mutableReplyListDict = [NSMutableDictionary dictionaryWithDictionary:srcReplyListDict];
-                NSArray *replyList = [mutableReplyListDict objectForKey:@"reply_list"];
-                NSMutableArray *mutableReplyList = [NSMutableArray array];
-                [replyList enumerateObjectsUsingBlock:^(NSDictionary *reply, NSUInteger idx, BOOL *stop) {
-                    if ([reply isKindOfClass:[NSDictionary class]] && reply.count > 0) {
-                        NSMutableDictionary *mutableReplyDict = [NSMutableDictionary dictionaryWithDictionary:reply];
-                        NSString *jsonString = [mutableReplyDict objectForKey:@"reply_content"];
-                        NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-                        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-                        if (dict) {
-                            [mutableReplyDict setObject:dict forKey:@"reply_content"];
-                        } else {
-                            [mutableReplyDict removeObjectForKey:@"reply_content"];
-                        }
-                        [mutableReplyList addObject:mutableReplyDict];
-                    }
-                }];
-                [mutableReplyListDict setObject:mutableReplyList forKey:@"reply_list"];
-                [self.replyDicts addObject:mutableReplyListDict];
-            }];
-            
             //刷新所有页面
             for (int i=0; i<viewCount;i++) {
                 ScrollShowView * tempview = [self.views objectAtIndex:i];
@@ -190,9 +153,7 @@
                 if (index < array.count) {
 //                    int index = i-viewCount/2;
                     NSString *imageUrlString = [array objectAtIndex:index];
-                    NSMutableArray *imageReplys = [self imageReplysForImageUrlString:imageUrlString replyDicts:self.replyDicts];
-//                    DLog(@"+++++++++++++++++++++++++++imageReplys = %zd", imageReplys.count);
-                    [tempview RefreshByData:[array objectAtIndex:index] replys:imageReplys withMaxCount:max];
+                    [tempview RefreshByData:imageUrlString];
                 }
             }
         }
@@ -274,8 +235,7 @@
                     if (index < self.datasource.count) {
                         waitForMoveView.hidden = NO;
                         NSString *imageUrlString = [self.datasource objectAtIndex:index];
-                        NSMutableArray *imageReplys = [self imageReplysForImageUrlString:imageUrlString replyDicts:self.replyDicts];
-                        [waitForMoveView RefreshByData:[self.datasource objectAtIndex:index] replys:imageReplys withMaxCount:maxCommentDisplayCount];
+                        [waitForMoveView RefreshByData:imageUrlString];
                     }
                 }
                 scaleview = [self.views objectAtIndex:0];
@@ -297,8 +257,7 @@
                 if (index < self.datasource.count) {
                     waitForMoveView.hidden = NO;
                     NSString *imageUrlString = [self.datasource objectAtIndex:index];
-                    NSMutableArray *imageReplys = [self imageReplysForImageUrlString:imageUrlString replyDicts:self.replyDicts];
-                    [waitForMoveView RefreshByData:imageUrlString replys:imageReplys withMaxCount:maxCommentDisplayCount];
+                    [waitForMoveView RefreshByData:imageUrlString];
                 }
             }
             scaleview = [self.views objectAtIndex:(viewCount -1)];
@@ -387,21 +346,6 @@
 // 点击遮罩
 - (void)onTapCover {
     [[UIApplication sharedApplication].keyWindow endEditing:YES];
-}
-
-#pragma mark - tools
-- (NSMutableArray *)imageReplysForImageUrlString:(NSString *)imageUrlString replyDicts:(NSArray *)replyDicts {
-    __block NSMutableArray *imageReplys = nil;
-    [replyDicts enumerateObjectsUsingBlock:^(NSDictionary *replyDict, NSUInteger idx, BOOL *stop) {
-        if ([imageUrlString isEqualToString:[replyDict objectForKey:@"reply_image_url"]]) {
-            NSMutableArray *arr = [replyDict objectForKey:@"reply_list"];
-            if ([arr count] >= 1) {
-                imageReplys = arr;
-                *stop = YES;
-            }
-        }
-    }];
-    return imageReplys;
 }
 
 #pragma mark - dealloc

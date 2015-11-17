@@ -9,8 +9,16 @@
 import Foundation
 
 class GalleryDetailController: DSViewController {
+    var container:ScrollContainerView?
     override func loadView(){
         super.loadView()
         self.view.backgroundColor = UIColor.whiteColor()
+        
+        
+    }
+    
+    override func viewDidLoad() {
+        container = ScrollContainerView(frame: self.view.bounds);
+        self.view.addSubview(container!)
     }
 }

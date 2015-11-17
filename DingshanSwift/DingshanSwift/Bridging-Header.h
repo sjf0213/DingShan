@@ -27,4 +27,6 @@
 #import "../FontAwesome/NSString+FontAwesome.h"
 #import "../FontAwesome/UIFont+FontAwesome.h"
 #import "../FontAwesome/UIImage+FontAwesome.h"
+#import "../Commonfiles/PhotoBrowse/ScrollContainerDelegate.h"
+#import "../Commonfiles/PhotoBrowse/ScrollContainerView.h"
 #endif

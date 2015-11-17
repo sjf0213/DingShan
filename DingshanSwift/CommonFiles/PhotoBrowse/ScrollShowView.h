@@ -18,7 +18,7 @@
 @property (nonatomic, readonly) NSString *curImageUrlString;
 @property (nonatomic, readonly) CGPoint curTouchPoint;
 @property (nonatomic, copy) void (^tapShowTextInputHandler)(ScrollShowView *sender);
-- (void)RefreshByData:(NSObject *)obj replys:(NSMutableArray *)replys withMaxCount:(NSInteger)maxDicplayCount;
+- (void)RefreshByData:(NSObject *)obj;
 - (void)ClearView;
 - (void)RevertScale;
 @end

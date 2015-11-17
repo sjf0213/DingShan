@@ -37,9 +37,7 @@ typedef enum {
 @property(nonatomic, copy) void (^tapSubmitHandler)(NSString *imageUrlString, NSInteger articleid, CGPoint relativeTouchPoint, NSString *commentText);
 
 - (UIView*)getCurrentShowView;
-- (id)initWithFrame:(CGRect)frame commentEnabeld:(BOOL)commentEnabeld;
-- (void)AddDataSourceByArray:(NSArray *)array replyInfo:(NSArray *)replyInfo;
-- (void)AddDataSourceByArray:(NSArray *)array replyInfo:(NSArray *)replyInfo articleId:(NSInteger)article_id withMaxCommentCount:(NSInteger)max;
+- (void)AddDataSourceByArray:(NSArray *)array;
 - (void)UpdateDataSourceByArray:(NSArray *)array;
 - (void)MoveViewByOffset:(NSInteger)offset;
 @end

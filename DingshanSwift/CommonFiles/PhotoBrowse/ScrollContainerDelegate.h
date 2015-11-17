@@ -16,7 +16,7 @@
 - (void)SaveToAlbum;
 - (void)SaveToAlbum:(UIView*)tipView;
 @required
-- (void)RefreshByData:(NSObject *)obj replys:(NSMutableArray *)replys withMaxCount:(NSInteger)maxDicplayCount;
+- (void)RefreshByData:(NSObject *)obj;
 - (void)ClearView;
 - (void)RevertScale;
 
