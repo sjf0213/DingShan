@@ -126,7 +126,14 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     }
     
     func startRequest(config:[NSObject:AnyObject]?){
-        var parameter:[NSObject:AnyObject] = [  "iid" : String(self.currentPage),
+        
+        var iid = "0"// 取上一页的最后一张图的imageid
+        if(self.dataList.count > 0){
+            if let item = self.dataList.lastObject as? ImageInfoData{
+                iid = String(item.imageId)
+            }
+        }
+        var parameter:[NSObject:AnyObject] = [  "iid" : iid,
                                               "psize" : "30",
                                                "json" : "1"]
         if config != nil{
@@ -172,28 +179,19 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
             if let v = result["v"] as? [NSObject:AnyObject]{
                 if let list = v["image_list"] as? [AnyObject]{
                     for item in list{
-                        if let arr = item["imageurls"] as? [AnyObject]{// 组图
-                            if arr.count > 0{
-                                if let firstImageData = arr[0] as? [NSObject:AnyObject]{
-                                    let data = ImageInfoData(dic: firstImageData)
-                                    self.dataList.addObject(data)
-                                }
-                            }
-                        }else{// 单图
-                            if let data = item as? [NSObject:AnyObject]{
-                                let data = ImageInfoData(dic: data)
-                                self.dataList.addObject(data)
-                            }
+                        if let data = item as? [NSObject:AnyObject]{
+                            let data = ImageInfoData(dic: data)
+                            self.dataList.addObject(data)
                         }
                     }
-                    // print("\n---===---self.dataList = \(self.dataList)")
-                    self.mainCollection?.reloadData()
+                    
                 }
             }
         }else{
-            // 失败时候清空数据后也要重新加载
-            self.mainCollection?.reloadData()
+            print("\n---===---Error: processRequestResult = \(result)")
         }
+        // print("\n---===---self.dataList = \(self.dataList)")
+        self.mainCollection?.reloadData()// 失败时候清空数据后也要重新加载
     }
     
     // MARK: UICollectionViewDelegate
