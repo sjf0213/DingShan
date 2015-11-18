@@ -22,7 +22,7 @@ class GalleryDetailController: DSViewController {
         self.view.addSubview(container!)
     }
     
-    func loadImageArray(arr:[AnyObject]){
-        container?.addDataSourceByArray(arr)
+    func loadImageData(data:ImageInfoData){
+        
     }
 }
