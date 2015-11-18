@@ -76,6 +76,11 @@ class ServerApi: NSObject {
         return ""
     }
     
+    // 多图详情
+    class func gallery_get_galary_detail(dic: [NSObject : AnyObject]) -> String{
+        return ServerApi.signatureURL("dingshan/images/multiimagesdetail", args: dic)
+    }
+    
     // 用户
     class func user_create_new(dic:[NSObject : AnyObject]) -> String{
         let url = "dingshan/user/createnewuser"
