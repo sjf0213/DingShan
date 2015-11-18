@@ -532,13 +532,17 @@
     [self actionStopState];
 }
 
-- (void)showEndTip
+- (void)showEndTip:(BOOL)enable
 {
-    [self.endTipView setTipSize:CGSizeMake(self.scrollView.bounds.size.width, 45)];
-    self.endTipView.hidden = NO;
-    [self bringSubviewToFront:self.endTipView];
-    [self setLayerHidden:YES];
-    [self actionEndTip];
+    if(enable){
+        [self.endTipView setTipSize:CGSizeMake(self.scrollView.bounds.size.width, 45)];
+        self.endTipView.hidden = NO;
+        [self bringSubviewToFront:self.endTipView];
+        [self setLayerHidden:YES];
+        [self actionEndTip];
+    }else{
+        self.endTipView.hidden = YES;
+    }
 }
 
 - (void)manuallyTriggered

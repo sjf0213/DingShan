@@ -27,5 +27,5 @@
 - (void)triggerPullToLoadMore;
 - (void)stopRefreshAnimation;
 - (void)stopLoadMoreAnimation;
-- (void)showLoadMoreEnd;
+- (void)showLoadMoreEnd:(BOOL)enable;
 @end

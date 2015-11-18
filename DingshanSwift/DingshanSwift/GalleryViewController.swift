@@ -147,6 +147,9 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
         }
         let url = ServerApi.gallery_get_galary_list(type, dic:parameter)
         
+        if (self.currentPage == 0){
+            self.mainCollection?.showLoadMoreEnd(false)
+        }
         // print("\n---$$$---url = \(url)", terminator: "")
         AFDSClient.sharedInstance.GET(url, parameters: nil,
             success: {[weak self](task, JSON) -> Void in
@@ -166,7 +169,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                 let delayInSeconds = 2.0;
                 let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delayInSeconds * Double(NSEC_PER_SEC)))
                 dispatch_after(popTime, dispatch_get_main_queue(), {() -> Void in
-                    self?.mainCollection?.showLoadMoreEnd()
+                    self?.mainCollection?.showLoadMoreEnd(true)
                 })
             })
     }
@@ -192,7 +195,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                 }else{// 最后一页没有更多数据了
                     let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(load_delay * Double(NSEC_PER_SEC)))
                     dispatch_after(popTime, dispatch_get_main_queue(), {() -> Void in
-                        self.mainCollection?.showLoadMoreEnd()
+                        self.mainCollection?.showLoadMoreEnd(true)
                     })
                 }
             }
@@ -200,7 +203,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
             print("\n---===---Error: processRequestResult = \(result)")
             let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(load_delay * Double(NSEC_PER_SEC)))
             dispatch_after(popTime, dispatch_get_main_queue(), {() -> Void in
-                self.mainCollection?.showLoadMoreEnd()
+                self.mainCollection?.showLoadMoreEnd(true)
             })
         }
     }

@@ -56,5 +56,5 @@ typedef NS_ENUM(NSUInteger, IndicatorPosType) {
 - (void)orientationChange:(UIDeviceOrientation)orientation;
 
 //- (void)enableLoadMoreIndicator:(BOOL)enable;
-- (void)showEndTip;
+- (void)showEndTip:(BOOL)enable;
 @end

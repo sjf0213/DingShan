@@ -154,10 +154,10 @@ static char UIScrollViewPullToLoadMoreView;
     [self.pullToLoadMoreView stopIndicatorAnimation];
 }
 
-- (void)showLoadMoreEnd
+- (void)showLoadMoreEnd:(BOOL)enable
 {
     // 加入一个提示View
-    [self.pullToLoadMoreView showEndTip];
+    [self.pullToLoadMoreView showEndTip:enable];
 }
 #pragma mark - property
 - (void)addTopInsetInPortrait:(CGFloat)pInset TopInsetInLandscape:(CGFloat)lInset
