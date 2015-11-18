@@ -35,7 +35,7 @@ class  GalleryViewCell : UICollectionViewCell
     }
     
     override func layoutSubviews() {
-        print("-*------*-self.layoutSubviews, self = \(self), ")
+//        print("-*------*-self.layoutSubviews, self = \(self), ")
         bgImg?.frame = self.bounds
 //        title?.frame = CGRect(x: 0, y: frame.size.height - 15, width: frame.size.width, height: 15)
         
@@ -43,7 +43,7 @@ class  GalleryViewCell : UICollectionViewCell
     
     func loadCellData(info:ImageInfoData){
         title?.text = info.desc
-        print("-*------*-self.loadCellData, self = \(self), ")
+//        print("-*------*-self.loadCellData, self = \(self), ")
         title?.frame = CGRect(x: 0, y: frame.size.height - 15, width: frame.size.width, height: 15)
         let url = NSURL(string: info.url.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
         bgImg?.sd_setImageWithURL(url)
