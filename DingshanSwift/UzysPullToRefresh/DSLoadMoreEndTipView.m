@@ -18,8 +18,9 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.title = [[UILabel alloc] initWithFrame:self.bounds];
-        self.title.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.5];
-        self.title.text = @"End";
+        self.title.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3];
+        self.title.textAlignment = NSTextAlignmentCenter;
+        self.title.text = @"没有更多了";
         [self addSubview:self.title];
     }
     return self;

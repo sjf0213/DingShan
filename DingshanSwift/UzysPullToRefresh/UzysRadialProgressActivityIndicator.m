@@ -112,7 +112,7 @@
     
     _endTipView = [[DSLoadMoreEndTipView alloc] initWithFrame:self.bounds];
     _endTipView.clipsToBounds = NO;
-    _endTipView.backgroundColor = [[UIColor cyanColor] colorWithAlphaComponent:0.3];
+    _endTipView.backgroundColor = [UIColor clearColor];
     [self addSubview:_endTipView];
     _endTipView.hidden = YES;
     
@@ -338,7 +338,7 @@
 //        self.progress = (MAX((yOffset  - ll - self.originalBottomInset),  StartPosition) / self.progressThreshold);
         CGFloat s =  ll + self.originalBottomInset;
         self.progress = (yOffset) / s;
-//        NSLog(@"B-------s = %f, yOffset = %.1f, self.originalBottomInset = %f, self.progress  = %f", s, yOffset, self.originalBottomInset, self.progress);
+        NSLog(@"B-------state = %zd, s = %f, yOffset = %.1f, self.originalBottomInset = %f, self.progress  = %f", self.state, s, yOffset, self.originalBottomInset, self.progress);
         self.center = CGPointMake(self.center.x,  self.scrollView.contentSize.height + 10 + self.bounds.size.height*0.5);
 //        NSLog(@"B- - - - yOffset = %.1f, ll = %.1f,  _state = %zd, self.progress = %.2f", yOffset, ll, self.state, self.progress);
 //        NSLog(@"B-------yOffset = %.1f, self.frame = (%.1f, %.1f)(%.1f, %.1f),",yOffset, self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
@@ -479,13 +479,14 @@
 -(void)actionEndTip
 {
 //    NSLog(@"+ - - - - - - - - actionEndTip- - - - - - - - -");
-    self.state = UZYSPullToRefreshStateDisabled;
+    __weak typeof(self) wself = self;
     [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState animations:^{
-        self.activityIndicatorView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+        wself.activityIndicatorView.transform = CGAffineTransformMakeScale(0.1, 0.1);
     } completion:^(BOOL finished) {
-        self.activityIndicatorView.transform = CGAffineTransformIdentity;
-        [self.activityIndicatorView stopAnimating];
+        wself.activityIndicatorView.transform = CGAffineTransformIdentity;
+        [wself.activityIndicatorView stopAnimating];
 //        [self setupScrollViewContentInsetForLoadingIndicator:nil animation:YES];
+        wself.state = UZYSPullToRefreshStateDisabled;
     }];
 }
 
@@ -535,6 +536,8 @@
 {
     [self.endTipView setTipSize:CGSizeMake(self.scrollView.bounds.size.width, 45)];
     self.endTipView.hidden = NO;
+    [self bringSubviewToFront:self.endTipView];
+    [self setLayerHidden:YES];
     [self actionEndTip];
 }
 

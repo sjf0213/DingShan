@@ -9,6 +9,7 @@
 import Foundation
 
 let gallery_gap:CGFloat = 10.0
+let load_delay:Double = 1.0
 
 class GalleryViewController:DSViewController,UICollectionViewDataSource, UICollectionViewDelegate,CHTCollectionViewDelegateWaterfallLayout
 {
@@ -78,10 +79,6 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
             print("B_DONE------- self.frame = (\(self?.indicatorBottom?.frame.origin.x), \(self?.indicatorBottom?.frame.origin.y), \(self?.indicatorBottom?.frame.size.width), \(self?.indicatorBottom?.frame.size.height)")
             
         })
-        indicatorTop?.progressThreshold = 64.0
-        indicatorBottom?.progressThreshold = 44;
-        
-        
         self.view.addSubview(mainCollection!)
         self.view.bringSubviewToFront(menuView)
         
@@ -164,14 +161,14 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                     // print("\n responseJSON- - - - -data:", dic)
                     self?.processRequestResult(dic)
                 }
-                // 控件复位
-                self?.mainCollection?.stopRefreshAnimation()
-                self?.mainCollection?.stopLoadMoreAnimation()
             }, failure: {[weak self]( task, error) -> Void in
                 print("\n failure: TIP --- e:\(error)")
-                self?.mainCollection?.stopRefreshAnimation()
-                self?.mainCollection?.stopLoadMoreAnimation()
-        })
+                let delayInSeconds = 2.0;
+                let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delayInSeconds * Double(NSEC_PER_SEC)))
+                dispatch_after(popTime, dispatch_get_main_queue(), {() -> Void in
+                    self?.mainCollection?.showLoadMoreEnd()
+                })
+            })
     }
     
     func processRequestResult(result:[NSObject:AnyObject]){
@@ -184,14 +181,28 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
                             self.dataList.addObject(data)
                         }
                     }
-                    
+                    // 正常流程
+                    let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(load_delay * Double(NSEC_PER_SEC)))
+                    dispatch_after(popTime, dispatch_get_main_queue(), {() -> Void in
+                        self.mainCollection?.reloadData()// 失败时候清空数据后也要重新加载
+                        // 控件复位
+                        self.mainCollection?.stopRefreshAnimation()
+                        self.mainCollection?.stopLoadMoreAnimation()
+                    })
+                }else{// 最后一页没有更多数据了
+                    let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(load_delay * Double(NSEC_PER_SEC)))
+                    dispatch_after(popTime, dispatch_get_main_queue(), {() -> Void in
+                        self.mainCollection?.showLoadMoreEnd()
+                    })
                 }
             }
         }else{
             print("\n---===---Error: processRequestResult = \(result)")
+            let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(load_delay * Double(NSEC_PER_SEC)))
+            dispatch_after(popTime, dispatch_get_main_queue(), {() -> Void in
+                self.mainCollection?.showLoadMoreEnd()
+            })
         }
-        // print("\n---===---self.dataList = \(self.dataList)")
-        self.mainCollection?.reloadData()// 失败时候清空数据后也要重新加载
     }
     
     // MARK: UICollectionViewDelegate
