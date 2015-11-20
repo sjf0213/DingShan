@@ -31,7 +31,7 @@ class GalleryDetailController: DSViewController {
         let parameter:[NSObject:AnyObject] = [ "iid" : String(imageSetId),
                                               "json" : "1"]
         let url = ServerApi.gallery_get_galary_detail(parameter)
-        // print("\n---$$$---url = \(url)", terminator: "")
+         print("\n---$$$---url = \(url)", terminator: "")
         AFDSClient.sharedInstance.GET(url, parameters: nil,
             success: {[weak self](task, JSON) -> Void in
                 print("\n responseJSON- - - - -data = \(JSON)")
@@ -47,11 +47,18 @@ class GalleryDetailController: DSViewController {
     
     func processRequestResult(result:[NSObject:AnyObject]){
         if (200 == result["c"]?.integerValue){
-            if let v = result["v"] as? [NSObject:AnyObject]{
-                if let list = v["image_list"] as? [AnyObject]{
-                    for item in list{
+            if let list = result["v"] as? [AnyObject]{
+                var urlArr:[AnyObject] = [AnyObject]()
+                for item in list{
+                    if let dic = item as? [NSObject: AnyObject]{
+                        let data = ImageInfoData(dic: dic)
+                        urlArr.append(data.url)
                     }
                 }
+                print("urlArr = \(urlArr)")
+                dispatch_async(dispatch_get_main_queue(),{ () -> Void in
+                    self.container?.addDataSourceByArray(urlArr);
+                })
             }
         }
     }
