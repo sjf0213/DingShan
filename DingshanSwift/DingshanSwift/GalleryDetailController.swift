@@ -14,6 +14,9 @@ class GalleryDetailController: DSViewController {
         super.loadView()
         self.view.backgroundColor = UIColor.whiteColor()
         
+        // 单击手势
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: Selector("onTapView"))
+        self.view.addGestureRecognizer(tapRecognizer)
         
     }
     
@@ -64,5 +67,9 @@ class GalleryDetailController: DSViewController {
                 })
             }
         }
+    }
+    
+    func onTapView(){
+        print("onTapView = = = = = =  == ")
     }
 }

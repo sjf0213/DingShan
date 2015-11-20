@@ -130,6 +130,7 @@
 		F0E574F81B6784BE000053B8 /* LoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E574F21B6784BE000053B8 /* LoadView.m */; };
 		F0E574F91B6784BE000053B8 /* RefreshIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E574F51B6784BE000053B8 /* RefreshIconView.m */; };
 		F0E574FA1B6784BE000053B8 /* RefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E574F71B6784BE000053B8 /* RefreshView.m */; };
+		F0EEA95B1BFF2C9E006B63D3 /* GalleryDetailTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEA95A1BFF2C9E006B63D3 /* GalleryDetailTopBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -326,6 +327,7 @@
 		F0E574F61B6784BE000053B8 /* RefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshView.h; sourceTree = "<group>"; };
 		F0E574F71B6784BE000053B8 /* RefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshView.m; sourceTree = "<group>"; };
 		F0E574FF1B678E02000053B8 /* LoadSuit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadSuit.h; sourceTree = "<group>"; };
+		F0EEA95A1BFF2C9E006B63D3 /* GalleryDetailTopBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryDetailTopBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -705,6 +707,7 @@
 				F08749BB1B54E872006E1FD3 /* GalleryViewController.swift */,
 				F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */,
 				F028C16F1B9C417A00B8CECA /* GalleryDetailController.swift */,
+				F0EEA95A1BFF2C9E006B63D3 /* GalleryDetailTopBar.swift */,
 				F0A3AF5B1BE1C08700C252FD /* Menu */,
 			);
 			name = Gallery;
@@ -861,6 +864,7 @@
 				F00CFFB81BDF8A2D002C8ECC /* SDWebImageCompat.m in Sources */,
 				F0AB9B141BF5C6FC004424FE /* UzysRadialProgressActivityIndicator.m in Sources */,
 				F028C1781B9C43CA00B8CECA /* GalleryMenuButton.swift in Sources */,
+				F0EEA95B1BFF2C9E006B63D3 /* GalleryDetailTopBar.swift in Sources */,
 				F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */,
 				F09C7AB01B7CAEDC00648615 /* KASegmentButton.m in Sources */,
 				F03E68DD1BE71259001D04D1 /* UIImage+FontAwesome.m in Sources */,
