@@ -23,7 +23,10 @@ class GalleryDetailController: DSViewController {
     }
     
     func loadImageData(data:ImageInfoData){
-        
+        let arr:[AnyObject] = [data.url]
+        dispatch_async(dispatch_get_main_queue(),{ [weak self]() -> Void in
+            self?.container?.addDataSourceByArray(arr)
+        })
     }
     
     func startRequest(imageSetId:Int){
@@ -57,7 +60,7 @@ class GalleryDetailController: DSViewController {
                 }
                 print("urlArr = \(urlArr)")
                 dispatch_async(dispatch_get_main_queue(),{ () -> Void in
-                    self.container?.addDataSourceByArray(urlArr);
+                    self.container?.addDataSourceByArray(urlArr)
                 })
             }
         }

@@ -239,7 +239,11 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
             let detail = GalleryDetailController()
             self.navigationController?.pushViewController(detail, animated: true)
             detail.navigationItem.title =  imgData.desc;
-            detail.startRequest(imgData.imageId)
+            if 0 == seg?.selectedSegmentIndex{// 多图
+                detail.startRequest(imgData.imageId)
+            }else if 1 == seg?.selectedSegmentIndex{
+                detail.loadImageData(imgData)
+            }
         }
     }
 }
