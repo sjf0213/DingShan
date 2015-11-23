@@ -10,9 +10,10 @@ import Foundation
 
 class GalleryDetailController: DSViewController {
     var container:ScrollContainerView?
+    var topBar:GalleryDetailTopBar?
     override func loadView(){
         super.loadView()
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.blackColor()
         
         // 单击手势
         let tapRecognizer = UITapGestureRecognizer(target: self, action: Selector("onTapView"))
@@ -23,6 +24,15 @@ class GalleryDetailController: DSViewController {
     override func viewDidLoad() {
         container = ScrollContainerView(frame: self.view.bounds);
         self.view.addSubview(container!)
+        
+        
+        topBar = GalleryDetailTopBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 64));
+        self.view.addSubview(self.topBar!)
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
     }
     
     func loadImageData(data:ImageInfoData){

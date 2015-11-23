@@ -97,8 +97,12 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
     }
     
     override func viewDidLoad() {
-        seg?.selectedSegmentIndex = 1;
+        seg?.selectedSegmentIndex = 0;
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
     
     // 切换套图与单图
