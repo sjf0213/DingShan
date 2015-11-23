@@ -12,17 +12,10 @@ class GalleryDetailController: DSViewController {
     var container:ScrollContainerView?
     var topBar:GalleryDetailTopBar?
     var bottomBar:GalleryDetailBottomBar?
+    var titleCache:String = ""
     override func loadView(){
         super.loadView()
         self.view.backgroundColor = UIColor.blackColor()
-        
-        // 单击手势
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: Selector("onTapView"))
-        self.view.addGestureRecognizer(tapRecognizer)
-        
-    }
-    
-    override func viewDidLoad() {
         container = ScrollContainerView(frame: self.view.bounds);
         self.view.addSubview(container!)
         // KVO
@@ -36,6 +29,17 @@ class GalleryDetailController: DSViewController {
         
         bottomBar = GalleryDetailBottomBar(frame: CGRect(x: 0, y: self.view.frame.size.height - 44, width: self.view.frame.size.width, height: 44));
         self.view.addSubview(self.bottomBar!)
+        if (titleCache.characters.count > 0){
+            bottomBar?.title = titleCache
+        }
+        // 单击手势
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: Selector("onTapView"))
+        self.view.addGestureRecognizer(tapRecognizer)
+        
+    }
+    
+    override func viewDidLoad() {
+        
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
@@ -49,14 +53,22 @@ class GalleryDetailController: DSViewController {
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
     }
     
+    // 供单图使用
     func loadImageData(data:ImageInfoData){
         let arr:[AnyObject] = [data.url]
+        
         dispatch_async(dispatch_get_main_queue(),{ [weak self]() -> Void in
             self?.container?.addDataSourceByArray(arr)
             self?.bottomBar?.title = data.desc
+            self?.bottomBar?.hidePageTip = true;
         })
     }
     
+    // 供多图使用
+    func loadDetailTitle(title:String){
+        self.titleCache = title
+    }
+    // 供多图使用
     func startRequest(imageSetId:Int){
         
         let parameter:[NSObject:AnyObject] = [ "iid" : String(imageSetId),
@@ -89,7 +101,6 @@ class GalleryDetailController: DSViewController {
                 print("urlArr = \(urlArr)")
                 dispatch_async(dispatch_get_main_queue(),{ () -> Void in
                     self.container?.addDataSourceByArray(urlArr)
-//                    self?.bottomBar?.title = data.desc
                 })
             }
         }

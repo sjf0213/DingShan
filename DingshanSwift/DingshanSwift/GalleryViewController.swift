@@ -244,6 +244,7 @@ class GalleryViewController:DSViewController,UICollectionViewDataSource, UIColle
             self.navigationController?.pushViewController(detail, animated: true)
             detail.navigationItem.title =  imgData.desc;
             if 0 == seg?.selectedSegmentIndex{// 多图
+                detail.loadDetailTitle(imgData.desc)
                 detail.startRequest(imgData.imageId)
             }else if 1 == seg?.selectedSegmentIndex{
                 detail.loadImageData(imgData)

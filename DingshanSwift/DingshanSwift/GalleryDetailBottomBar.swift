@@ -8,7 +8,11 @@
 
 import Foundation
 class GalleryDetailBottomBar : UIView{
-    
+    var hidePageTip:Bool = false{
+        didSet{
+            self.pageIndexLabel?.hidden = hidePageTip
+        }
+    }
     var title:String = ""{
         didSet{
             self.titleLabel?.text = title
@@ -26,6 +30,7 @@ class GalleryDetailBottomBar : UIView{
     }
     override init(frame aRect: CGRect) {
         super.init(frame: aRect);
+        self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5);
         
         self.titleLabel = UILabel(frame: CGRect(x: 10, y: 0, width: self.frame.size.width - 70, height: self.frame.size.height))
         self.titleLabel?.text = "title"
