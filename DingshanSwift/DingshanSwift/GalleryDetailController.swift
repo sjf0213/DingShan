@@ -29,6 +29,7 @@ class GalleryDetailController: DSViewController {
         topBar = GalleryDetailTopBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 64));
         self.view.addSubview(self.topBar!)
         topBar?.backBlock = {self.navigationController?.popViewControllerAnimated(true)}
+        topBar?.tapMoreBlock = {}
     }
     
     override func viewDidAppear(animated: Bool) {

@@ -10,6 +10,7 @@ import Foundation
 
 class GalleryDetailTopBar : UIView{
     var backBlock: (() -> Void)? // 最简单的闭包，用来navi返回按钮
+    var tapMoreBlock: (() -> Void)?
     // MARK: init
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -20,15 +21,22 @@ class GalleryDetailTopBar : UIView{
         
         let backBtn = UIButton(frame: CGRect(x: 0, y: 20, width: 44, height: 44))
         backBtn.backgroundColor = UIColor.clearColor()
-        backBtn.setTitle(String.fontAwesomeIconStringForIconIdentifier("fa-angle-left"), forState: UIControlState.Normal)
-        backBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        backBtn.titleLabel?.font = UIFont(name: "FontAwesome", size: 28)
+        backBtn.setImage(UIImage(named: "white_back_btn"), forState: UIControlState.Normal)
         self.addSubview(backBtn)
         backBtn.addTarget(self, action: Selector("onTapBack"), forControlEvents: UIControlEvents.TouchUpInside)
     
+        let moreBtn = UIButton(frame: CGRect(x: self.frame.size.width - 44, y: 20, width: 44, height: 44))
+        moreBtn.backgroundColor = UIColor.clearColor()
+        moreBtn.setImage(UIImage(named: "gallery_more_btn"), forState: UIControlState.Normal)
+        self.addSubview(moreBtn)
+        moreBtn.addTarget(self, action: Selector("onTapMore"), forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func onTapBack() {
         self.backBlock?()
+    }
+    
+    func onTapMore() {
+        self.tapMoreBlock?()
     }
 }
