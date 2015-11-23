@@ -143,6 +143,7 @@
 		F0EEA9881C031767006B63D3 /* share_btn@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA97C1C031767006B63D3 /* share_btn@3x~iphone.png */; };
 		F0EEA9891C031767006B63D3 /* white_back_btn@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA97D1C031767006B63D3 /* white_back_btn@2x~iphone.png */; };
 		F0EEA98A1C031767006B63D3 /* white_back_btn@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA97E1C031767006B63D3 /* white_back_btn@3x~iphone.png */; };
+		F0EEA98C1C031AF7006B63D3 /* GalleryDetailBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEA98B1C031AF7006B63D3 /* GalleryDetailBottomBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -352,6 +353,7 @@
 		F0EEA97C1C031767006B63D3 /* share_btn@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_btn@3x~iphone.png"; sourceTree = "<group>"; };
 		F0EEA97D1C031767006B63D3 /* white_back_btn@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_back_btn@2x~iphone.png"; sourceTree = "<group>"; };
 		F0EEA97E1C031767006B63D3 /* white_back_btn@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_back_btn@3x~iphone.png"; sourceTree = "<group>"; };
+		F0EEA98B1C031AF7006B63D3 /* GalleryDetailBottomBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryDetailBottomBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -733,6 +735,7 @@
 				F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */,
 				F028C16F1B9C417A00B8CECA /* GalleryDetailController.swift */,
 				F0EEA95A1BFF2C9E006B63D3 /* GalleryDetailTopBar.swift */,
+				F0EEA98B1C031AF7006B63D3 /* GalleryDetailBottomBar.swift */,
 				F0A3AF5B1BE1C08700C252FD /* Menu */,
 			);
 			name = Gallery;
@@ -976,6 +979,7 @@
 				F00CFF7E1BDF182D002C8ECC /* AFHTTPRequestOperationManager.m in Sources */,
 				F00CFFB71BDF8A2D002C8ECC /* SDImageCache.m in Sources */,
 				F0A20AD81B62548800F1F311 /* KnowledgeListController.swift in Sources */,
+				F0EEA98C1C031AF7006B63D3 /* GalleryDetailBottomBar.swift in Sources */,
 				F0C5F6B71B53D1E000B2C20D /* AppDelegate.swift in Sources */,
 				F0A5E1441BA04C5000BDA6BA /* UserInfoData.swift in Sources */,
 				F03E68D01BE711FC001D04D1 /* String+FontAwesome.swift in Sources */,

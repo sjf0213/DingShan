@@ -11,6 +11,7 @@ import Foundation
 class GalleryDetailController: DSViewController {
     var container:ScrollContainerView?
     var topBar:GalleryDetailTopBar?
+    var bottomBar:GalleryDetailBottomBar?
     override func loadView(){
         super.loadView()
         self.view.backgroundColor = UIColor.blackColor()
@@ -24,12 +25,24 @@ class GalleryDetailController: DSViewController {
     override func viewDidLoad() {
         container = ScrollContainerView(frame: self.view.bounds);
         self.view.addSubview(container!)
-        
+        // KVO
+        container?.addObserver(self, forKeyPath: "totalShowCount", options: NSKeyValueObservingOptions.New, context: nil)
+        container?.addObserver(self, forKeyPath: "currentShowNumber", options: NSKeyValueObservingOptions.New, context: nil)
         
         topBar = GalleryDetailTopBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 64));
         self.view.addSubview(self.topBar!)
         topBar?.backBlock = {self.navigationController?.popViewControllerAnimated(true)}
         topBar?.tapMoreBlock = {}
+        
+        bottomBar = GalleryDetailBottomBar(frame: CGRect(x: 0, y: self.view.frame.size.height - 44, width: self.view.frame.size.width, height: 44));
+        self.view.addSubview(self.bottomBar!)
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if (keyPath == "currentShowNumber" ||
+            keyPath ==  "totalShowCount"){
+            self.bottomBar?.pageText = String(format:"%zd / %zd", (self.container?.currentShowNumber)!, (self.container?.totalShowCount)!)
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -40,6 +53,7 @@ class GalleryDetailController: DSViewController {
         let arr:[AnyObject] = [data.url]
         dispatch_async(dispatch_get_main_queue(),{ [weak self]() -> Void in
             self?.container?.addDataSourceByArray(arr)
+            self?.bottomBar?.title = data.desc
         })
     }
     
@@ -75,6 +89,7 @@ class GalleryDetailController: DSViewController {
                 print("urlArr = \(urlArr)")
                 dispatch_async(dispatch_get_main_queue(),{ () -> Void in
                     self.container?.addDataSourceByArray(urlArr)
+//                    self?.bottomBar?.title = data.desc
                 })
             }
         }
