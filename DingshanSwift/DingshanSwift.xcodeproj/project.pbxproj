@@ -152,6 +152,7 @@
 		F0EEA9981C0441D1006B63D3 /* UIView+MotionBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EEA9951C0441D1006B63D3 /* UIView+MotionBlur.m */; };
 		F0EEA99B1C045822006B63D3 /* gallery_more_pop@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA9991C045822006B63D3 /* gallery_more_pop@2x~iphone.png */; };
 		F0EEA99C1C045822006B63D3 /* gallery_more_pop@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA99A1C045822006B63D3 /* gallery_more_pop@3x~iphone.png */; };
+		F0EEA99E1C047022006B63D3 /* SNSShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEA99D1C047022006B63D3 /* SNSShareView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -373,6 +374,7 @@
 		F0EEA9951C0441D1006B63D3 /* UIView+MotionBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MotionBlur.m"; sourceTree = "<group>"; };
 		F0EEA9991C045822006B63D3 /* gallery_more_pop@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gallery_more_pop@2x~iphone.png"; sourceTree = "<group>"; };
 		F0EEA99A1C045822006B63D3 /* gallery_more_pop@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gallery_more_pop@3x~iphone.png"; sourceTree = "<group>"; };
+		F0EEA99D1C047022006B63D3 /* SNSShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNSShareView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -421,6 +423,7 @@
 				F0ADE21B1B55FEC8005E84FA /* DetailController.swift */,
 				F007353C1BEA103000383687 /* CHTCollectionViewWaterfallLayout.swift */,
 				F03E68CF1BE711FC001D04D1 /* String+FontAwesome.swift */,
+				F0EEA99D1C047022006B63D3 /* SNSShareView.swift */,
 			);
 			name = UIFrame;
 			sourceTree = "<group>";
@@ -946,6 +949,7 @@
 				F028C1761B9C435B00B8CECA /* GalleryMenuView.swift in Sources */,
 				F035ECF51BB29D8100A8D8EC /* OpenUDID.m in Sources */,
 				EACC644A1C044BBA002EA0C6 /* ProfileUserInfoCell.swift in Sources */,
+				F0EEA99E1C047022006B63D3 /* SNSShareView.swift in Sources */,
 				F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */,
 				F0D00E751B917AAB0056BE3E /* TabBarToggleBtn.swift in Sources */,
 				F00CFFC01BDF8A2D002C8ECC /* UIImage+MultiFormat.m in Sources */,

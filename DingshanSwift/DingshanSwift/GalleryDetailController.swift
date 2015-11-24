@@ -15,6 +15,7 @@ class GalleryDetailController: DSViewController {
     var titleCache:String = ""
     var mask : UIButton?
     var menuView : GalleryDetailMenuView?
+    var shareView:SNSShareView?
     override func loadView(){
         super.loadView()
         self.view.backgroundColor = UIColor.blackColor()
@@ -38,21 +39,31 @@ class GalleryDetailController: DSViewController {
                             if ((tempview?.respondsToSelector(Selector("SaveToAlbum:"))) == true) {
                                 tempview?.performSelector(Selector("SaveToAlbum:"), withObject:self.view, afterDelay:0)
                             }
+                            self.dismissMenuView()
+                            self.mask?.hidden = true
+                            break
+                        case 1:
+                            self.dismissMenuView()
+                            if self.shareView == nil{
+                                let snsView = SNSShareView(frame: CGRect(x: 0, y: self.view.frame.size.height, width: self.view.frame.size.width, height: 170))
+                                self.shareView = snsView
+                                self.view.addSubview(self.shareView!)
+                            }
+                            UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options:UIViewAnimationOptions([.AllowUserInteraction, .BeginFromCurrentState]), animations: { () -> Void in
+                                self.shareView?.frame = CGRect(x: 0, y: self.view.frame.size.height - 170, width: self.view.frame.size.width, height: 170)
+                            }, completion: { (finished) -> Void in
+                            })
                             break
                         default:
                             break
                     }
-                    self.onTapMask()
                 }
                 self.view.addSubview(self.menuView!)
             }
             //MotionBlur
-            self.menuView?.enableBlurWithAngle(CGFloat(M_PI_2), completion: { () -> Void in
-                UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options:UIViewAnimationOptions([.AllowUserInteraction, .BeginFromCurrentState]), animations: { () -> Void in
-                    self.menuView?.frame = CGRect(x: self.view.frame.size.width - 90, y: 54, width: 80, height: 100)
-                    }, completion: { (finished) -> Void in
-                        self.menuView?.disableBlur()
-                })
+            UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options:UIViewAnimationOptions([.AllowUserInteraction, .BeginFromCurrentState]), animations: { () -> Void in
+                self.menuView?.frame = CGRect(x: self.view.frame.size.width - 90, y: 54, width: 80, height: 100)
+                }, completion: { (finished) -> Void in
             })
             self.mask?.hidden = false
         }
@@ -150,14 +161,30 @@ class GalleryDetailController: DSViewController {
     func onTapMask(){
         print("on Tap mask = = = = = = = =")
         
+        self.dismissMenuView()
+        self.dismissShareView()
+        self.mask?.hidden = true
+    }
+    
+    func dismissShareView(){
+        if (self.shareView != nil){
+            UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options:UIViewAnimationOptions([.AllowUserInteraction, .BeginFromCurrentState]), animations: { () -> Void in
+                self.shareView?.frame = CGRect(x: 0, y: self.view.frame.size.height, width: self.view.frame.size.width, height: 170)
+                }, completion: { (finished) -> Void in
+                    self.shareView?.removeFromSuperview()
+                    self.shareView = nil
+            })
+        }
+    }
+    
+    func dismissMenuView(){
         if (self.menuView != nil){
             UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options:UIViewAnimationOptions([.AllowUserInteraction, .BeginFromCurrentState]), animations: { () -> Void in
                 self.menuView?.frame = CGRect(x: self.view.frame.size.width - 90, y: -120, width: 80, height: 100)
-            }, completion: { (finished) -> Void in
-                self.menuView?.removeFromSuperview()
-                self.menuView = nil
+                }, completion: { (finished) -> Void in
+                    self.menuView?.removeFromSuperview()
+                    self.menuView = nil
             })
         }
-        self.mask?.hidden = true
     }
 }
