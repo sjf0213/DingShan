@@ -13,6 +13,8 @@ class GalleryDetailController: DSViewController {
     var topBar:GalleryDetailTopBar?
     var bottomBar:GalleryDetailBottomBar?
     var titleCache:String = ""
+    var mask : UIButton?
+    var menuView : GalleryDetailMenuView?
     override func loadView(){
         super.loadView()
         self.view.backgroundColor = UIColor.blackColor()
@@ -25,13 +27,27 @@ class GalleryDetailController: DSViewController {
         topBar = GalleryDetailTopBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 64));
         self.view.addSubview(self.topBar!)
         topBar?.backBlock = {self.navigationController?.popViewControllerAnimated(true)}
-        topBar?.tapMoreBlock = {}
+        topBar?.tapMoreBlock = {
+            if nil == self.menuView{
+                let menu = GalleryDetailMenuView(frame: CGRect(x: self.view.frame.size.width - 100, y: 44, width: 80, height: 100))
+                self.menuView = menu
+                self.view.addSubview(self.menuView!)
+                self.mask?.hidden = false
+            }
+        }
         
         bottomBar = GalleryDetailBottomBar(frame: CGRect(x: 0, y: self.view.frame.size.height - 44, width: self.view.frame.size.width, height: 44));
         self.view.addSubview(self.bottomBar!)
         if (titleCache.characters.count > 0){
             bottomBar?.title = titleCache
         }
+        
+        self.mask = UIButton(frame: self.view.bounds)
+        self.mask?.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.2)
+        self.mask?.hidden = true
+        self.mask?.addTarget(self, action: Selector("onTapMask"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(self.mask!)
+        
         // 单击手势
         let tapRecognizer = UITapGestureRecognizer(target: self, action: Selector("onTapView"))
         self.view.addGestureRecognizer(tapRecognizer)
@@ -107,6 +123,17 @@ class GalleryDetailController: DSViewController {
     }
     
     func onTapView(){
-        print("onTapView = = = = = =  == ")
+        print("onTapView = = = = = = = =")
+    }
+    
+    func onTapMask(){
+        print("on Tap mask = = = = = = = =")
+        
+        if (self.menuView != nil){
+            self.menuView?.removeFromSuperview()
+            self.menuView = nil
+            
+        }
+        self.mask?.hidden = true
     }
 }

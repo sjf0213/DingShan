@@ -144,6 +144,7 @@
 		F0EEA9891C031767006B63D3 /* white_back_btn@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA97D1C031767006B63D3 /* white_back_btn@2x~iphone.png */; };
 		F0EEA98A1C031767006B63D3 /* white_back_btn@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA97E1C031767006B63D3 /* white_back_btn@3x~iphone.png */; };
 		F0EEA98C1C031AF7006B63D3 /* GalleryDetailBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEA98B1C031AF7006B63D3 /* GalleryDetailBottomBar.swift */; };
+		F0EEA98E1C040405006B63D3 /* GalleryDetailMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEA98D1C040405006B63D3 /* GalleryDetailMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -354,6 +355,7 @@
 		F0EEA97D1C031767006B63D3 /* white_back_btn@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_back_btn@2x~iphone.png"; sourceTree = "<group>"; };
 		F0EEA97E1C031767006B63D3 /* white_back_btn@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_back_btn@3x~iphone.png"; sourceTree = "<group>"; };
 		F0EEA98B1C031AF7006B63D3 /* GalleryDetailBottomBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryDetailBottomBar.swift; sourceTree = "<group>"; };
+		F0EEA98D1C040405006B63D3 /* GalleryDetailMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryDetailMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -736,6 +738,7 @@
 				F028C16F1B9C417A00B8CECA /* GalleryDetailController.swift */,
 				F0EEA95A1BFF2C9E006B63D3 /* GalleryDetailTopBar.swift */,
 				F0EEA98B1C031AF7006B63D3 /* GalleryDetailBottomBar.swift */,
+				F0EEA98D1C040405006B63D3 /* GalleryDetailMenuView.swift */,
 				F0A3AF5B1BE1C08700C252FD /* Menu */,
 			);
 			name = Gallery;
@@ -962,6 +965,7 @@
 				F0D00E7F1B9182570056BE3E /* TabBarView.swift in Sources */,
 				F00CFFB61BDF8A2D002C8ECC /* NSData+ImageContentType.m in Sources */,
 				F00CFFBF1BDF8A2D002C8ECC /* UIImage+GIF.m in Sources */,
+				F0EEA98E1C040405006B63D3 /* GalleryDetailMenuView.swift in Sources */,
 				F0D00EA51B91AF160056BE3E /* TopBarView.swift in Sources */,
 				F035ECFC1BB2B8DC00A8D8EC /* ProfileUserInfoEditController.swift in Sources */,
 				F028C1701B9C417A00B8CECA /* GalleryDetailController.swift in Sources */,
