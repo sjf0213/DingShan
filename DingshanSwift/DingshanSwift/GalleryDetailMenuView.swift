@@ -15,5 +15,12 @@ class GalleryDetailMenuView : UIView{
         super.init(frame: aRect);
         self.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.3)
         
+        let ang = UIImageView(frame: CGRect(x: frame.size.width - 18, y: 0, width: 12, height: 6))
+        ang.image = UIImage(named:"gallery_more_pop")
+        self.addSubview(ang)
+        
+        let container = UIView(frame: CGRect(x: 0, y: 6, width: frame.size.width, height: frame.size.height))
+        container.backgroundColor = UIColor.whiteColor()
+        self.addSubview(container)
     }
 }

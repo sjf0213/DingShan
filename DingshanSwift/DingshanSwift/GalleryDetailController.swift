@@ -29,9 +29,17 @@ class GalleryDetailController: DSViewController {
         topBar?.backBlock = {self.navigationController?.popViewControllerAnimated(true)}
         topBar?.tapMoreBlock = {
             if nil == self.menuView{
-                let menu = GalleryDetailMenuView(frame: CGRect(x: self.view.frame.size.width - 100, y: 44, width: 80, height: 100))
+                let menu = GalleryDetailMenuView(frame: CGRect(x: self.view.frame.size.width - 90, y: -120, width: 80, height: 100))
                 self.menuView = menu
                 self.view.addSubview(self.menuView!)
+                //MotionBlur
+                self.menuView?.enableBlurWithAngle(CGFloat(M_PI_2), completion: { () -> Void in
+                    UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options:UIViewAnimationOptions([.AllowUserInteraction, .BeginFromCurrentState]), animations: { () -> Void in
+                        self.menuView?.frame = CGRect(x: self.view.frame.size.width - 90, y: 54, width: 80, height: 100)
+                        }, completion: { (finished) -> Void in
+                            self.menuView?.disableBlur()
+                    })
+                })
                 self.mask?.hidden = false
             }
         }
@@ -130,8 +138,12 @@ class GalleryDetailController: DSViewController {
         print("on Tap mask = = = = = = = =")
         
         if (self.menuView != nil){
-            self.menuView?.removeFromSuperview()
-            self.menuView = nil
+            UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options:UIViewAnimationOptions([.AllowUserInteraction, .BeginFromCurrentState]), animations: { () -> Void in
+                self.menuView?.frame = CGRect(x: self.view.frame.size.width - 90, y: -120, width: 80, height: 100)
+            }, completion: { (finished) -> Void in
+                self.menuView?.removeFromSuperview()
+                self.menuView = nil
+            })
         }
         self.mask?.hidden = true
     }
