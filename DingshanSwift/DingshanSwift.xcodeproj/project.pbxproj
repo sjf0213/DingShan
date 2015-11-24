@@ -10,6 +10,8 @@
 		417BEF921B5A4E0F00F896A5 /* GeneralConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 417BEF911B5A4E0F00F896A5 /* GeneralConfig.plist */; };
 		417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 417BEF991B5A4F9300F896A5 /* ArrayDataSource.m */; };
 		417BEF9D1B5A535300F896A5 /* FileHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 417BEF9C1B5A535300F896A5 /* FileHelp.m */; };
+		EACC644A1C044BBA002EA0C6 /* ProfileUserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACC64481C044BBA002EA0C6 /* ProfileUserInfoCell.swift */; };
+		EACC644B1C044BBA002EA0C6 /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACC64491C044BBA002EA0C6 /* ProfileViewCell.swift */; };
 		F00530161BFB26090059E7CE /* DSLoadMoreEndTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = F00530151BFB26090059E7CE /* DSLoadMoreEndTipView.m */; };
 		F00530221BFB2E210059E7CE /* ScrollContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F005301F1BFB2E210059E7CE /* ScrollContainerView.m */; };
 		F00530231BFB2E210059E7CE /* ScrollShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F00530211BFB2E210059E7CE /* ScrollShowView.m */; };
@@ -169,6 +171,8 @@
 		417BEF991B5A4F9300F896A5 /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
 		417BEF9B1B5A535300F896A5 /* FileHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelp.h; sourceTree = "<group>"; };
 		417BEF9C1B5A535300F896A5 /* FileHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelp.m; sourceTree = "<group>"; };
+		EACC64481C044BBA002EA0C6 /* ProfileUserInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUserInfoCell.swift; sourceTree = "<group>"; };
+		EACC64491C044BBA002EA0C6 /* ProfileViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
 		F00530141BFB26090059E7CE /* DSLoadMoreEndTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLoadMoreEndTipView.h; sourceTree = "<group>"; };
 		F00530151BFB26090059E7CE /* DSLoadMoreEndTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLoadMoreEndTipView.m; sourceTree = "<group>"; };
 		F005301D1BFB2E210059E7CE /* ScrollContainerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollContainerDelegate.h; sourceTree = "<group>"; };
@@ -760,6 +764,8 @@
 				F08749BD1B54E89E006E1FD3 /* ProfileViewController.swift */,
 				F0AB965E1BA8260200C72260 /* ProfileLoginController.swift */,
 				F035ECFB1BB2B8DC00A8D8EC /* ProfileUserInfoEditController.swift */,
+				EACC64481C044BBA002EA0C6 /* ProfileUserInfoCell.swift */,
+				EACC64491C044BBA002EA0C6 /* ProfileViewCell.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -931,6 +937,7 @@
 				F00530261BFB2F6D0059E7CE /* AsynRequestImageView.m in Sources */,
 				F028C1761B9C435B00B8CECA /* GalleryMenuView.swift in Sources */,
 				F035ECF51BB29D8100A8D8EC /* OpenUDID.m in Sources */,
+				EACC644A1C044BBA002EA0C6 /* ProfileUserInfoCell.swift in Sources */,
 				F0A1C3A31B5CCCDA001597CF /* MainConfig.swift in Sources */,
 				F0D00E751B917AAB0056BE3E /* TabBarToggleBtn.swift in Sources */,
 				F00CFFC01BDF8A2D002C8ECC /* UIImage+MultiFormat.m in Sources */,
@@ -964,6 +971,7 @@
 				F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */,
 				F08749BC1B54E872006E1FD3 /* GalleryViewController.swift in Sources */,
 				F035ECEE1BB2882900A8D8EC /* ForumFloorFollowingCell.swift in Sources */,
+				EACC644B1C044BBA002EA0C6 /* ProfileViewCell.swift in Sources */,
 				F0E574F81B6784BE000053B8 /* LoadView.m in Sources */,
 				417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */,
 				F0E574F91B6784BE000053B8 /* RefreshIconView.m in Sources */,
