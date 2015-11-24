@@ -43,7 +43,7 @@ class GalleryDetailController: DSViewController {
         }
         
         self.mask = UIButton(frame: self.view.bounds)
-        self.mask?.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.2)
+        self.mask?.backgroundColor = UIColor.clearColor()
         self.mask?.hidden = true
         self.mask?.addTarget(self, action: Selector("onTapMask"), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(self.mask!)
@@ -132,7 +132,6 @@ class GalleryDetailController: DSViewController {
         if (self.menuView != nil){
             self.menuView?.removeFromSuperview()
             self.menuView = nil
-            
         }
         self.mask?.hidden = true
     }

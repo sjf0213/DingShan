@@ -145,6 +145,9 @@
 		F0EEA98A1C031767006B63D3 /* white_back_btn@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA97E1C031767006B63D3 /* white_back_btn@3x~iphone.png */; };
 		F0EEA98C1C031AF7006B63D3 /* GalleryDetailBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEA98B1C031AF7006B63D3 /* GalleryDetailBottomBar.swift */; };
 		F0EEA98E1C040405006B63D3 /* GalleryDetailMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEA98D1C040405006B63D3 /* GalleryDetailMenuView.swift */; };
+		F0EEA9961C0441D1006B63D3 /* MotionBlurFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EEA9911C0441D1006B63D3 /* MotionBlurFilter.m */; };
+		F0EEA9971C0441D1006B63D3 /* UIView+AHKSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EEA9931C0441D1006B63D3 /* UIView+AHKSnapshot.m */; };
+		F0EEA9981C0441D1006B63D3 /* UIView+MotionBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EEA9951C0441D1006B63D3 /* UIView+MotionBlur.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -356,6 +359,12 @@
 		F0EEA97E1C031767006B63D3 /* white_back_btn@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_back_btn@3x~iphone.png"; sourceTree = "<group>"; };
 		F0EEA98B1C031AF7006B63D3 /* GalleryDetailBottomBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryDetailBottomBar.swift; sourceTree = "<group>"; };
 		F0EEA98D1C040405006B63D3 /* GalleryDetailMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryDetailMenuView.swift; sourceTree = "<group>"; };
+		F0EEA9901C0441D1006B63D3 /* MotionBlurFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionBlurFilter.h; sourceTree = "<group>"; };
+		F0EEA9911C0441D1006B63D3 /* MotionBlurFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MotionBlurFilter.m; sourceTree = "<group>"; };
+		F0EEA9921C0441D1006B63D3 /* UIView+AHKSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AHKSnapshot.h"; sourceTree = "<group>"; };
+		F0EEA9931C0441D1006B63D3 /* UIView+AHKSnapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AHKSnapshot.m"; sourceTree = "<group>"; };
+		F0EEA9941C0441D1006B63D3 /* UIView+MotionBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MotionBlur.h"; sourceTree = "<group>"; };
+		F0EEA9951C0441D1006B63D3 /* UIView+MotionBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MotionBlur.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -539,6 +548,7 @@
 		F09ADD761B563452009B3A6D /* CommonFiles */ = {
 			isa = PBXGroup;
 			children = (
+				F0EEA98F1C0441D1006B63D3 /* MotionBlur */,
 				F005301C1BFB2E210059E7CE /* PhotoBrowse */,
 				F0E574F01B6784BE000053B8 /* Loading */,
 				F035ECF31BB29D8100A8D8EC /* OpenUDID.h */,
@@ -788,6 +798,19 @@
 			path = gallery;
 			sourceTree = "<group>";
 		};
+		F0EEA98F1C0441D1006B63D3 /* MotionBlur */ = {
+			isa = PBXGroup;
+			children = (
+				F0EEA9901C0441D1006B63D3 /* MotionBlurFilter.h */,
+				F0EEA9911C0441D1006B63D3 /* MotionBlurFilter.m */,
+				F0EEA9921C0441D1006B63D3 /* UIView+AHKSnapshot.h */,
+				F0EEA9931C0441D1006B63D3 /* UIView+AHKSnapshot.m */,
+				F0EEA9941C0441D1006B63D3 /* UIView+MotionBlur.h */,
+				F0EEA9951C0441D1006B63D3 /* UIView+MotionBlur.m */,
+			);
+			path = MotionBlur;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -915,6 +938,7 @@
 				F0B6FABC1B81F3D000EE2439 /* GalleryViewCell.swift in Sources */,
 				F00CFFBD1BDF8A2D002C8ECC /* SDWebImagePrefetcher.m in Sources */,
 				F03E68DA1BE71259001D04D1 /* FAImageView.m in Sources */,
+				F0EEA9981C0441D1006B63D3 /* UIView+MotionBlur.m in Sources */,
 				F09ADDA11B5640DD009B3A6D /* CommonDefine.swift in Sources */,
 				F00CFF7F1BDF182D002C8ECC /* AFHTTPSessionManager.m in Sources */,
 				F0A5E1461BA0534400BDA6BA /* ForumReplyListController.swift in Sources */,
@@ -944,6 +968,7 @@
 				417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */,
 				F0E574F91B6784BE000053B8 /* RefreshIconView.m in Sources */,
 				F007353D1BEA103000383687 /* CHTCollectionViewWaterfallLayout.swift in Sources */,
+				F0EEA9961C0441D1006B63D3 /* MotionBlurFilter.m in Sources */,
 				F00CFF811BDF182D002C8ECC /* AFSecurityPolicy.m in Sources */,
 				F00CFFC31BDF8A2D002C8ECC /* UIImageView+WebCache.m in Sources */,
 				F00CFFC41BDF8A2D002C8ECC /* UIView+WebCacheOperation.m in Sources */,
@@ -963,6 +988,7 @@
 				F035ECE71BB2880800A8D8EC /* ForumFloorLordCell.swift in Sources */,
 				F08749BE1B54E89E006E1FD3 /* ProfileViewController.swift in Sources */,
 				F0D00E7F1B9182570056BE3E /* TabBarView.swift in Sources */,
+				F0EEA9971C0441D1006B63D3 /* UIView+AHKSnapshot.m in Sources */,
 				F00CFFB61BDF8A2D002C8ECC /* NSData+ImageContentType.m in Sources */,
 				F00CFFBF1BDF8A2D002C8ECC /* UIImage+GIF.m in Sources */,
 				F0EEA98E1C040405006B63D3 /* GalleryDetailMenuView.swift in Sources */,

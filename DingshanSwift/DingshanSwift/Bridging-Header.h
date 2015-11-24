@@ -29,4 +29,5 @@
 #import "../FontAwesome/UIImage+FontAwesome.h"
 #import "../Commonfiles/PhotoBrowse/ScrollContainerDelegate.h"
 #import "../Commonfiles/PhotoBrowse/ScrollContainerView.h"
+#import "../Commonfiles/MotionBlur/UIView+MotionBlur.h"
 #endif
