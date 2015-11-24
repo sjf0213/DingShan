@@ -51,8 +51,7 @@ class GalleryDetailController: DSViewController {
                             }
                             UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options:UIViewAnimationOptions([.AllowUserInteraction, .BeginFromCurrentState]), animations: { () -> Void in
                                 self.shareView?.frame = CGRect(x: 0, y: self.view.frame.size.height - 170, width: self.view.frame.size.width, height: 170)
-                            }, completion: { (finished) -> Void in
-                            })
+                            }, completion: nil)
                             break
                         default:
                             break
@@ -60,7 +59,6 @@ class GalleryDetailController: DSViewController {
                 }
                 self.view.addSubview(self.menuView!)
             }
-            //MotionBlur
             UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options:UIViewAnimationOptions([.AllowUserInteraction, .BeginFromCurrentState]), animations: { () -> Void in
                 self.menuView?.frame = CGRect(x: self.view.frame.size.width - 90, y: 54, width: 80, height: 100)
                 }, completion: { (finished) -> Void in

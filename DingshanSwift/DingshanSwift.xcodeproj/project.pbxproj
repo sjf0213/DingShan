@@ -153,6 +153,15 @@
 		F0EEA99B1C045822006B63D3 /* gallery_more_pop@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA9991C045822006B63D3 /* gallery_more_pop@2x~iphone.png */; };
 		F0EEA99C1C045822006B63D3 /* gallery_more_pop@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA99A1C045822006B63D3 /* gallery_more_pop@3x~iphone.png */; };
 		F0EEA99E1C047022006B63D3 /* SNSShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEA99D1C047022006B63D3 /* SNSShareView.swift */; };
+		F0EEA9A01C0477BD006B63D3 /* SNSShareBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEA99F1C0477BD006B63D3 /* SNSShareBtn.swift */; };
+		F0EEA9AA1C047C6D006B63D3 /* sns_moments@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA9A21C047C6D006B63D3 /* sns_moments@2x~iphone.png */; };
+		F0EEA9AB1C047C6D006B63D3 /* sns_moments@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA9A31C047C6D006B63D3 /* sns_moments@3x~iphone.png */; };
+		F0EEA9AC1C047C6D006B63D3 /* sns_qq@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA9A41C047C6D006B63D3 /* sns_qq@2x~iphone.png */; };
+		F0EEA9AD1C047C6D006B63D3 /* sns_qq@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA9A51C047C6D006B63D3 /* sns_qq@3x~iphone.png */; };
+		F0EEA9AE1C047C6D006B63D3 /* sns_weibo@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA9A61C047C6D006B63D3 /* sns_weibo@2x~iphone.png */; };
+		F0EEA9AF1C047C6D006B63D3 /* sns_weibo@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA9A71C047C6D006B63D3 /* sns_weibo@3x~iphone.png */; };
+		F0EEA9B01C047C6D006B63D3 /* sns_weixin@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA9A81C047C6D006B63D3 /* sns_weixin@2x~iphone.png */; };
+		F0EEA9B11C047C6D006B63D3 /* sns_weixin@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EEA9A91C047C6D006B63D3 /* sns_weixin@3x~iphone.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -375,6 +384,15 @@
 		F0EEA9991C045822006B63D3 /* gallery_more_pop@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gallery_more_pop@2x~iphone.png"; sourceTree = "<group>"; };
 		F0EEA99A1C045822006B63D3 /* gallery_more_pop@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gallery_more_pop@3x~iphone.png"; sourceTree = "<group>"; };
 		F0EEA99D1C047022006B63D3 /* SNSShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNSShareView.swift; sourceTree = "<group>"; };
+		F0EEA99F1C0477BD006B63D3 /* SNSShareBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNSShareBtn.swift; sourceTree = "<group>"; };
+		F0EEA9A21C047C6D006B63D3 /* sns_moments@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sns_moments@2x~iphone.png"; sourceTree = "<group>"; };
+		F0EEA9A31C047C6D006B63D3 /* sns_moments@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sns_moments@3x~iphone.png"; sourceTree = "<group>"; };
+		F0EEA9A41C047C6D006B63D3 /* sns_qq@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sns_qq@2x~iphone.png"; sourceTree = "<group>"; };
+		F0EEA9A51C047C6D006B63D3 /* sns_qq@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sns_qq@3x~iphone.png"; sourceTree = "<group>"; };
+		F0EEA9A61C047C6D006B63D3 /* sns_weibo@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sns_weibo@2x~iphone.png"; sourceTree = "<group>"; };
+		F0EEA9A71C047C6D006B63D3 /* sns_weibo@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sns_weibo@3x~iphone.png"; sourceTree = "<group>"; };
+		F0EEA9A81C047C6D006B63D3 /* sns_weixin@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sns_weixin@2x~iphone.png"; sourceTree = "<group>"; };
+		F0EEA9A91C047C6D006B63D3 /* sns_weixin@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sns_weixin@3x~iphone.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -424,6 +442,7 @@
 				F007353C1BEA103000383687 /* CHTCollectionViewWaterfallLayout.swift */,
 				F03E68CF1BE711FC001D04D1 /* String+FontAwesome.swift */,
 				F0EEA99D1C047022006B63D3 /* SNSShareView.swift */,
+				F0EEA99F1C0477BD006B63D3 /* SNSShareBtn.swift */,
 			);
 			name = UIFrame;
 			sourceTree = "<group>";
@@ -583,6 +602,7 @@
 		F09ADD7B1B563974009B3A6D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F0EEA9A11C047C6D006B63D3 /* sns */,
 				F0EEA9721C031767006B63D3 /* gallery */,
 				F03E68CD1BE711B1001D04D1 /* FontAwesome.ttf */,
 				F0AA4FA61B93ED28007EDEA9 /* common */,
@@ -826,6 +846,21 @@
 			path = MotionBlur;
 			sourceTree = "<group>";
 		};
+		F0EEA9A11C047C6D006B63D3 /* sns */ = {
+			isa = PBXGroup;
+			children = (
+				F0EEA9A21C047C6D006B63D3 /* sns_moments@2x~iphone.png */,
+				F0EEA9A31C047C6D006B63D3 /* sns_moments@3x~iphone.png */,
+				F0EEA9A41C047C6D006B63D3 /* sns_qq@2x~iphone.png */,
+				F0EEA9A51C047C6D006B63D3 /* sns_qq@3x~iphone.png */,
+				F0EEA9A61C047C6D006B63D3 /* sns_weibo@2x~iphone.png */,
+				F0EEA9A71C047C6D006B63D3 /* sns_weibo@3x~iphone.png */,
+				F0EEA9A81C047C6D006B63D3 /* sns_weixin@2x~iphone.png */,
+				F0EEA9A91C047C6D006B63D3 /* sns_weixin@3x~iphone.png */,
+			);
+			path = sns;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -900,20 +935,28 @@
 				F0AA4F971B93ECE7007EDEA9 /* tabbar_forum1@2x~iphone.png in Resources */,
 				F0EEA97F1C031767006B63D3 /* download_btn@2x~iphone.png in Resources */,
 				F0AA4F9C1B93ECE7007EDEA9 /* tabbar_gallery1@3x~iphone.png in Resources */,
+				F0EEA9B11C047C6D006B63D3 /* sns_weixin@3x~iphone.png in Resources */,
 				F0AA4F951B93ECE7007EDEA9 /* tabbar_forum0@2x~iphone.png in Resources */,
 				F085A34B1BBA8B2300E15705 /* forum_topic_add_new@2x~iphone.png in Resources */,
 				F085A34C1BBA8B2300E15705 /* forum_topic_add_new@3x~iphone.png in Resources */,
 				F0AA4F991B93ECE7007EDEA9 /* tabbar_gallery0@2x~iphone.png in Resources */,
 				F0BC44CC1BBA839B004CB0B9 /* user_head_default.png in Resources */,
+				F0EEA9AF1C047C6D006B63D3 /* sns_weibo@3x~iphone.png in Resources */,
+				F0EEA9AB1C047C6D006B63D3 /* sns_moments@3x~iphone.png in Resources */,
 				F03E68CE1BE711B1001D04D1 /* FontAwesome.ttf in Resources */,
 				F0EEA9861C031767006B63D3 /* gallery_more_btn@3x~iphone.png in Resources */,
 				F0EEA98A1C031767006B63D3 /* white_back_btn@3x~iphone.png in Resources */,
 				F0AA4F9E1B93ECE7007EDEA9 /* tabbar_profile0@3x~iphone.png in Resources */,
+				F0EEA9AD1C047C6D006B63D3 /* sns_qq@3x~iphone.png in Resources */,
 				F0AA4FAB1B93ED37007EDEA9 /* back_btn@3x~iphone.png in Resources */,
 				F0AA4F9B1B93ECE7007EDEA9 /* tabbar_gallery1@2x~iphone.png in Resources */,
 				417BEF921B5A4E0F00F896A5 /* GeneralConfig.plist in Resources */,
 				F0AA4F981B93ECE7007EDEA9 /* tabbar_forum1@3x~iphone.png in Resources */,
+				F0EEA9B01C047C6D006B63D3 /* sns_weixin@2x~iphone.png in Resources */,
+				F0EEA9AE1C047C6D006B63D3 /* sns_weibo@2x~iphone.png in Resources */,
+				F0EEA9AC1C047C6D006B63D3 /* sns_qq@2x~iphone.png in Resources */,
 				F0EEA9851C031767006B63D3 /* gallery_more_btn@2x~iphone.png in Resources */,
+				F0EEA9AA1C047C6D006B63D3 /* sns_moments@2x~iphone.png in Resources */,
 				F0AA4FAC1B93ED37007EDEA9 /* home_ad.jpg in Resources */,
 				F00735441BEA211200383687 /* wait@2x~iphone.png in Resources */,
 				F0AB966F1BA82E0800C72260 /* read_me.txt in Resources */,
@@ -993,6 +1036,7 @@
 				F00CFFC31BDF8A2D002C8ECC /* UIImageView+WebCache.m in Sources */,
 				F00CFFC41BDF8A2D002C8ECC /* UIView+WebCacheOperation.m in Sources */,
 				F00CFF851BDF182D002C8ECC /* AFURLSessionManager.m in Sources */,
+				F0EEA9A01C0477BD006B63D3 /* SNSShareBtn.swift in Sources */,
 				F0A5E13A1BA045FA00BDA6BA /* ForumNewThreadController.swift in Sources */,
 				F0D591B11BA185EE00C0346D /* ImageInfoData.swift in Sources */,
 				F00CFFBC1BDF8A2D002C8ECC /* SDWebImageManager.m in Sources */,
