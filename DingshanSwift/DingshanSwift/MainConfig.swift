@@ -29,7 +29,7 @@ class MainConfig {
             if let dict = NSDictionary(contentsOfFile: configPath!) as? Dictionary<NSObject, AnyObject> {
                 self.rootDic = dict
             }
-            print("\nroot dic = \(rootDic)", terminator: "")
+//            print("\nroot dic = \(rootDic)", terminator: "")
         }
     }
     

@@ -11,15 +11,22 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
 {
     var mainTable = UITableView();
     var tableSource:ArrayDataSource?
-    var refreshView:RefreshView?
-    var loadMoreView:LoadView?
+//    var refreshView:RefreshView?
+//    var loadMoreView:LoadView?
     var currentPage:NSInteger = 0
+    var indicatorTop:UzysRadialProgressActivityIndicator?
+    var indicatorBottom:UzysRadialProgressActivityIndicator?
+    var configCache:[NSObject:AnyObject]?
+    var topFuncBar = UIView();
 
     override func loadView(){
         super.loadView()
         self.view.backgroundColor = UIColor.lightGrayColor()
-        self.topTitle = "首页"
         self.backBtnHidden = true
+        self.topView.hidden = true
+        
+        
+        
         self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, data) in
             if let itemCell = cell as? HomeCell{
                 itemCell.clearData()
@@ -29,22 +36,20 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
             }
         })
         
-        let newThreadBtn = UIButton(frame: CGRect(x: self.view.bounds.size.width - 44, y: 20, width: 44, height: 44))
-        newThreadBtn.setImage(UIImage(named: "forum_topic_add_new"), forState: UIControlState.Normal)
-        self.topView.addSubview(newThreadBtn)
-        newThreadBtn.addTarget(self, action: Selector("onTapNewThread"), forControlEvents: UIControlEvents.TouchUpInside)
         
-        refreshView = RefreshView(frame:CGRect(x:0,
-                                                y:TopBar_H,
-                                                width:self.view.bounds.width,
-                                                height:60))
-        refreshView?.backgroundColor = UIColor.lightGrayColor()
-        refreshView?.delegate = self
-        self.view.addSubview(self.refreshView!)
+//        refreshView = RefreshView(frame:CGRect(x:0,
+//                                                y:TopBar_H,
+//                                                width:self.view.bounds.width,
+//                                                height:60))
+//        refreshView?.backgroundColor = UIColor.lightGrayColor()
+//        refreshView?.delegate = self
+//        self.view.addSubview(self.refreshView!)
         
-        mainTable.frame = CGRect(x: 0, y: TopBar_H, width: self.view.bounds.size.width, height: self.view.bounds.size.height - TopBar_H);
-        mainTable.contentInset = UIEdgeInsets(top: HomeAd_H, left: 0, bottom: MAIN_TAB_H, right: 0)
-        mainTable.backgroundColor = UIColor.whiteColor()
+        mainTable.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: UIScreen.mainScreen().bounds.size.height - MAIN_TAB_H);
+        print("A_DONE------- self.frame = (\(mainTable.frame.origin.x), \(mainTable.frame.origin.y), \(mainTable.frame.size.width), \(mainTable.frame.size.height)")
+        
+        mainTable.contentInset = UIEdgeInsets(top: HomeAd_H, left: 0, bottom: 0, right: 0)
+        mainTable.backgroundColor = UIColor.cyanColor()
         mainTable.separatorStyle = UITableViewCellSeparatorStyle.None
         mainTable.delegate = self
         mainTable.dataSource = self.tableSource
@@ -57,28 +62,54 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         adPic.frame = CGRect(x: 0, y: 0 - HomeAd_H, width: self.view.bounds.size.width, height: HomeAd_H)
         mainTable.addSubview(adPic)
         
-        self.refreshView?.loadinsets = self.mainTable.contentInset
+        topFuncBar = UIView(frame: CGRect(x: 0, y: 0 - HomeAd_H, width: self.view.bounds.size.width, height: 64))
+        topFuncBar.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.3)
+        mainTable.addSubview(topFuncBar)
         
-        loadMoreView = LoadView(frame:CGRect(x:0, y:-1000, width:self.view.bounds.width, height:50))
-        loadMoreView?.backgroundColor = UIColor.lightGrayColor()
-        loadMoreView?.delegate = self
-        loadMoreView?.loadinsets = self.mainTable.contentInset
-        self.mainTable.addSubview(self.loadMoreView!)
+        let newThreadBtn = UIButton(frame: CGRect(x: self.view.bounds.size.width - 44, y: 20, width: 44, height: 44))
+        newThreadBtn.setImage(UIImage(named: "forum_topic_add_new"), forState: UIControlState.Normal)
+        topFuncBar.addSubview(newThreadBtn)
+        newThreadBtn.addTarget(self, action: Selector("onTapNewThread"), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        
+        mainTable.addPullToRefreshActionHandler({ [weak self] () -> Void in
+            self?.currentPage = 0
+            self?.tableSource?.removeAllItems()
+            self?.mainTable.reloadData()
+            self?.startRequest(self?.configCache)
+            print("A_DONE------- self.frame = (\(self?.indicatorTop?.frame.origin.x), \(self?.indicatorTop?.frame.origin.y), \(self?.indicatorTop?.frame.size.width), \(self?.indicatorTop?.frame.size.height)")
+            
+            })
+//        mainTable.addPullToLoadMoreActionHandler({ [weak self] () -> Void in
+//            self?.startRequest(self?.configCache)
+//            print("B_DONE------- self.frame = (\(self?.indicatorBottom?.frame.origin.x), \(self?.indicatorBottom?.frame.origin.y), \(self?.indicatorBottom?.frame.size.width), \(self?.indicatorBottom?.frame.size.height)")
+//            
+//            })
+
+//        self.refreshView?.loadinsets = self.mainTable.contentInset
+//        
+//        loadMoreView = LoadView(frame:CGRect(x:0, y:-1000, width:self.view.bounds.width, height:50))
+//        loadMoreView?.backgroundColor = UIColor.lightGrayColor()
+//        loadMoreView?.delegate = self
+//        loadMoreView?.loadinsets = self.mainTable.contentInset
+//        self.mainTable.addSubview(self.loadMoreView!)
+        
+        self.view.bringSubviewToFront(self.topView)
     }
     
     override func viewDidLoad() {
         
-        self.startRequest()
+//        self.startRequest(nil)
     }
     
     func refresh(){
-        self.loadMoreView?.isCanUse = false
-        self.loadMoreView?.hidden = true
+//        self.loadMoreView?.isCanUse = false
+//        self.loadMoreView?.hidden = true
         self.currentPage = 0
-        self.startRequest()
+        self.startRequest(nil)
     }
     
-    func startRequest(){
+    func startRequest(config:[NSObject:AnyObject]?){
         let parameter = ["pindex" : "0",
                         "psize" : "50",
                         "sorttype" : "1",
@@ -100,8 +131,10 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
                     self.processRequestResult(dic)
                 }
                 // 控件复位
-                self.refreshView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
-                self.loadMoreView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
+                // 控件复位
+                self.mainTable.stopRefreshAnimation()
+//                self.refreshView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
+//                self.loadMoreView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
             }, failure: {( task, error) -> Void in
                 print("\n failure: TIP --- e:\(error)")
             })
@@ -119,13 +152,13 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
                         }
                     }
                     self.mainTable.reloadData()
-                    if (arr.count < Default_Request_Count) {
-                        self.loadMoreView?.isCanUse = false
-                        self.loadMoreView?.hidden = true
-                    }else{
-                        self.loadMoreView?.isCanUse = true
-                        self.loadMoreView?.hidden = false
-                    }
+//                    if (arr.count < Default_Request_Count) {
+//                        self.loadMoreView?.isCanUse = false
+//                        self.loadMoreView?.hidden = true
+//                    }else{
+//                        self.loadMoreView?.isCanUse = true
+//                        self.loadMoreView?.hidden = false
+//                    }
                 }
             }
         }else{
@@ -156,40 +189,5 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
             }
         }
     }
-    
-// MARK: - UIScrollViewDelegate
-    func scrollViewDidScroll(scrollView: UIScrollView){
-        if (scrollView.contentOffset.y <= 0){
-            self.refreshView?.RefreshScrollViewDidScroll(scrollView)
-            return;
-        }else{
-            self.loadMoreView?.RefreshScrollViewDidScroll(scrollView)
-        }
-    }
-    
-    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>){
-        if (scrollView.contentOffset.y<=0){
-            self.refreshView?.RefreshScrollViewDidEndDragging(scrollView)
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView){
-        self.refreshView?.RefreshScrollViewDidEndDecelerating(scrollView)
-    }
-    
-// MARK: - LoadViewProtocol Methods
-    
-    //开始加载数据
-    func BeginLoadingData(view:UIView){
-        self.currentPage++
-        self.startRequest()
-    }
-    //开始刷新数据
-    func BeginRefreshData(view:UIView){
-        self.refresh()
-    }
-    
-    func FinishedLoadingDataButFailed(){
-        self.startRequest()
-    }
+
 }
