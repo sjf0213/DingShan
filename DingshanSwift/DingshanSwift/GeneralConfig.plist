@@ -598,16 +598,68 @@
 			</dict>
 		</array>
 	</dict>
-	<key>HomeMenu</key>
+	<key>StageMenu</key>
 	<array>
-		<string>准备阶段</string>
-		<string>拆改阶段</string>
-		<string>水电阶段</string>
-		<string>泥木阶段</string>
-		<string>油漆阶段</string>
-		<string>竣工验收</string>
-		<string>软装阶段</string>
-		<string>心得专区</string>
+		<dict>
+			<key>title</key>
+			<string>全部</string>
+			<key>selected</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>准备阶段</string>
+			<key>selected</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>拆改阶段</string>
+			<key>selected</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>水电阶段</string>
+			<key>selected</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>泥木阶段</string>
+			<key>selected</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>油漆阶段</string>
+			<key>selected</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>竣工验收</string>
+			<key>selected</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>软装阶段</string>
+			<key>selected</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>入住阶段</string>
+			<key>selected</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>心得专区</string>
+			<key>selected</key>
+			<false/>
+		</dict>
 	</array>
 </dict>
 </plist>

@@ -11,21 +11,17 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
 {
     var mainTable = UITableView();
     var tableSource:ArrayDataSource?
-//    var refreshView:RefreshView?
-//    var loadMoreView:LoadView?
     var currentPage:NSInteger = 0
     var indicatorTop:UzysRadialProgressActivityIndicator?
     var indicatorBottom:UzysRadialProgressActivityIndicator?
     var configCache:[NSObject:AnyObject]?
-    var topFuncBar = UIView();
+    var stageMenu : StageMenuView?
 
     override func loadView(){
         super.loadView()
-        self.view.backgroundColor = UIColor.lightGrayColor()
+        self.view.backgroundColor = UIColor.whiteColor()
         self.backBtnHidden = true
-        self.topView.hidden = true
-        
-        
+//        self.topView.hidden = true
         
         self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, data) in
             if let itemCell = cell as? HomeCell{
@@ -36,20 +32,11 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
             }
         })
         
-        
-//        refreshView = RefreshView(frame:CGRect(x:0,
-//                                                y:TopBar_H,
-//                                                width:self.view.bounds.width,
-//                                                height:60))
-//        refreshView?.backgroundColor = UIColor.lightGrayColor()
-//        refreshView?.delegate = self
-//        self.view.addSubview(self.refreshView!)
-        
         mainTable.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: UIScreen.mainScreen().bounds.size.height - MAIN_TAB_H);
         print("A_DONE------- self.frame = (\(mainTable.frame.origin.x), \(mainTable.frame.origin.y), \(mainTable.frame.size.width), \(mainTable.frame.size.height)")
         
-        mainTable.contentInset = UIEdgeInsets(top: HomeAd_H, left: 0, bottom: 0, right: 0)
-        mainTable.backgroundColor = UIColor.cyanColor()
+        mainTable.contentInset = UIEdgeInsets(top: TopBar_H, left: 0, bottom: 0, right: 0)
+        mainTable.backgroundColor = UIColor.whiteColor()
         mainTable.separatorStyle = UITableViewCellSeparatorStyle.None
         mainTable.delegate = self
         mainTable.dataSource = self.tableSource
@@ -57,19 +44,32 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         mainTable.registerClass(HomeCell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
         self.view.addSubview(mainTable)
         
-        let adPic = UIImageView(image: UIImage(named: "home_ad.jpg"))
-        adPic.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.1)
-        adPic.frame = CGRect(x: 0, y: 0 - HomeAd_H, width: self.view.bounds.size.width, height: HomeAd_H)
-        mainTable.addSubview(adPic)
+//        let adPic = UIImageView(image: UIImage(named: "home_ad.jpg"))
+//        adPic.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.1)
+//        adPic.alpha = 0.3
+//        adPic.frame = CGRect(x: 0, y: 0 - HomeAd_H, width: self.view.bounds.size.width, height: HomeAd_H)
+//        mainTable.addSubview(adPic)
         
-        topFuncBar = UIView(frame: CGRect(x: 0, y: 0 - HomeAd_H, width: self.view.bounds.size.width, height: 64))
-        topFuncBar.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.3)
-        mainTable.addSubview(topFuncBar)
+        let searchBtn = UIButton(frame: CGRect(x: 0, y: 20, width: 44, height: 44))
+        searchBtn.setImage(UIImage(named: "search_btn"), forState: UIControlState.Normal)
+        self.topView.addSubview(searchBtn)
+        searchBtn.addTarget(self, action: Selector("onTapSearch"), forControlEvents: UIControlEvents.TouchUpInside)
         
         let newThreadBtn = UIButton(frame: CGRect(x: self.view.bounds.size.width - 44, y: 20, width: 44, height: 44))
         newThreadBtn.setImage(UIImage(named: "forum_topic_add_new"), forState: UIControlState.Normal)
-        topFuncBar.addSubview(newThreadBtn)
+        self.topView.addSubview(newThreadBtn)
         newThreadBtn.addTarget(self, action: Selector("onTapNewThread"), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        // 读取菜单配置
+        var stageConfig = [AnyObject]()
+        if let config = MainConfig.sharedInstance.rootDic?["StageMenu"] as? [AnyObject]{
+            stageConfig = config
+        }
+        // 生成菜单
+        stageMenu = StageMenuView(frame: CGRect(x: 50, y: 20, width: self.view.bounds.size.width - 100, height: TopBar_H - 20))
+        stageMenu?.backgroundColor = UIColor.orangeColor().colorWithAlphaComponent(0.3)
+        stageMenu?.menuConfig = stageConfig
+        self.topView.addSubview(stageMenu!)
         
         
         mainTable.addPullToRefreshActionHandler({ [weak self] () -> Void in
@@ -85,21 +85,14 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
 //            print("B_DONE------- self.frame = (\(self?.indicatorBottom?.frame.origin.x), \(self?.indicatorBottom?.frame.origin.y), \(self?.indicatorBottom?.frame.size.width), \(self?.indicatorBottom?.frame.size.height)")
 //            
 //            })
-
-//        self.refreshView?.loadinsets = self.mainTable.contentInset
-//        
-//        loadMoreView = LoadView(frame:CGRect(x:0, y:-1000, width:self.view.bounds.width, height:50))
-//        loadMoreView?.backgroundColor = UIColor.lightGrayColor()
-//        loadMoreView?.delegate = self
-//        loadMoreView?.loadinsets = self.mainTable.contentInset
-//        self.mainTable.addSubview(self.loadMoreView!)
+        
+        mainTable.addTopInsetInPortrait(TopBar_H, topInsetInLandscape: TopBar_H)
         
         self.view.bringSubviewToFront(self.topView)
     }
     
-    override func viewDidLoad() {
-        
-//        self.startRequest(nil)
+    override func viewDidAppear(animated: Bool) {
+        mainTable.triggerPullToRefresh()
     }
     
     func refresh(){
@@ -168,6 +161,12 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
                 print("\n TIP --- c:\(c), v:\(v)")
             }
         }
+    }
+    
+    func onTapSearch(){
+        print("search some ~ ~", terminator: "")
+        let searchController = SearchStartController()
+        self.navigationController?.pushViewController(searchController, animated: true)
     }
     
     func onTapNewThread(){

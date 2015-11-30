@@ -129,6 +129,11 @@
 		F0D00E7F1B9182570056BE3E /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D00E7E1B9182570056BE3E /* TabBarView.swift */; };
 		F0D00EA51B91AF160056BE3E /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D00EA41B91AF160056BE3E /* TopBarView.swift */; };
 		F0D591B11BA185EE00C0346D /* ImageInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D591B01BA185EE00C0346D /* ImageInfoData.swift */; };
+		F0DEE21F1C0BF16800C956A7 /* SearchStartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DEE21E1C0BF16800C956A7 /* SearchStartController.swift */; };
+		F0DEE2221C0BF30200C956A7 /* search_btn@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0DEE2201C0BF30200C956A7 /* search_btn@2x~iphone.png */; };
+		F0DEE2231C0BF30200C956A7 /* search_btn@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0DEE2211C0BF30200C956A7 /* search_btn@3x~iphone.png */; };
+		F0DEE2251C0C1AD600C956A7 /* StageMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DEE2241C0C1AD600C956A7 /* StageMenuView.swift */; };
+		F0DEE2281C0C378000C956A7 /* StageMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DEE2271C0C378000C956A7 /* StageMenuItem.swift */; };
 		F0E574F81B6784BE000053B8 /* LoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E574F21B6784BE000053B8 /* LoadView.m */; };
 		F0E574F91B6784BE000053B8 /* RefreshIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E574F51B6784BE000053B8 /* RefreshIconView.m */; };
 		F0E574FA1B6784BE000053B8 /* RefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E574F71B6784BE000053B8 /* RefreshView.m */; };
@@ -349,6 +354,11 @@
 		F0D00E7E1B9182570056BE3E /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F0D00EA41B91AF160056BE3E /* TopBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		F0D591B01BA185EE00C0346D /* ImageInfoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfoData.swift; sourceTree = "<group>"; };
+		F0DEE21E1C0BF16800C956A7 /* SearchStartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStartController.swift; sourceTree = "<group>"; };
+		F0DEE2201C0BF30200C956A7 /* search_btn@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search_btn@2x~iphone.png"; path = "common/search_btn@2x~iphone.png"; sourceTree = "<group>"; };
+		F0DEE2211C0BF30200C956A7 /* search_btn@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search_btn@3x~iphone.png"; path = "common/search_btn@3x~iphone.png"; sourceTree = "<group>"; };
+		F0DEE2241C0C1AD600C956A7 /* StageMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StageMenuView.swift; sourceTree = "<group>"; };
+		F0DEE2271C0C378000C956A7 /* StageMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StageMenuItem.swift; sourceTree = "<group>"; };
 		F0E574F11B6784BE000053B8 /* LoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadView.h; sourceTree = "<group>"; };
 		F0E574F21B6784BE000053B8 /* LoadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadView.m; sourceTree = "<group>"; };
 		F0E574F31B6784BE000053B8 /* LoadViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewProtocol.h; sourceTree = "<group>"; };
@@ -518,6 +528,7 @@
 		F023351E1C0830F900737E34 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				F0DEE21E1C0BF16800C956A7 /* SearchStartController.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -609,9 +620,9 @@
 		F09ADD7B1B563974009B3A6D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F03E68CD1BE711B1001D04D1 /* FontAwesome.ttf */,
 				F0EEA9A11C047C6D006B63D3 /* sns */,
 				F0EEA9721C031767006B63D3 /* gallery */,
-				F03E68CD1BE711B1001D04D1 /* FontAwesome.ttf */,
 				F0AA4FA61B93ED28007EDEA9 /* common */,
 				F0AA4FA51B93ED1C007EDEA9 /* tabbar */,
 			);
@@ -650,6 +661,8 @@
 		F0AA4FA61B93ED28007EDEA9 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				F0DEE2201C0BF30200C956A7 /* search_btn@2x~iphone.png */,
+				F0DEE2211C0BF30200C956A7 /* search_btn@3x~iphone.png */,
 				F0AB9B151BF5D9A0004424FE /* refresh_center_icon@2x~iphone.png */,
 				F00735421BEA211200383687 /* wait@2x~iphone.png */,
 				F00735431BEA211200383687 /* wait@3x~iphone.png */,
@@ -769,10 +782,11 @@
 		F0D00E7B1B917B010056BE3E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				F0DEE2291C0C3F2400C956A7 /* StageMenu */,
 				F035ECEF1BB2958D00A8D8EC /* TopicLevel */,
 				F035ECF01BB2959E00A8D8EC /* FloorLevel */,
 				F035ECF11BB295A700A8D8EC /* ReplyLevel */,
-				F0A5E1391BA045FA00BDA6BA /* ForumNewThreadController.swift */,
+				F0DEE2261C0C1AE400C956A7 /* NewThread */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -801,6 +815,23 @@
 				EACC64491C044BBA002EA0C6 /* ProfileViewCell.swift */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		F0DEE2261C0C1AE400C956A7 /* NewThread */ = {
+			isa = PBXGroup;
+			children = (
+				F0A5E1391BA045FA00BDA6BA /* ForumNewThreadController.swift */,
+			);
+			name = NewThread;
+			sourceTree = "<group>";
+		};
+		F0DEE2291C0C3F2400C956A7 /* StageMenu */ = {
+			isa = PBXGroup;
+			children = (
+				F0DEE2241C0C1AD600C956A7 /* StageMenuView.swift */,
+				F0DEE2271C0C378000C956A7 /* StageMenuItem.swift */,
+			);
+			name = StageMenu;
 			sourceTree = "<group>";
 		};
 		F0E574F01B6784BE000053B8 /* Loading */ = {
@@ -923,6 +954,7 @@
 				F0C5F6C11B53D1E000B2C20D /* LaunchScreen.xib in Resources */,
 				F0EEA9821C031767006B63D3 /* favor_0@3x~iphone.png in Resources */,
 				F0EEA9811C031767006B63D3 /* favor_0@2x~iphone.png in Resources */,
+				F0DEE2231C0BF30200C956A7 /* search_btn@3x~iphone.png in Resources */,
 				F0AA4FAA1B93ED37007EDEA9 /* back_btn@2x~iphone.png in Resources */,
 				F0AB9B161BF5D9A0004424FE /* refresh_center_icon@2x~iphone.png in Resources */,
 				F0AA4F971B93ECE7007EDEA9 /* tabbar_forum1@2x~iphone.png in Resources */,
@@ -950,6 +982,7 @@
 				F0EEA9AC1C047C6D006B63D3 /* sns_qq@2x~iphone.png in Resources */,
 				F0EEA9851C031767006B63D3 /* gallery_more_btn@2x~iphone.png in Resources */,
 				F0EEA9AA1C047C6D006B63D3 /* sns_moments@2x~iphone.png in Resources */,
+				F0DEE2221C0BF30200C956A7 /* search_btn@2x~iphone.png in Resources */,
 				F0AA4FAC1B93ED37007EDEA9 /* home_ad.jpg in Resources */,
 				F00735441BEA211200383687 /* wait@2x~iphone.png in Resources */,
 				F0AB966F1BA82E0800C72260 /* read_me.txt in Resources */,
@@ -980,6 +1013,7 @@
 				F00CFFC11BDF8A2D002C8ECC /* UIImage+WebP.m in Sources */,
 				F09C7AB11B7CAEDC00648615 /* KASegmentControl.m in Sources */,
 				F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */,
+				F0DEE2281C0C378000C956A7 /* StageMenuItem.swift in Sources */,
 				F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */,
 				F00530261BFB2F6D0059E7CE /* AsynRequestImageView.m in Sources */,
 				F028C1761B9C435B00B8CECA /* GalleryMenuView.swift in Sources */,
@@ -1000,6 +1034,7 @@
 				F00CFF7D1BDF182D002C8ECC /* AFHTTPRequestOperation.m in Sources */,
 				F09C7AA71B7CA60900648615 /* DSViewController.swift in Sources */,
 				F0E574FA1B6784BE000053B8 /* RefreshView.m in Sources */,
+				F0DEE21F1C0BF16800C956A7 /* SearchStartController.swift in Sources */,
 				F0C3C2511B5FA59500AB6E35 /* HomeController.swift in Sources */,
 				F00CFFB81BDF8A2D002C8ECC /* SDWebImageCompat.m in Sources */,
 				F0AB9B141BF5C6FC004424FE /* UzysRadialProgressActivityIndicator.m in Sources */,
@@ -1037,6 +1072,7 @@
 				F0507E691B6756D3007E9024 /* KnowledgeListCell.swift in Sources */,
 				F00CFFB91BDF8A2D002C8ECC /* SDWebImageDecoder.m in Sources */,
 				F00530231BFB2E210059E7CE /* ScrollShowView.m in Sources */,
+				F0DEE2251C0C1AD600C956A7 /* StageMenuView.swift in Sources */,
 				F0A5E1421BA04B4800BDA6BA /* ForumReplyData.swift in Sources */,
 				F0AB9B121BF5C6FC004424FE /* DSActivityIndicatorView.m in Sources */,
 				F00CFF821BDF182D002C8ECC /* AFURLConnectionOperation.m in Sources */,

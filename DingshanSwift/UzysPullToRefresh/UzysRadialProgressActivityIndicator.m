@@ -332,7 +332,8 @@
     if (self.posType == indicator_top){
         self.progress = ((yOffset + self.originalTopInset + StartPosition)/-self.progressThreshold);
         self.center = CGPointMake(self.center.x, (contentOffset.y + self.originalTopInset)/2);
-//        NSLog(@"A- - - - yOffset = %.1f,  _state = %zd, self.progress = %.2f, prevProgressTop = %.2f", yOffset, self.state, self.progress, prevProgressTop);
+        NSLog(@"A- - - - yOffset = %.1f,  _state = %zd, self.progress = %.2f, prevProgressTop = %.2f", yOffset, self.state, self.progress, prevProgressTop);
+        NSLog(@"A-------yOffset = %.1f, self.frame = (%.1f, %.1f)(%.1f, %.1f),",yOffset, self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
         
     }else if (self.posType == indicator_bottom){
 //        self.progress = (MAX((yOffset  - ll - self.originalBottomInset),  StartPosition) / self.progressThreshold);
