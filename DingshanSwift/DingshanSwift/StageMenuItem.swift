@@ -39,7 +39,7 @@ class StageMenuItem:UIButton {
     }
     override init(frame aRect: CGRect) {
         super.init(frame: aRect);
-        container = UIView(frame: CGRect(x: (frame.size.width-frame.size.width*96.0/160.0)/2.0, y: frame.size.height*(1.0 - 50.0/80.0)/2.0, width: frame.size.width*96.0/160.0, height: frame.size.height*50.0/80.0))
+        container = UIView(frame: CGRect(x: 10.0, y: 10.0, width: frame.size.width-20.0, height: frame.size.height-20.0))
         self.addSubview(container!)
         
         container?.userInteractionEnabled = false

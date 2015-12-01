@@ -10,6 +10,7 @@ import Foundation
 class StageMenuView : UIView{
     var tapItemHandler : ((config:[NSObject:AnyObject]) -> Void)?// 用户点击处理
     var userSelectConfig:[NSObject:AnyObject]?// 记住用户当前的选择
+    var userSelectIndex:Int = 0
     var mainBtn = GalleryMenuButtton()
     var subItemContainer:UIView?// 按钮容器
     // 菜单的展开与收起
@@ -17,10 +18,12 @@ class StageMenuView : UIView{
     var isExpanded:Bool = false {
         didSet{
             if isExpanded{
-                self.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
+                self.frame = CGRectMake(0, 20, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height-20)
+                self.mainBtn.frame = CGRectMake(50, 0, self.mainBtn.frame.size.width, self.mainBtn.frame.size.height)
             }else{
                 self.frame = CGRectMake(50, 20, UIScreen.mainScreen().bounds.width - 100, TopBar_H - 20)
                 self.subItemContainer?.frame = CGRectZero
+                self.mainBtn.frame = self.bounds
             }
         }
     }
@@ -84,13 +87,13 @@ class StageMenuView : UIView{
         }
     }
     
-    // 点击一级按钮
+    // 点击按钮
     func onTapMainBtn(sender:UIButton) {
         print(sender, terminator: "")
         self.resetMenu()
-        // 生成所有二级菜单项
-        let w:CGFloat = self.bounds.width / 2
-        let h:CGFloat = GalleryMenuItem_H
+        // 生成所有菜单项
+        let w:CGFloat = UIScreen.mainScreen().bounds.width / 2
+        let h:CGFloat = 58
         for (var i = 0; i < self.menuConfig.count; i++){
             if let one = self.menuConfig[i] as? [NSObject:AnyObject]{
                 let row:Int = i/2
@@ -107,8 +110,8 @@ class StageMenuView : UIView{
             }
         }
         let rowCount:Int = (self.menuConfig.count-1)/2 + 1
-        let offh = GalleryMenuItem_H*CGFloat(rowCount) + GalleryMenuItem_H*50.0/80.0/2.5
-        self.subItemContainer?.frame = CGRectMake(0, TopBar_H, UIScreen.mainScreen().bounds.width, offh)
+        let offh = h*CGFloat(rowCount) + 10
+        self.subItemContainer?.frame = CGRectMake(0, TopBar_H-20, UIScreen.mainScreen().bounds.width, offh)
         self.isExpanded = true
     }
     
