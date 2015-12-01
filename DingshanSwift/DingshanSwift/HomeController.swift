@@ -69,7 +69,7 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         stageMenu = StageMenuView(frame: CGRect(x: 50, y: 20, width: self.view.bounds.size.width - 100, height: TopBar_H - 20))
         stageMenu?.backgroundColor = UIColor.orangeColor().colorWithAlphaComponent(0.3)
         stageMenu?.menuConfig = stageConfig
-        self.topView.addSubview(stageMenu!)
+        self.view.addSubview(stageMenu!)
         
         
         mainTable.addPullToRefreshActionHandler({ [weak self] () -> Void in
@@ -93,7 +93,9 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
     
     override func viewDidAppear(animated: Bool) {
         mainTable.triggerPullToRefresh()
+        self.view.bringSubviewToFront(stageMenu!)
     }
+
     
     func refresh(){
 //        self.loadMoreView?.isCanUse = false

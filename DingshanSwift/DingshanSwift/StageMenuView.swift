@@ -8,43 +8,25 @@
 
 import Foundation
 class StageMenuView : UIView{
-    var tapItemHandler : ((config:[NSObject:AnyObject]) -> Void)?// 用户点击处理
-    var userSelectConfig:[NSObject:AnyObject]?// 记住用户当前的选择
+    var tapItemHandler : ((index:Int) -> Void)?// 用户点击处理
     var userSelectIndex:Int = 0
     var mainBtn = GalleryMenuButtton()
     var subItemContainer:UIView?// 按钮容器
+    // 菜单内容的配置
+    var menuConfig = [AnyObject]()
     // 菜单的展开与收起
-    
     var isExpanded:Bool = false {
         didSet{
             if isExpanded{
+                self.mainBtn.curSelected = true
                 self.frame = CGRectMake(0, 20, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height-20)
                 self.mainBtn.frame = CGRectMake(50, 0, self.mainBtn.frame.size.width, self.mainBtn.frame.size.height)
             }else{
+                self.mainBtn.curSelected = false
                 self.frame = CGRectMake(50, 20, UIScreen.mainScreen().bounds.width - 100, TopBar_H - 20)
                 self.subItemContainer?.frame = CGRectZero
                 self.mainBtn.frame = self.bounds
             }
-        }
-    }
-    
-    // 菜单内容的配置
-    var menuConfig = [AnyObject](){
-        didSet{
-            print("stage menu Config = \(menuConfig)")
-            self.resetMenu()
-            // 生成用于请求的用户选择记录
-            var dicOne = ["index":0,
-                          "title":""]
-            if menuConfig.count > 0{
-                if let obj = menuConfig[0] as? [NSObject:AnyObject]{
-                    if let name = obj["title"] as? String{
-                        dicOne["title"] = name
-                    }
-                }
-            }
-            
-            self.userSelectConfig = dicOne
         }
     }
     
@@ -59,6 +41,7 @@ class StageMenuView : UIView{
         
         self.mainBtn = GalleryMenuButtton(frame: self.bounds)
         self.mainBtn.backgroundColor = UIColor.clearColor()
+        self.mainBtn.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         self.mainBtn.addTarget(self, action: Selector("onTapMainBtn:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(self.mainBtn)
         
@@ -79,8 +62,6 @@ class StageMenuView : UIView{
     func resetMenu(){
         // 收起菜单
         self.isExpanded = false
-        // 一级项置灰
-        mainBtn.setTitle("XXX", forState: UIControlState.Normal)
         // 清空二级项
         for v in self.subItemContainer!.subviews{
             v.removeFromSuperview()
@@ -89,6 +70,10 @@ class StageMenuView : UIView{
     
     // 点击按钮
     func onTapMainBtn(sender:UIButton) {
+        if(self.isExpanded){
+            self.resetMenu()
+            return;
+        }
         print(sender, terminator: "")
         self.resetMenu()
         // 生成所有菜单项
@@ -118,6 +103,7 @@ class StageMenuView : UIView{
     // 点击二级菜单项
     func onTapItem(item:GalleryMenuItem) {
         print("----------sub menu items title:\(item.titleLabel?.text), tagIndex:\(item.tag)")
+        // 低亮其他
         for v in self.subItemContainer!.subviews{
             if let i = v as? GalleryMenuItem{
                 if i != item{
@@ -125,18 +111,17 @@ class StageMenuView : UIView{
                 }
             }
         }
+        // 高亮所选
         item.curSelected = true
         // 更新设置
-        self.userSelectConfig?.updateValue(item.tag, forKey: "index")
+        userSelectIndex = item.tag
         // 更新Btn显示
         mainBtn.btnText = item.titleForState(UIControlState.Normal)!
-        
         // 点击动作，进入下一个页面
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
-            
             self.resetMenu()
-            if (self.tapItemHandler != nil && self.userSelectConfig != nil) {
-                self.tapItemHandler?(config:self.userSelectConfig!)
+            if (self.tapItemHandler != nil) {
+                self.tapItemHandler?(index:self.userSelectIndex)
             }
         })
     }
