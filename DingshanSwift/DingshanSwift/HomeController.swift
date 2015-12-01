@@ -67,7 +67,6 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         }
         // 生成菜单
         stageMenu = StageMenuView(frame: CGRect(x: 50, y: 20, width: self.view.bounds.size.width - 100, height: TopBar_H - 20))
-        stageMenu?.backgroundColor = UIColor.orangeColor().colorWithAlphaComponent(0.3)
         stageMenu?.menuConfig = stageConfig
         self.view.addSubview(stageMenu!)
         

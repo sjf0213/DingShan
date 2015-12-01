@@ -28,6 +28,7 @@ class StageMenuItem:UIButton {
     override internal var highlighted:Bool{
         didSet{
             if (highlighted){
+                print("StageMenuItem.highlighted= = = = = = tag = %zd", self.tag)
                 container?.layer.borderColor = borderColorHighLighted.CGColor
             }else{
                 container?.layer.borderColor = borderColorNormal.CGColor
