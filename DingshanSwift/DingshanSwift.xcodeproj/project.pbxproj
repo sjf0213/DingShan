@@ -85,6 +85,16 @@
 		F0A5E1441BA04C5000BDA6BA /* UserInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A5E1431BA04C5000BDA6BA /* UserInfoData.swift */; };
 		F0A5E1461BA0534400BDA6BA /* ForumReplyListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A5E1451BA0534400BDA6BA /* ForumReplyListController.swift */; };
 		F0A5E1481BA0536000BDA6BA /* ForumReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A5E1471BA0536000BDA6BA /* ForumReplyCell.swift */; };
+		F0A9F6551C1140E50091FCA8 /* NSMutableAttributedString+TY.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A9F6421C1140E50091FCA8 /* NSMutableAttributedString+TY.m */; };
+		F0A9F6561C1140E50091FCA8 /* TYAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A9F6441C1140E50091FCA8 /* TYAttributedLabel.m */; };
+		F0A9F6571C1140E50091FCA8 /* TYDrawStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A9F6461C1140E50091FCA8 /* TYDrawStorage.m */; };
+		F0A9F6581C1140E50091FCA8 /* TYImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A9F6481C1140E50091FCA8 /* TYImageCache.m */; };
+		F0A9F6591C1140E50091FCA8 /* TYImageStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A9F64A1C1140E50091FCA8 /* TYImageStorage.m */; };
+		F0A9F65A1C1140E50091FCA8 /* TYLinkTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A9F64C1C1140E50091FCA8 /* TYLinkTextStorage.m */; };
+		F0A9F65B1C1140E50091FCA8 /* TYTextContainer+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A9F64D1C1140E50091FCA8 /* TYTextContainer+Extended.m */; };
+		F0A9F65C1C1140E50091FCA8 /* TYTextContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A9F64F1C1140E50091FCA8 /* TYTextContainer.m */; };
+		F0A9F65D1C1140E50091FCA8 /* TYTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A9F6511C1140E50091FCA8 /* TYTextStorage.m */; };
+		F0A9F65E1C1140E50091FCA8 /* TYViewStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A9F6541C1140E50091FCA8 /* TYViewStorage.m */; };
 		F0AA4F951B93ECE7007EDEA9 /* tabbar_forum0@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0AA4F891B93ECE7007EDEA9 /* tabbar_forum0@2x~iphone.png */; };
 		F0AA4F961B93ECE7007EDEA9 /* tabbar_forum0@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0AA4F8A1B93ECE7007EDEA9 /* tabbar_forum0@3x~iphone.png */; };
 		F0AA4F971B93ECE7007EDEA9 /* tabbar_forum1@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0AA4F8B1B93ECE7007EDEA9 /* tabbar_forum1@2x~iphone.png */; };
@@ -303,6 +313,26 @@
 		F0A5E1431BA04C5000BDA6BA /* UserInfoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoData.swift; sourceTree = "<group>"; };
 		F0A5E1451BA0534400BDA6BA /* ForumReplyListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumReplyListController.swift; sourceTree = "<group>"; };
 		F0A5E1471BA0536000BDA6BA /* ForumReplyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumReplyCell.swift; sourceTree = "<group>"; };
+		F0A9F6411C1140E50091FCA8 /* NSMutableAttributedString+TY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+TY.h"; sourceTree = "<group>"; };
+		F0A9F6421C1140E50091FCA8 /* NSMutableAttributedString+TY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+TY.m"; sourceTree = "<group>"; };
+		F0A9F6431C1140E50091FCA8 /* TYAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYAttributedLabel.h; sourceTree = "<group>"; };
+		F0A9F6441C1140E50091FCA8 /* TYAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYAttributedLabel.m; sourceTree = "<group>"; };
+		F0A9F6451C1140E50091FCA8 /* TYDrawStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDrawStorage.h; sourceTree = "<group>"; };
+		F0A9F6461C1140E50091FCA8 /* TYDrawStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYDrawStorage.m; sourceTree = "<group>"; };
+		F0A9F6471C1140E50091FCA8 /* TYImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYImageCache.h; sourceTree = "<group>"; };
+		F0A9F6481C1140E50091FCA8 /* TYImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYImageCache.m; sourceTree = "<group>"; };
+		F0A9F6491C1140E50091FCA8 /* TYImageStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYImageStorage.h; sourceTree = "<group>"; };
+		F0A9F64A1C1140E50091FCA8 /* TYImageStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYImageStorage.m; sourceTree = "<group>"; };
+		F0A9F64B1C1140E50091FCA8 /* TYLinkTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYLinkTextStorage.h; sourceTree = "<group>"; };
+		F0A9F64C1C1140E50091FCA8 /* TYLinkTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYLinkTextStorage.m; sourceTree = "<group>"; };
+		F0A9F64D1C1140E50091FCA8 /* TYTextContainer+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TYTextContainer+Extended.m"; sourceTree = "<group>"; };
+		F0A9F64E1C1140E50091FCA8 /* TYTextContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTextContainer.h; sourceTree = "<group>"; };
+		F0A9F64F1C1140E50091FCA8 /* TYTextContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTextContainer.m; sourceTree = "<group>"; };
+		F0A9F6501C1140E50091FCA8 /* TYTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTextStorage.h; sourceTree = "<group>"; };
+		F0A9F6511C1140E50091FCA8 /* TYTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTextStorage.m; sourceTree = "<group>"; };
+		F0A9F6521C1140E50091FCA8 /* TYTextStorageProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTextStorageProtocol.h; sourceTree = "<group>"; };
+		F0A9F6531C1140E50091FCA8 /* TYViewStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYViewStorage.h; sourceTree = "<group>"; };
+		F0A9F6541C1140E50091FCA8 /* TYViewStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYViewStorage.m; sourceTree = "<group>"; };
 		F0AA4F891B93ECE7007EDEA9 /* tabbar_forum0@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabbar_forum0@2x~iphone.png"; path = "tabbar/tabbar_forum0@2x~iphone.png"; sourceTree = "<group>"; };
 		F0AA4F8A1B93ECE7007EDEA9 /* tabbar_forum0@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabbar_forum0@3x~iphone.png"; path = "tabbar/tabbar_forum0@3x~iphone.png"; sourceTree = "<group>"; };
 		F0AA4F8B1B93ECE7007EDEA9 /* tabbar_forum1@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabbar_forum1@2x~iphone.png"; path = "tabbar/tabbar_forum1@2x~iphone.png"; sourceTree = "<group>"; };
@@ -639,6 +669,33 @@
 			name = Menu;
 			sourceTree = "<group>";
 		};
+		F0A9F6401C1140E50091FCA8 /* TYAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				F0A9F6411C1140E50091FCA8 /* NSMutableAttributedString+TY.h */,
+				F0A9F6421C1140E50091FCA8 /* NSMutableAttributedString+TY.m */,
+				F0A9F6431C1140E50091FCA8 /* TYAttributedLabel.h */,
+				F0A9F6441C1140E50091FCA8 /* TYAttributedLabel.m */,
+				F0A9F6451C1140E50091FCA8 /* TYDrawStorage.h */,
+				F0A9F6461C1140E50091FCA8 /* TYDrawStorage.m */,
+				F0A9F6471C1140E50091FCA8 /* TYImageCache.h */,
+				F0A9F6481C1140E50091FCA8 /* TYImageCache.m */,
+				F0A9F6491C1140E50091FCA8 /* TYImageStorage.h */,
+				F0A9F64A1C1140E50091FCA8 /* TYImageStorage.m */,
+				F0A9F64B1C1140E50091FCA8 /* TYLinkTextStorage.h */,
+				F0A9F64C1C1140E50091FCA8 /* TYLinkTextStorage.m */,
+				F0A9F64D1C1140E50091FCA8 /* TYTextContainer+Extended.m */,
+				F0A9F64E1C1140E50091FCA8 /* TYTextContainer.h */,
+				F0A9F64F1C1140E50091FCA8 /* TYTextContainer.m */,
+				F0A9F6501C1140E50091FCA8 /* TYTextStorage.h */,
+				F0A9F6511C1140E50091FCA8 /* TYTextStorage.m */,
+				F0A9F6521C1140E50091FCA8 /* TYTextStorageProtocol.h */,
+				F0A9F6531C1140E50091FCA8 /* TYViewStorage.h */,
+				F0A9F6541C1140E50091FCA8 /* TYViewStorage.m */,
+			);
+			path = TYAttributedLabel;
+			sourceTree = "<group>";
+		};
 		F0AA4FA51B93ED1C007EDEA9 /* tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -690,6 +747,7 @@
 		F0AB96721BA834F600C72260 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				F0A9F6401C1140E50091FCA8 /* TYAttributedLabel */,
 				F0AB96731BA8352200C72260 /* libz.dylib */,
 				F0AB967B1BA8362800C72260 /* libc++.dylib */,
 				F0AB96701BA834EE00C72260 /* libsqlite3.0.dylib */,
@@ -1012,6 +1070,7 @@
 				F00530161BFB26090059E7CE /* DSLoadMoreEndTipView.m in Sources */,
 				F00CFFC11BDF8A2D002C8ECC /* UIImage+WebP.m in Sources */,
 				F09C7AB11B7CAEDC00648615 /* KASegmentControl.m in Sources */,
+				F0A9F6581C1140E50091FCA8 /* TYImageCache.m in Sources */,
 				F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */,
 				F0DEE2281C0C378000C956A7 /* StageMenuItem.swift in Sources */,
 				F0507E651B675666007E9024 /* ForumFloorListController.swift in Sources */,
@@ -1030,7 +1089,9 @@
 				F09ADDA11B5640DD009B3A6D /* CommonDefine.swift in Sources */,
 				F00CFF7F1BDF182D002C8ECC /* AFHTTPSessionManager.m in Sources */,
 				F0A5E1461BA0534400BDA6BA /* ForumReplyListController.swift in Sources */,
+				F0A9F6561C1140E50091FCA8 /* TYAttributedLabel.m in Sources */,
 				F00CFF841BDF182D002C8ECC /* AFURLResponseSerialization.m in Sources */,
+				F0A9F6591C1140E50091FCA8 /* TYImageStorage.m in Sources */,
 				F00CFF7D1BDF182D002C8ECC /* AFHTTPRequestOperation.m in Sources */,
 				F09C7AA71B7CA60900648615 /* DSViewController.swift in Sources */,
 				F0E574FA1B6784BE000053B8 /* RefreshView.m in Sources */,
@@ -1061,9 +1122,11 @@
 				F00CFF811BDF182D002C8ECC /* AFSecurityPolicy.m in Sources */,
 				F00CFFC31BDF8A2D002C8ECC /* UIImageView+WebCache.m in Sources */,
 				F00CFFC41BDF8A2D002C8ECC /* UIView+WebCacheOperation.m in Sources */,
+				F0A9F65A1C1140E50091FCA8 /* TYLinkTextStorage.m in Sources */,
 				F00CFF851BDF182D002C8ECC /* AFURLSessionManager.m in Sources */,
 				F0EEA9A01C0477BD006B63D3 /* SNSShareBtn.swift in Sources */,
 				F0A5E13A1BA045FA00BDA6BA /* ForumNewThreadController.swift in Sources */,
+				F0A9F6551C1140E50091FCA8 /* NSMutableAttributedString+TY.m in Sources */,
 				F0D591B11BA185EE00C0346D /* ImageInfoData.swift in Sources */,
 				F00CFFBC1BDF8A2D002C8ECC /* SDWebImageManager.m in Sources */,
 				F0C3C2A01B60EA9C00AB6E35 /* HomeCell.swift in Sources */,
@@ -1077,8 +1140,10 @@
 				F0AB9B121BF5C6FC004424FE /* DSActivityIndicatorView.m in Sources */,
 				F00CFF821BDF182D002C8ECC /* AFURLConnectionOperation.m in Sources */,
 				F035ECE71BB2880800A8D8EC /* ForumFloorLordCell.swift in Sources */,
+				F0A9F6571C1140E50091FCA8 /* TYDrawStorage.m in Sources */,
 				F08749BE1B54E89E006E1FD3 /* ProfileViewController.swift in Sources */,
 				F0D00E7F1B9182570056BE3E /* TabBarView.swift in Sources */,
+				F0A9F65D1C1140E50091FCA8 /* TYTextStorage.m in Sources */,
 				F00CFFB61BDF8A2D002C8ECC /* NSData+ImageContentType.m in Sources */,
 				F00CFFBF1BDF8A2D002C8ECC /* UIImage+GIF.m in Sources */,
 				F0EEA98E1C040405006B63D3 /* GalleryDetailMenuView.swift in Sources */,
@@ -1090,6 +1155,8 @@
 				F0A20AD31B62499E00F1F311 /* CommonUtility.m in Sources */,
 				F00CFF911BDF1FBD002C8ECC /* AFDSClient.swift in Sources */,
 				F00CFF801BDF182D002C8ECC /* AFNetworkReachabilityManager.m in Sources */,
+				F0A9F65C1C1140E50091FCA8 /* TYTextContainer.m in Sources */,
+				F0A9F65B1C1140E50091FCA8 /* TYTextContainer+Extended.m in Sources */,
 				F00CFF831BDF182D002C8ECC /* AFURLRequestSerialization.m in Sources */,
 				F03E68DB1BE71259001D04D1 /* NSString+FontAwesome.m in Sources */,
 				F028C17A1B9C479300B8CECA /* GalleryMenuItem.swift in Sources */,
@@ -1097,6 +1164,7 @@
 				F00CFFBE1BDF8A2D002C8ECC /* UIButton+WebCache.m in Sources */,
 				F035ED001BB3933700A8D8EC /* ForumReplyLordCell.swift in Sources */,
 				F00CFF7E1BDF182D002C8ECC /* AFHTTPRequestOperationManager.m in Sources */,
+				F0A9F65E1C1140E50091FCA8 /* TYViewStorage.m in Sources */,
 				F00CFFB71BDF8A2D002C8ECC /* SDImageCache.m in Sources */,
 				F0A20AD81B62548800F1F311 /* KnowledgeListController.swift in Sources */,
 				F0EEA98C1C031AF7006B63D3 /* GalleryDetailBottomBar.swift in Sources */,
