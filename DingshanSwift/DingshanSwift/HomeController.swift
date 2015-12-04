@@ -11,11 +11,12 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
 {
     var mainTable = UITableView();
     var tableSource:ArrayDataSource?
-    var currentPage:NSInteger = 0
+    var currentPage:Int = 0
     var indicatorTop:UzysRadialProgressActivityIndicator?
     var indicatorBottom:UzysRadialProgressActivityIndicator?
     var configCache:[NSObject:AnyObject]?
     var stageMenu : StageMenuView?
+    var lastTopicId:Int = 0
 
     override func loadView(){
         super.loadView()
@@ -79,11 +80,12 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
             print("A_DONE------- self.frame = (\(self?.indicatorTop?.frame.origin.x), \(self?.indicatorTop?.frame.origin.y), \(self?.indicatorTop?.frame.size.width), \(self?.indicatorTop?.frame.size.height)")
             
             })
-//        mainTable.addPullToLoadMoreActionHandler({ [weak self] () -> Void in
-//            self?.startRequest(self?.configCache)
+        mainTable.addPullToLoadMoreActionHandler({ [weak self] () -> Void in
+            print("B_DONE------- addPullToLoadMoreActionHandler------- begin")
+            self?.startRequest(self?.configCache)
 //            print("B_DONE------- self.frame = (\(self?.indicatorBottom?.frame.origin.x), \(self?.indicatorBottom?.frame.origin.y), \(self?.indicatorBottom?.frame.size.width), \(self?.indicatorBottom?.frame.size.height)")
-//            
-//            })
+            
+            })
         
         mainTable.addTopInsetInPortrait(TopBar_H, topInsetInLandscape: TopBar_H)
         
@@ -95,19 +97,19 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         self.view.bringSubviewToFront(stageMenu!)
     }
 
-    
+    /*
     func refresh(){
 //        self.loadMoreView?.isCanUse = false
 //        self.loadMoreView?.hidden = true
         self.currentPage = 0
         self.startRequest(nil)
-    }
+    }*/
     
     func startRequest(config:[NSObject:AnyObject]?){
-        let parameter = ["pindex" : "0",
-                        "psize" : "50",
+        let parameter = ["pindex" : String(self.currentPage),
+                        "psize" : "10",
                         "sorttype" : "1",
-                        "topicid":"0",
+                        "topicid":String(self.lastTopicId),
                         "json" : "1"]
         
         let url = ServerApi.forum_get_topic_list(parameter)
@@ -120,6 +122,8 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
                 if (self.currentPage == 0 && self.tableSource?.items.count > 0){
                     self.tableSource?.removeAllItems()
                 }
+                
+                self.currentPage++;
                 // 如果请求数据有效
                 if let dic = JSON as? [NSObject:AnyObject]{
                     self.processRequestResult(dic)
@@ -143,16 +147,25 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
                         if let item = arr[i] as? [NSObject:AnyObject] {
                             let data = ForumTopicData(dic: item)
                             self.tableSource?.items.addObject(data)
+                            
+                            if(i == arr.count-1){
+                                self.lastTopicId = data.topicId
+                            }
                         }
                     }
-                    self.mainTable.reloadData()
-//                    if (arr.count < Default_Request_Count) {
-//                        self.loadMoreView?.isCanUse = false
-//                        self.loadMoreView?.hidden = true
-//                    }else{
-//                        self.loadMoreView?.isCanUse = true
-//                        self.loadMoreView?.hidden = false
-//                    }
+                    // 正常流程
+                    let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(load_delay * Double(NSEC_PER_SEC)))
+                    dispatch_after(popTime, dispatch_get_main_queue(), {() -> Void in
+                        self.mainTable.reloadData()// 失败时候清空数据后也要重新加载
+                        // 控件复位
+                        self.mainTable.stopRefreshAnimation()
+                        self.mainTable.stopLoadMoreAnimation()
+                    })
+                }else{// 最后一页没有更多数据了
+                    let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(load_delay * Double(NSEC_PER_SEC)))
+                    dispatch_after(popTime, dispatch_get_main_queue(), {() -> Void in
+                        self.mainTable.showLoadMoreEnd(true)
+                    })
                 }
             }
         }else{

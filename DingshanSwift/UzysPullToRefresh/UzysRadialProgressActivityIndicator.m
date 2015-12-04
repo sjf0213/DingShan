@@ -332,16 +332,16 @@
     if (self.posType == indicator_top){
         self.progress = ((yOffset + self.originalTopInset + StartPosition)/-self.progressThreshold);
         self.center = CGPointMake(self.center.x, (contentOffset.y + self.originalTopInset)/2);
-        NSLog(@"A- - - - yOffset = %.1f,  _state = %zd, self.progress = %.2f, prevProgressTop = %.2f", yOffset, self.state, self.progress, prevProgressTop);
-        NSLog(@"A-------yOffset = %.1f, self.frame = (%.1f, %.1f)(%.1f, %.1f),",yOffset, self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+//        NSLog(@"A- - - - yOffset = %.1f,  _state = %zd, self.progress = %.2f, prevProgressTop = %.2f", yOffset, self.state, self.progress, prevProgressTop);
+//        NSLog(@"A-------yOffset = %.1f, self.frame = (%.1f, %.1f)(%.1f, %.1f),",yOffset, self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
         
     }else if (self.posType == indicator_bottom){
 //        self.progress = (MAX((yOffset  - ll - self.originalBottomInset),  StartPosition) / self.progressThreshold);
         CGFloat s =  ll + self.originalBottomInset;
         self.progress = (yOffset) / s;
-        NSLog(@"B-------state = %zd, s = %f, yOffset = %.1f, self.originalBottomInset = %f, self.progress  = %f", self.state, s, yOffset, self.originalBottomInset, self.progress);
+//        NSLog(@"B-------state = %zd, s = %f, yOffset = %.1f, self.originalBottomInset = %f, self.progress  = %f", self.state, s, yOffset, self.originalBottomInset, self.progress);
         self.center = CGPointMake(self.center.x,  self.scrollView.contentSize.height + 10 + self.bounds.size.height*0.5);
-//        NSLog(@"B- - - - yOffset = %.1f, ll = %.1f,  _state = %zd, self.progress = %.2f", yOffset, ll, self.state, self.progress);
+        NSLog(@"B- - - - yOffset = %.1f, ll = %.1f,  _state = %zd, self.progress = %.2f", yOffset, ll, self.state, self.progress);
 //        NSLog(@"B-------yOffset = %.1f, self.frame = (%.1f, %.1f)(%.1f, %.1f),",yOffset, self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
         
     }
