@@ -747,10 +747,10 @@
 		F0AB96721BA834F600C72260 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				F0A9F6401C1140E50091FCA8 /* TYAttributedLabel */,
 				F0AB96731BA8352200C72260 /* libz.dylib */,
 				F0AB967B1BA8362800C72260 /* libc++.dylib */,
 				F0AB96701BA834EE00C72260 /* libsqlite3.0.dylib */,
+				F0A9F6401C1140E50091FCA8 /* TYAttributedLabel */,
 				F0AB9B0B1BF5C6FC004424FE /* UzysPullToRefresh */,
 				F03E68D11BE71259001D04D1 /* FontAwesome */,
 				F0AB96691BA82DF000C72260 /* WeixinSDK */,

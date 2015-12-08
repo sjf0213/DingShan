@@ -29,4 +29,6 @@
 #import "../FontAwesome/UIImage+FontAwesome.h"
 #import "../Commonfiles/PhotoBrowse/ScrollContainerDelegate.h"
 #import "../Commonfiles/PhotoBrowse/ScrollContainerView.h"
+
+#import "../TYAttributedLabel/TYAttributedLabel.h"
 #endif
