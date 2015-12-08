@@ -11,7 +11,8 @@ import Foundation
 class HomeCell:UITableViewCell
 {
     var icon = UIImageView()
-    var title = UILabel()
+//    var title = UILabel()
+    var title : TTTAttributedLabel?
     override init(style astyle:UITableViewCellStyle, reuseIdentifier str:String?) {
         super.init(style:astyle, reuseIdentifier:str)
         self.backgroundColor = UIColor.whiteColor()
@@ -21,11 +22,11 @@ class HomeCell:UITableViewCell
         icon.clipsToBounds = true;
         self.contentView.addSubview(icon)
         
-        title = UILabel(frame: CGRect(x: 89.0, y: 12, width: self.bounds.size.width - 89 - 15, height: 38))
-        title.font = UIFont.systemFontOfSize(15.0)
-        title.numberOfLines = 2;
-        title.text = "..."
-        self.contentView.addSubview(title)
+        title = TTTAttributedLabel(frame: CGRect(x: 89.0, y: 12, width: self.bounds.size.width - 89 - 15, height: 38))
+        title?.font = UIFont.systemFontOfSize(15.0)
+        title?.numberOfLines = 2;
+        title?.text = "..."
+        self.contentView.addSubview(title!)
         
         let topline = UIView(frame: CGRect(x: 15.0, y: HomeRow_H-0.5, width: self.bounds.width - 30.0, height: 0.5))
         topline.backgroundColor = UIColor(white: 216/255.0, alpha: 1.0)
@@ -37,10 +38,10 @@ class HomeCell:UITableViewCell
     }
     func clearData()
     {
-        title.text = ""
+        title?.text = ""
     }
     func loadCellData(data:ForumTopicData)
     {
-        title.text = data.title
+        title?.text = data.title
     }
 }

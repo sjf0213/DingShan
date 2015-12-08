@@ -139,6 +139,7 @@
 		F0D00E751B917AAB0056BE3E /* TabBarToggleBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D00E741B917AAB0056BE3E /* TabBarToggleBtn.swift */; };
 		F0D00E7F1B9182570056BE3E /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D00E7E1B9182570056BE3E /* TabBarView.swift */; };
 		F0D00EA51B91AF160056BE3E /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D00EA41B91AF160056BE3E /* TopBarView.swift */; };
+		F0D04E771C16DBA600B4A82A /* libTTTAttributedLabel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D04E761C16DBA600B4A82A /* libTTTAttributedLabel.a */; };
 		F0D591B11BA185EE00C0346D /* ImageInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D591B01BA185EE00C0346D /* ImageInfoData.swift */; };
 		F0DEE21F1C0BF16800C956A7 /* SearchStartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DEE21E1C0BF16800C956A7 /* SearchStartController.swift */; };
 		F0DEE2221C0BF30200C956A7 /* search_btn@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0DEE2201C0BF30200C956A7 /* search_btn@2x~iphone.png */; };
@@ -387,6 +388,7 @@
 		F0D00E741B917AAB0056BE3E /* TabBarToggleBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarToggleBtn.swift; sourceTree = "<group>"; };
 		F0D00E7E1B9182570056BE3E /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F0D00EA41B91AF160056BE3E /* TopBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
+		F0D04E761C16DBA600B4A82A /* libTTTAttributedLabel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTTTAttributedLabel.a; path = "Pods/../build/Debug-iphoneos/libTTTAttributedLabel.a"; sourceTree = "<group>"; };
 		F0D591B01BA185EE00C0346D /* ImageInfoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfoData.swift; sourceTree = "<group>"; };
 		F0DEE21E1C0BF16800C956A7 /* SearchStartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStartController.swift; sourceTree = "<group>"; };
 		F0DEE2201C0BF30200C956A7 /* search_btn@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search_btn@2x~iphone.png"; path = "common/search_btn@2x~iphone.png"; sourceTree = "<group>"; };
@@ -435,6 +437,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0D04E771C16DBA600B4A82A /* libTTTAttributedLabel.a in Frameworks */,
 				F0AB966E1BA82E0800C72260 /* libWeChatSDK.a in Frameworks */,
 				F0C691121BB8E38D00B61494 /* AliyunOSSiOS.framework in Frameworks */,
 				F0C691141BB8EEF900B61494 /* Bolts.framework in Frameworks */,
@@ -464,6 +467,7 @@
 		D4062BCD2B460FF2F766C0B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F0D04E761C16DBA600B4A82A /* libTTTAttributedLabel.a */,
 				B1C3AE27595DF18109312340 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -1381,6 +1385,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeixinSDK",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.songjufeng.$(PRODUCT_NAME:rfc1034identifier)";
@@ -1409,6 +1414,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeixinSDK",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.songjufeng.$(PRODUCT_NAME:rfc1034identifier)";

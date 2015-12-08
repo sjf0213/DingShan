@@ -195,7 +195,7 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)", terminator: "")
         if let  cell = tableView.cellForRowAtIndexPath(indexPath) as? HomeCell{
             let detail = ForumFloorListController()
-            detail.navigationItem.title = cell.title.text
+            detail.navigationItem.title = cell.title?.text
             self.navigationController?.pushViewController(detail, animated: true)
             if let data = self.tableSource?.items[indexPath.row] as? ForumTopicData{
                 detail.loadFloorListByTopicData(data)

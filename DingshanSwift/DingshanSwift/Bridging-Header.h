@@ -31,4 +31,5 @@
 #import "../Commonfiles/PhotoBrowse/ScrollContainerView.h"
 
 #import "../TYAttributedLabel/TYAttributedLabel.h"
+#import "TTTAttributedLabel.h"
 #endif
