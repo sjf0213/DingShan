@@ -467,8 +467,23 @@
 		D4062BCD2B460FF2F766C0B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F0D04E761C16DBA600B4A82A /* libTTTAttributedLabel.a */,
 				B1C3AE27595DF18109312340 /* libPods.a */,
+				F0D04E761C16DBA600B4A82A /* libTTTAttributedLabel.a */,
+				F0AB96731BA8352200C72260 /* libz.dylib */,
+				F0AB967B1BA8362800C72260 /* libc++.dylib */,
+				F0AB96701BA834EE00C72260 /* libsqlite3.0.dylib */,
+				F0A9F6401C1140E50091FCA8 /* TYAttributedLabel */,
+				F0AB9B0B1BF5C6FC004424FE /* UzysPullToRefresh */,
+				F03E68D11BE71259001D04D1 /* FontAwesome */,
+				F0AB96691BA82DF000C72260 /* WeixinSDK */,
+				F00CFF921BDF8A2D002C8ECC /* SDWebImage */,
+				F00CFF691BDF182D002C8ECC /* AFNetworking */,
+				F0C691131BB8EEF900B61494 /* Bolts.framework */,
+				F0C691111BB8E38D00B61494 /* AliyunOSSiOS.framework */,
+				F0AB96771BA835C200C72260 /* UIKit.framework */,
+				F0AB96791BA835D900C72260 /* Foundation.framework */,
+				F04014D81BC67210009D5783 /* CoreTelephony.framework */,
+				F0AB96751BA8352A00C72260 /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -770,28 +785,6 @@
 			name = WeixinSDK;
 			sourceTree = "<group>";
 		};
-		F0AB96721BA834F600C72260 /* Framework */ = {
-			isa = PBXGroup;
-			children = (
-				F0AB96731BA8352200C72260 /* libz.dylib */,
-				F0AB967B1BA8362800C72260 /* libc++.dylib */,
-				F0AB96701BA834EE00C72260 /* libsqlite3.0.dylib */,
-				F0A9F6401C1140E50091FCA8 /* TYAttributedLabel */,
-				F0AB9B0B1BF5C6FC004424FE /* UzysPullToRefresh */,
-				F03E68D11BE71259001D04D1 /* FontAwesome */,
-				F0AB96691BA82DF000C72260 /* WeixinSDK */,
-				F00CFF921BDF8A2D002C8ECC /* SDWebImage */,
-				F00CFF691BDF182D002C8ECC /* AFNetworking */,
-				F0C691131BB8EEF900B61494 /* Bolts.framework */,
-				F0C691111BB8E38D00B61494 /* AliyunOSSiOS.framework */,
-				F0AB96771BA835C200C72260 /* UIKit.framework */,
-				F0AB96791BA835D900C72260 /* Foundation.framework */,
-				F04014D81BC67210009D5783 /* CoreTelephony.framework */,
-				F0AB96751BA8352A00C72260 /* SystemConfiguration.framework */,
-			);
-			name = Framework;
-			sourceTree = "<group>";
-		};
 		F0AB9B0B1BF5C6FC004424FE /* UzysPullToRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -824,7 +817,6 @@
 			children = (
 				F0C5F6B31B53D1E000B2C20D /* DingshanSwift */,
 				F09ADD761B563452009B3A6D /* CommonFiles */,
-				F0AB96721BA834F600C72260 /* Framework */,
 				F09ADD7B1B563974009B3A6D /* Resources */,
 				F0C5F6B21B53D1E000B2C20D /* Products */,
 				1E21C43912FA952BB3D9945A /* Pods */,
