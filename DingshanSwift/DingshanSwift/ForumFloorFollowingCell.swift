@@ -20,8 +20,6 @@ class ForumFloorFollowingCell : ForumFloorCell{
     
     override func loadCellData(data:AnyObject)
     {
-        if let d = data as? ForumFloorData{
-            self.content.text = d.contentText
-        }
+        
     }
 }

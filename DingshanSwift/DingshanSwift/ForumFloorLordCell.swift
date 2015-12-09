@@ -12,16 +12,27 @@ class ForumFloorLordCell : ForumFloorCell{
     override init(style astyle:UITableViewCellStyle, reuseIdentifier str:String?) {
         super.init(style:astyle, reuseIdentifier:str)
         self.backgroundColor = UIColor.orangeColor().colorWithAlphaComponent(0.2)
+        
+        attrStrLabel = TTTAttributedLabel(frame: CGRect(x: kForumFloorEdgeWidth, y: 12, width: kForumLordFloorContentWidth, height: 38))
+        attrStrLabel?.font = kForumFloorCellContentFont
+        attrStrLabel?.text = "..."
+        self.contentView.addSubview(attrStrLabel!)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func clearData()
+    {
+        print("\(self).clearData")
+        attrStrLabel?.setText("")
+    }
+    
     override func loadCellData(data:AnyObject)
     {
         if let d = data as? ForumTopicData{
-            self.content.text = d.contentText
+            attrStrLabel?.text = d.contentText
         }
     }
 }
