@@ -13,9 +13,11 @@ class ForumFloorLordCell : ForumFloorCell{
         super.init(style:astyle, reuseIdentifier:str)
         self.backgroundColor = UIColor.orangeColor().colorWithAlphaComponent(0.2)
         
-        attrStrLabel = TTTAttributedLabel(frame: CGRect(x: kForumFloorEdgeWidth, y: 12, width: kForumLordFloorContentWidth, height: 38))
+        attrStrLabel = TTTAttributedLabel(frame: CGRectZero)
+        attrStrLabel?.backgroundColor = UIColor.cyanColor().colorWithAlphaComponent(0.2)
         attrStrLabel?.font = kForumFloorCellContentFont
         attrStrLabel?.text = "..."
+        attrStrLabel?.numberOfLines = 0;
         self.contentView.addSubview(attrStrLabel!)
     }
     
@@ -34,5 +36,13 @@ class ForumFloorLordCell : ForumFloorCell{
         if let d = data as? ForumTopicData{
             attrStrLabel?.text = d.contentText
         }
+    }
+    
+    override func layoutSubviews() {
+    super.layoutSubviews()
+    
+//    self.attrStrLabel.frame = CGRectOffset(CGRectInset(self.bounds, kForumFloorEdgeWidth, kForumFloorEdgeWidth), kForumFloorEdgeWidth, kForumFloorEdgeWidth);
+        attrStrLabel?.frame = CGRect(x: kForumFloorEdgeWidth, y: 12, width: kForumLordFloorContentWidth, height: self.frame.size.height);
+        self.setNeedsDisplay()
     }
 }
