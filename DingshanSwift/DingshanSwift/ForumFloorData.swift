@@ -7,11 +7,6 @@
 //
 
 import Foundation
-let kForumFloorEdgeWidth:CGFloat = 15.0
-let kMinForumLordFloorContentHieght:CGFloat = 60.0
-let kForumLordFloorContentWidth = UIScreen.mainScreen().bounds.width - 2.0*kForumFloorEdgeWidth
-let kForumFollowingFloorContentWidth = UIScreen.mainScreen().bounds.width - 2.0*kForumFloorEdgeWidth - 50
-let kForumFloorCellContentFont = UIFont.systemFontOfSize(16.0)
 class ForumFloorData : NSObject {
     var floorId:Int = 0
     var contentText:String = ""

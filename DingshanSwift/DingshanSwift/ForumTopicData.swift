@@ -11,6 +11,10 @@ class ForumTopicData : NSObject {
     var topicId:Int = 0
     var title:String = ""
     var contentText:String = ""
+    
+    var rowHeight:CGFloat = 0.0
+    var contentAttrString:NSAttributedString?
+    
     override var description : String {
         
         var str = "--------------------------"
@@ -40,6 +44,27 @@ class ForumTopicData : NSObject {
         }
         if let tmp = dic["topic_content"] as? String{
             contentText = tmp
+            if(nil == contentAttrString){
+                contentAttrString = NSAttributedString(string: tmp)
+            }
         }
+    }
+    
+    func getCalculatedRowHeight() -> CGFloat
+    {
+        if (rowHeight > 0){
+            return rowHeight
+        }else {
+            return self.calculateRowHeight()
+        }
+    }
+    
+    func calculateRowHeight() -> CGFloat
+    {
+        // 正文与图片
+        let widthLimit = kForumLordFloorContentWidth
+        let sz:CGSize = TTTAttributedLabel.sizeThatFitsAttributedString(contentAttrString, withConstraints: CGSizeMake(widthLimit, CGFloat.max), limitedToNumberOfLines: UInt.max)
+        rowHeight = sz.height
+        return max(rowHeight, kMinForumLordFloorContentHieght)
     }
 }

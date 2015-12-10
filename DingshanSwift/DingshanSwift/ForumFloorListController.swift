@@ -49,7 +49,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         mainTable.separatorStyle = UITableViewCellSeparatorStyle.None
         mainTable.delegate = self
         mainTable.dataSource = self.tableSource
-        mainTable.rowHeight = HomeRow_H
+//        mainTable.rowHeight = HomeRow_H
         mainTable.registerClass(ForumFloorLordCell.classForCoder(), forCellReuseIdentifier: FloorLordCellIdentifier)
         mainTable.registerClass(ForumFloorFollowingCell.classForCoder(), forCellReuseIdentifier: FloorFollowingCellIdentifier)
         self.view.addSubview(mainTable)
@@ -150,8 +150,18 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
     }
     
 // MARK: - UITableViewDelegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-    {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
+        var h : CGFloat = kMinForumLordFloorContentHieght
+        if let data = self.tableSource?.items[indexPath.row] as? ForumTopicData{
+            h = data.getCalculatedRowHeight()
+        }
+        if let data = self.tableSource?.items[indexPath.row] as? ForumFloorData{
+            h = data.getCalculatedRowHeight()
+        }
+        return h;
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)", terminator: "")
         if let _ = tableView.cellForRowAtIndexPath(indexPath) as? ForumFloorCell{
             let detail = ForumReplyListController()
