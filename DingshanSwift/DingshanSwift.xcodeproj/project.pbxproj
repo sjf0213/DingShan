@@ -17,6 +17,7 @@
 		EAE52F641C1A775500D1BDBC /* UserTopicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE52F631C1A775500D1BDBC /* UserTopicListViewController.swift */; };
 		EAE52F661C1A777900D1BDBC /* UserFloorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE52F651C1A777900D1BDBC /* UserFloorListViewController.swift */; };
 		EAE52F681C1A77A300D1BDBC /* UserCollectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE52F671C1A77A300D1BDBC /* UserCollectionListViewController.swift */; };
+		EAE52F6C1C1A81AF00D1BDBC /* SettingView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE52F6B1C1A81AF00D1BDBC /* SettingView.storyboard */; };
 		F00530161BFB26090059E7CE /* DSLoadMoreEndTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = F00530151BFB26090059E7CE /* DSLoadMoreEndTipView.m */; };
 		F00530221BFB2E210059E7CE /* ScrollContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F005301F1BFB2E210059E7CE /* ScrollContainerView.m */; };
 		F00530231BFB2E210059E7CE /* ScrollShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F00530211BFB2E210059E7CE /* ScrollShowView.m */; };
@@ -210,6 +211,7 @@
 		EAE52F631C1A775500D1BDBC /* UserTopicListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTopicListViewController.swift; sourceTree = "<group>"; };
 		EAE52F651C1A777900D1BDBC /* UserFloorListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFloorListViewController.swift; sourceTree = "<group>"; };
 		EAE52F671C1A77A300D1BDBC /* UserCollectionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionListViewController.swift; sourceTree = "<group>"; };
+		EAE52F6B1C1A81AF00D1BDBC /* SettingView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingView.storyboard; sourceTree = "<group>"; };
 		F00530141BFB26090059E7CE /* DSLoadMoreEndTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLoadMoreEndTipView.h; sourceTree = "<group>"; };
 		F00530151BFB26090059E7CE /* DSLoadMoreEndTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLoadMoreEndTipView.m; sourceTree = "<group>"; };
 		F005301D1BFB2E210059E7CE /* ScrollContainerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollContainerDelegate.h; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 				EAE52F631C1A775500D1BDBC /* UserTopicListViewController.swift */,
 				EAE52F651C1A777900D1BDBC /* UserFloorListViewController.swift */,
 				EAE52F671C1A77A300D1BDBC /* UserCollectionListViewController.swift */,
+				EAE52F6B1C1A81AF00D1BDBC /* SettingView.storyboard */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -1093,6 +1096,7 @@
 				F0AA4F9D1B93ECE7007EDEA9 /* tabbar_profile0@2x~iphone.png in Resources */,
 				F0EEA9881C031767006B63D3 /* share_btn@3x~iphone.png in Resources */,
 				F0AA4FA01B93ECE7007EDEA9 /* tabbar_profile1@3x~iphone.png in Resources */,
+				EAE52F6C1C1A81AF00D1BDBC /* SettingView.storyboard in Resources */,
 				F0EEA99C1C045822006B63D3 /* gallery_more_pop@3x~iphone.png in Resources */,
 				F0EEA99B1C045822006B63D3 /* gallery_more_pop@2x~iphone.png in Resources */,
 				F0C5F6BE1B53D1E000B2C20D /* Images.xcassets in Resources */,

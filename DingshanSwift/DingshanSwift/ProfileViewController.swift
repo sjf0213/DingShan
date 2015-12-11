@@ -56,7 +56,8 @@ class ProfileViewController:DSViewController,UITableViewDelegate
         datasource.append(["image":"","title":"用户"]);
         datasource.append(["image":"","title":"发布的话题"]);
         datasource.append(["image":"","title":"回复的话题"]);
-        datasource.append(["image":"","title":"我的收藏"]);
+        //收藏先不做
+//        datasource.append(["image":"","title":"我的收藏"]);
         datasource.append(["image":"","title":"设置"]);
         
         self.tableSource?.appendWithItems(datasource)
@@ -111,15 +112,16 @@ class ProfileViewController:DSViewController,UITableViewDelegate
                     detail = UserTopicListViewController()
                 case 2:
                     detail = UserFloorListViewController()
+//                case 3:
+//                    detail = UserCollectionListViewController()
                 case 3:
-                    detail = UserCollectionListViewController()
-                case 4:
-                    detail = SettingViewController()
+                    
+                    detail = UIStoryboard(name: "SettingView", bundle: nil).instantiateInitialViewController()!
                 default:
                     detail = SettingViewController()
             }
             
-            detail.navigationItem.title = cell.title.text
+//            detail.topTitle = cell.title.text!
             self.navigationController?.pushViewController(detail, animated: true)
         }
     }

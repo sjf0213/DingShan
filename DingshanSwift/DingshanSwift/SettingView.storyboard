@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XA6-rm-IDe">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <scenes>
+        <!--Setting View Controller-->
+        <scene sceneID="t4p-Y5-LUd">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="XA6-rm-IDe" customClass="SettingViewController" customModule="DingshanSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3jr-IS-ZLQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="ctq-nx-ueO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Fj-lg-fVh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" alwaysBounceVertical="YES" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lX2-bf-ti4">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jza-wr-0na" userLabel="View1">
+                                        <rect key="frame" x="0.0" y="10" width="600" height="90"/>
+                                        <color key="backgroundColor" red="1" green="0.63758902610000001" blue="0.58256833539999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="xnh-BR-Phc"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhW-Tn-I2G" userLabel="View2">
+                                        <rect key="frame" x="0.0" y="110" width="600" height="135"/>
+                                        <color key="backgroundColor" red="0.38823529410000002" green="0.73333333329999995" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="135" id="QA1-jl-yhL"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgQ-bc-tBH" userLabel="View3">
+                                        <rect key="frame" x="0.0" y="255" width="600" height="90"/>
+                                        <color key="backgroundColor" red="1" green="0.16426953459999999" blue="0.2023647717" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="tnR-mb-gcX"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="re2-Ax-3Dh" userLabel="View4">
+                                        <rect key="frame" x="0.0" y="355" width="600" height="45"/>
+                                        <color key="backgroundColor" red="0.94509803920000002" green="0.68235294120000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="hZP-Bs-57U"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.92563486930000005" blue="0.55511022249999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="dgQ-bc-tBH" firstAttribute="width" secondItem="lX2-bf-ti4" secondAttribute="width" id="0jh-PA-D80"/>
+                                    <constraint firstItem="re2-Ax-3Dh" firstAttribute="top" secondItem="dgQ-bc-tBH" secondAttribute="bottom" constant="10" id="3XX-Md-le1"/>
+                                    <constraint firstItem="re2-Ax-3Dh" firstAttribute="leading" secondItem="lX2-bf-ti4" secondAttribute="leading" id="5Ya-ah-skY"/>
+                                    <constraint firstItem="hhW-Tn-I2G" firstAttribute="leading" secondItem="lX2-bf-ti4" secondAttribute="leading" id="8Nb-u3-wx6"/>
+                                    <constraint firstItem="jza-wr-0na" firstAttribute="leading" secondItem="lX2-bf-ti4" secondAttribute="leading" id="8fu-c2-cOV"/>
+                                    <constraint firstItem="jza-wr-0na" firstAttribute="top" secondItem="lX2-bf-ti4" secondAttribute="top" constant="10" id="TLa-jt-X0L"/>
+                                    <constraint firstItem="dgQ-bc-tBH" firstAttribute="leading" secondItem="lX2-bf-ti4" secondAttribute="leading" id="V03-8B-f9P"/>
+                                    <constraint firstItem="hhW-Tn-I2G" firstAttribute="top" secondItem="jza-wr-0na" secondAttribute="bottom" constant="10" id="aOl-d8-XaR"/>
+                                    <constraint firstItem="hhW-Tn-I2G" firstAttribute="width" secondItem="lX2-bf-ti4" secondAttribute="width" id="eed-gz-YAt"/>
+                                    <constraint firstItem="jza-wr-0na" firstAttribute="width" secondItem="lX2-bf-ti4" secondAttribute="width" id="hEE-ah-Jpn"/>
+                                    <constraint firstItem="re2-Ax-3Dh" firstAttribute="width" secondItem="lX2-bf-ti4" secondAttribute="width" id="rwv-zu-mD5"/>
+                                    <constraint firstItem="dgQ-bc-tBH" firstAttribute="top" secondItem="hhW-Tn-I2G" secondAttribute="bottom" constant="10" id="xzY-K5-l6c"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lX2-bf-ti4" firstAttribute="height" secondItem="1Fj-lg-fVh" secondAttribute="height" constant="-64" id="XgP-NG-4j6"/>
+                            <constraint firstItem="lX2-bf-ti4" firstAttribute="width" secondItem="1Fj-lg-fVh" secondAttribute="width" id="ZfA-sU-6Dh"/>
+                            <constraint firstItem="lX2-bf-ti4" firstAttribute="top" secondItem="3jr-IS-ZLQ" secondAttribute="bottom" constant="44" id="bnf-dA-4bw"/>
+                            <constraint firstItem="lX2-bf-ti4" firstAttribute="leading" secondItem="1Fj-lg-fVh" secondAttribute="leading" id="iHq-uH-M8X"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jeo-1T-WiY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="436" y="236"/>
+        </scene>
+    </scenes>
+</document>
