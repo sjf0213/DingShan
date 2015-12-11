@@ -7,7 +7,7 @@
 //
 
 import UIKit
-let myTopInset:CGFloat = 295
+let myTopInset:CGFloat = 198
 class ProfileViewController:DSViewController,UITableViewDelegate
 {
     var delegate:AnyObject?
@@ -20,7 +20,7 @@ class ProfileViewController:DSViewController,UITableViewDelegate
         super.loadView()
         self.topView.hidden = true
         self.view.backgroundColor = UIColor.whiteColor()
-        
+        self.edgesForExtendedLayout = UIRectEdge.None
         
 //        let topMenuView = UIView(frame: CGRect(x: 0, y: infoView.frame.size.height - 49, width: infoView.frame.size.width, height: 49))
 //        topMenuView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
@@ -51,7 +51,13 @@ class ProfileViewController:DSViewController,UITableViewDelegate
             }
         })
         
-        let datasource:Array = ["1","2","3"];
+        var datasource:Array<Dictionary<String,String>> = Array<Dictionary<String,String>>();
+        
+        datasource.append(["image":"","title":"用户"]);
+        datasource.append(["image":"","title":"发布的话题"]);
+        datasource.append(["image":"","title":"回复的话题"]);
+        datasource.append(["image":"","title":"我的收藏"]);
+        datasource.append(["image":"","title":"设置"]);
         
         self.tableSource?.appendWithItems(datasource)
         
@@ -86,15 +92,36 @@ class ProfileViewController:DSViewController,UITableViewDelegate
     // MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-//        print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)", terminator: "")
-//        if let  cell = tableView.cellForRowAtIndexPath(indexPath) as? HomeCell{
+        print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)", terminator: "")
+        if (indexPath.row == 0)
+        {
+            return
+        }
+        
+        if let  cell = tableView.cellForRowAtIndexPath(indexPath) as? ProfileViewCell{
 //            let detail = ForumFloorListController()
 //            detail.navigationItem.title = cell.title.text
 //            self.navigationController?.pushViewController(detail, animated: true)
 //            if let data = self.tableSource?.items[indexPath.row] as? ForumTopicData{
 //                detail.loadFloorListByTopicData(data)
 //            }
-//        }
+            var detail:UIViewController
+            switch indexPath.row{
+                case 1:
+                    detail = UserTopicListViewController()
+                case 2:
+                    detail = UserFloorListViewController()
+                case 3:
+                    detail = UserCollectionListViewController()
+                case 4:
+                    detail = SettingViewController()
+                default:
+                    detail = SettingViewController()
+            }
+            
+            detail.navigationItem.title = cell.title.text
+            self.navigationController?.pushViewController(detail, animated: true)
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
@@ -105,7 +132,7 @@ class ProfileViewController:DSViewController,UITableViewDelegate
         }
         else
         {
-            return 50
+            return 44
         }
     }
 
