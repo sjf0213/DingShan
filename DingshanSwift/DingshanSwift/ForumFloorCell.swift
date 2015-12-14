@@ -9,7 +9,7 @@
 import Foundation
 class ForumFloorCell : UITableViewCell{
     
-    var attrStrLabel:TTTAttributedLabel?
+    
     override init(style astyle:UITableViewCellStyle, reuseIdentifier str:String?) {
         super.init(style:astyle, reuseIdentifier:str)
         self.backgroundColor = UIColor.whiteColor()

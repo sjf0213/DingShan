@@ -7,10 +7,14 @@
 //
 
 import Foundation
-class ForumFloorLordCell : ForumFloorCell{
+class ForumFloorLordCell : UICollectionReusableView{
     
-    override init(style astyle:UITableViewCellStyle, reuseIdentifier str:String?) {
-        super.init(style:astyle, reuseIdentifier:str)
+    var attrStrLabel:TTTAttributedLabel?
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    override init(frame aRect: CGRect) {
+        super.init(frame: aRect);
         self.backgroundColor = UIColor.orangeColor().colorWithAlphaComponent(0.2)
         
         attrStrLabel = TTTAttributedLabel(frame: CGRectZero)
@@ -18,20 +22,16 @@ class ForumFloorLordCell : ForumFloorCell{
         attrStrLabel?.font = kForumFloorCellContentFont
         attrStrLabel?.text = "..."
         attrStrLabel?.numberOfLines = 0;
-        self.contentView.addSubview(attrStrLabel!)
+        self.addSubview(attrStrLabel!)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func clearData()
+    func clearData()
     {
         print("\(self).clearData")
         attrStrLabel?.setText("")
     }
     
-    override func loadCellData(data:AnyObject)
+    func loadCellData(data:AnyObject)
     {
         if let d = data as? ForumTopicData{
             attrStrLabel?.text = d.contentText

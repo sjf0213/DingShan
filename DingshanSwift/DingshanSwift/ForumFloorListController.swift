@@ -7,11 +7,12 @@
 //
 
 import Foundation
-class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScrollViewDelegate
+class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICollectionViewDelegate,LoadViewProtocol,UIScrollViewDelegate
 {
-    var mainTable = UITableView();
+    var mainTable = UICollectionView()
     var topicData = ForumTopicData()
-    var tableSource:ArrayDataSource?
+//    var tableSource:ArrayDataSource?
+    var dataList =  NSMutableArray()
     var refreshView:RefreshView?
     var loadMoreView:LoadView?
     var currentPage:NSInteger = 0
@@ -21,6 +22,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         super.loadView()
         self.view.backgroundColor = UIColor.lightGrayColor()
         self.topTitle = "楼层列表"
+        /*
         self.tableSource = ArrayDataSource(withcellIdentifier: FloorFollowingCellIdentifier, withFirstRowIdentifier:FloorLordCellIdentifier, configureCellBlock:{(cell, data) in
             if let d = data as? ForumTopicData{
                 if let itemCell = cell as? ForumFloorLordCell{
@@ -35,6 +37,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
                 }
             }
         })
+*/
         
         refreshView = RefreshView(frame:CGRect(x:0,
             y:TopBar_H,
@@ -43,15 +46,19 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         refreshView?.delegate = self
         self.view.addSubview(self.refreshView!)
         
-        mainTable.frame = CGRect(x: 0, y: TopBar_H, width: self.view.bounds.size.width, height: self.view.bounds.size.height);
+        let layout = UICollectionViewFlowLayout()
+        layout.headerReferenceSize = CGSize.zero
+        layout.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame), 100);
+        layout.minimumLineSpacing = 0.0
+        layout.minimumInteritemSpacing = 0.0
+        
+        mainTable = UICollectionView(frame: CGRect( x: 0, y: TopBar_H, width: self.view.bounds.size.width, height: self.view.bounds.size.height), collectionViewLayout: layout)
         mainTable.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         mainTable.backgroundColor = UIColor.whiteColor()
-        mainTable.separatorStyle = UITableViewCellSeparatorStyle.None
         mainTable.delegate = self
-        mainTable.dataSource = self.tableSource
-//        mainTable.rowHeight = HomeRow_H
-        mainTable.registerClass(ForumFloorLordCell.classForCoder(), forCellReuseIdentifier: FloorLordCellIdentifier)
-        mainTable.registerClass(ForumFloorFollowingCell.classForCoder(), forCellReuseIdentifier: FloorFollowingCellIdentifier)
+        mainTable.dataSource = self
+        mainTable.registerClass(ForumFloorLordCell.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: FloorLordCellIdentifier)
+        mainTable.registerClass(ForumFloorFollowingCell.classForCoder(), forCellWithReuseIdentifier: FloorFollowingCellIdentifier)
         self.view.addSubview(mainTable)
         
         self.refreshView?.loadinsets = self.mainTable.contentInset
@@ -87,8 +94,8 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
             success: {(task, JSON:AnyObject) -> Void in
 //                print("\n responseJSON- - - - -data = \(JSON), \(JSON.dynamicType)", JSON.dynamicType)
                 // 下拉刷新时候清空旧数据（请求失败也清空）
-                if (self.currentPage == 0 && self.tableSource?.items.count > 0){
-                    self.tableSource?.removeAllItems()
+                if (self.currentPage == 0 && self.dataList.count > 0){
+                    self.dataList.removeAllObjects()
                 }
                 // 如果请求数据有效
                 if let dic = JSON as? [NSObject:AnyObject]{
@@ -108,8 +115,8 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
                 var allDataArray = [AnyObject]()
                 print("\n v- - -\(v)")
                 if (self.currentPage == 0){
-                    if(self.tableSource?.items.count > 0){
-                        self.tableSource?.removeAllItems();
+                    if(self.dataList.count > 0){
+                        self.dataList.removeAllObjects()
                     }
                     // 只有分页的第一页有楼主层数据
                     if let topicInfoDic = v["topic_info"] as? [NSObject:AnyObject]{
@@ -137,7 +144,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
                         self.loadMoreView?.hidden = false
                     }
                 }
-                self.tableSource?.items.addObjectsFromArray(allDataArray)
+                self.dataList.addObjectsFromArray(allDataArray)
                 self.mainTable.reloadData()
             }
         }else{
@@ -148,7 +155,40 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
             }
         }
     }
+  // MARK: - UICollectionViewDataSource
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+        return self.dataList.count
+    }
     
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView{
+        if (kind == UICollectionElementKindSectionHeader)
+        {
+            if let header = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: FloorLordCellIdentifier, forIndexPath: indexPath) as? ForumFloorLordCell{
+                header.clearData()
+                if let item = self.dataList.objectAtIndex(0) as? ImageInfoData{
+                    header.loadCellData(item)
+                }
+                return header
+            }
+        }
+        return UICollectionReusableView()
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
+        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(GalleryViewCellIdentifier, forIndexPath: indexPath) as? GalleryViewCell{
+            cell.clearData()
+            if let item = self.dataList.objectAtIndex(indexPath.row) as? ImageInfoData{
+                cell.loadCellData(item)
+            }
+            return cell
+        }else{
+            return UICollectionViewCell()
+        }
+    }
+    // MARK: - UICollectionViewDelegate
+    
+
+    /*
 // MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
         var h : CGFloat = kMinForumLordFloorContentHieght
@@ -172,4 +212,5 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
             }
         }
     }
+*/
 }

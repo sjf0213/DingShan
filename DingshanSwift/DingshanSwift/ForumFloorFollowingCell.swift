@@ -7,10 +7,10 @@
 //
 
 import Foundation
-class ForumFloorFollowingCell : ForumFloorCell{
+class ForumFloorFollowingCell : UICollectionViewCell{
     
-    override init(style astyle:UITableViewCellStyle, reuseIdentifier str:String?) {
-        super.init(style:astyle, reuseIdentifier:str)
+    override init(frame aRect: CGRect) {
+        super.init(frame: aRect);
         self.backgroundColor = UIColor.magentaColor().colorWithAlphaComponent(0.2)
     }
     
@@ -18,7 +18,12 @@ class ForumFloorFollowingCell : ForumFloorCell{
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func loadCellData(data:AnyObject)
+    func clearData()
+    {
+        print("\(self).clearData")
+    }
+    
+    func loadCellData(data:AnyObject)
     {
         
     }
