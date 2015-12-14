@@ -49,6 +49,7 @@ class ForumFloorData : NSObject {
         let widthLimit = isLordFloor ? kForumLordFloorContentWidth : kForumFollowingFloorContentWidth
         let sz:CGSize = TTTAttributedLabel.sizeThatFitsAttributedString(contentAttrString, withConstraints: CGSizeMake(widthLimit, CGFloat.max), limitedToNumberOfLines: UInt.max)
         rowHeight = sz.height
+        print("----------------calculateRowHeight= \(sz)")
         return max(rowHeight, kMinForumLordFloorContentHieght)
     }
     

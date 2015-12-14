@@ -123,7 +123,7 @@ class GalleryDetailController: DSViewController {
          print("\n---$$$---url = \(url)", terminator: "")
         AFDSClient.sharedInstance.GET(url, parameters: nil,
             success: {[weak self](task, JSON) -> Void in
-                print("\n responseJSON- - - - -data = \(JSON)")
+//                print("\n responseJSON- - - - -data = \(JSON)")
                 // 如果请求数据有效
                 if let dic = JSON as? [NSObject:AnyObject]{
                     // print("\n responseJSON- - - - -data:", dic)

@@ -341,7 +341,7 @@
         self.progress = (yOffset) / s;
 //        NSLog(@"B-------state = %zd, s = %f, yOffset = %.1f, self.originalBottomInset = %f, self.progress  = %f", self.state, s, yOffset, self.originalBottomInset, self.progress);
         self.center = CGPointMake(self.center.x,  self.scrollView.contentSize.height + 10 + self.bounds.size.height*0.5);
-        NSLog(@"B- - - - yOffset = %.1f, ll = %.1f,  _state = %zd, self.progress = %.2f", yOffset, ll, self.state, self.progress);
+//        NSLog(@"B- - - - yOffset = %.1f, ll = %.1f,  _state = %zd, self.progress = %.2f", yOffset, ll, self.state, self.progress);
 //        NSLog(@"B-------yOffset = %.1f, self.frame = (%.1f, %.1f)(%.1f, %.1f),",yOffset, self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
         
     }

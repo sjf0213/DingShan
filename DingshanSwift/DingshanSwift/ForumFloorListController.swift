@@ -85,7 +85,7 @@ class ForumFloorListController:DSViewController,UITableViewDelegate,LoadViewProt
         print("startRequest.url = \(url)")
         AFDSClient.sharedInstance.GET(url, parameters: nil,
             success: {(task, JSON:AnyObject) -> Void in
-                print("\n responseJSON- - - - -data = \(JSON), \(JSON.dynamicType)", JSON.dynamicType)
+//                print("\n responseJSON- - - - -data = \(JSON), \(JSON.dynamicType)", JSON.dynamicType)
                 // 下拉刷新时候清空旧数据（请求失败也清空）
                 if (self.currentPage == 0 && self.tableSource?.items.count > 0){
                     self.tableSource?.removeAllItems()

@@ -234,7 +234,7 @@ extension MainViewController : DSLoginDelegate
         print("updateUser.postBody = \(postBody)")
         AFDSClient.sharedInstance.POST(url, parameters: postBody,
             success: {(task, JSON:AnyObject) -> Void in
-                print("\n updateUserInfo.responseJSON- - - - -data = \(JSON)")
+//                print("\n updateUserInfo.responseJSON- - - - -data = \(JSON)")
                 if let v = JSON as? [NSObject:AnyObject]{
                     if let updatedUserInfoDic = v["v"] as? [NSObject:AnyObject]{
                         if (completion != nil){

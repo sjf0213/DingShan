@@ -90,7 +90,7 @@ class ForumReplyListController:DSViewController,UITableViewDelegate,LoadViewProt
         print("url = \(url)", terminator: "")
         AFDSClient.sharedInstance.GET(url, parameters: nil,
             success: {(task, JSON) -> Void in
-            print("\n responseJSON- - - - -data = \(JSON)")
+//            print("\n responseJSON- - - - -data = \(JSON)")
                 // 下拉刷新时候清空旧数据（请求失败也清空）
                 if (self.currentPage == 0 && self.tableSource?.items.count > 0){
                     self.tableSource?.removeAllItems()
