@@ -9,7 +9,7 @@
 import Foundation
 class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICollectionViewDelegate,LoadViewProtocol,UIScrollViewDelegate
 {
-    var mainTable = UICollectionView()
+    var mainTable: UICollectionView?
     var topicData = ForumTopicData()
 //    var tableSource:ArrayDataSource?
     var dataList =  NSMutableArray()
@@ -22,22 +22,6 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
         super.loadView()
         self.view.backgroundColor = UIColor.lightGrayColor()
         self.topTitle = "楼层列表"
-        /*
-        self.tableSource = ArrayDataSource(withcellIdentifier: FloorFollowingCellIdentifier, withFirstRowIdentifier:FloorLordCellIdentifier, configureCellBlock:{(cell, data) in
-            if let d = data as? ForumTopicData{
-                if let itemCell = cell as? ForumFloorLordCell{
-                    itemCell.clearData()
-                    itemCell.loadCellData(d)
-                }
-            }
-            if let d = data as? ForumFloorData{
-                if let itemCell = cell as? ForumFloorFollowingCell{
-                    itemCell.clearData()
-                    itemCell.loadCellData(d)
-                }
-            }
-        })
-*/
         
         refreshView = RefreshView(frame:CGRect(x:0,
             y:TopBar_H,
@@ -53,20 +37,20 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
         layout.minimumInteritemSpacing = 0.0
         
         mainTable = UICollectionView(frame: CGRect( x: 0, y: TopBar_H, width: self.view.bounds.size.width, height: self.view.bounds.size.height), collectionViewLayout: layout)
-        mainTable.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        mainTable.backgroundColor = UIColor.whiteColor()
-        mainTable.delegate = self
-        mainTable.dataSource = self
-        mainTable.registerClass(ForumFloorLordCell.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: FloorLordCellIdentifier)
-        mainTable.registerClass(ForumFloorFollowingCell.classForCoder(), forCellWithReuseIdentifier: FloorFollowingCellIdentifier)
-        self.view.addSubview(mainTable)
+        mainTable?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        mainTable?.backgroundColor = UIColor.whiteColor()
+        mainTable?.delegate = self
+        mainTable?.dataSource = self
+        mainTable?.registerClass(ForumFloorLordCell.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: FloorLordCellIdentifier)
+        mainTable?.registerClass(ForumFloorFollowingCell.classForCoder(), forCellWithReuseIdentifier: FloorFollowingCellIdentifier)
+        self.view.addSubview(mainTable!)
         
-        self.refreshView?.loadinsets = self.mainTable.contentInset
+        self.refreshView?.loadinsets = self.mainTable!.contentInset
         
         loadMoreView = LoadView(frame:CGRect(x:0, y:-1000, width:self.view.bounds.width, height:50))
         loadMoreView?.delegate = self
-        loadMoreView?.loadinsets = self.mainTable.contentInset
-        self.mainTable.addSubview(self.loadMoreView!)
+        loadMoreView?.loadinsets = self.mainTable!.contentInset
+        self.mainTable?.addSubview(self.loadMoreView!)
     }
     
     override func viewDidLoad() {
@@ -145,11 +129,11 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
                     }
                 }
                 self.dataList.addObjectsFromArray(allDataArray)
-                self.mainTable.reloadData()
+                self.mainTable?.reloadData()
             }
         }else{
             // 失败时候清空数据后也要重新加载
-            self.mainTable.reloadData()
+            self.mainTable?.reloadData()
             if let c = result["c"], let v = result["v"]{
                 print("\n TIP --- c:\(c), v:\(v)")
             }
@@ -165,7 +149,7 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
         {
             if let header = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: FloorLordCellIdentifier, forIndexPath: indexPath) as? ForumFloorLordCell{
                 header.clearData()
-                if let item = self.dataList.objectAtIndex(0) as? ImageInfoData{
+                if let item = self.dataList.objectAtIndex(0) as? ForumTopicData{
                     header.loadCellData(item)
                 }
                 return header
@@ -175,9 +159,9 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
-        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(GalleryViewCellIdentifier, forIndexPath: indexPath) as? GalleryViewCell{
+        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(FloorFollowingCellIdentifier, forIndexPath: indexPath) as? ForumFloorFollowingCell{
             cell.clearData()
-            if let item = self.dataList.objectAtIndex(indexPath.row) as? ImageInfoData{
+            if let item = self.dataList.objectAtIndex(indexPath.row) as? ForumFloorData{
                 cell.loadCellData(item)
             }
             return cell
@@ -185,32 +169,4 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
             return UICollectionViewCell()
         }
     }
-    // MARK: - UICollectionViewDelegate
-    
-
-    /*
-// MARK: - UITableViewDelegate
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
-        var h : CGFloat = kMinForumLordFloorContentHieght
-        if let data = self.tableSource?.items[indexPath.row] as? ForumTopicData{
-            h = data.getCalculatedRowHeight()
-        }
-        if let data = self.tableSource?.items[indexPath.row] as? ForumFloorData{
-            h = data.getCalculatedRowHeight()
-        }
-        return h;
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)", terminator: "")
-        if let _ = tableView.cellForRowAtIndexPath(indexPath) as? ForumFloorCell{
-            let detail = ForumReplyListController()
-            detail.navigationItem.title = self.topicData.title
-            self.navigationController?.pushViewController(detail, animated: true)
-            if let data = self.tableSource?.items[indexPath.row] as? ForumFloorData{
-                detail.loadReplyListByTopicData(self.topicData,floor:data)
-            }
-        }
-    }
-*/
 }

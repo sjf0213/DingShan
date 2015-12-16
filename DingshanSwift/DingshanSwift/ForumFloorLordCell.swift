@@ -38,11 +38,11 @@ class ForumFloorLordCell : UICollectionReusableView{
         }
     }
     
-    override func layoutSubviews() {
-    super.layoutSubviews()
-    
-//    self.attrStrLabel.frame = CGRectOffset(CGRectInset(self.bounds, kForumFloorEdgeWidth, kForumFloorEdgeWidth), kForumFloorEdgeWidth, kForumFloorEdgeWidth);
-        attrStrLabel?.frame = CGRect(x: kForumFloorEdgeWidth, y: 12, width: kForumLordFloorContentWidth, height: self.frame.size.height);
-        self.setNeedsDisplay()
-    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//    
+////    self.attrStrLabel.frame = CGRectOffset(CGRectInset(self.bounds, kForumFloorEdgeWidth, kForumFloorEdgeWidth), kForumFloorEdgeWidth, kForumFloorEdgeWidth);
+//        attrStrLabel?.frame = CGRect(x: kForumFloorEdgeWidth, y: 12, width: kForumLordFloorContentWidth, height: self.frame.size.height);
+//        self.setNeedsDisplay()
+//    }
 }

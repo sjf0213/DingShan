@@ -7,18 +7,26 @@
 //
 
 import Foundation // 回复列表的层主，本身是一个floor
-class ForumReplyLordCell : ForumFloorCell{
-    
-    override init(style astyle:UITableViewCellStyle, reuseIdentifier str:String?) {
-        super.init(style:astyle, reuseIdentifier:str)
-        self.backgroundColor = UIColor.magentaColor().colorWithAlphaComponent(0.2)
-    }
+class ForumReplyLordCell : UICollectionReusableView{
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func loadCellData(data:AnyObject)
-    {
+    override init(frame aRect: CGRect) {
+        super.init(frame: aRect);
+        self.backgroundColor = UIColor.magentaColor().colorWithAlphaComponent(0.2)
     }
+    
+    
+    func clearData()
+    {
+        print("\(self).clearData")
+    }
+    
+    func loadCellData(data:AnyObject)
+    {
+        
+    }
+    
 }
