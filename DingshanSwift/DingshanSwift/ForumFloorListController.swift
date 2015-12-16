@@ -9,8 +9,10 @@
 import Foundation
 class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICollectionViewDelegate,LoadViewProtocol,UIScrollViewDelegate
 {
+    var layout:UICollectionViewFlowLayout?
     var mainTable: UICollectionView?
     var topicData = ForumTopicData()
+    var lordData = ForumTopicData()
 //    var tableSource:ArrayDataSource?
     var dataList =  NSMutableArray()
     var refreshView:RefreshView?
@@ -30,13 +32,14 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
         refreshView?.delegate = self
         self.view.addSubview(self.refreshView!)
         
-        let layout = UICollectionViewFlowLayout()
-        layout.headerReferenceSize = CGSize.zero
-        layout.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame), 100);
-        layout.minimumLineSpacing = 0.0
-        layout.minimumInteritemSpacing = 0.0
         
-        mainTable = UICollectionView(frame: CGRect( x: 0, y: TopBar_H, width: self.view.bounds.size.width, height: self.view.bounds.size.height), collectionViewLayout: layout)
+        layout = UICollectionViewFlowLayout()
+        layout?.headerReferenceSize = CGSize.zero
+        layout?.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame), 100);
+        layout?.minimumLineSpacing = 0.0
+        layout?.minimumInteritemSpacing = 0.0
+        
+        mainTable = UICollectionView(frame: CGRect( x: 0, y: TopBar_H, width: self.view.bounds.size.width, height: self.view.bounds.size.height), collectionViewLayout: layout!)
         mainTable?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         mainTable?.backgroundColor = UIColor.whiteColor()
         mainTable?.delegate = self
@@ -76,7 +79,7 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
         print("startRequest.url = \(url)")
         AFDSClient.sharedInstance.GET(url, parameters: nil,
             success: {(task, JSON:AnyObject) -> Void in
-//                print("\n responseJSON- - - - -data = \(JSON), \(JSON.dynamicType)", JSON.dynamicType)
+                print("\n ForumFloorListController.responseJSON- - - - -data = \(JSON), \(JSON.dynamicType)", JSON.dynamicType)
                 // 下拉刷新时候清空旧数据（请求失败也清空）
                 if (self.currentPage == 0 && self.dataList.count > 0){
                     self.dataList.removeAllObjects()
@@ -107,9 +110,10 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
                         if let title = topicInfoDic["topic_title"] as? String{
                             self.topTitle = title
                         }
-                        let lordData = ForumTopicData(dic: topicInfoDic);
-//                        lordData.isLordFloor = true// 标记为楼主
-                        allDataArray.append(lordData)
+                        self.lordData = ForumTopicData(dic: topicInfoDic);
+                        let w:CGFloat = (self.mainTable?.frame.size.width)!
+                        let h:CGFloat = 300//self.lordData.getCalculatedRowHeight()
+                        self.layout?.headerReferenceSize = CGSize(width: w, height: h)
                     }
                 }
                 // 除楼主以外的回复
@@ -128,8 +132,10 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
                         self.loadMoreView?.hidden = false
                     }
                 }
+                
                 self.dataList.addObjectsFromArray(allDataArray)
                 self.mainTable?.reloadData()
+                
             }
         }else{
             // 失败时候清空数据后也要重新加载
@@ -145,13 +151,12 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView{
+        print("\n  *- * - ** - *  * viewForSupplementaryElementOfKind")
         if (kind == UICollectionElementKindSectionHeader)
         {
             if let header = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: FloorLordCellIdentifier, forIndexPath: indexPath) as? ForumFloorLordCell{
                 header.clearData()
-                if let item = self.dataList.objectAtIndex(0) as? ForumTopicData{
-                    header.loadCellData(item)
-                }
+                header.loadCellData(self.lordData)
                 return header
             }
         }
