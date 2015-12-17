@@ -34,8 +34,8 @@ class ForumFloorLordCell : UICollectionReusableView{
     func loadCellData(data:AnyObject)
     {
         if let d = data as? ForumTopicData{
-            attrStrLabel?.text = d.contentText
-            debugPrint("---------loadCellData.attrStrLabel?.text= \(attrStrLabel?.text)")
+            attrStrLabel?.attributedText = d.contentAttrString
+            debugPrint("---------loadCellData.attrStrLabel?.text= \(attrStrLabel?.attributedText?.string)")
         }
     }
     

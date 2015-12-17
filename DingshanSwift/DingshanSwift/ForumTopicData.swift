@@ -14,7 +14,7 @@ class ForumTopicData : NSObject {
     
     var rowHeight:CGFloat = 0.0
     var contentAttrString:NSAttributedString?
-    
+    var labelConstraintsSize:CGSize?
     override var description : String {
         
         var str = "--------------------------"
@@ -62,10 +62,15 @@ class ForumTopicData : NSObject {
     func calculateRowHeight() -> CGFloat
     {
         // 正文与图片
-        let widthLimit = kForumLordFloorContentWidth
-        let sz:CGSize = TTTAttributedLabel.sizeThatFitsAttributedString(contentAttrString, withConstraints: CGSizeMake(widthLimit, CGFloat.max), limitedToNumberOfLines: UInt.max)
+        var constraints:CGSize = CGSizeZero;
+        if ((self.labelConstraintsSize) != nil){
+            constraints = self.labelConstraintsSize!
+        }
+//        let widthLimit = kForumLordFloorContentWidth
+        let sz:CGSize = TTTAttributedLabel.sizeThatFitsAttributedString(contentAttrString, withConstraints: constraints, limitedToNumberOfLines: 1024)
         rowHeight = sz.height
-        debugPrint("----------------calculateRowHeight= \(sz)")
+        debugPrint("----------------contentAttrString = \(contentAttrString?.string), calculateRowHeight= \(sz)")
         return max(rowHeight, kMinForumLordFloorContentHieght)
+        
     }
 }

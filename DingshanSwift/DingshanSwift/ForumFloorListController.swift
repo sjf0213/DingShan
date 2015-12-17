@@ -111,8 +111,10 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
                             self.topTitle = title
                         }
                         self.lordData = ForumTopicData(dic: topicInfoDic);
+                        self.lordData.labelConstraintsSize =  CGSize(width: kForumLordFloorContentWidth, height: 10000)
+                        
                         let w:CGFloat = (self.mainTable?.frame.size.width)!
-                        let h:CGFloat = 300//self.lordData.getCalculatedRowHeight()
+                        let h:CGFloat = self.lordData.getCalculatedRowHeight()
                         self.layout?.headerReferenceSize = CGSize(width: w, height: h)
                     }
                 }
@@ -151,9 +153,8 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView{
-        print("\n  *- * - ** - *  * viewForSupplementaryElementOfKind")
-        if (kind == UICollectionElementKindSectionHeader)
-        {
+        print("\n  * - * - * - * - * - * viewForSupplementaryElementOfKind")
+        if (kind == UICollectionElementKindSectionHeader){
             if let header = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: FloorLordCellIdentifier, forIndexPath: indexPath) as? ForumFloorLordCell{
                 header.clearData()
                 header.loadCellData(self.lordData)
