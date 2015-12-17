@@ -13,7 +13,6 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
     var mainTable: UICollectionView?
     var topicData = ForumTopicData()
     var lordData = ForumTopicData()
-//    var tableSource:ArrayDataSource?
     var dataList =  NSMutableArray()
     var refreshView:RefreshView?
     var loadMoreView:LoadView?
@@ -142,18 +141,17 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
         }else{
             // 失败时候清空数据后也要重新加载
             self.mainTable?.reloadData()
-//            if let c = result["c"], let v = result["v"]{
-////                print("\n TIP --- c:\(c), v:\(v)")
-//            }
+            if let c = result["c"], let v = result["v"]{
+                print("\n TIP --- c:\(c), v:\(v)")
+            }
         }
     }
-  // MARK: - UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return self.dataList.count
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView{
-//        print("\n  * - * - * - * - * - * viewForSupplementaryElementOfKind")
         if (kind == UICollectionElementKindSectionHeader){
             if let header = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: FloorLordCellIdentifier, forIndexPath: indexPath) as? ForumFloorLordCell{
                 header.clearData()

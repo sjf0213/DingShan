@@ -7,10 +7,11 @@
 //
 
 import Foundation
-class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScrollViewDelegate
+class HomeController:DSViewController,UICollectionViewDataSource,UICollectionViewDelegate
 {
-    var mainTable = UITableView();
-    var tableSource:ArrayDataSource?
+    var layout : UICollectionViewFlowLayout?
+    var mainTable : UICollectionView?
+    var dataList =  NSMutableArray()
     var currentPage:Int = 0
     var indicatorTop:UzysRadialProgressActivityIndicator?
     var indicatorBottom:UzysRadialProgressActivityIndicator?
@@ -23,7 +24,7 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         self.view.backgroundColor = UIColor.whiteColor()
         self.backBtnHidden = true
 //        self.topView.hidden = true
-        
+        /*
         self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, data) in
             if let itemCell = cell as? HomeCell{
                 itemCell.clearData()
@@ -32,18 +33,21 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
                 }
             }
         })
+*/
+        layout = UICollectionViewFlowLayout()
+        layout?.headerReferenceSize = CGSize.zero
+        layout?.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame), HomeRow_H);
+        layout?.minimumLineSpacing = 0.0
+        layout?.minimumInteritemSpacing = 0.0
         
-        mainTable.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: UIScreen.mainScreen().bounds.size.height - MAIN_TAB_H);
-        print("A_DONE------- self.frame = (\(mainTable.frame.origin.x), \(mainTable.frame.origin.y), \(mainTable.frame.size.width), \(mainTable.frame.size.height)")
+        mainTable = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: UIScreen.mainScreen().bounds.size.height - MAIN_TAB_H), collectionViewLayout: layout!)
         
-        mainTable.contentInset = UIEdgeInsets(top: TopBar_H, left: 0, bottom: 0, right: 0)
-        mainTable.backgroundColor = UIColor.whiteColor()
-        mainTable.separatorStyle = UITableViewCellSeparatorStyle.None
-        mainTable.delegate = self
-        mainTable.dataSource = self.tableSource
-        mainTable.rowHeight = HomeRow_H
-        mainTable.registerClass(HomeCell.classForCoder(), forCellReuseIdentifier: HomeCellIdentifier)
-        self.view.addSubview(mainTable)
+        mainTable?.contentInset = UIEdgeInsets(top: TopBar_H, left: 0, bottom: 0, right: 0)
+        mainTable?.backgroundColor = UIColor.whiteColor()
+        mainTable?.delegate = self
+        mainTable?.dataSource = self
+        mainTable?.registerClass(HomeCell.classForCoder(), forCellWithReuseIdentifier: HomeCellIdentifier)
+        self.view.addSubview(mainTable!)
         
 //        let adPic = UIImageView(image: UIImage(named: "home_ad.jpg"))
 //        adPic.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.1)
@@ -72,29 +76,31 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         self.view.addSubview(stageMenu!)
         
         
-        mainTable.addPullToRefreshActionHandler({ [weak self] () -> Void in
+        mainTable?.addPullToRefreshActionHandler({ [weak self] () -> Void in
             self?.currentPage = 0
-            self?.tableSource?.removeAllItems()
-            self?.mainTable.reloadData()
+            self?.dataList.removeAllObjects()
+            self?.mainTable?.reloadData()
             self?.startRequest(self?.configCache)
             print("A_DONE------- self.frame = (\(self?.indicatorTop?.frame.origin.x), \(self?.indicatorTop?.frame.origin.y), \(self?.indicatorTop?.frame.size.width), \(self?.indicatorTop?.frame.size.height)")
             
             })
-        mainTable.addPullToLoadMoreActionHandler({ [weak self] () -> Void in
+        mainTable?.addPullToLoadMoreActionHandler({ [weak self] () -> Void in
             print("B_DONE------- addPullToLoadMoreActionHandler------- begin")
             self?.startRequest(self?.configCache)
 //            print("B_DONE------- self.frame = (\(self?.indicatorBottom?.frame.origin.x), \(self?.indicatorBottom?.frame.origin.y), \(self?.indicatorBottom?.frame.size.width), \(self?.indicatorBottom?.frame.size.height)")
             
             })
         
-        mainTable.addTopInsetInPortrait(TopBar_H, topInsetInLandscape: TopBar_H)
-        
+        mainTable?.addTopInsetInPortrait(TopBar_H, topInsetInLandscape: TopBar_H)
         self.view.bringSubviewToFront(self.topView)
+        
+        mainTable?.triggerPullToRefresh()
+        
     }
     
     override func viewDidAppear(animated: Bool) {
-        mainTable.triggerPullToRefresh()
-        self.view.bringSubviewToFront(stageMenu!)
+//        mainTable?.triggerPullToRefresh()
+//        self.view.bringSubviewToFront(stageMenu!)
     }
 
     /*
@@ -119,8 +125,8 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
             success: {(task, JSON) -> Void in
 //                print("\n HomeController.AFDSClient.success- - - - -data = \(JSON)")
                 // 下拉刷新时候清空旧数据（请求失败也清空）
-                if (self.currentPage == 0 && self.tableSource?.items.count > 0){
-                    self.tableSource?.removeAllItems()
+                if (self.currentPage == 0 && self.dataList.count > 0){
+                    self.dataList.removeAllObjects()
                 }
                 
                 self.currentPage++;
@@ -129,11 +135,8 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
                     self.processRequestResult(dic)
                 }
                 // 控件复位
-                // 控件复位
-                self.mainTable.stopRefreshAnimation()
-//                self.refreshView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
-//                self.loadMoreView?.RefreshScrollViewDataSourceDidFinishedLoading(self.mainTable)
-            }, failure: {( task, error) -> Void in
+                self.mainTable?.stopRefreshAnimation()
+           }, failure: {( task, error) -> Void in
                 print("\n failure: TIP --- e:\(error)")
             })
     }
@@ -146,7 +149,7 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
                     for var i = 0; i < arr.count; ++i {
                         if let item = arr[i] as? [NSObject:AnyObject] {
                             let data = ForumTopicData(dic: item)
-                            self.tableSource?.items.addObject(data)
+                            self.dataList.addObject(data)
                             
                             if(i == arr.count-1){
                                 self.lastTopicId = data.topicId
@@ -156,21 +159,21 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
                     // 正常流程
                     let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(load_delay * Double(NSEC_PER_SEC)))
                     dispatch_after(popTime, dispatch_get_main_queue(), {() -> Void in
-                        self.mainTable.reloadData()// 失败时候清空数据后也要重新加载
+                        self.mainTable?.reloadData()// 失败时候清空数据后也要重新加载
                         // 控件复位
-                        self.mainTable.stopRefreshAnimation()
-                        self.mainTable.stopLoadMoreAnimation()
+                        self.mainTable?.stopRefreshAnimation()
+                        self.mainTable?.stopLoadMoreAnimation()
                     })
                 }else{// 最后一页没有更多数据了
                     let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(load_delay * Double(NSEC_PER_SEC)))
                     dispatch_after(popTime, dispatch_get_main_queue(), {() -> Void in
-                        self.mainTable.showLoadMoreEnd(true)
+                        self.mainTable?.showLoadMoreEnd(true)
                     })
                 }
             }
         }else{
             // 失败时候清空数据后也要重新加载
-            self.mainTable.reloadData()
+            self.mainTable?.reloadData()
             if let c = result["c"], let v = result["v"]{
                 print("\n TIP --- c:\(c), v:\(v)")
             }
@@ -189,18 +192,39 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
         self.navigationController?.pushViewController(newThreadController, animated: true)
     }
     
-// MARK: - UITableViewDelegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-    {
-        print("\n\(self.classForCoder) didSelectRowAtIndexPath = \(indexPath)", terminator: "")
-        if let  cell = tableView.cellForRowAtIndexPath(indexPath) as? HomeCell{
-            let detail = ForumFloorListController()
-            detail.navigationItem.title = cell.title?.text
-            self.navigationController?.pushViewController(detail, animated: true)
-            if let data = self.tableSource?.items[indexPath.row] as? ForumTopicData{
-                detail.loadFloorListByTopicData(data)
+// MARK: - UICollectionViewDataSource
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+        return self.dataList.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView{
+        if (kind == UICollectionElementKindSectionHeader){
+            if let header = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: HomeHeaderIdentifier, forIndexPath: indexPath) as? HomeHeader{
+                header.clearData()
+                return header
             }
         }
+        return UICollectionReusableView()
     }
-
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
+        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(HomeCellIdentifier, forIndexPath: indexPath) as? HomeCell{
+            cell.clearData()
+            if let item = self.dataList.objectAtIndex(indexPath.row) as? ForumTopicData{
+                cell.loadCellData(item)
+            }
+            return cell
+        }else{
+            return UICollectionViewCell()
+        }
+    }
+// MARK: - UICollectionViewDelegate
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
+        let controller = ForumFloorListController()
+        self.navigationController?.pushViewController(controller, animated: true)
+        if let data = self.dataList[indexPath.row] as? ForumTopicData{
+            controller.navigationItem.title = data.title
+            controller.loadFloorListByTopicData(data)
+        }
+    }
 }

@@ -8,13 +8,13 @@
 
 import Foundation
 
-class HomeCell:UITableViewCell
+class HomeCell:UICollectionViewCell
 {
     var icon = UIImageView()
 //    var title = UILabel()
     var title : TTTAttributedLabel?
-    override init(style astyle:UITableViewCellStyle, reuseIdentifier str:String?) {
-        super.init(style:astyle, reuseIdentifier:str)
+    override init(frame aRect: CGRect) {
+        super.init(frame: aRect);
         self.backgroundColor = UIColor.whiteColor()
         
         icon = UIImageView(frame: CGRect(x: 15, y: 9, width: 64, height: 64))

@@ -20,6 +20,7 @@ let TABBAR_GRAY = UIColor(white: 0x72/255.0, alpha: 1.0)
 let TABBAR_RED = THEME_COLOR
 let TABBAR_COLOR = UIColor(white: 236/255.0, alpha: 1.0)
 let NAVI_COLOR = UIColor(white: 247/255.0, alpha: 1.0)
+let HomeHeaderIdentifier = "HomeHeader"
 let HomeCellIdentifier = "HomeCell"
 let FloorCellIdentifier = "FloorCell"
 let FloorLordCellIdentifier = "FloorLordCell"
