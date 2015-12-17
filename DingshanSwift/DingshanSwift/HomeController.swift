@@ -117,7 +117,7 @@ class HomeController:DSViewController,UITableViewDelegate,LoadViewProtocol,UIScr
  
         AFDSClient.sharedInstance.GET(url, parameters: nil,
             success: {(task, JSON) -> Void in
-                print("\n HomeController.AFDSClient.success- - - - -data = \(JSON)")
+//                print("\n HomeController.AFDSClient.success- - - - -data = \(JSON)")
                 // 下拉刷新时候清空旧数据（请求失败也清空）
                 if (self.currentPage == 0 && self.tableSource?.items.count > 0){
                     self.tableSource?.removeAllItems()

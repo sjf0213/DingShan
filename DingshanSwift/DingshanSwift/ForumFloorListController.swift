@@ -79,7 +79,7 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
         print("startRequest.url = \(url)")
         AFDSClient.sharedInstance.GET(url, parameters: nil,
             success: {(task, JSON:AnyObject) -> Void in
-                print("\n ForumFloorListController.responseJSON- - - - -data = \(JSON), \(JSON.dynamicType)", JSON.dynamicType)
+//                print("\n ForumFloorListController.responseJSON- - - - -data = \(JSON), \(JSON.dynamicType)", JSON.dynamicType)
                 // 下拉刷新时候清空旧数据（请求失败也清空）
                 if (self.currentPage == 0 && self.dataList.count > 0){
                     self.dataList.removeAllObjects()
@@ -100,7 +100,7 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
         if (200 == result["c"]?.integerValue){
             if let v = result["v"] as? [NSObject:AnyObject]{
                 var allDataArray = [AnyObject]()
-                print("\n v- - -\(v)")
+//                print("\n v- - -\(v)")
                 if (self.currentPage == 0){
                     if(self.dataList.count > 0){
                         self.dataList.removeAllObjects()
@@ -142,9 +142,9 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
         }else{
             // 失败时候清空数据后也要重新加载
             self.mainTable?.reloadData()
-            if let c = result["c"], let v = result["v"]{
-                print("\n TIP --- c:\(c), v:\(v)")
-            }
+//            if let c = result["c"], let v = result["v"]{
+////                print("\n TIP --- c:\(c), v:\(v)")
+//            }
         }
     }
   // MARK: - UICollectionViewDataSource
@@ -153,7 +153,7 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView{
-        print("\n  * - * - * - * - * - * viewForSupplementaryElementOfKind")
+//        print("\n  * - * - * - * - * - * viewForSupplementaryElementOfKind")
         if (kind == UICollectionElementKindSectionHeader){
             if let header = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: FloorLordCellIdentifier, forIndexPath: indexPath) as? ForumFloorLordCell{
                 header.clearData()

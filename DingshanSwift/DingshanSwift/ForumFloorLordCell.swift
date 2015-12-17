@@ -27,7 +27,7 @@ class ForumFloorLordCell : UICollectionReusableView{
     
     func clearData()
     {
-        print("\(self).clearData")
+//        print("\(self).clearData")
         attrStrLabel?.setText("")
     }
     
@@ -35,16 +35,14 @@ class ForumFloorLordCell : UICollectionReusableView{
     {
         if let d = data as? ForumTopicData{
             attrStrLabel?.attributedText = d.contentAttrString
-            debugPrint("---------loadCellData.attrStrLabel?.text= \(attrStrLabel?.attributedText?.string)")
+//            debugPrint("---------loadCellData.attrStrLabel = \(attrStrLabel?.attributedText?.string)")
         }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-    
-//    self.attrStrLabel.frame = CGRectOffset(CGRectInset(self.bounds, kForumFloorEdgeWidth, kForumFloorEdgeWidth), kForumFloorEdgeWidth, kForumFloorEdgeWidth);
         attrStrLabel?.frame = CGRect(x: kForumFloorEdgeWidth, y: 12, width: kForumLordFloorContentWidth, height: self.frame.size.height);
-        debugPrint("---------attrStrLabel?.frame = \(attrStrLabel?.frame)")
+        debugPrint("---------ForumFloorLordCell.layoutSubviews.attrStrLabel.frame = \(attrStrLabel?.frame)")
         self.setNeedsDisplay()
     }
 }

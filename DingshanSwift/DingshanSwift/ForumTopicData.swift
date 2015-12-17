@@ -69,7 +69,7 @@ class ForumTopicData : NSObject {
 //        let widthLimit = kForumLordFloorContentWidth
         let sz:CGSize = TTTAttributedLabel.sizeThatFitsAttributedString(contentAttrString, withConstraints: constraints, limitedToNumberOfLines: 1024)
         rowHeight = sz.height
-        debugPrint("----------------contentAttrString = \(contentAttrString?.string), calculateRowHeight= \(sz)")
+        debugPrint("----------------ForumTopicData.calculateRowHeight.sz = \(sz)")
         return max(rowHeight, kMinForumLordFloorContentHieght)
         
     }
