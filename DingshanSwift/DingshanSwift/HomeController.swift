@@ -18,6 +18,7 @@ class HomeController:DSViewController,UICollectionViewDataSource,UICollectionVie
     var configCache:[NSObject:AnyObject]?
     var stageMenu : StageMenuView?
     var lastTopicId:Int = 0
+    var stageIndex:Int = 0
 
     override func loadView(){
         super.loadView()
@@ -26,17 +27,17 @@ class HomeController:DSViewController,UICollectionViewDataSource,UICollectionVie
 //        self.topView.hidden = true
 
         layout = UICollectionViewFlowLayout()
-        layout?.headerReferenceSize = CGSize.zero
+        layout?.headerReferenceSize = CGSize(width: self.view.bounds.size.width, height: HomeRow_H)//CGSize.zero
         layout?.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame), HomeRow_H);
         layout?.minimumLineSpacing = 0.0
         layout?.minimumInteritemSpacing = 0.0
         
-        mainTable = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: UIScreen.mainScreen().bounds.size.height - MAIN_TAB_H), collectionViewLayout: layout!)
-        
-        mainTable?.contentInset = UIEdgeInsets(top: TopBar_H, left: 0, bottom: 0, right: 0)
+        mainTable = UICollectionView(frame: CGRect(x: 0, y: TopBar_H, width: self.view.bounds.size.width, height: UIScreen.mainScreen().bounds.size.height - TopBar_H - MAIN_TAB_H), collectionViewLayout: layout!)
+        mainTable?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         mainTable?.backgroundColor = UIColor.whiteColor()
         mainTable?.delegate = self
         mainTable?.dataSource = self
+        mainTable?.registerClass(HomeHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HomeHeaderIdentifier)
         mainTable?.registerClass(HomeCell.classForCoder(), forCellWithReuseIdentifier: HomeCellIdentifier)
         self.view.addSubview(mainTable!)
         
@@ -65,7 +66,15 @@ class HomeController:DSViewController,UICollectionViewDataSource,UICollectionVie
         stageMenu = StageMenuView(frame: CGRect(x: 50, y: 20, width: self.view.bounds.size.width - 100, height: TopBar_H - 20))
         stageMenu?.menuConfig = stageConfig
         self.view.addSubview(stageMenu!)
-        
+        stageMenu?.tapItemHandler = {[weak self](index:Int) -> Void in
+            self?.stageIndex = index
+            if(0 == index){
+                self?.layout?.headerReferenceSize = CGSize.zero
+            }else{
+                self?.layout?.headerReferenceSize = CGSize(width: (self?.view.bounds.size.width)!, height: HomeRow_H)
+            }
+            self?.mainTable?.setNeedsLayout()
+        }
         
         mainTable?.addPullToRefreshActionHandler({ [weak self] () -> Void in
             self?.currentPage = 0
@@ -82,16 +91,16 @@ class HomeController:DSViewController,UICollectionViewDataSource,UICollectionVie
             
             })
         
-        mainTable?.addTopInsetInPortrait(TopBar_H, topInsetInLandscape: TopBar_H)
-        self.view.bringSubviewToFront(self.topView)
-        
+        mainTable?.addTopInsetInPortrait(0, topInsetInLandscape: 0)
         mainTable?.triggerPullToRefresh()
         
     }
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.bringSubviewToFront(stageMenu!)
+    }
     override func viewDidAppear(animated: Bool) {
 //        mainTable?.triggerPullToRefresh()
-//        self.view.bringSubviewToFront(stageMenu!)
     }
 
     /*

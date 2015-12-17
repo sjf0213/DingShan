@@ -8,6 +8,15 @@
 
 import Foundation
 class HomeHeader : UICollectionReusableView{
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    override init(frame aRect: CGRect) {
+        super.init(frame: aRect);
+        self.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.2)
+        
+    }
     func clearData()
     {
     }
