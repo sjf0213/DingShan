@@ -173,4 +173,13 @@ class ForumFloorListController:DSViewController,UICollectionViewDataSource,UICol
             return UICollectionViewCell()
         }
     }
+// MARK: - UICollectionViewDelegate
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
+        let controller = ForumReplyListController()
+        self.navigationController?.pushViewController(controller, animated: true)
+        if let data = self.dataList[indexPath.row] as? ForumFloorData{
+            controller.navigationItem.title = "回复"
+            controller.loadReplyListByTopicData(self.lordData, floor: data)
+        }
+    }
 }

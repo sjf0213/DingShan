@@ -24,16 +24,7 @@ class HomeController:DSViewController,UICollectionViewDataSource,UICollectionVie
         self.view.backgroundColor = UIColor.whiteColor()
         self.backBtnHidden = true
 //        self.topView.hidden = true
-        /*
-        self.tableSource = ArrayDataSource(withcellIdentifier: HomeCellIdentifier, configureCellBlock:{(cell, data) in
-            if let itemCell = cell as? HomeCell{
-                itemCell.clearData()
-                if let d = data as? ForumTopicData{
-                    itemCell.loadCellData(d)
-                }
-            }
-        })
-*/
+
         layout = UICollectionViewFlowLayout()
         layout?.headerReferenceSize = CGSize.zero
         layout?.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame), HomeRow_H);
