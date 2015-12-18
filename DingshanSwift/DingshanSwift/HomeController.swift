@@ -27,7 +27,7 @@ class HomeController:DSViewController,UICollectionViewDataSource,UICollectionVie
 //        self.topView.hidden = true
 
         layout = UICollectionViewFlowLayout()
-        layout?.headerReferenceSize = CGSize(width: self.view.bounds.size.width, height: 60)//CGSize.zero
+        layout?.headerReferenceSize = CGSize.zero
         layout?.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame), HomeRow_H);
         layout?.minimumLineSpacing = 0.0
         layout?.minimumInteritemSpacing = 0.0
@@ -71,9 +71,10 @@ class HomeController:DSViewController,UICollectionViewDataSource,UICollectionVie
             if(0 == index){
                 self?.layout?.headerReferenceSize = CGSize.zero
             }else{
-                self?.layout?.headerReferenceSize = CGSize(width: (self?.view.bounds.size.width)!, height: HomeRow_H)
+                self?.layout?.headerReferenceSize = CGSize(width: (self?.view.bounds.size.width)!, height: HomeHeader_H)
             }
             self?.mainTable?.setNeedsLayout()
+            self?.mainTable?.triggerPullToRefresh()
         }
         
         mainTable?.addPullToRefreshActionHandler({ [weak self] () -> Void in
@@ -114,7 +115,7 @@ class HomeController:DSViewController,UICollectionViewDataSource,UICollectionVie
     func startRequest(config:[NSObject:AnyObject]?){
         let parameter = ["pindex" : String(self.currentPage),
                         "psize" : "10",
-                        "sorttype" : "1",
+                        "sorttype" : String(self.stageIndex),
                         "topicid":String(self.lastTopicId),
                         "json" : "1"]
         

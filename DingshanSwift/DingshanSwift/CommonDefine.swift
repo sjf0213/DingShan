@@ -36,6 +36,7 @@ let TopBar_H:CGFloat = 64.0
 let MAIN_TAB_H:CGFloat = 50
 let HomeAd_H:CGFloat = 154
 let Default_Request_Count    =    20
+let HomeHeader_H:CGFloat = 60.0
 let HomeRow_H:CGFloat = 82.5
 let GalleryMenuBar_H:CGFloat = 40.0
 let GalleryMenuItem_H:CGFloat = 40.0
