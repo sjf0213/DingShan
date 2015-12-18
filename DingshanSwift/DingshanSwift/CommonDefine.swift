@@ -16,6 +16,7 @@ let kForumFloorCellContentFont = UIFont.systemFontOfSize(16.0)
 
 
 let THEME_COLOR = UIColor(red:255/255.0,  green:22/255.0,  blue:96/255.0, alpha:1.0)
+let THEME_Line_COLOR = UIColor(white: 216/255.0, alpha: 1.0)
 let TABBAR_GRAY = UIColor(white: 0x72/255.0, alpha: 1.0)
 let TABBAR_RED = THEME_COLOR
 let TABBAR_COLOR = UIColor(white: 236/255.0, alpha: 1.0)

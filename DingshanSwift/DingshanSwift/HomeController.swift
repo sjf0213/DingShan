@@ -27,7 +27,7 @@ class HomeController:DSViewController,UICollectionViewDataSource,UICollectionVie
 //        self.topView.hidden = true
 
         layout = UICollectionViewFlowLayout()
-        layout?.headerReferenceSize = CGSize(width: self.view.bounds.size.width, height: HomeRow_H)//CGSize.zero
+        layout?.headerReferenceSize = CGSize(width: self.view.bounds.size.width, height: 60)//CGSize.zero
         layout?.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame), HomeRow_H);
         layout?.minimumLineSpacing = 0.0
         layout?.minimumInteritemSpacing = 0.0

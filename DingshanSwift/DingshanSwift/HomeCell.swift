@@ -29,7 +29,7 @@ class HomeCell:UICollectionViewCell
         self.contentView.addSubview(title!)
         
         let topline = UIView(frame: CGRect(x: 15.0, y: HomeRow_H-0.5, width: self.bounds.width - 30.0, height: 0.5))
-        topline.backgroundColor = UIColor(white: 216/255.0, alpha: 1.0)
+        topline.backgroundColor = THEME_Line_COLOR
         self.contentView.addSubview(topline)
     }
     
