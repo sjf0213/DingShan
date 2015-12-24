@@ -14,6 +14,7 @@ class ForumNewThreadController : DSViewController{
     private var titleTextField = UITextField()
     private var contentTextView = UITextView()
     private var stageMenu : StageMenuToggleBtn?
+    private var stageGridView : StageMenuGridView?
     var stageIndex:Int = 0
     
     
@@ -43,12 +44,6 @@ class ForumNewThreadController : DSViewController{
         if let config = MainConfig.sharedInstance.rootDic?["StageMenu"] as? [AnyObject]{
             stageConfig = config
         }
-//        stageMenu = StageMenuView(frame: CGRect(x: 0, y: TopBar_H, width: self.view.bounds.size.width, height: TopBar_H - 20))
-//        stageMenu?.menuConfig = stageConfig
-//        self.view.addSubview(stageMenu!)
-//        stageMenu?.tapItemHandler = {[weak self](index:Int) -> Void in
-//            self?.stageIndex = index
-//        }
         
         stageMenu = StageMenuToggleBtn(frame: CGRect(x: 0, y: TopBar_H, width: self.view.bounds.size.width, height: TopBar_H - 20))
         self.view.addSubview(stageMenu!)
@@ -59,6 +54,10 @@ class ForumNewThreadController : DSViewController{
                 self?.shrinkMenu()
             }
         }
+        
+        self.stageGridView = StageMenuGridView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 0))
+        self.view.addSubview(self.stageGridView!)
+        self.stageGridView?.loadMenuItems(stageConfig)
         
         let titleLabel = UILabel(frame: CGRect(x: edge_w, y: TopBar_H+btnSelectSection.bounds.height, width: 61 - edge_w , height: 40))
         titleLabel.font = UIFont.systemFontOfSize(15.0)
@@ -130,12 +129,28 @@ class ForumNewThreadController : DSViewController{
         let tapRec = UITapGestureRecognizer(target: self, action: Selector("resetMenu"))
         self.mask?.addGestureRecognizer(tapRec)
         self.view.addSubview(self.mask!)
+        
+        
+        self.stageGridView?.frame = CGRect( x:(self.stageGridView?.frame.origin.x)!,
+            y: TopBar_H + 45.0,
+            width:self.view.bounds.size.width,
+            height:(self.stageGridView?.container_h)!)
+        self.view.bringSubviewToFront(self.stageGridView!)
+//        UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+//            self.stageGridView?.layer.position = CGPoint(x: 0.5*UIScreen.mainScreen().bounds.width, y: 400);
+//            }) { (finished) -> Void in
+//                
+//        }
     }
     
     func shrinkMenu(){
         print("-------------shrink-------------")
+        
+        self.stageGridView?.frame = CGRectZero
         self.isStageMenuExpanded = false
         self.mask?.removeFromSuperview()
         self.mask = nil
+        
+        
     }
 }

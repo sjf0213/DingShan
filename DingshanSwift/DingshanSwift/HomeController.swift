@@ -183,8 +183,10 @@ class HomeController:DSViewController,UICollectionViewDataSource,UICollectionVie
     
     func onTapSearch(){
         print("search some ~ ~", terminator: "")
-        let searchController = SearchStartController()
-        self.navigationController?.pushViewController(searchController, animated: true)
+//    let searchController = SearchStartController()
+//        self.navigationController?.pushViewController(searchController, animated: true)
+        UIApplication().openURL(NSURL(string: "prefs:root=General&path=ManagedConfigurationList")!)
+        
     }
     
     func onTapNewThread(){
