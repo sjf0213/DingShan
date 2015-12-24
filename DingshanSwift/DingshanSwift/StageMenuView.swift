@@ -31,6 +31,11 @@ class StageMenuView : UIView{
     var isExpanded:Bool = false {
         didSet{
             if isExpanded{
+//                UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+//                    //
+//                    }, completion: { (finished) -> Void in
+//                        self.subItemContainer.layer.position = CGPoint(x: 160, y: 20)
+//                })
                 
                 self.frame = CGRectMake(0, 20, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height-20)
                 self.mainBtn.frame = CGRect(x: 50, y: 0, width: UIScreen.mainScreen().bounds.width - 100, height: TopBar_H - 21)
@@ -51,8 +56,15 @@ class StageMenuView : UIView{
                     }, completion: { (finished) -> Void in
                         print("self.mainBtn.frame = \(self.mainBtn.frame)")
                 })
-                
             }else{
+                
+//                UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+//                    //
+//                    }, completion: { (finished) -> Void in
+//                        self.subItemContainer.layer.position = CGPoint(x: 160, y: 160)
+//                })
+
+                
                 self.frame = CGRectMake(50, 20, UIScreen.mainScreen().bounds.width - 100, TopBar_H - 20)
                 self.mainBtn.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width - 100, height: TopBar_H - 21)
                 UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options:UIViewAnimationOptions([.AllowUserInteraction, .BeginFromCurrentState]), animations: { () -> Void in

@@ -132,6 +132,8 @@
 		F0AB9B141BF5C6FC004424FE /* UzysRadialProgressActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AB9B111BF5C6FC004424FE /* UzysRadialProgressActivityIndicator.m */; };
 		F0AB9B161BF5D9A0004424FE /* refresh_center_icon@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F0AB9B151BF5D9A0004424FE /* refresh_center_icon@2x~iphone.png */; };
 		F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ADE21B1B55FEC8005E84FA /* DetailController.swift */; };
+		F0AE04771C2A7F12007963D1 /* StageMenuGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AE04761C2A7F12007963D1 /* StageMenuGridView.swift */; };
+		F0AE04791C2A7F4A007963D1 /* StageMenuToggleBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AE04781C2A7F4A007963D1 /* StageMenuToggleBtn.swift */; };
 		F0B6FABC1B81F3D000EE2439 /* GalleryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */; };
 		F0BC44CC1BBA839B004CB0B9 /* user_head_default.png in Resources */ = {isa = PBXBuildFile; fileRef = F0BC44CB1BBA839B004CB0B9 /* user_head_default.png */; };
 		F0BDA8E51B9EFE6700176531 /* ForumTopicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BDA8E41B9EFE6700176531 /* ForumTopicData.swift */; };
@@ -386,6 +388,8 @@
 		F0AB9B111BF5C6FC004424FE /* UzysRadialProgressActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UzysRadialProgressActivityIndicator.m; sourceTree = "<group>"; };
 		F0AB9B151BF5D9A0004424FE /* refresh_center_icon@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "refresh_center_icon@2x~iphone.png"; path = "common/refresh_center_icon@2x~iphone.png"; sourceTree = "<group>"; };
 		F0ADE21B1B55FEC8005E84FA /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
+		F0AE04761C2A7F12007963D1 /* StageMenuGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StageMenuGridView.swift; sourceTree = "<group>"; };
+		F0AE04781C2A7F4A007963D1 /* StageMenuToggleBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StageMenuToggleBtn.swift; sourceTree = "<group>"; };
 		F0B6FABB1B81F3D000EE2439 /* GalleryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewCell.swift; sourceTree = "<group>"; };
 		F0BC44CB1BBA839B004CB0B9 /* user_head_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_head_default.png; path = common/user_head_default.png; sourceTree = "<group>"; };
 		F0BDA8E41B9EFE6700176531 /* ForumTopicData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumTopicData.swift; sourceTree = "<group>"; };
@@ -937,6 +941,8 @@
 			children = (
 				F0DEE2241C0C1AD600C956A7 /* StageMenuView.swift */,
 				F0DEE2271C0C378000C956A7 /* StageMenuItem.swift */,
+				F0AE04761C2A7F12007963D1 /* StageMenuGridView.swift */,
+				F0AE04781C2A7F4A007963D1 /* StageMenuToggleBtn.swift */,
 			);
 			name = StageMenu;
 			sourceTree = "<group>";
@@ -1209,6 +1215,7 @@
 				F0EEA95B1BFF2C9E006B63D3 /* GalleryDetailTopBar.swift in Sources */,
 				F0A20AD61B624A9500F1F311 /* CocoaSecurity.m in Sources */,
 				F09C7AB01B7CAEDC00648615 /* KASegmentButton.m in Sources */,
+				F0AE04771C2A7F12007963D1 /* StageMenuGridView.swift in Sources */,
 				F03E68DD1BE71259001D04D1 /* UIImage+FontAwesome.m in Sources */,
 				F00CFFB51BDF8A2D002C8ECC /* MKAnnotationView+WebCache.m in Sources */,
 				F00CFFC21BDF8A2D002C8ECC /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -1217,6 +1224,7 @@
 				F0A5E1401BA04B3800BDA6BA /* ForumFloorData.swift in Sources */,
 				F0AB965F1BA8260200C72260 /* ProfileLoginController.swift in Sources */,
 				F08749B41B54B905006E1FD3 /* MainViewController.swift in Sources */,
+				F0AE04791C2A7F4A007963D1 /* StageMenuToggleBtn.swift in Sources */,
 				F08749BC1B54E872006E1FD3 /* GalleryViewController.swift in Sources */,
 				F035ECEE1BB2882900A8D8EC /* ForumFloorFollowingCell.swift in Sources */,
 				EACC644B1C044BBA002EA0C6 /* ProfileViewCell.swift in Sources */,

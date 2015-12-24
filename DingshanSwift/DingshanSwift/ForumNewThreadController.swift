@@ -13,6 +13,13 @@ class ForumNewThreadController : DSViewController{
     private var sendBtn = UIButton()
     private var titleTextField = UITextField()
     private var contentTextView = UITextView()
+    private var stageMenu : StageMenuToggleBtn?
+    var stageIndex:Int = 0
+    
+    
+    private var isStageMenuExpanded:Bool = false
+    private var mask:UIView?// 黑色半透明背景，相应点击收起
+    
     override func loadView()
     {
         super.loadView()
@@ -29,6 +36,29 @@ class ForumNewThreadController : DSViewController{
         let btnSelectSection = UIView(frame: CGRect(x: 0, y: TopBar_H, width: self.view.bounds.size.width , height: 45))
         btnSelectSection.backgroundColor = UIColor(white: 236/255.0, alpha: 1.0)
         self.view.addSubview(btnSelectSection)
+        
+        
+        // 阶段选择配置
+        var stageConfig = [AnyObject]()
+        if let config = MainConfig.sharedInstance.rootDic?["StageMenu"] as? [AnyObject]{
+            stageConfig = config
+        }
+//        stageMenu = StageMenuView(frame: CGRect(x: 0, y: TopBar_H, width: self.view.bounds.size.width, height: TopBar_H - 20))
+//        stageMenu?.menuConfig = stageConfig
+//        self.view.addSubview(stageMenu!)
+//        stageMenu?.tapItemHandler = {[weak self](index:Int) -> Void in
+//            self?.stageIndex = index
+//        }
+        
+        stageMenu = StageMenuToggleBtn(frame: CGRect(x: 0, y: TopBar_H, width: self.view.bounds.size.width, height: TopBar_H - 20))
+        self.view.addSubview(stageMenu!)
+        stageMenu?.expandHandler = {[weak self]() -> Void in
+            if(self?.isStageMenuExpanded == false){
+                self?.expandMenu()
+            }else{
+                self?.shrinkMenu()
+            }
+        }
         
         let titleLabel = UILabel(frame: CGRect(x: edge_w, y: TopBar_H+btnSelectSection.bounds.height, width: 61 - edge_w , height: 40))
         titleLabel.font = UIFont.systemFontOfSize(15.0)
@@ -52,12 +82,17 @@ class ForumNewThreadController : DSViewController{
         self.view.addSubview(contentTextView)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.bringSubviewToFront(stageMenu!)
+    }
+    
     func onTapSend(){
         self.startRequest()
     }
     
     func startRequest(){
-        let parameter = ["ctype" : "1",
+        let parameter = ["ctype" : String(self.stageIndex),
                           "json" : "1"]
         let strTitle = titleTextField.text
         let strContent = contentTextView.text
@@ -79,5 +114,28 @@ class ForumNewThreadController : DSViewController{
                     print("\n failure: TIP --- e:\(error)")
                 })
         }
+    }
+    
+    func resetMenu(){
+        self.shrinkMenu()
+    }
+    
+    func expandMenu(){
+        print("-------------expand-------------")
+        self.isStageMenuExpanded = true
+        //                self.mainBtn.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width - 100, height: TopBar_H - 21)
+        self.mask = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height))
+        self.mask?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        self.mask?.alpha = 1.0
+        let tapRec = UITapGestureRecognizer(target: self, action: Selector("resetMenu"))
+        self.mask?.addGestureRecognizer(tapRec)
+        self.view.addSubview(self.mask!)
+    }
+    
+    func shrinkMenu(){
+        print("-------------shrink-------------")
+        self.isStageMenuExpanded = false
+        self.mask?.removeFromSuperview()
+        self.mask = nil
     }
 }
