@@ -39,7 +39,7 @@ class StageMenuView : UIView{
                 
                 self.frame = CGRectMake(0, 20, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height-20)
                 self.mainBtn.frame = CGRect(x: 50, y: 0, width: UIScreen.mainScreen().bounds.width - 100, height: TopBar_H - 21)
-                print("-- - ****2222 self.mainBtn.frame = \(self.mainBtn.frame)")
+                print("- - - ****2222 self.mainBtn.frame = \(self.mainBtn.frame)")
                 self.mainBtn.curSelected = true
                 // 点击菜单覆盖的黑色半透明区域，收起菜单
                 self.mask = UIView(frame: CGRect(x: 0, y: TopBar_H-20, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height-TopBar_H+20))

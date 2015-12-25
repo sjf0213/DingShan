@@ -8,6 +8,7 @@
 
 import Foundation
 class StageMenuGridView : UIView{
+    var tapItemHandler : ((index:Int, title:String) -> Void)?// 用户点击处理
     var userSelectIndex:Int = 0
     var container_h:CGFloat = 0.0
     var subItemContainer = UIView()// 按钮容器
@@ -38,6 +39,7 @@ class StageMenuGridView : UIView{
                 let col:Int = i%2
                 let rect = CGRect(x: w * CGFloat(col), y: h * CGFloat(row), width: w, height: h)
                 let btn = StageMenuItem(frame: rect)
+                self.subItemContainer.addSubview(btn)
                 btn.tag = i
                 if let t = one["title"] as? String{
                     btn.setTitle(t, forState: UIControlState.Normal)
@@ -47,12 +49,34 @@ class StageMenuGridView : UIView{
                     btn.curSelected = true
                 }
                 btn.addTarget(self, action: Selector("onTapItem:"), forControlEvents: UIControlEvents.TouchUpInside)
-                self.subItemContainer.addSubview(btn)
             }
         }
         let rowCount:Int = (arr.count-1)/2 + 1
         self.container_h = h*CGFloat(rowCount) + 10
         self.subItemContainer.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: container_h)
         
+    }
+    
+    // 点击二级菜单项
+    func onTapItem(item:GalleryMenuItem) {
+        print("----------sub menu items title:\(item.titleLabel?.text), tagIndex:\(item.tag)")
+        // 低亮其他
+        for v in self.subItemContainer.subviews{
+            if let i = v as? GalleryMenuItem{
+                if i != item{
+                    i.curSelected = false
+                }
+            }
+        }
+        // 高亮所选
+        item.curSelected = true
+        // 更新设置
+        userSelectIndex = item.tag
+        
+        self.setNeedsDisplay()
+        let t = item.titleForState(UIControlState.Normal)
+        if (self.tapItemHandler != nil && t != nil) {
+            self.tapItemHandler?(index:self.userSelectIndex, title:t!)
+        }
     }
 }

@@ -58,6 +58,13 @@ class ForumNewThreadController : DSViewController{
         self.stageGridView = StageMenuGridView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 0))
         self.view.addSubview(self.stageGridView!)
         self.stageGridView?.loadMenuItems(stageConfig)
+        self.stageGridView?.tapItemHandler = {(index, title)-> Void in
+            // 更新Btn显示
+            self.stageMenu?.mainBtn?.setTitle(title, forState: .Normal)
+            // 点击动作，进入下一个页面
+            self.resetMenu()
+        }
+        
         
         let titleLabel = UILabel(frame: CGRect(x: edge_w, y: TopBar_H+btnSelectSection.bounds.height, width: 61 - edge_w , height: 40))
         titleLabel.font = UIFont.systemFontOfSize(15.0)
