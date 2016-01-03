@@ -10,4 +10,8 @@ import UIKit
 
 class AboutViewController: DSViewController {
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = UIColor.whiteColor()
+    }
 }

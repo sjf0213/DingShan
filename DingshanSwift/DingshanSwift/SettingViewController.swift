@@ -34,10 +34,19 @@ class SettingViewController: DSViewController {
     
     
     @IBAction func gradeOnclick(sender: AnyObject) {
+        let appid = 392901672
+        let urlstr = "itms-apps://itunes.apple.com/app/id\(appid)"
+        
+        UIApplication.sharedApplication().openURL(NSURL(string:urlstr)!)
+        
     }
     
     
     @IBAction func feedbackOnclick(sender: AnyObject) {
+        
+        let detail:FeedbackViewController = FeedbackViewController()
+        self.navigationController?.pushViewController(detail, animated: true)
+        
     }
     
     
