@@ -12,6 +12,9 @@
 		417BEF9A1B5A4F9300F896A5 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 417BEF991B5A4F9300F896A5 /* ArrayDataSource.m */; };
 		417BEF9D1B5A535300F896A5 /* FileHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 417BEF9C1B5A535300F896A5 /* FileHelp.m */; };
 		EA3192CC1C183333009DF5EE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3192CB1C183333009DF5EE /* SettingViewController.swift */; };
+		EAC2DE391C3905E600725E15 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2DE381C3905E600725E15 /* FeedbackViewController.swift */; };
+		EAC2DE3B1C3905FF00725E15 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2DE3A1C3905FF00725E15 /* AboutViewController.swift */; };
+		EAC2DE3D1C39061E00725E15 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2DE3C1C39061E00725E15 /* AgreementViewController.swift */; };
 		EACC644A1C044BBA002EA0C6 /* ProfileUserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACC64481C044BBA002EA0C6 /* ProfileUserInfoCell.swift */; };
 		EACC644B1C044BBA002EA0C6 /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACC64491C044BBA002EA0C6 /* ProfileViewCell.swift */; };
 		EAE52F641C1A775500D1BDBC /* UserTopicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE52F631C1A775500D1BDBC /* UserTopicListViewController.swift */; };
@@ -210,6 +213,9 @@
 		8C3FDADF40A760FE01B61CBE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B1C3AE27595DF18109312340 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3192CB1C183333009DF5EE /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		EAC2DE381C3905E600725E15 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		EAC2DE3A1C3905FF00725E15 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		EAC2DE3C1C39061E00725E15 /* AgreementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		EACC64481C044BBA002EA0C6 /* ProfileUserInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUserInfoCell.swift; sourceTree = "<group>"; };
 		EACC64491C044BBA002EA0C6 /* ProfileViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
 		EAE52F631C1A775500D1BDBC /* UserTopicListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTopicListViewController.swift; sourceTree = "<group>"; };
@@ -514,6 +520,9 @@
 				EAE52F651C1A777900D1BDBC /* UserFloorListViewController.swift */,
 				EAE52F671C1A77A300D1BDBC /* UserCollectionListViewController.swift */,
 				EAE52F6B1C1A81AF00D1BDBC /* SettingView.storyboard */,
+				EAC2DE381C3905E600725E15 /* FeedbackViewController.swift */,
+				EAC2DE3A1C3905FF00725E15 /* AboutViewController.swift */,
+				EAC2DE3C1C39061E00725E15 /* AgreementViewController.swift */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -1181,6 +1190,7 @@
 				F00CFFC11BDF8A2D002C8ECC /* UIImage+WebP.m in Sources */,
 				F09C7AB11B7CAEDC00648615 /* KASegmentControl.m in Sources */,
 				F0A9F6581C1140E50091FCA8 /* TYImageCache.m in Sources */,
+				EAC2DE3D1C39061E00725E15 /* AgreementViewController.swift in Sources */,
 				F0ADE21C1B55FEC8005E84FA /* DetailController.swift in Sources */,
 				F0DEE2281C0C378000C956A7 /* StageMenuItem.swift in Sources */,
 				F0104CD71C225B8700BCCECF /* HomeHeader.swift in Sources */,
@@ -1233,12 +1243,14 @@
 				F0E574F91B6784BE000053B8 /* RefreshIconView.m in Sources */,
 				F007353D1BEA103000383687 /* CHTCollectionViewWaterfallLayout.swift in Sources */,
 				F00CFF811BDF182D002C8ECC /* AFSecurityPolicy.m in Sources */,
+				EAC2DE391C3905E600725E15 /* FeedbackViewController.swift in Sources */,
 				F00CFFC31BDF8A2D002C8ECC /* UIImageView+WebCache.m in Sources */,
 				F00CFFC41BDF8A2D002C8ECC /* UIView+WebCacheOperation.m in Sources */,
 				F0A9F65A1C1140E50091FCA8 /* TYLinkTextStorage.m in Sources */,
 				F00CFF851BDF182D002C8ECC /* AFURLSessionManager.m in Sources */,
 				F0EEA9A01C0477BD006B63D3 /* SNSShareBtn.swift in Sources */,
 				F0A5E13A1BA045FA00BDA6BA /* ForumNewThreadController.swift in Sources */,
+				EAC2DE3B1C3905FF00725E15 /* AboutViewController.swift in Sources */,
 				F0A9F6551C1140E50091FCA8 /* NSMutableAttributedString+TY.m in Sources */,
 				F0D591B11BA185EE00C0346D /* ImageInfoData.swift in Sources */,
 				F00CFFBC1BDF8A2D002C8ECC /* SDWebImageManager.m in Sources */,
@@ -1409,6 +1421,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1438,6 +1451,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
